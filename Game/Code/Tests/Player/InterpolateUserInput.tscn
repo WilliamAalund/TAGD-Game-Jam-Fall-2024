@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckc0hnqglnl30"]
+
+[ext_resource type="Script" path="res://Code/Scripts/TestScripts/InterpolateUserInput.gd" id="1_8n5ou"]
+[ext_resource type="Environment" uid="uid://cyqqm1d1hw61a" path="res://Resources/Environments/TestEnvironment.tres" id="2_o16gq"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vtea0"]
+
+[node name="InterpolateUserInput" type="Node"]
+script = ExtResource("1_8n5ou")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0134386, -0.99991, 0, 0.99991, -0.0134386, 0, 0, 0.760989)
+mesh = SubResource("CylinderMesh_vtea0")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.998007, -9.29467e-10, 0.0631041, 0.0149455, 0.971549, 0.236366, -0.0613087, 0.236838, -0.969613, 0, 1.14063, -1.32691)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_o16gq")

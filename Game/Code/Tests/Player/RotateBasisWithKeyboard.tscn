@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwau1nh08ykwd"]
+
+[ext_resource type="Script" path="res://Code/Scripts/TestScripts/RotateBasisWithKeyboard.gd" id="1_6xkug"]
+[ext_resource type="Environment" uid="uid://cyqqm1d1hw61a" path="res://Resources/Environments/TestEnvironment.tres" id="2_dawmq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ltbk8"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_kg5nh"]
+
+[node name="RotateBasisWithKeyboard" type="Node3D"]
+script = ExtResource("1_6xkug")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_dawmq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.558556, 0.829467, 0, -0.829467, 0.558556, 0, 2.55474, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ltbk8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.05045)
+mesh = SubResource("PrismMesh_kg5nh")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, -2.26267e-08, 8.44439e-08, 0, 0.965926, 0.258819, -8.74228e-08, 0.258819, -0.965926, -0.617801, 2.29399, -3.88388)

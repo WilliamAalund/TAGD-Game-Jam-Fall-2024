@@ -1,3 +1,6 @@
 [gd_resource type="Environment" format=3 uid="uid://cyqqm1d1hw61a"]
 
 [resource]
+background_mode = 2
+background_energy_multiplier = 1.48
+reflected_light_source = 2

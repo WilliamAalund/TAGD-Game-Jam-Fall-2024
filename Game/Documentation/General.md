@@ -14,13 +14,23 @@ Table of contents:
 			Levels
 			Scripts
 			Tests
+				Audio
+				Pathfinding
+				Player
+				Visuals
 			Tools
 			UI
+		Documentation
 		Plugins
 		Resources
 
 ### Overview
 ## Directories
+
+# Code
+This directory is where the bulk of the project will be located. It contains scripts, entities, scenes, 
+
+
 
 # Documentation
 This will be where information about implementation details will be. 

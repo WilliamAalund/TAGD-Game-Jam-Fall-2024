@@ -1,3 +1,84 @@
-[gd_scene format=3 uid="uid://c784e4ugit3cu"]
+[gd_scene load_steps=13 format=3 uid="uid://c784e4ugit3cu"]
+
+[ext_resource type="Script" path="res://Code/Scripts/TestScripts/RotateBasisWithInterpolatedInputs.gd" id="1_vuwod"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sabb1"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_pns4v"]
+sky_material = SubResource("ProceduralSkyMaterial_sabb1")
+
+[sub_resource type="Environment" id="Environment_edo5b"]
+background_mode = 2
+sky = SubResource("Sky_pns4v")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_inwaa"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_m34hf"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_xvhvm"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bcsfv"]
+radius = 5.0
+height = 25.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_awkx5"]
+size = Vector3(150, 150, 150)
+
+[sub_resource type="TorusMesh" id="TorusMesh_2b5x0"]
+inner_radius = 250.0
+outer_radius = 500.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4in1h"]
+albedo_color = Color(0.577257, 0.471457, 0.557624, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_d85tj"]
+material = SubResource("StandardMaterial3D_4in1h")
+size = Vector2(8000, 8000)
 
 [node name="RotateBasisWithInterpolatedInputs" type="Node"]
+script = ExtResource("1_vuwod")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_edo5b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_inwaa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+mesh = SubResource("PrismMesh_m34hf")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.439959)
+mesh = SubResource("TorusMesh_xvhvm")
+
+[node name="Camera3D" type="Camera3D" parent="MeshInstance3D"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.72541, -4.395)
+fov = 90.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.558556, 0.829467, 0, -0.829467, 0.558556, 0, 2.55474, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.9336, 0, 233.128)
+mesh = SubResource("CapsuleMesh_bcsfv")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.879483, -0.382571, -0.283108, 0.475931, 0.70696, 0.523161, 0, -0.594851, 0.803836, 330.886, -22.9289, 279.453)
+mesh = SubResource("BoxMesh_awkx5")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.570355, -0.821398, 0, 0.821398, 0.570355, -209.702, -6.10352e-05, -438.882)
+mesh = SubResource("TorusMesh_2b5x0")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -643.99, 0)
+mesh = SubResource("PlaneMesh_d85tj")
+
+[node name="DebugLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

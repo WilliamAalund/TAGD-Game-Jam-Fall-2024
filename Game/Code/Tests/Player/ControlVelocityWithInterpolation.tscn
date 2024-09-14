@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsu0wfm1fbbd4"]
+
+[ext_resource type="Script" path="res://Code/Scripts/TestScripts/ControlVelocityWithInterpolation.gd" id="1_lc1bd"]
+[ext_resource type="Texture2D" uid="uid://jaiuaf0scbad" path="res://Resources/Images/icon.svg" id="2_ltmox"]
+
+[node name="ControlVelocityWithInterpolation" type="Node"]
+script = ExtResource("1_lc1bd")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(600, 380)
+
+[node name="Marker2D" type="Marker2D" parent="Node2D"]
+position = Vector2(0, -200)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Marker2D"]
+texture = ExtResource("2_ltmox")

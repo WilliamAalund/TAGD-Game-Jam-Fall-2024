@@ -7,12 +7,12 @@ extends Node
 @onready var debug_label = $DebugLabel
 @onready var mesh = $MeshInstance3D
 
-var travel_speed = 225 # Speed at which the mesh moves forward in space. Forward for the mesh is defined as the positive z direction.
+var travel_speed = 200 # Speed at which the mesh moves forward in space. Forward for the mesh is defined as the positive z direction.
 var net_input_horizontal = 0 # The experienced input for horizontal rotation from the user. The raw input is interpolated to produce this value, which makes for a smoother turning experience.
 var horizontal_rotate_rate_increase = 4 # A constant that scales the rate at which the net input changes. Currently used by all three net values.
 var net_input_vertical = 0 # Experienced for vertical
 var net_input_rotational = 0
-var max_net_input = 0.035
+var max_net_input = 0.04
 var minimum_net_input = 0.0005
 
 # Called when the node enters the scene tree for the first time.
@@ -29,6 +29,13 @@ func print_to_debug_label():
 	debug_label.text = "Net input horizontal: " + str(net_input_horizontal) + "\nNet input vertical: " + str(net_input_vertical) + "\nNet input rotational: " + str(net_input_rotational)
 
 func _physics_process(delta): # FIXME: When a particular net input reaches the max net input.
+	if Input.is_action_pressed("debug_press_2"):
+		travel_speed = 80
+	elif Input.is_action_pressed("debug_press_1"):
+		travel_speed = 450
+	else:
+		travel_speed = 200
+	print(travel_speed)
 	var prev_net_input_horizontal = net_input_horizontal
 	var prev_net_input_vertical = net_input_vertical
 	var prev_net_input_rotational = net_input_rotational
@@ -45,13 +52,7 @@ func _physics_process(delta): # FIXME: When a particular net input reaches the m
 		cumulative_rotation.x += net_input_vertical
 	if abs(net_input_rotational) > minimum_net_input:
 		cumulative_rotation.z += net_input_rotational
-#
-	## Apply the cumulative rotation if there's any
-	#if cumulative_rotation != Vector3.ZERO:
-		#mesh.transform.basis = mesh.transform.basis.rotated(mesh.transform.basis.y, cumulative_rotation.y).rotated(mesh.transform.basis.x, cumulative_rotation.x).rotated(mesh.transform.basis.z, cumulative_rotation.z)
-	## Variable to store the new basis
-	#
-
+	
 	if cumulative_rotation != Vector3.ZERO:
 		var axis_y = mesh.transform.basis.y.normalized() # Ensure that vectors are normalized before using them in calculations.
 		var axis_x = mesh.transform.basis.x.normalized()

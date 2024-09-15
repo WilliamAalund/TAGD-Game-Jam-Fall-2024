@@ -11,7 +11,7 @@ func _process(delta):
 
 #
 func _on_player_new_player_data_packet(packet):
-	$Label.text = str(packet["global_vel"].length())
+	$Label.text = str(packet["velocity"].length())
 	
 	# Camera code handled elsewhere
 	#camera_pivot.position = packet["global_pos"]

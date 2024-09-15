@@ -6,7 +6,7 @@ var horizontal_rotate_rate_increase = 4 # A constant that scales the rate at whi
 const MIN_TRAVEL_SPEED = -100.0
 const BASE_TRAVEL_SPEED = 200.0
 const MAX_TRAVEL_SPEED = 450.0
-const ACCELERATION = 2.0
+const ACCELERATION = 1.0
 
 var travel_speed = BASE_TRAVEL_SPEED # Speed at which the mesh moves forward in space. Forward for the mesh is defined as the positive z direction.
 var net_input_horizontal = 0 # The experienced input for horizontal rotation from the user. The raw input is interpolated to produce this value, which makes for a smoother turning experience.

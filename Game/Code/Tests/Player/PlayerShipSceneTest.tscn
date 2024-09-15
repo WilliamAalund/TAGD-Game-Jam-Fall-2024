@@ -40,3 +40,5 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="Player" parent="." instance=ExtResource("1_14xpm")]
+
+[connection signal="new_player_data_packet" from="Player" to="." method="_on_player_new_player_data_packet"]

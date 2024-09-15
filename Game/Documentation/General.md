@@ -7,6 +7,7 @@ Table of contents:
 		Project Name
 		Description
 		Goals
+		Technical Specifications
 	
 	Directories
 		Code
@@ -23,8 +24,23 @@ Table of contents:
 		Documentation
 		Plugins
 		Resources
+			Meshes
+				Placeholders
 
 ### Overview
+
+## Project Name
+Starfighter in Training
+
+## Description
+You are a star fighter piloting an advanced spaceship to defeat aliens and save your planet. The game is an arcade style third person shooter with dogfighting mechanics.
+
+## Goals
+This game is Team 24's submission to the Texas Aggie Game Developers Fall 2024 game jam. Our goal is to produce a game that is polished, highly replayable, but most of all, fun and engaging.
+
+## Technical Specifications
+All 3D models, meshes, and scenes will face in the positive Z direction. This is so basis manipulation is consistent and easy to do.
+
 ## Directories
 
 # Code
@@ -44,3 +60,6 @@ This is where plugins will be stored. Keeping plugins organized and separate fro
 
 # Resources
 This is where all assets, such as sprites, 3D models, textures, sound effects, music, and UI elements will be stored. 
+
+## Placeholder
+These are meshes that are usually created in Godot, and are used as a substitude to a finished design.

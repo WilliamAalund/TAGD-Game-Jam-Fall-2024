@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://2fpkavmcoexg"]
+[gd_scene load_steps=4 format=3 uid="uid://cue5suxaxwn1t"]
+
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/Player.gd" id="1_h3sec"]
+[ext_resource type="PackedScene" uid="uid://2fpkavmcoexg" path="res://Code/Entities/Player/v1/Ship.tscn" id="2_ijeku"]
+[ext_resource type="PackedScene" uid="uid://ci4vcaiif0ff2" path="res://Code/Entities/Player/v1/ShipCamera.tscn" id="3_8kkb1"]
 
 [node name="Player" type="Node3D"]
+script = ExtResource("1_h3sec")
+
+[node name="Ship" parent="." instance=ExtResource("2_ijeku")]
+
+[node name="ShipCamera" parent="." instance=ExtResource("3_8kkb1")]
+
+[connection signal="new_player_data_packet" from="." to="ShipCamera" method="_on_player_new_player_data_packet"]

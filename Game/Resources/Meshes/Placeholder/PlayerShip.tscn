@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://bl8vbh3ys2syn"]
+
+[ext_resource type="Material" uid="uid://dv4evy0j5ptc3" path="res://Resources/Materials/Placeholder/Metal.tres" id="1_durcb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rh4t3"]
+size = Vector3(3, 0.1, 0.7)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_sa2xw"]
+material = ExtResource("1_durcb")
+top_radius = 0.2
+bottom_radius = 0.4
+height = 3.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fw01n"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rwk0v"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 1.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5bg5n"]
+albedo_color = Color(0.440478, 0.584362, 0.971946, 1)
+metallic = 0.7
+roughness = 0.3
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_upwot"]
+material = SubResource("StandardMaterial3D_5bg5n")
+radius = 0.2
+height = 1.0
+
+[node name="PlayerShip" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_rh4t3")
+
+[node name="Hull" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.674973)
+mesh = SubResource("CylinderMesh_sa2xw")
+
+[node name="GunRight" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.3, -0.1, 2)
+mesh = SubResource("CylinderMesh_fw01n")
+
+[node name="GunLeft" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.3, -0.1, 2)
+mesh = SubResource("CylinderMesh_fw01n")
+
+[node name="BoostLeft" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.6, 0, 0)
+mesh = SubResource("CylinderMesh_rwk0v")
+
+[node name="BoostRight" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.6, 0, 0)
+mesh = SubResource("CylinderMesh_rwk0v")
+
+[node name="Cockpit" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0542706, -0.998526, 0, 0.998526, -0.0542706, 0, 0.260872, 0)
+mesh = SubResource("CapsuleMesh_upwot")
+
+[node name="BackLeftBoosterPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, -0.6)
+
+[node name="BackRightBoosterPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, -0.6)

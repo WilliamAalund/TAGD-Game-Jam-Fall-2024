@@ -12,7 +12,8 @@ func _process(delta):
 #
 func _on_player_new_player_data_packet(packet):
 	$Label.text = str(packet["velocity"].length())
-	
+	$ProgressBar.value = packet["boost_energy"]
+	$Crosshair.position = packet["crosshair_position_2d"]
 	# Camera code handled elsewhere
 	#camera_pivot.position = packet["global_pos"]
 	#camera.rotation = packet["direction"]

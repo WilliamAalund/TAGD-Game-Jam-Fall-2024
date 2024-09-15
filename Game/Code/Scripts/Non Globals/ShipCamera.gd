@@ -1,9 +1,17 @@
 extends Node3D
 
 @onready var spring_arm = $SpringArm3D
+@onready var camera = $SpringArm3D/Camera3D
+@onready var front_camera_animation = $SpringArm3D/Camera3D/AnimationPlayer
 
 var target_basis
-var camera_rotate_speed = 12.0
+var base_camera_rotate_speed = 12.0
+var base_camera_fov = 90.0
+var focus_camera_rotate_speed = 250.0
+var focus_camera_fov = 45.0
+var zoomed_in = false
+
+var current_camera_rotate_speed = base_camera_rotate_speed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,14 +21,29 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-
+	if Input.is_action_pressed("focus"):
+		current_camera_rotate_speed = lerp(current_camera_rotate_speed, focus_camera_rotate_speed, .01)
+		#current_camera_rotate_speed = focus_camera_rotate_speed
+		if zoomed_in == false:
+			front_camera_animation.play("front_camera_zoom_in")
+		zoomed_in = true
+		#camera.fov = focus_camera_fov
+	else:
+		current_camera_rotate_speed = lerp(current_camera_rotate_speed, base_camera_rotate_speed, .5)
+		#current_camera_rotate_speed = base_camera_rotate_speed
+		if zoomed_in == true:
+			front_camera_animation.play("front_camera_zoom_out")
+		zoomed_in = false
+		#camera.fov = 90
 	target_basis = target_basis.orthonormalized()
-	var new_basis = lerp(self.transform.basis, target_basis, delta * camera_rotate_speed)
+	var new_basis = lerp(self.transform.basis, target_basis, delta * current_camera_rotate_speed)
 	new_basis = new_basis.orthonormalized()
 	self.transform.basis = new_basis
 
+func get_unprojected_position_from_camera(coordinate: Vector3):
+	return camera.unproject_position(coordinate)
 
 func _on_player_new_player_data_packet(packet):
 	self.global_position = packet["global_pos"] 
 	target_basis = packet["ship_basis"]
-	spring_arm.spring_length = 2 + packet["velocity"].length() / 100
+	spring_arm.spring_length = 2.2 + packet["velocity"].length() / 300

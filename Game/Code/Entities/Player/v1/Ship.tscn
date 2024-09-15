@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://2fpkavmcoexg"]
+[gd_scene load_steps=6 format=3 uid="uid://2fpkavmcoexg"]
 
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/PlayerShip.gd" id="1_50gf5"]
 [ext_resource type="PackedScene" uid="uid://bl8vbh3ys2syn" path="res://Resources/Meshes/Placeholder/PlayerShip.tscn" id="1_71dhf"]
@@ -7,7 +7,15 @@
 height = 3.0
 radius = 0.3
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_cf2ht"]
+size = Vector3(3.2, 0.15, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_drntm"]
+radius = 0.2
+
 [node name="Ship" type="CharacterBody3D"]
+collision_layer = 2
+motion_mode = 1
 script = ExtResource("1_50gf5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -15,3 +23,12 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 shape = SubResource("CylinderShape3D_s5lm4")
 
 [node name="PlayerShip2" parent="." instance=ExtResource("1_71dhf")]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_cf2ht")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+shape = SubResource("SphereShape3D_drntm")
+spring_length = 350.0
+
+[node name="CrosshairPosition" type="Marker3D" parent="SpringArm3D"]

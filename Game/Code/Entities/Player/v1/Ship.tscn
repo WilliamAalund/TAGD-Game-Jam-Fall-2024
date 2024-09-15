@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://2fpkavmcoexg"]
+[gd_scene load_steps=8 format=3 uid="uid://2fpkavmcoexg"]
 
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/PlayerShip.gd" id="1_50gf5"]
 [ext_resource type="PackedScene" uid="uid://bl8vbh3ys2syn" path="res://Resources/Meshes/Placeholder/PlayerShip.tscn" id="1_71dhf"]
@@ -11,7 +11,13 @@ radius = 0.3
 size = Vector3(3.2, 0.15, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_drntm"]
-radius = 0.2
+radius = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iun7g"]
+albedo_color = Color(0.873976, 0.113367, 6.73831e-07, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_nokmm"]
+material = SubResource("StandardMaterial3D_iun7g")
 
 [node name="Ship" type="CharacterBody3D"]
 collision_layer = 2
@@ -32,3 +38,7 @@ shape = SubResource("SphereShape3D_drntm")
 spring_length = 350.0
 
 [node name="CrosshairPosition" type="Marker3D" parent="SpringArm3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpringArm3D/CrosshairPosition"]
+visible = false
+mesh = SubResource("SphereMesh_nokmm")

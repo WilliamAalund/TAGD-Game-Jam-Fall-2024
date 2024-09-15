@@ -10,5 +10,6 @@ script = ExtResource("1_h3sec")
 [node name="Ship" parent="." instance=ExtResource("2_ijeku")]
 
 [node name="ShipCamera" parent="." instance=ExtResource("3_8kkb1")]
+current_camera_rotate_speed = 12.0
 
 [connection signal="new_player_data_packet" from="." to="ShipCamera" method="_on_player_new_player_data_packet"]

@@ -9,7 +9,7 @@ const MAX_TRAVEL_SPEED = 750.0
 const ACCELERATION = 1.0
 
 const MAX_BOOST = 100
-const BOOST_ENERGY_REENABLE_THRESHOLD = 30
+const BOOST_ENERGY_REENABLE_THRESHOLD = 25
 @export var boost_energy = MAX_BOOST # Boost energy controls how long the player can boost for.
 @export var boost_depleted = false # If the boost hits a value of 0, it will shut off for a bit until it reaches BOOST_ENERGY_REENABLE_THRESHOLD.
 var boost_energy_regeneration_rate = 14
@@ -28,6 +28,7 @@ var minimum_net_input = 0.0005
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
 
 func _process(delta):
 	pass
@@ -138,5 +139,5 @@ func move_ship_forward():
 	move_and_slide()
 
 func get_3d_crosshair_position():
-	print($SpringArm3D.get_hit_length())
+	#print($SpringArm3D/CrosshairPosition.global_position)
 	return $SpringArm3D/CrosshairPosition.global_position

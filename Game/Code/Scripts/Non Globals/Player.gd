@@ -24,7 +24,6 @@ func construct_player_data_packet():
 	player_data_packet["boost_energy"] = player_ship.boost_energy
 	player_data_packet["boost_depleted"] = player_ship.boost_depleted
 	var crosshair_position_2d = camera.get_unprojected_position_from_camera(player_ship.get_3d_crosshair_position())
-	print(crosshair_position_2d)
 	player_data_packet["crosshair_position_2d"] = crosshair_position_2d
 	player_data_packet["player_3d_crosshair_position"] = player_ship.get_3d_crosshair_position()
 	# Example alteration: Add a timestamp or any other relevant data.

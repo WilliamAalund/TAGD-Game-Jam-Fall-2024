@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsd6fwc36gynx"]
+
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/ProjectileHandler.gd" id="1_tspc8"]
+
+[node name="ProjectileHandler" type="Node3D"]
+script = ExtResource("1_tspc8")
+
+[node name="LaserCannons" type="Node3D" parent="."]
+
+[node name="Left" type="Marker3D" parent="LaserCannons"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.1, 2.5)
+
+[node name="Right" type="Marker3D" parent="LaserCannons"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, -0.1, 2.5)

@@ -22,22 +22,18 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_pressed("focus"):
-		#current_camera_rotate_speed = focus_camera_rotate_speed
 		if zoomed_in == false:
 			front_camera_animation.play("front_camera_zoom_in")
 		zoomed_in = true
-		#camera.fov = focus_camera_fov
 	else:
-		#current_camera_rotate_speed = base_camera_rotate_speed
 		if zoomed_in == true:
 			front_camera_animation.play("front_camera_zoom_out")
 		zoomed_in = false
-		#camera.fov = 90
 	target_basis = target_basis.orthonormalized()
 	var new_basis = self.transform.basis.slerp(target_basis, delta * current_camera_rotate_speed)
 	new_basis = new_basis.orthonormalized()
 	self.transform.basis = new_basis
-	$Label.text = str(new_basis)
+	#$Label.text = "Prev basis: " + str(self.transform.basis) + " New Basis: " + str(new_basis)
 
 func get_unprojected_position_from_camera(coordinate: Vector3):
 	return camera.unproject_position(coordinate)

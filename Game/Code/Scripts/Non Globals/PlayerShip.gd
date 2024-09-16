@@ -1,11 +1,13 @@
 extends CharacterBody3D
 # This script controls the behavior of the player's ship in a 3D space environment. It handles movement, including forward motion and rotational adjustments based on user input. 
 
+@export var debug_freeze_ship_position = false
+
 var horizontal_rotate_rate_increase = 4 # A constant that scales the rate at which the net input changes. Currently used by all three net values.
 
 const MIN_TRAVEL_SPEED = -200.0
 const BASE_TRAVEL_SPEED = 250.0
-const MAX_TRAVEL_SPEED = 750.0
+const MAX_TRAVEL_SPEED = 700.0
 const ACCELERATION = 1.0
 
 const MAX_BOOST = 100
@@ -32,6 +34,10 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _process(delta):
 	pass
+	if Input.is_action_pressed("focus"):
+		max_net_input = 1.0
+	else:
+		max_net_input = 2.0
 	# Update net inputs for movement and rotation
 	update_net_input_horizontal(delta)
 	update_net_input_vertical(delta)
@@ -44,7 +50,8 @@ func _physics_process(delta):
 	# Adjust travel speed based on user inputs
 	adjust_travel_speed_based_on_input(delta)
 	# Move the player ship forward
-	move_ship_forward()
+	if !debug_freeze_ship_position:
+		move_ship_forward()
 
 # Adjusts the ship's travel speed based on debug input
 func adjust_travel_speed_based_on_input(delta):

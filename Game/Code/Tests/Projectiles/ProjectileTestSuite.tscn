@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlxqnffn6h2d1"]
+
+[ext_resource type="Script" path="res://Code/Tests/Projectiles/ProjectileTestSuite.gd" id="1_f4vlu"]
+
+[node name="ProjectileTestSuite" type="Node3D"]
+script = ExtResource("1_f4vlu")
+
+[node name="ProjectileSpawnPoint" type="Marker3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.0370045, -0.668495, 0.742796, 0.0332618, 0.743717, 0.667667, -0.998761, 0, 0.0497562, 19.51, 10.5095, 2.1845)

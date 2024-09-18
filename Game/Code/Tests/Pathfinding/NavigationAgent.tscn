@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2wm3erbc7g03"]
+
+[ext_resource type="Script" path="res://Code/Scripts/TestScripts/NavigationAgent.gd" id="1_yaxhu"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_tmujx"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_5j63y"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_q7jwx"]
+
+[node name="NavigationAgent" type="Node"]
+script = ExtResource("1_yaxhu")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.961928, 0.273305, 0, -0.273305, 0.961928, 0, 15, 30)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_tmujx")
+skeleton = NodePath("../Node3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.500697)
+mesh = SubResource("PrismMesh_5j63y")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 15)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Marker3D"]
+mesh = SubResource("SphereMesh_q7jwx")
+skeleton = NodePath("../..")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.859147, 0.511728, 0, -0.511728, 0.859147, 0, 0, 0)

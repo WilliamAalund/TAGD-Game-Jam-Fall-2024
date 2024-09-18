@@ -6,8 +6,8 @@ extends CharacterBody3D
 var horizontal_rotate_rate_increase = 4 # A constant that scales the rate at which the net input changes. Currently used by all three net values.
 
 const MIN_TRAVEL_SPEED = -200.0
-const BASE_TRAVEL_SPEED = 250.0
-const MAX_TRAVEL_SPEED = 700.0
+const BASE_TRAVEL_SPEED = 150.0
+const MAX_TRAVEL_SPEED = 600.0
 const ACCELERATION = 1.0
 
 const MAX_BOOST = 100
@@ -18,7 +18,7 @@ var boost_energy_regeneration_rate = 14
 var boost_energy_depletion_rate = 18
 
 var travel_speed = BASE_TRAVEL_SPEED # Speed at which the mesh moves forward in space. Forward for the mesh is defined as the positive z direction.
-var max_net_input = 2.0
+var max_net_input = 2.5
 var net_input_horizontal = 0 # The experienced input for horizontal rotation from the user. The raw input is interpolated to produce this value, which makes for a smoother turning experience.
 var net_input_vertical = 0 # Experienced for vertical
 var net_input_rotational = 0

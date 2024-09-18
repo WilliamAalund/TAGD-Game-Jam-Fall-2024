@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GameJamFall2024"
-run/main_scene="res://Code/Tests/Player/PlayerShipSceneTest.tscn"
+run/main_scene="res://Code/PrimaryScenes/Main/DebugMain.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://Resources/Images/icon.svg"
 

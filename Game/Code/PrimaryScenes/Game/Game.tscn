@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://cxl5frgge2xk7"]
+[gd_scene load_steps=2 format=3 uid="uid://cxl5frgge2xk7"]
 
-[node name="Game" type="Node3D"]
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/Game.gd" id="1_s8h24"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_s8h24")
+
+[node name="GameObjects" type="Node3D" parent="."]
+
+[node name="Timer" type="Timer" parent="GameObjects"]

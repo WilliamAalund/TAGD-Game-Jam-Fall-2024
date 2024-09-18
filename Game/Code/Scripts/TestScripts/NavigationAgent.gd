@@ -25,7 +25,6 @@ func _ready():
 func _process(delta):
 	navigation_point_global_position = nagivation_point.global_position
 	move_target_marker()
-	
 	navigation_vector = navigation_point_global_position - mesh.global_position
 	mesh.look_at(mesh.global_position + navigation_vector)
 	print(navigation_vector)

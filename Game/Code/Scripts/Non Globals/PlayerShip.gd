@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 @export var debug_freeze_ship_position = false
 
-var horizontal_rotate_rate_increase = 4 # A constant that scales the rate at which the net input changes. Currently used by all three net values.
+var horizontal_rotate_rate_increase = 8 # A constant that scales the rate at which the net input changes. Currently used by all three net values.
 
 const MIN_TRAVEL_SPEED = -200.0
 const BASE_TRAVEL_SPEED = 150.0

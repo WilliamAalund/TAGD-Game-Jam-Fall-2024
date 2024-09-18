@@ -15,7 +15,7 @@ func _ready():
 func _process(delta):
 	if debug_is_active:
 		if Input.is_action_pressed("debug_quit"):
-			self.get_child(0).queue_free()
+			self.get_child(0).queue_free() # Probably this
 			debug_quit.emit()
 			debug_is_active = false
 

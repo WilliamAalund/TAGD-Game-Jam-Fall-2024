@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxx78nk5kmt2d"]
+
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/PlayBoundary.gd" id="1_0prcq"]
+[ext_resource type="Material" uid="uid://qkt34qm0t3q7" path="res://Resources/Materials/Placeholder/Boundary.tres" id="2_6tyxb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k3ux2"]
+radius = 3000.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_gv62k"]
+material = ExtResource("2_6tyxb")
+radius = 3000.0
+height = 6000.0
+
+[node name="PlayBoundary" type="Area3D"]
+script = ExtResource("1_0prcq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_k3ux2")
+
+[node name="BoundaryMesh" type="MeshInstance3D" parent="."]
+transparency = 0.92
+mesh = SubResource("SphereMesh_gv62k")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

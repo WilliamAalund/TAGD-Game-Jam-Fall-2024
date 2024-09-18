@@ -154,3 +154,7 @@ debug_quit={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":6,"pressure":0.0,"pressed":true,"script":null)
 ]
 }
+
+[rendering]
+
+anti_aliasing/quality/msaa_3d=2

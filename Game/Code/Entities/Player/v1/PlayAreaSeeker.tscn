@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://mwdnu3g0yeef"]
+
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/PlayAreaSeeker.gd" id="1_f64yg"]
+[ext_resource type="Material" uid="uid://bd4ybnvo61hpq" path="res://Resources/Materials/Placeholder/PlayAreaSeeker.tres" id="2_ihb5x"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mn8at"]
+material = ExtResource("2_ihb5x")
+top_radius = 0.0
+bottom_radius = 0.15
+height = 0.3
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wqsy5"]
+material = ExtResource("2_ihb5x")
+top_radius = 0.1
+bottom_radius = 0.07
+height = 0.25
+
+[sub_resource type="Animation" id="Animation_21w6j"]
+resource_name = "PlayAreaSeekerPulsate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.2, 1.2, 1.2), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qvn0g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uotmi"]
+_data = {
+"PlayAreaSeekerPulsate": SubResource("Animation_21w6j"),
+"RESET": SubResource("Animation_qvn0g")
+}
+
+[node name="PlayAreaSeeker" type="Node3D"]
+script = ExtResource("1_f64yg")
+
+[node name="Arrow" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.158202)
+transparency = 0.4
+mesh = SubResource("CylinderMesh_mn8at")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Arrow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.276669, -1.20936e-08)
+transparency = 0.4
+mesh = SubResource("CylinderMesh_wqsy5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Arrow"]
+libraries = {
+"": SubResource("AnimationLibrary_uotmi")
+}

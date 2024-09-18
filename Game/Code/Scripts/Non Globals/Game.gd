@@ -2,6 +2,9 @@ extends Node
 
 @onready var game_objects = $GameObjects
 
+@onready var player_ship = load("res://Code/Entities/Player/v1/Player.tscn")
+@onready var arcade_level = load("res://Code/Levels/ArcadeLevel.tscn")
+
 @export var debug_enabled = false
 
 var number_of_players = 1

@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://ces21elw3d5xw"]
+
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/TitleScreen.gd" id="1_k7ege"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y0qpl"]
+font_size = 80
+
+[node name="TitleScreen" type="Node"]
+script = ExtResource("1_k7ege")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -131.0
+offset_right = 131.0
+offset_bottom = 67.0
+grow_horizontal = 2
+text = "Planeteene
+"
+label_settings = SubResource("LabelSettings_y0qpl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.5
+offset_top = -33.0
+offset_right = 46.5
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Debug" type="Button" parent="UI/VBoxContainer"]
+layout_mode = 2
+text = "Run Debug"
+
+[node name="Quit" type="Button" parent="UI/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="UI/VBoxContainer/Debug" to="." method="_on_debug_pressed"]
+[connection signal="pressed" from="UI/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://c12oc5trm1l57"]
+
+[ext_resource type="Environment" uid="uid://cyqqm1d1hw61a" path="res://Resources/Environments/TestEnvironment.tres" id="1_jhi3u"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_an4v5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25tun"]
+emission_enabled = true
+emission = Color(0.953679, 0.915532, 0.693674, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_napg7"]
+material = SubResource("StandardMaterial3D_25tun")
+radius = 0.25
+height = 0.5
+
+[node name="Background" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_jhi3u")
+
+[node name="Planet" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_an4v5")
+skeleton = NodePath("")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.25)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.596381, 0.544406, 0.589874, 0.352367, -0.837827, 0.416993, 0.721226, -0.0408347, -0.691495, 0, 0, 0)
+light_color = Color(0.197281, 0.505867, 0.807144, 1)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.53562, -0.749372, -0.389297, -0.386985, 0.627563, -0.67558, 0.750569, -0.211202, -0.626131, 0, 0, 0)
+light_color = Color(0.00222217, 0.0224805, 0.0631253, 1)
+
+[node name="Star" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1643, 5.60661, -18.6014)
+mesh = SubResource("SphereMesh_napg7")
+skeleton = NodePath("")

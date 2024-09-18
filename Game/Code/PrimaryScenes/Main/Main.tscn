@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://cgf05yuxxtwdm"]
+[gd_scene load_steps=5 format=3 uid="uid://cgf05yuxxtwdm"]
+
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/Main.gd" id="1_jc0tf"]
+[ext_resource type="PackedScene" uid="uid://cxl5frgge2xk7" path="res://Code/PrimaryScenes/Game/Game.tscn" id="1_yjf3o"]
+[ext_resource type="PackedScene" uid="uid://ces21elw3d5xw" path="res://Code/PrimaryScenes/TitleScreen/TitleScreen.tscn" id="2_bcffg"]
+[ext_resource type="PackedScene" uid="uid://mdpsnqlv666y" path="res://Code/PrimaryScenes/Debug/Debug.tscn" id="3_sog8d"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_jc0tf")
+
+[node name="Game" parent="." instance=ExtResource("1_yjf3o")]
+
+[node name="TitleScreen" parent="." instance=ExtResource("2_bcffg")]
+
+[node name="Debug" parent="." instance=ExtResource("3_sog8d")]
+
+[connection signal="play_arcade" from="TitleScreen" to="." method="_on_title_screen_play_arcade"]
+[connection signal="play_debug" from="TitleScreen" to="." method="_on_title_screen_play_debug"]
+[connection signal="quit_game" from="TitleScreen" to="." method="_on_title_screen_quit_game"]
+[connection signal="debug_quit" from="Debug" to="." method="_on_debug_debug_quit"]

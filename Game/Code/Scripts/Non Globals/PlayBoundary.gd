@@ -18,4 +18,5 @@ func _on_body_exited(body):
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
+		print("Player ship entered the play area")
 		body.entered_playable_area()

@@ -42,4 +42,4 @@ func get_unprojected_position_from_camera(coordinate: Vector3):
 func _on_player_new_player_data_packet(packet):
 	self.global_position = packet["global_pos"] 
 	target_basis = packet["ship_basis"]
-	spring_arm.spring_length = 3.2 + packet["velocity"].length() / 300
+	spring_arm.spring_length = 4.2 + packet["velocity"].length() / 300

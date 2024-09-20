@@ -9,7 +9,7 @@ extends Node
 
 var travel_speed = 200 # Speed at which the mesh moves forward in space. Forward for the mesh is defined as the positive z direction.
 var net_input_horizontal = 0 # The experienced input for horizontal rotation from the user. The raw input is interpolated to produce this value, which makes for a smoother turning experience.
-var horizontal_rotate_rate_increase = 4 # A constant that scales the rate at which the net input changes. Currently used by all three net values.
+var net_input_rate_multiplier = 4 # A constant that scales the rate at which the net input changes. Currently used by all three net values.
 var net_input_vertical = 0 # Experienced for vertical
 var net_input_rotational = 0
 var max_net_input = 0.04
@@ -70,7 +70,7 @@ func update_net_input_horizontal(delta): # input is probably not the best term f
 	elif Input.is_action_pressed("debug_right"):
 		input = -max_net_input * Input.get_action_strength("debug_right")
 	if input != net_input_horizontal:
-		net_input_horizontal += (input - net_input_horizontal) * delta * horizontal_rotate_rate_increase
+		net_input_horizontal += (input - net_input_horizontal) * delta * net_input_rate_multiplier
 	
 func update_net_input_vertical(delta): # input is probably not the best term for this variable.
 	var input = 0
@@ -79,7 +79,7 @@ func update_net_input_vertical(delta): # input is probably not the best term for
 	elif Input.is_action_pressed("debug_down"):
 		input = -max_net_input * Input.get_action_strength("debug_down")
 	if input != net_input_vertical:
-		net_input_vertical += (input - net_input_vertical) * delta * horizontal_rotate_rate_increase
+		net_input_vertical += (input - net_input_vertical) * delta * net_input_rate_multiplier
 
 func update_net_input_rotational(delta): # input is probably not the best term for that variable.
 	var input = 0
@@ -88,4 +88,4 @@ func update_net_input_rotational(delta): # input is probably not the best term f
 	elif Input.is_action_pressed("debug_rotate_left"):
 		input = -max_net_input * Input.get_action_strength("debug_rotate_left")
 	if input != net_input_rotational:
-		net_input_rotational += (input - net_input_rotational) * delta * horizontal_rotate_rate_increase
+		net_input_rotational += (input - net_input_rotational) * delta * net_input_rate_multiplier

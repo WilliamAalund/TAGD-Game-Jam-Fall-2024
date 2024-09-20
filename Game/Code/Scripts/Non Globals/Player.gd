@@ -24,6 +24,8 @@ func construct_player_data_packet():
 	player_data_packet["boost_energy"] = player_ship.boost_energy
 	player_data_packet["boost_depleted"] = player_ship.boost_depleted
 	var crosshair_position_2d = camera.get_unprojected_position_from_camera(player_ship.get_3d_crosshair_position())
+	if crosshair_position_2d.y == INF: # Prevents glitch when scene initalizes: crosshair_position_2d is sometimes (nan, inf)
+		crosshair_position_2d = DisplayServer.screen_get_size() / 2.0
 	player_data_packet["crosshair_position_2d"] = crosshair_position_2d
 	player_data_packet["player_3d_crosshair_position"] = player_ship.get_3d_crosshair_position()
 	player_data_packet["left_playable_space"] = player_ship.left_playable_space

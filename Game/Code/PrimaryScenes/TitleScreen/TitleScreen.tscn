@@ -4,6 +4,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_y0qpl"]
 font_size = 80
+font_color = Color(0.351231, 0.487575, 0.710945, 1)
 
 [node name="TitleScreen" type="Node"]
 script = ExtResource("1_k7ege")

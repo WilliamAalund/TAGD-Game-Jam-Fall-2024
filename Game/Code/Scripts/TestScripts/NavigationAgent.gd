@@ -8,7 +8,7 @@ var max_net_input = 0.025
 var net_input_horizontal
 var net_input_vertical
 var net_input_rotational
-var horizontal_rotate_rate_increase = 2 # FIXME: This is not a good variable name.
+var net_input_rate_multiplier = 2 # FIXME: This is not a good variable name.
 
 var navigation_vector
 
@@ -73,7 +73,7 @@ func update_net_input_horizontal(delta): # input is probably not the best term f
 	elif Input.is_action_pressed("debug_right"):
 		input = -max_net_input * Input.get_action_strength("debug_right")
 	if input != net_input_horizontal:
-		net_input_horizontal += (input - net_input_horizontal) * delta * horizontal_rotate_rate_increase
+		net_input_horizontal += (input - net_input_horizontal) * delta * net_input_rate_multiplier
 	
 func update_net_input_vertical(delta): # input is probably not the best term for this variable.
 	var input = 0
@@ -82,7 +82,7 @@ func update_net_input_vertical(delta): # input is probably not the best term for
 	elif Input.is_action_pressed("debug_down"):
 		input = -max_net_input * Input.get_action_strength("debug_down")
 	if input != net_input_vertical:
-		net_input_vertical += (input - net_input_vertical) * delta * horizontal_rotate_rate_increase
+		net_input_vertical += (input - net_input_vertical) * delta * net_input_rate_multiplier
 
 func update_net_input_rotational(delta): # input is probably not the best term for that variable.
 	var input = 0
@@ -91,4 +91,4 @@ func update_net_input_rotational(delta): # input is probably not the best term f
 	elif Input.is_action_pressed("debug_rotate_left"):
 		input = -max_net_input * Input.get_action_strength("debug_rotate_left")
 	if input != net_input_rotational:
-		net_input_rotational += (input - net_input_rotational) * delta * horizontal_rotate_rate_increase
+		net_input_rotational += (input - net_input_rotational) * delta * net_input_rate_multiplier

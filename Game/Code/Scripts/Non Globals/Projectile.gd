@@ -6,9 +6,9 @@ enum type_enum {LASER, MISSILE}
 @export var type: type_enum
 
 
-var base_projectile_speed = 1000
+var base_projectile_speed = 750
 var projectile_speed_falloff = 0 # Amount per second. For example, a projectile with a base_projecile_speed of 5 and a projectile_speed_falloff of 2.5 would last for two seconds
-var maximum_projectile_range = 3000
+var maximum_projectile_range = 2500
 
 var distance_traveled
 var current_speed
@@ -39,4 +39,3 @@ func _on_body_entered(body):
 	if not body.is_in_group(projectile_creator_group):
 		print("Body is in not my creator")
 	self.queue_free()
-

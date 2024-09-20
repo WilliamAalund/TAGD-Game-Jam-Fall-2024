@@ -39,8 +39,9 @@ func start_game(_number_of_players, _game_mode: game_modes) -> void:
 		# Connect UI to player object
 		player_child.new_player_data_packet.connect(hud_child._on_player_new_player_data_packet)
 		
-		game_objects.add_child(player_child)
 		game_objects.add_child(hud_child)
+		game_objects.add_child(player_child)
+		
 		
 		# Load level # TODO: Make tutorial levels, then randomly generate them
 		var arcade_level_child = arcade_level.instantiate()

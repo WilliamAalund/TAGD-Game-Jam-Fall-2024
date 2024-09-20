@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cin0g7wq0mvdq"]
+[gd_scene load_steps=4 format=3 uid="uid://cin0g7wq0mvdq"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_dy4ud"]
 top_radius = 0.0
@@ -8,25 +8,43 @@ height = 1.0
 [sub_resource type="BoxMesh" id="BoxMesh_hfsbr"]
 size = Vector3(0.8, 0.3, 0.1)
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_80erl"]
+radius = 0.08
+height = 0.5
+
 [node name="MiniShipModel" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -2)
+cull_mask = 1048064
 fov = 35.0
 
 [node name="Ship" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ship"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+layers = 512
 mesh = SubResource("CylinderMesh_dy4ud")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ship/MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.270835, 0)
+layers = 512
 mesh = SubResource("BoxMesh_hfsbr")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Ship/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.117328, -0.0977343)
+layers = 512
+mesh = SubResource("CapsuleMesh_80erl")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.855996, 0)
+layers = 512
+light_color = Color(0.405957, 0.796298, 0.651862, 1)
+light_cull_mask = 4294966784
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25664, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25664, -0.267646)
+layers = 512
+light_color = Color(0.0967529, 0.329171, 0.0992817, 1)
+light_cull_mask = 4294966784

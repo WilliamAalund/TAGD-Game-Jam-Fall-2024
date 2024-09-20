@@ -6,11 +6,11 @@ signal ship_entered_play_space
 
 @export var debug_freeze_ship_position = false
 
-var horizontal_rotate_rate_increase = 8 # A constant that scales the rate at which the net input changes. Currently used by all three net values.
+var net_input_rate_multiplier = 8 # A constant that scales the rate at which the net input changes. Currently used by all three net values.
 
-const MIN_TRAVEL_SPEED = -200.0
-const BASE_TRAVEL_SPEED = 150.0
-const MAX_TRAVEL_SPEED = 600.0
+const MIN_TRAVEL_SPEED = -40.0
+const BASE_TRAVEL_SPEED = 40.0
+const MAX_TRAVEL_SPEED = 150.0
 const ACCELERATION = 1.0
 const MAX_BOOST = 100
 const BOOST_ENERGY_REENABLE_THRESHOLD = 25
@@ -23,8 +23,8 @@ var boost_energy_regeneration_rate = 14
 var boost_energy_depletion_rate = 18
 
 var travel_speed = BASE_TRAVEL_SPEED # Speed at which the mesh moves forward in space. Forward for the mesh is defined as the positive z direction.
-var max_net_input: float = 1.5 # Increasing this value increases turn angle of ship
-var max_rotate_net_input: float = 1.0
+var max_net_input: float = 2 # Increasing this value increases turn angle of ship
+var max_rotate_net_input: float = 1.25
 var minimum_net_input = 0.0005 # Used as a value to cull extremely small net input values
 var net_input_horizontal: float = 0 # The experienced input for horizontal rotation from the user. The raw input is interpolated to produce this value, which makes for a smoother turning experience.
 var net_input_vertical: float = 0 # Experienced for vertical
@@ -37,7 +37,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
 func _process(delta):
-	pass
+	#if self.get_slide_collision_count() > 0:
+	#	Input.start_joy_vibration(0,0.2,0.2,0.1)
 	if Input.is_action_pressed("focus"):
 		max_net_input = 0.5
 	else:
@@ -91,7 +92,7 @@ func update_net_input_horizontal(delta):
 	elif Input.is_action_pressed("yaw_right"):
 		directional_input_strength = -max_net_input * Input.get_action_strength("yaw_right")
 	if directional_input_strength != net_input_horizontal:
-		net_input_horizontal += (directional_input_strength - net_input_horizontal) * delta * horizontal_rotate_rate_increase
+		net_input_horizontal += (directional_input_strength - net_input_horizontal) * delta * net_input_rate_multiplier
 	
 func update_net_input_vertical(delta):
 	var input = 0
@@ -100,7 +101,7 @@ func update_net_input_vertical(delta):
 	elif Input.is_action_pressed("debug_down"):
 		input = -max_net_input * Input.get_action_strength("debug_down")
 	if input != net_input_vertical:
-		net_input_vertical += (input - net_input_vertical) * delta * horizontal_rotate_rate_increase
+		net_input_vertical += (input - net_input_vertical) * delta * net_input_rate_multiplier
 
 func update_net_input_rotational(delta):
 	var input = 0
@@ -109,7 +110,7 @@ func update_net_input_rotational(delta):
 	elif Input.is_action_pressed("debug_rotate_left"):
 		input = -max_rotate_net_input * Input.get_action_strength("debug_rotate_left")
 	if input != net_input_rotational:
-		net_input_rotational += (input - net_input_rotational) * delta * horizontal_rotate_rate_increase
+		net_input_rotational += (input - net_input_rotational) * delta * net_input_rate_multiplier
 
 # Applies cumulative rotation to the ship based on net input
 func apply_cumulative_rotation(delta):
@@ -152,7 +153,12 @@ func move_ship_forward():
 # Called by player node to build player packet
 func get_3d_crosshair_position():
 	#print($SpringArm3D/CrosshairPosition.global_position)
-	return $SpringArm3D/CrosshairPosition.global_position
+	if $SpringArm3D.get_hit_length() <= $LowestCrosshairPositon.position.z * 2:
+		return $LowestCrosshairPositon.global_position
+	elif $SpringArm3D.get_hit_length() == $SpringArm3D.spring_length:
+		return $DefaultCrosshairPosition.global_position
+	else:
+		return $SpringArm3D/SpringCrosshairPosition.global_position
 
 # Setters for left_playable_space. Called by other nodes on ship node
 func left_playable_area():

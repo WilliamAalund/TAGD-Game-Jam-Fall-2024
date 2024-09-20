@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://cue5suxaxwn1t" path="res://Code/Entities/Player/v1/Player.tscn" id="1_14xpm"]
 [ext_resource type="Script" path="res://Code/Scripts/TestScripts/PlayerShipSceneTest.gd" id="1_sd3oj"]
-[ext_resource type="Environment" uid="uid://cyqqm1d1hw61a" path="res://Resources/Environments/TestEnvironment.tres" id="2_880yh"]
 [ext_resource type="Texture2D" uid="uid://culqtuij1m5bb" path="res://Resources/Textures/Crosshair.tres" id="2_ap8dm"]
+[ext_resource type="Environment" uid="uid://d2d77gop005fh" path="res://Resources/Environments/ArcadeEnvironment.tres" id="3_pv5ol"]
 [ext_resource type="PackedScene" uid="uid://cxx78nk5kmt2d" path="res://Code/Tools/PlayBoundary.tscn" id="5_0v57i"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_v7rvv"]
@@ -40,7 +40,7 @@ grow_vertical = 2
 texture = ExtResource("2_ap8dm")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("2_880yh")
+environment = ExtResource("3_pv5ol")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.602024, 0.798478, 0, -0.798478, -0.602024, 0, 5.32811, 0)

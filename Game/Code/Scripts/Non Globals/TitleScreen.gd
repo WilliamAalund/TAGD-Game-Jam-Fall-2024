@@ -1,6 +1,7 @@
 extends Node
 
 @onready var background = load("res://Code/PrimaryScenes/TitleScreen/TitleScreenBackground.tscn")
+@onready var top_menu_button = $UI/VBoxContainer/Arcade
 
 signal play_arcade(player_count: int)
 signal play_debug
@@ -11,10 +12,11 @@ func _ready():
 	pass # Replace with function body.
 	var background_child = background.instantiate()
 	self.add_child(background_child)
+	top_menu_button.grab_focus()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func hide():
@@ -26,9 +28,13 @@ func show():
 	var background_child = background.instantiate()
 	self.add_child(background_child)
 	$UI.visible = true
+	top_menu_button.grab_focus()
 
 func _on_debug_pressed():
 	play_debug.emit()
 
 func _on_quit_pressed():
 	quit_game.emit()
+
+func _on_arcade_pressed():
+	play_arcade.emit(1)

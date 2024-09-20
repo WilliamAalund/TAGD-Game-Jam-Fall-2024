@@ -12,7 +12,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if debug_is_active:
 		if Input.is_action_pressed("debug_quit"):
 			self.get_child(0).queue_free() # Probably this

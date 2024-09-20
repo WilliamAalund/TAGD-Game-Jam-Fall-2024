@@ -1,6 +1,9 @@
 extends CharacterBody3D
 # This script controls the behavior of the player's ship in a 3D space environment. It handles movement, including forward motion and rotational adjustments based on user input. 
 
+signal ship_left_play_space
+signal ship_entered_play_space
+
 @export var debug_freeze_ship_position = false
 
 var horizontal_rotate_rate_increase = 8 # A constant that scales the rate at which the net input changes. Currently used by all three net values.
@@ -9,22 +12,23 @@ const MIN_TRAVEL_SPEED = -200.0
 const BASE_TRAVEL_SPEED = 150.0
 const MAX_TRAVEL_SPEED = 600.0
 const ACCELERATION = 1.0
-
 const MAX_BOOST = 100
 const BOOST_ENERGY_REENABLE_THRESHOLD = 25
-@export var boost_energy = MAX_BOOST # Boost energy controls how long the player can boost for.
-@export var boost_depleted = false # If the boost hits a value of 0, it will shut off for a bit until it reaches BOOST_ENERGY_REENABLE_THRESHOLD.
+
+@export var boost_energy: float = MAX_BOOST # Boost energy controls how long the player can boost for.
+@export var boost_depleted: bool = false # If the boost hits a value of 0, it will shut off for a bit until it reaches BOOST_ENERGY_REENABLE_THRESHOLD.
+@export var left_playable_space: bool = false
+
 var boost_energy_regeneration_rate = 14
 var boost_energy_depletion_rate = 18
 
 var travel_speed = BASE_TRAVEL_SPEED # Speed at which the mesh moves forward in space. Forward for the mesh is defined as the positive z direction.
-var max_net_input = 2.5
-var net_input_horizontal = 0 # The experienced input for horizontal rotation from the user. The raw input is interpolated to produce this value, which makes for a smoother turning experience.
-var net_input_vertical = 0 # Experienced for vertical
-var net_input_rotational = 0
-
-var minimum_net_input = 0.0005
-
+var max_net_input: float = 1.5 # Increasing this value increases turn angle of ship
+var max_rotate_net_input: float = 1.0
+var minimum_net_input = 0.0005 # Used as a value to cull extremely small net input values
+var net_input_horizontal: float = 0 # The experienced input for horizontal rotation from the user. The raw input is interpolated to produce this value, which makes for a smoother turning experience.
+var net_input_vertical: float = 0 # Experienced for vertical
+var net_input_rotational: float = 0
 
 
 
@@ -35,9 +39,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _process(delta):
 	pass
 	if Input.is_action_pressed("focus"):
-		max_net_input = 1.0
+		max_net_input = 0.5
 	else:
-		max_net_input = 2.0
+		max_net_input = 1.5
 	# Update net inputs for movement and rotation
 	update_net_input_horizontal(delta)
 	update_net_input_vertical(delta)
@@ -101,9 +105,9 @@ func update_net_input_vertical(delta):
 func update_net_input_rotational(delta):
 	var input = 0
 	if Input.is_action_pressed("debug_rotate_right"):
-		input = max_net_input * Input.get_action_strength("debug_rotate_right")
+		input = max_rotate_net_input * Input.get_action_strength("debug_rotate_right")
 	elif Input.is_action_pressed("debug_rotate_left"):
-		input = -max_net_input * Input.get_action_strength("debug_rotate_left")
+		input = -max_rotate_net_input * Input.get_action_strength("debug_rotate_left")
 	if input != net_input_rotational:
 		net_input_rotational += (input - net_input_rotational) * delta * horizontal_rotate_rate_increase
 
@@ -145,6 +149,16 @@ func move_ship_forward():
 	self.velocity = direction_vector * travel_speed
 	move_and_slide()
 
+# Called by player node to build player packet
 func get_3d_crosshair_position():
 	#print($SpringArm3D/CrosshairPosition.global_position)
 	return $SpringArm3D/CrosshairPosition.global_position
+
+# Setters for left_playable_space. Called by other nodes on ship node
+func left_playable_area():
+	print("Ship left playable area")
+	left_playable_space = true
+
+func entered_playable_area():
+	print("Ship entered playable area")
+	left_playable_space = false

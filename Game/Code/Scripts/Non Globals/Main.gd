@@ -1,5 +1,6 @@
 extends Node
 
+@onready var game = $Game
 @onready var title_screen = $TitleScreen
 @onready var debug = $Debug
 
@@ -9,12 +10,14 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 
-func _on_title_screen_play_arcade(player_count):
+func _on_title_screen_play_arcade(_player_count):
 	print("Main: User started arcade mode")
+	title_screen.hide()
+	game.start_game(_player_count,0)
 	pass # Replace with function body.
 
 
@@ -31,5 +34,6 @@ func _on_debug_debug_quit():
 func _on_title_screen_quit_game(): # End the game
 	get_tree().quit()
 
-
-
+func _on_game_game_killed():
+	print("Main: User killed game")
+	title_screen.show()

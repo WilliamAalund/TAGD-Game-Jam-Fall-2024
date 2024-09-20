@@ -39,7 +39,12 @@ You are a star fighter piloting an advanced spaceship to defeat aliens and save 
 This game is Team 24's submission to the Texas Aggie Game Developers Fall 2024 game jam. Our goal is to produce a game that is polished, highly replayable, but most of all, fun and engaging.
 
 ## Technical Specifications
-All 3D models, meshes, and scenes will face in the positive Z direction. This is so basis manipulation is consistent and easy to do.
+NOT TRUE ANYMORE All 3D models, meshes, and scenes will face in the positive Z direction. This is so basis manipulation is consistent and easy to do.
+The above specification needs to change. the look_at() function orients objects to the local -Z axis. In order to take advantage of this function. Assets will need to face in tht -Z direction.
+
+### Player
+In the player, each child handles different aspects of the overall scene. The player node is primarily responsible distributing information between each of the nodes. Some important details about the sub nodes are detailed below.
+The Ship node is responsible for detecting if the player has left the play area. When the player leaves a PlayBoundry node, a function will be called on the ship by the area. 
 
 ## Directories
 

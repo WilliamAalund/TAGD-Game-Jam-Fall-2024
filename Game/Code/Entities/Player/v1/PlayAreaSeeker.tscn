@@ -57,6 +57,7 @@ script = ExtResource("1_f64yg")
 
 [node name="Arrow" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.158202)
+visible = false
 transparency = 0.4
 mesh = SubResource("CylinderMesh_mn8at")
 

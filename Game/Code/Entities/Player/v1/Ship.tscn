@@ -19,7 +19,7 @@ albedo_color = Color(0.873976, 0.113367, 6.73831e-07, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_nokmm"]
 material = SubResource("StandardMaterial3D_iun7g")
 
-[node name="Ship" type="CharacterBody3D"]
+[node name="Ship" type="CharacterBody3D" groups=["player"]]
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_50gf5")

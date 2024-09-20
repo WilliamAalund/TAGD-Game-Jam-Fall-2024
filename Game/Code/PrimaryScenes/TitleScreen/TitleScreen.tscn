@@ -43,6 +43,10 @@ offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Arcade" type="Button" parent="UI/VBoxContainer"]
+layout_mode = 2
+text = "Arcade"
+
 [node name="Debug" type="Button" parent="UI/VBoxContainer"]
 layout_mode = 2
 text = "Run Debug"
@@ -51,5 +55,6 @@ text = "Run Debug"
 layout_mode = 2
 text = "Quit"
 
+[connection signal="pressed" from="UI/VBoxContainer/Arcade" to="." method="_on_arcade_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/Debug" to="." method="_on_debug_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

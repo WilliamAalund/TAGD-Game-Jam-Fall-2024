@@ -40,7 +40,7 @@ func fire_projectile():
 
 func spawn_projectile():
 	var new_projectile = projectile_scene.instantiate()
-	get_tree().get_root().add_child(new_projectile)
+	get_parent().add_child(new_projectile) # Enables removal of lasers upon deletion of Parent node
 	if current_port == fire_port.LEFT:
 		new_projectile.global_position = left.global_position
 		Input.start_joy_vibration(0,0.2,0.1,0.10)

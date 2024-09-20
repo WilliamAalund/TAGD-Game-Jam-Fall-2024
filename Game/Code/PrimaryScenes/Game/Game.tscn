@@ -6,5 +6,3 @@
 script = ExtResource("1_s8h24")
 
 [node name="GameObjects" type="Node3D" parent="."]
-
-[node name="Timer" type="Timer" parent="GameObjects"]

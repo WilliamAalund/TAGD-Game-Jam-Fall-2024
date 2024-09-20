@@ -7,15 +7,15 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 
 func _on_body_exited(body):
-	pass # Replace with function body.
-	print("Body exited play area")
+	if body.is_in_group("player"):
+		body.left_playable_area()
 
 
 func _on_body_entered(body):
-	pass # Replace with function body.
-	print("Body entered play area")
+	if body.is_in_group("player"):
+		body.entered_playable_area()

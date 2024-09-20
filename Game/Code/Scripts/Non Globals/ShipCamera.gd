@@ -5,7 +5,7 @@ extends Node3D
 @onready var front_camera_animation = $SpringArm3D/Camera3D/AnimationPlayer
 
 var target_basis
-var base_camera_rotate_speed = 12.0
+var base_camera_rotate_speed = 25.0
 var base_camera_fov = 90.0
 var focus_camera_rotate_speed = 200.0
 var focus_camera_fov = 45.0
@@ -42,4 +42,4 @@ func get_unprojected_position_from_camera(coordinate: Vector3):
 func _on_player_new_player_data_packet(packet):
 	self.global_position = packet["global_pos"] 
 	target_basis = packet["ship_basis"]
-	spring_arm.spring_length = 2.2 + packet["velocity"].length() / 300
+	spring_arm.spring_length = 3.2 + packet["velocity"].length() / 300

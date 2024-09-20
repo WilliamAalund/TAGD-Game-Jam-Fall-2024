@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://dwhipa8i3wtbq"]
+[gd_scene load_steps=3 format=3 uid="uid://dwhipa8i3wtbq"]
+
+[ext_resource type="Environment" uid="uid://d2d77gop005fh" path="res://Resources/Environments/ArcadeEnvironment.tres" id="1_tm44i"]
+[ext_resource type="PackedScene" uid="uid://cxx78nk5kmt2d" path="res://Code/Tools/PlayBoundary.tscn" id="2_a5ubv"]
 
 [node name="ArcadeLevel" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_tm44i")
+
+[node name="PlayBoundary" parent="." instance=ExtResource("2_a5ubv")]

@@ -59,7 +59,9 @@ layout_mode = 2
 text = "HP:"
 
 [node name="Health" type="ProgressBar" parent="MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
+show_percentage = false
 
 [node name="ShipBasisRect" type="TextureRect" parent="."]
 layout_mode = 1

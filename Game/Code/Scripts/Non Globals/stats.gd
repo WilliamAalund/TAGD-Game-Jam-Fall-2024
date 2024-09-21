@@ -28,8 +28,6 @@ func inflict_damage(amount: int, damage_type):
 	if damage_type == "scrape" and scrape_current_invincibility_frames == 0:
 		HP -= amount
 		scrape_current_invincibility_frames = SCRAPE_INVINCIBILITY_FRAMES
-	else:
-		print("Damage type not implemented")
 	if HP < 0: # Death will be taken care of in process loop
 		HP = 0
 

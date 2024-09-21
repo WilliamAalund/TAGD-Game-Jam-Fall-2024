@@ -1,8 +1,8 @@
 extends CharacterBody3D
 # This script controls the behavior of the player's ship in a 3D space environment. It handles movement, including forward motion and rotational adjustments based on user input. 
 
-signal ship_left_play_space
-signal ship_entered_play_space
+#signal ship_left_play_space#
+#signal ship_entered_play_space
 signal ship_scraping_against_surface
 
 @export var debug_freeze_ship_position = false

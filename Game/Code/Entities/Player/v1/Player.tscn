@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ci4vcaiif0ff2" path="res://Code/Entities/Player/v1/ShipCamera.tscn" id="3_8kkb1"]
 [ext_resource type="PackedScene" uid="uid://bsd6fwc36gynx" path="res://Code/Entities/Player/v1/ProjectileHandler.tscn" id="4_l1hh6"]
 [ext_resource type="PackedScene" uid="uid://mwdnu3g0yeef" path="res://Code/Entities/Player/v1/PlayAreaSeeker.tscn" id="5_u7qfv"]
-[ext_resource type="PackedScene" uid="uid://cwuqqftk7pvtn" path="res://Code/Entities/Player/v1/CoreStatsManager.tscn" id="6_ng4yd"]
+[ext_resource type="PackedScene" path="res://Code/Entities/Player/v1/CoreStatsManager.tscn" id="6_ng4yd"]
 
 [node name="Player" type="Node3D"]
 script = ExtResource("1_h3sec")

@@ -35,7 +35,7 @@ func construct_player_data_packet():
 	player_data_packet["maximum_HP"] = stats.maximum_HP
 
 	# Further alterations can be done here based on game logic.
-	emit_signal("new_player_data_packet", player_data_packet)
+	new_player_data_packet.emit(player_data_packet)
 
 
 func _on_core_stats_manager_player_hp_depleted() -> void:

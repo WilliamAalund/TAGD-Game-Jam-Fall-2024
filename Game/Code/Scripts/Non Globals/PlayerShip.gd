@@ -1,8 +1,9 @@
 extends CharacterBody3D
 # This script controls the behavior of the player's ship in a 3D space environment. It handles movement, including forward motion and rotational adjustments based on user input. 
 
-signal ship_left_play_space
-signal ship_entered_play_space
+#signal ship_left_play_space#
+#signal ship_entered_play_space
+signal ship_scraping_against_surface
 
 @export var debug_freeze_ship_position = false
 
@@ -37,8 +38,6 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
 func _process(delta):
-	#if self.get_slide_collision_count() > 0:
-	#	Input.start_joy_vibration(0,0.2,0.2,0.1)
 	if Input.is_action_pressed("focus"):
 		max_net_input = 0.5
 	else:
@@ -51,6 +50,9 @@ func _process(delta):
 	apply_cumulative_rotation(delta)
 
 func _physics_process(delta):
+	if self.get_slide_collision_count() > 0:
+		Input.start_joy_vibration(0,0.3,0.3,0.1)
+		ship_scraping_against_surface.emit()
 	# Handling movement of the character body
 	# Adjust travel speed based on user inputs
 	adjust_travel_speed_based_on_input(delta)

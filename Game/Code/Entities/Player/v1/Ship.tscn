@@ -45,7 +45,7 @@ visible = false
 mesh = SubResource("SphereMesh_nokmm")
 
 [node name="DefaultCrosshairPosition" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 300)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 500)
 
 [node name="LowestCrosshairPositon" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)

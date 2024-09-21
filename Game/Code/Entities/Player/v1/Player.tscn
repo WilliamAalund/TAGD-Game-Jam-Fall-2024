@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cue5suxaxwn1t"]
+[gd_scene load_steps=7 format=3 uid="uid://cue5suxaxwn1t"]
 
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/Player.gd" id="1_h3sec"]
 [ext_resource type="PackedScene" uid="uid://2fpkavmcoexg" path="res://Code/Entities/Player/v1/Ship.tscn" id="2_ijeku"]
 [ext_resource type="PackedScene" uid="uid://ci4vcaiif0ff2" path="res://Code/Entities/Player/v1/ShipCamera.tscn" id="3_8kkb1"]
 [ext_resource type="PackedScene" uid="uid://bsd6fwc36gynx" path="res://Code/Entities/Player/v1/ProjectileHandler.tscn" id="4_l1hh6"]
 [ext_resource type="PackedScene" uid="uid://mwdnu3g0yeef" path="res://Code/Entities/Player/v1/PlayAreaSeeker.tscn" id="5_u7qfv"]
+[ext_resource type="PackedScene" path="res://Code/Entities/Player/v1/CoreStatsManager.tscn" id="6_ng4yd"]
 
 [node name="Player" type="Node3D"]
 script = ExtResource("1_h3sec")
@@ -18,6 +19,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998406, 0)
 
 [node name="ProjectileHandler" parent="." instance=ExtResource("4_l1hh6")]
 
+[node name="CoreStatsManager" parent="." instance=ExtResource("6_ng4yd")]
+
 [connection signal="new_player_data_packet" from="." to="Ship/PlayAreaSeeker" method="_on_player_new_player_data_packet"]
 [connection signal="new_player_data_packet" from="." to="ShipCamera" method="_on_player_new_player_data_packet"]
 [connection signal="new_player_data_packet" from="." to="ProjectileHandler" method="_on_player_new_player_data_packet"]
+[connection signal="ship_scraping_against_surface" from="Ship" to="CoreStatsManager" method="_on_ship_ship_scraping_against_surface"]
+[connection signal="player_HP_depleted" from="CoreStatsManager" to="." method="_on_core_stats_manager_player_hp_depleted"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwuqqftk7pvtn"]
+
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/stats.gd" id="1_cmr0u"]
+
+[node name="CoreStatsManager" type="Node3D"]
+script = ExtResource("1_cmr0u")

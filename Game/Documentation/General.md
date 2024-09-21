@@ -44,7 +44,8 @@ The above specification needs to change. the look_at() function orients objects 
 
 ### Player
 In the player, each child handles different aspects of the overall scene. The player node is primarily responsible distributing information between each of the nodes. Some important details about the sub nodes are detailed below.
-The Ship node is responsible for detecting if the player has left the play area. When the player leaves a PlayBoundry node, a function will be called on the ship by the area. 
+The Ship node is responsible for detecting if the player has left the PlayBoundary scene. The PlayBoundary Scene will call a function on the ship when it is exited.
+The crosshair position on the screen is determined by using three different markers, a far marker, a marker on a spring arm, and a close marker. The springarm marker is only used sometimes to reduce calculations, as there was a lot of lag occurring when the spring arm was set to a long length.
 
 ## Directories
 

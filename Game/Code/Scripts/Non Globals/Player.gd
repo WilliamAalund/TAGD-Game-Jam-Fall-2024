@@ -1,9 +1,11 @@
 extends Node3D
 
 signal new_player_data_packet(packet)
+signal player_destroyed
 
 @onready var player_ship = $Ship
 @onready var camera = $ShipCamera
+@onready var stats = $CoreStatsManager
 
 var player_data_packet = {"global_pos": Vector3(), "velocity": Vector3(), "direction": Vector3()}
 
@@ -29,7 +31,12 @@ func construct_player_data_packet():
 	player_data_packet["crosshair_position_2d"] = crosshair_position_2d
 	player_data_packet["player_3d_crosshair_position"] = player_ship.get_3d_crosshair_position()
 	player_data_packet["left_playable_space"] = player_ship.left_playable_space
-	# Example alteration: Add a timestamp or any other relevant data.
-	#player_data_packet["timestamp"] = OS.get_
+	player_data_packet["HP"] = stats.HP
+	player_data_packet["maximum_HP"] = stats.maximum_HP
+
 	# Further alterations can be done here based on game logic.
-	emit_signal("new_player_data_packet", player_data_packet)
+	new_player_data_packet.emit(player_data_packet)
+
+
+func _on_core_stats_manager_player_hp_depleted() -> void:
+	player_destroyed.emit()

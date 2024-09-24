@@ -6,6 +6,8 @@ It is also a credits page of sorts, logging the documentation and resources we u
 
 ## 3D Tools
 [Godot Documentation: Transforms](https://docs.godotengine.org/en/stable/classes/class_transform3d.html/)
+[Godot Forums: Smoothly rotating towards a point (In 3D)](https://www.reddit.com/r/godot/comments/1cdqcmy/how_to_smoothly_turn_towards_a_target/)
 
 ## UI 
 [Godot Documentation: User Interface](https://docs.godotengine.org/en/stable/tutorials/ui/index.html/)
+

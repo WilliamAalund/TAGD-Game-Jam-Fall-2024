@@ -98,10 +98,10 @@ func update_net_input_horizontal(delta):
 	
 func update_net_input_vertical(delta):
 	var input = 0
-	if Input.is_action_pressed("debug_up"):
-		input = max_net_input * Input.get_action_strength("debug_up")
-	elif Input.is_action_pressed("debug_down"):
-		input = -max_net_input * Input.get_action_strength("debug_down")
+	if Input.is_action_pressed("pitch_up"):
+		input = -max_net_input * Input.get_action_strength("pitch_up")
+	elif Input.is_action_pressed("pitch_down"):
+		input = max_net_input * Input.get_action_strength("pitch_down")
 	if input != net_input_vertical:
 		net_input_vertical += (input - net_input_vertical) * delta * net_input_rate_multiplier
 

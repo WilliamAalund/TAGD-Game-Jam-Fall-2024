@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5ch4sgcuwh28"]
+
+[ext_resource type="Script" path="res://Code/Scripts/TestScripts/advanced_navigation_agent.gd" id="1_1wlil"]
+[ext_resource type="Script" path="res://Code/Scripts/TestScripts/navigator.gd" id="2_nlg6u"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ttaek"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_var66"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_2oun7"]
+
+[node name="AdvancedNavigationAgent" type="Node3D"]
+script = ExtResource("1_1wlil")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.961928, 0.273305, 0, -0.273305, 0.961928, 0, 5.46614, 13.16)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.859147, 0.511728, 0, -0.511728, 0.859147, 0, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.03256, -3.48446)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Marker3D"]
+mesh = SubResource("SphereMesh_ttaek")
+skeleton = NodePath("../..")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Advanced Navigation Agent Test"
+
+[node name="Navigator" type="Node3D" parent="."]
+script = ExtResource("2_nlg6u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Navigator"]
+mesh = SubResource("SphereMesh_var66")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Navigator/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.500697)
+mesh = SubResource("PrismMesh_2oun7")
+
+[node name="ChildLookAt" type="Node3D" parent="Navigator/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5538)

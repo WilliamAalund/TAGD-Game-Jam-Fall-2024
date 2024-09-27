@@ -135,15 +135,6 @@ Icon"
 
 [node name="SubViewport" type="SubViewport" parent="."]
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Level: 0
-Score: 0000000000
-Time: 00:00:00
-"
-
 [node name="LaserCannonView" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
@@ -201,3 +192,17 @@ layout_mode = 0
 offset_right = 9.0
 offset_bottom = 10.0
 texture = SubResource("PlaceholderTexture2D_pptsw")
+
+[node name="GameMetadata" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Level" type="Label" parent="GameMetadata"]
+layout_mode = 0
+offset_right = 143.0
+offset_bottom = 75.0
+text = "Level: 0
+Score: 0000000000
+Time: 00:00:00
+"

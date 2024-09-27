@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx565rfgrnd1x"]
+
+[ext_resource type="Script" path="res://Code/Scripts/TestScripts/input_source_detector.gd" id="1_kwic6"]
+
+[node name="InputSourceDetector" type="Node"]
+script = ExtResource("1_kwic6")

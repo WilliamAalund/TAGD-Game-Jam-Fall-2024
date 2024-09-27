@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwhipa8i3wtbq"]
+[gd_scene load_steps=9 format=3 uid="uid://dwhipa8i3wtbq"]
 
 [ext_resource type="Environment" uid="uid://d2d77gop005fh" path="res://Resources/Environments/ArcadeEnvironment.tres" id="1_tm44i"]
 [ext_resource type="PackedScene" uid="uid://cxx78nk5kmt2d" path="res://Code/Tools/PlayBoundary.tscn" id="2_a5ubv"]
+[ext_resource type="PackedScene" uid="uid://hwx1esj16xh7" path="res://Code/Entities/Enemies/SmallShip.tscn" id="3_4uwcc"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_vnyad"]
 inner_radius = 25.216
@@ -54,3 +55,9 @@ mesh = SubResource("SphereMesh_oi2et")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_repmn")
+
+[node name="SmallShip" parent="." instance=ExtResource("3_4uwcc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -142.254, 0, 123.027)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.614602, 0.788837, 0, -0.788837, -0.614602, 0, 0, 0)

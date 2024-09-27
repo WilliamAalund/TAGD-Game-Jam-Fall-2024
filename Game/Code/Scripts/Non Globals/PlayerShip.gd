@@ -7,11 +7,11 @@ signal ship_scraping_against_surface
 
 @export var debug_freeze_ship_position = false
 
-var net_input_rate_multiplier = 8 # A constant that scales the rate at which the net input changes. Currently used by all three net values.
 
-const MIN_TRAVEL_SPEED = -40.0
-const BASE_TRAVEL_SPEED = 40.0
-const MAX_TRAVEL_SPEED = 150.0
+
+const MIN_TRAVEL_SPEED = -10.0
+const BASE_TRAVEL_SPEED = 20.0
+const MAX_TRAVEL_SPEED = 80.0
 const ACCELERATION = 1.0
 const MAX_BOOST = 100
 const BOOST_ENERGY_REENABLE_THRESHOLD = 25
@@ -23,8 +23,9 @@ const BOOST_ENERGY_REENABLE_THRESHOLD = 25
 var boost_energy_regeneration_rate = 14
 var boost_energy_depletion_rate = 18
 
+var net_input_rate_multiplier = 6 # A constant that scales the rate at which the net input changes. Currently used by all three net values.
 var travel_speed = BASE_TRAVEL_SPEED # Speed at which the mesh moves forward in space. Forward for the mesh is defined as the positive z direction.
-var max_net_input: float = 2 # Increasing this value increases turn angle of ship
+var max_net_input: float = 2 # Increasing this value increases turn angle of ship # FIXME: This is a poor name for this variable.
 var max_rotate_net_input: float = 1.25
 var minimum_net_input = 0.0005 # Used as a value to cull extremely small net input values
 var net_input_horizontal: float = 0 # The experienced input for horizontal rotation from the user. The raw input is interpolated to produce this value, which makes for a smoother turning experience.

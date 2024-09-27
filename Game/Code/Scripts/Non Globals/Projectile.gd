@@ -26,7 +26,7 @@ func _process(delta):
 	self.position += direction_vector * current_speed * delta
 	distance_traveled += current_speed * delta
 	if distance_traveled >= maximum_projectile_range:
-		print("I have travelled for my maximum distance")
+		#print("I have travelled for my maximum distance")
 		self.queue_free()
 	current_speed -= projectile_speed_falloff * delta
 	if current_speed <= 0:

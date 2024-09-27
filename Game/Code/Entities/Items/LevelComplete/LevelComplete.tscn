@@ -55,6 +55,9 @@ data = PackedVector3Array(0, 2.5, 2.5, 0.245, 2.5, 2.488, 0, 1.5, 2.5, 0.245, 2.
 [sub_resource type="SphereMesh" id="SphereMesh_37f02"]
 
 [node name="LevelComplete" type="Area3D"]
+physics_interpolation_mode = 1
+collision_mask = 2
+priority = 1
 script = ExtResource("1_xfcm2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

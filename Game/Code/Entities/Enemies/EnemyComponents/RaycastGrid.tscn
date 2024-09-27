@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://cen1n2rrux84o"]
+
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/raycast_grid.gd" id="1_is7r6"]
+
+[node name="RaycastGrid" type="Node3D"]
+script = ExtResource("1_is7r6")
+frame_width = 4.0
+
+[node name="TR" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0)
+target_position = Vector3(0, 0, -4)
+
+[node name="TL" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0)
+target_position = Vector3(0, 0, -4)
+
+[node name="BR" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
+target_position = Vector3(0, 0, -4)
+
+[node name="BL" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, 0)
+target_position = Vector3(0, 0, -4)
+
+[node name="TM" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+target_position = Vector3(0, 0, -4)
+
+[node name="BM" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+target_position = Vector3(0, 0, -4)

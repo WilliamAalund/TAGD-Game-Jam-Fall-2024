@@ -46,14 +46,14 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if HP <= 0:
 		HP = 0
 		HP_depleted = true
 	if HP_depleted == true:
 		player_HP_depleted.emit()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	decrement_invincibility_frames()
 
 func _on_ship_ship_scraping_against_surface() -> void:

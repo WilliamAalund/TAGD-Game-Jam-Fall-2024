@@ -1,5 +1,6 @@
 extends Node
 
+signal new_game_data_packet(packet)
 signal game_killed
 
 @onready var game_objects = $GameObjects # Reference to node where objects are stored
@@ -17,7 +18,10 @@ var number_of_players = 1
 enum game_modes {ARCADE,COOP,DEATHMATCH}
 
 # Singleplayer game metadata
+var current_level
 var game_score := 0
+var game_level := 1
+var singleplayer_game_data_packet = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,6 +40,10 @@ func _process(_delta):
 				pause_game(game_modes.ARCADE)
 			elif game_objects.process_mode == Node.PROCESS_MODE_DISABLED:
 				unpause_game(game_modes.ARCADE)
+	singleplayer_game_data_packet["score"] = game_score
+	singleplayer_game_data_packet["level"] = game_level
+	new_game_data_packet.emit(singleplayer_game_data_packet)
+	
 
 func start_game(_number_of_players, _game_mode: game_modes) -> void:
 	game_is_active = true
@@ -43,12 +51,7 @@ func start_game(_number_of_players, _game_mode: game_modes) -> void:
 		# Initialize a single viewport
 		
 		load_level(game_modes.ARCADE)
-		# Load level complete object
-		var level_complete_child = level_complete_item.instantiate()
 		
-		
-
-		game_objects.add_child(level_complete_child)
 	else:
 		print("Other game modes not implemented")
 	pass
@@ -66,10 +69,7 @@ func unpause_game(_game_mode: game_modes):
 func quit_game():
 	# Kill all child nodes in the GameObjects node
 	game_is_active = false
-	unpause_game(game_modes.ARCADE)
-	for node in game_objects.get_children():
-		print("Killing node: ", node)
-		node.queue_free()
+	unload_level()
 	game_killed.emit()
 
 func load_level(_game_mode: game_modes):
@@ -79,20 +79,50 @@ func load_level(_game_mode: game_modes):
 	# Load UI
 	var hud_child = ship_hud.instantiate()
 	
+	# Level complete
+	var level_complete_child = level_complete_item.instantiate()
+	
 	# Connect UI to player object
 	player_child.new_player_data_packet.connect(hud_child._on_player_new_player_data_packet)
+	
+	# Connect UI to game
+	self.new_game_data_packet.connect(hud_child._on_game_new_game_data_packet)
+	
+	# Connect player destroyed to game over
+	player_child.player_destroyed.connect(self._on_player_destroyed)
+	
+	# Connect level complete to complete function
+	level_complete_child.position.z = 100
+	level_complete_child.body_entered.connect(self._on_level_complete_item_touched)
 	
 	# Spawn children
 	game_objects.add_child(hud_child)
 	game_objects.add_child(player_child)
+	game_objects.add_child(level_complete_child)
 	
 	# Load level # TODO: Make tutorial levels, then randomly generate them
 	var arcade_level_child = arcade_level.instantiate()
 	game_objects.add_child(arcade_level_child)
 
+func unload_level():
+	unpause_game(game_modes.ARCADE)
+	for node in game_objects.get_children():
+		print("Killing node: ", node)
+		node.queue_free()
+
 func game_over(_game_mode: game_modes):
-	pass
+	quit_game()
 	
-	
-func _on_entity_perished(entity_id):
+
+func _on_level_complete_item_touched(body):
+	if body.is_in_group("player"):
+		print("Player collected level complete item")
+		unload_level()
+		game_level += 1
+		load_level(game_modes.ARCADE)
+
+func _on_enemy_perished(_entity_id):
 	pass # TODO: Make enemy entities broadcast a signal to this function. Then, score and other veriables can be altered.
+
+func _on_player_destroyed():
+	game_over(game_modes.ARCADE)

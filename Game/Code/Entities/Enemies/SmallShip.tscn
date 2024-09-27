@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://hwx1esj16xh7"]
+
+[ext_resource type="PackedScene" uid="uid://bl6n1vj8qnvoe" path="res://Code/Entities/Enemies/EnemyComponents/BodyNavigator.tscn" id="1_rcdjo"]
+[ext_resource type="PackedScene" uid="uid://di122180g8mew" path="res://Code/Entities/Enemies/EnemyComponents/PlayerDetector.tscn" id="2_2vjho"]
+[ext_resource type="PackedScene" uid="uid://cen1n2rrux84o" path="res://Code/Entities/Enemies/EnemyComponents/RaycastGrid.tscn" id="3_hwksa"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bjnki"]
+radius = 250.0
+
+[node name="SmallShip" type="Node3D"]
+
+[node name="BodyNavigator" parent="." instance=ExtResource("1_rcdjo")]
+
+[node name="PlayerDetector" parent="BodyNavigator" instance=ExtResource("2_2vjho")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyNavigator/PlayerDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -150)
+shape = SubResource("SphereShape3D_bjnki")
+
+[node name="RaycastGrid" parent="BodyNavigator" instance=ExtResource("3_hwksa")]
+cast_length = 10.0
+frame_width = 5.0

@@ -7,7 +7,7 @@ signal player_destroyed
 @onready var camera = $ShipCamera
 @onready var stats = $CoreStatsManager
 
-var player_data_packet = {"global_pos": Vector3(), "velocity": Vector3(), "direction": Vector3()}
+var player_data_packet = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

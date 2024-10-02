@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://hwx1esj16xh7"]
+[gd_scene load_steps=7 format=3 uid="uid://hwx1esj16xh7"]
 
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/small_ship.gd" id="1_d5o2w"]
 [ext_resource type="PackedScene" uid="uid://bl6n1vj8qnvoe" path="res://Code/Entities/Enemies/EnemyComponents/BodyNavigator.tscn" id="1_rcdjo"]
 [ext_resource type="PackedScene" uid="uid://di122180g8mew" path="res://Code/Entities/Enemies/EnemyComponents/PlayerDetector.tscn" id="2_2vjho"]
 [ext_resource type="PackedScene" uid="uid://cen1n2rrux84o" path="res://Code/Entities/Enemies/EnemyComponents/RaycastGrid.tscn" id="3_hwksa"]
+[ext_resource type="PackedScene" uid="uid://ci3mif5lanh64" path="res://Code/Entities/Enemies/EnemyComponents/EnemyCoreStatsManager.tscn" id="4_vmoij"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_bjnki"]
 radius = 250.0
 
 [node name="SmallShip" type="Node3D"]
+script = ExtResource("1_d5o2w")
 
 [node name="BodyNavigator" parent="." instance=ExtResource("1_rcdjo")]
 
@@ -20,3 +23,8 @@ shape = SubResource("SphereShape3D_bjnki")
 [node name="RaycastGrid" parent="BodyNavigator" instance=ExtResource("3_hwksa")]
 cast_length = 10.0
 frame_width = 5.0
+
+[node name="CoreStatsManager" parent="." instance=ExtResource("4_vmoij")]
+
+[connection signal="hit_by_projectile" from="BodyNavigator" to="CoreStatsManager" method="_on_body_navigator_hit_by_projectile"]
+[connection signal="enemy_HP_depleted" from="CoreStatsManager" to="." method="_on_core_stats_manager_enemy_hp_depleted"]

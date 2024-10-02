@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var projectile_scene = load("res://Code/Entities/Projectile/Projectile.tscn")
+@onready var projectile_scene = load("res://Code/Entities/Projectile/v2/Projectile.tscn")
 
 @onready var left = $LaserCannons/Left
 @onready var right = $LaserCannons/Right
@@ -40,6 +40,7 @@ func fire_projectile():
 
 func spawn_projectile():
 	var new_projectile = projectile_scene.instantiate()
+	new_projectile.set_up_projectile(0,self.basis,"player")
 	get_parent().add_child(new_projectile) # Enables removal of lasers upon deletion of Parent node
 	if current_port == fire_port.LEFT:
 		new_projectile.global_position = left.global_position
@@ -47,7 +48,7 @@ func spawn_projectile():
 	else:
 		new_projectile.global_position = right.global_position
 		Input.start_joy_vibration(0,0.1,0.2,0.10)
-	new_projectile.transform.basis = self.transform.basis
+	
 	
 	
 

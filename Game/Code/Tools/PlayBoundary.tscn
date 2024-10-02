@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://qkt34qm0t3q7" path="res://Resources/Materials/Placeholder/Boundary.tres" id="2_6tyxb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k3ux2"]
-radius = 1000.0
+radius = 400.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_gv62k"]
 material = ExtResource("2_6tyxb")

@@ -4,9 +4,11 @@
 size = Vector3(2.5, 0.1, 0.7)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vq4t"]
-albedo_color = Color(0.314316, 0.314316, 0.314316, 1)
+albedo_color = Color(0.781834, 0.609247, 0.349103, 1)
 metallic = 0.51
 roughness = 0.53
+emission_enabled = true
+emission = Color(0.524299, 0.333114, 0.121557, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_y8lao"]
 material = SubResource("StandardMaterial3D_5vq4t")

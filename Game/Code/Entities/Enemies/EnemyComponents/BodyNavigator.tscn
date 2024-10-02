@@ -7,7 +7,7 @@
 height = 3.0
 radius = 1.2
 
-[node name="BodyNavigator" type="CharacterBody3D"]
+[node name="BodyNavigator" type="CharacterBody3D" groups=["enemy"]]
 motion_mode = 1
 script = ExtResource("1_lmgpe")
 

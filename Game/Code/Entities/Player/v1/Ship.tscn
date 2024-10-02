@@ -25,7 +25,7 @@ motion_mode = 1
 script = ExtResource("1_50gf5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.7)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.7)
 shape = SubResource("CylinderShape3D_s5lm4")
 
 [node name="PlayerShip2" parent="." instance=ExtResource("1_71dhf")]
@@ -45,7 +45,7 @@ visible = false
 mesh = SubResource("SphereMesh_nokmm")
 
 [node name="DefaultCrosshairPosition" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 500)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -500)
 
 [node name="LowestCrosshairPositon" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)

@@ -7,8 +7,8 @@ albedo_color = Color(0.429736, 0.519636, 0.815838, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_0tsjk"]
 material = SubResource("StandardMaterial3D_mb37e")
-top_radius = 0.2
-bottom_radius = 0.2
+top_radius = 0.4
+bottom_radius = 0.4
 height = 1.0
 rings = 3
 
@@ -17,7 +17,7 @@ shading_mode = 0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_mrqpk"]
 material = SubResource("StandardMaterial3D_v38g1")
-top_radius = 0.1
+top_radius = 0.3
 bottom_radius = 0.0
 height = 2.5
 

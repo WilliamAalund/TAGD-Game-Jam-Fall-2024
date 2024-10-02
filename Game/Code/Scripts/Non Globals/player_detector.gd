@@ -15,7 +15,6 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node3D) -> void:
-	print("body found")
 	if body.is_in_group("player"):
 		print("Enemy detected player")
 		player_entered_area.emit()

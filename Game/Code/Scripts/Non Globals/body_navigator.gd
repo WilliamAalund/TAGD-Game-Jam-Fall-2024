@@ -1,13 +1,21 @@
 extends CharacterBody3D
 
+signal hit_by_projectile(projectile_kind)
+
 @onready var _child_look_at := $ChildLookAt
 
 @export var target_position := Vector3(0,5,0)
-@export var travel_speed = 15
-@export var rotation_speed_multiplier = 0.6
+@export var travel_speed = 30
+@export var rotation_speed_multiplier = 0.4
+
+# Positions target position switches between
+var active_target_position: Vector3 = Vector3(0,0,0)
+var idle_target_position: Vector3
 
 var object_in_the_way = false
 
+func ready():
+	idle_target_position = self.global_position
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# Figure out if feelers are detecting object.
@@ -27,8 +35,10 @@ func interpolate_to_new_basis(delta):
 	var next_rotation = current_rotation.slerp(target_rotation, delta * rotation_speed_multiplier)
 	self.global_transform.basis = Basis(next_rotation)
 
-
 func move_ship_forward():
 	var direction_vector = -self.transform.basis.z.normalized()
 	self.velocity = direction_vector * travel_speed
 	move_and_slide()
+
+func _on_player_new_player_data_packet(packet):
+	active_target_position = packet["global_pos"]

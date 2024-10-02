@@ -73,4 +73,5 @@ autoplay = "idle_spin"
 shape = SubResource("ConcavePolygonShape3D_f1cka")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+visible = false
 draw_pass_1 = SubResource("SphereMesh_37f02")

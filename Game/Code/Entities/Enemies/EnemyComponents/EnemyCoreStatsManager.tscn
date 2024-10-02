@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci3mif5lanh64"]
+
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/enemy_core_stats_manager.gd" id="1_rosm6"]
+
+[node name="CoreStatsManager" type="Node3D"]
+script = ExtResource("1_rosm6")

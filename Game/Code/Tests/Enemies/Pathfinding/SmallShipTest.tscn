@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://02m4dtv8f4ae"]
+
+[ext_resource type="PackedScene" uid="uid://hwx1esj16xh7" path="res://Code/Entities/Enemies/SmallShip.tscn" id="1_hvinf"]
+[ext_resource type="Script" path="res://Code/Scripts/TestScripts/small_ship_test.gd" id="1_r0l7a"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_03vsa"]
+
+[node name="SmallShipTest" type="Node3D"]
+script = ExtResource("1_r0l7a")
+
+[node name="SmallShip" parent="." instance=ExtResource("1_hvinf")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.910373, 0.413788, 0, -0.413788, 0.910373, 0, 57.3931, 81.6686)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.829818, 0.558035, 0, -0.558035, 0.829818, 0, 0, 0)
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.03256, -3.48446)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Marker3D"]
+mesh = SubResource("SphereMesh_03vsa")
+skeleton = NodePath("../..")

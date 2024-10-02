@@ -25,5 +25,5 @@ func _process(_delta: float) -> void:
 	pass
 
 
-func _on_body_navigator_hit_by_projectile(projectile_kind: Variant) -> void:
+func _on_body_navigator_hit_by_projectile(_projectile_kind: Variant) -> void:
 	inflict_damage(20,"projectile")

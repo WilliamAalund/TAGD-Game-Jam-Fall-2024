@@ -107,7 +107,7 @@ func load_level(_game_mode: game_modes):
 	# Load level # TODO: Make tutorial levels, then randomly generate them
 	var arcade_level_child = arcade_level.instantiate()
 	game_objects.add_child(arcade_level_child)
-	spawn_enemy(Vector3(0,100,0))
+	spawn_enemy(Vector3(0,200,0))
 
 func unload_level():
 	unpause_game(game_modes.ARCADE)
@@ -124,6 +124,7 @@ func spawn_enemy(spawn_position: Vector3):
 	#enemy_instance.global_position = spawn_position
 	player_reference.new_player_data_packet.connect(enemy_instance._on_new_player_data_packet)
 	game_objects.add_child(enemy_instance)
+	enemy_instance.global_position = spawn_position
 
 
 func _on_level_complete_item_touched(body):

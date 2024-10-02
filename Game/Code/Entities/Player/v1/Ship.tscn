@@ -34,6 +34,7 @@ shape = SubResource("CylinderShape3D_s5lm4")
 shape = SubResource("BoxShape3D_cf2ht")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 shape = SubResource("SphereShape3D_v0pkj")
 spring_length = 50.0
 margin = 1.0

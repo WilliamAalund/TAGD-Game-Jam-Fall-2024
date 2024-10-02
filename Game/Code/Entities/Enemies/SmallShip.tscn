@@ -15,6 +15,7 @@ script = ExtResource("1_d5o2w")
 [node name="BodyNavigator" parent="." instance=ExtResource("1_rcdjo")]
 
 [node name="PlayerDetector" parent="BodyNavigator" instance=ExtResource("2_2vjho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 73.374)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BodyNavigator/PlayerDetector"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -150)
@@ -27,4 +28,6 @@ frame_width = 5.0
 [node name="CoreStatsManager" parent="." instance=ExtResource("4_vmoij")]
 
 [connection signal="hit_by_projectile" from="BodyNavigator" to="CoreStatsManager" method="_on_body_navigator_hit_by_projectile"]
+[connection signal="player_entered_area" from="BodyNavigator/PlayerDetector" to="BodyNavigator" method="_on_player_detector_player_entered_area"]
+[connection signal="player_exited_area" from="BodyNavigator/PlayerDetector" to="BodyNavigator" method="_on_player_detector_player_exited_area"]
 [connection signal="enemy_HP_depleted" from="CoreStatsManager" to="." method="_on_core_stats_manager_enemy_hp_depleted"]

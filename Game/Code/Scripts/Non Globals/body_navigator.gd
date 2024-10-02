@@ -11,6 +11,7 @@ signal hit_by_projectile(projectile_kind)
 # Positions target position switches between
 var active_target_position: Vector3 = Vector3(0,0,0)
 var idle_target_position: Vector3
+var pursuing_active_target_position = false
 
 var object_in_the_way = false
 
@@ -23,6 +24,11 @@ func _process(delta: float) -> void:
 	interpolate_to_new_basis(delta)
 
 func _physics_process(_delta: float) -> void:
+	# Set target ship is pursuing to the ocrrect value
+	if pursuing_active_target_position:
+		target_position = active_target_position
+	else:
+		target_position = idle_target_position
 	if object_in_the_way:
 		pass
 	else:
@@ -42,3 +48,13 @@ func move_ship_forward():
 
 func _on_player_new_player_data_packet(packet):
 	active_target_position = packet["global_pos"]
+
+
+func _on_player_detector_player_entered_area() -> void:
+	print("Ship spotted player")
+	pursuing_active_target_position = true
+
+
+func _on_player_detector_player_exited_area() -> void:
+	print("Ship lost sight of player")
+	pursuing_active_target_position = false

@@ -5,8 +5,8 @@ extends Node3D
 @onready var front_camera_animation = $SpringArm3D/Camera3D/AnimationPlayer
 
 var target_basis
-var base_camera_rotate_speed = 35.0
-var base_camera_fov = 90.0
+var base_camera_rotate_speed = 95.0
+var base_camera_fov = 65.0
 var focus_camera_rotate_speed = 200.0
 var focus_camera_fov = 45.0
 var zoomed_in = false

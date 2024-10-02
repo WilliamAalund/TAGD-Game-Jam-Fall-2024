@@ -23,14 +23,14 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		set_raycast_positions()
 		set_raycast_lengths()
 
 
 # Every time the raycasts update, check them out
-func _physics_process(delta: float) -> void: 
+func _physics_process(_delta: float) -> void: 
 	# This vector represents the direction in which the body reading it needs to move in order to avoid a collision.
 	var net_avoidance_vector = Vector2(0,0)
 	

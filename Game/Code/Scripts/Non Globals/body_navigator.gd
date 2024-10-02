@@ -5,8 +5,8 @@ signal hit_by_projectile(projectile_kind)
 @onready var _child_look_at := $ChildLookAt
 
 @export var target_position := Vector3(0,5,0)
-@export var travel_speed = 30
-@export var rotation_speed_multiplier = 0.4
+@export var travel_speed = 15
+@export var rotation_speed_multiplier = 0.3
 
 # Positions target position switches between
 var active_target_position: Vector3 = Vector3(0,0,0)

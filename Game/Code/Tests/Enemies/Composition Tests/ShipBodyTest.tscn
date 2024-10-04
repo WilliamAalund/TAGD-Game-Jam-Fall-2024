@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5shuww8wtn1y"]
+
+[ext_resource type="PackedScene" uid="uid://b8qasgofojf3r" path="res://Code/Entities/Enemies/v2/Components/ShipBody.tscn" id="1_qac1n"]
+
+[node name="ShipBodyTest" type="Node3D"]
+
+[node name="ShipBody" parent="." instance=ExtResource("1_qac1n")]
+transform = Transform3D(0.822011, 0, 0.569471, 0, 1, 0, -0.569471, 0, 0.822011, 0.918843, 0, 14.9895)
+velocity = Vector3(-14.6406, 0, -20.2646)
+avoids_collisions = null
+idle_target_position = Vector3(0.918843, 0, 14.9895)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.926778, 0.37561, 0, -0.37561, 0.926778, 0, 10.7759, 17.6845)

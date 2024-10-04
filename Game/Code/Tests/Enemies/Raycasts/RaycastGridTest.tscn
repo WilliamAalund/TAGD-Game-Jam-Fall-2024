@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dc7qaae1j1ctm"]
 
 [ext_resource type="Script" path="res://Code/Scripts/TestScripts/raycast_grid_test.gd" id="1_shddv"]
-[ext_resource type="PackedScene" uid="uid://cen1n2rrux84o" path="res://Code/Entities/Enemies/EnemyComponents/RaycastGrid.tscn" id="2_xn2ep"]
+[ext_resource type="PackedScene" uid="uid://cen1n2rrux84o" path="res://Code/Entities/Enemies/v1/EnemyComponents/RaycastGrid.tscn" id="2_xn2ep"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ciu8x"]
 size = Vector3(1.5, 1.5, 1)

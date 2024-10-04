@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://deqmwa1r2d0pu"]
+
+[ext_resource type="PackedScene" uid="uid://b8qasgofojf3r" path="res://Code/Entities/Enemies/v2/Components/ShipBody.tscn" id="1_yto60"]
+[ext_resource type="PackedScene" uid="uid://bhwhagdeanf43" path="res://Code/Entities/Enemies/v2/Components/CoreStatsManager.tscn" id="2_x5f5i"]
+
+[node name="StandardShip" type="Node3D"]
+
+[node name="ShipBody" parent="." instance=ExtResource("1_yto60")]
+transform = Transform3D(-0.486127, 7.27555e-05, -0.873888, 1.68911e-05, 1, 7.38587e-05, 0.873888, 2.11437e-05, -0.486127, -18.1569, -0.000288554, 31.3769)
+velocity = Vector3(34.2098, -0.00300222, 20.729)
+travel_speed = 40
+rotation_speed_multiplier = 0.7
+target_position = Vector3(0, 0, 0)
+idle_target_position = Vector3(0, 0, 0)
+
+[node name="CoreStatsManager" parent="." instance=ExtResource("2_x5f5i")]

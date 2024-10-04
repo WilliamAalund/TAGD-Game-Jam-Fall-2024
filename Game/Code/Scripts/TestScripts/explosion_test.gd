@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var body = $BodyNavigator
+@onready var explosion_scene = load("res://Code/Entities/Explosion/Explosion.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,9 +11,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-func _on_new_player_data_packet(packet):
-	#print(packet)
-	body.target_position = packet["global_pos"]
 
-func _on_core_stats_manager_enemy_hp_depleted() -> void:
-	self.queue_free()
+func _on_timer_timeout() -> void:
+	var explosion_child = explosion_scene.instantiate()
+	self.add_child(explosion_child)
+	pass # Replace with function body.

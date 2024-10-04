@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhwhagdeanf43"]
+
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/enemy_core_stats_manager.gd" id="1_vuolf"]
+
+[node name="CoreStatsManager" type="Node3D"]
+script = ExtResource("1_vuolf")
+
+[connection signal="enemy_HP_depleted" from="." to="." method="_on_enemy_hp_depleted"]

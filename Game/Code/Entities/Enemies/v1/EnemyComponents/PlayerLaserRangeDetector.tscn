@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cryt16phgsehd"]
+
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/player_laser_range_detector.gd" id="1_undmt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5omc3"]
+size = Vector3(4, 4, 75.9587)
+
+[node name="PlayerLaserRangeDetector" type="Area3D"]
+script = ExtResource("1_undmt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -37.4797)
+shape = SubResource("BoxShape3D_5omc3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

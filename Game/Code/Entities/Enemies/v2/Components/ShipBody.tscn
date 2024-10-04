@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8qasgofojf3r"]
+
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/ship_body.gd" id="1_301o0"]
+
+[node name="ShipBody" type="CharacterBody3D" groups=["enemy"]]
+motion_mode = 1
+velocity = Vector3(0, 0, -25)
+script = ExtResource("1_301o0")
+
+[node name="TargetDirectionNode" type="Node3D" parent="."]
+transform = Transform3D(-0.0382901, -7.10742e-37, -0.999267, -1.19521e-37, 1, -7.06684e-37, 0.999267, 9.23745e-38, -0.0382901, 0, 0, 0)

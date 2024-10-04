@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c17cra5ohaeo7"]
+
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/player_detector.gd" id="1_godrw"]
+
+[node name="PlayerDetector" type="Area3D"]
+collision_mask = 3
+script = ExtResource("1_godrw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

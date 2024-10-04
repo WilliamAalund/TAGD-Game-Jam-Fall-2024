@@ -31,8 +31,6 @@ func construct_player_data_packet():
 	player_data_packet["crosshair_position_2d"] = crosshair_position_2d
 	player_data_packet["player_3d_crosshair_position"] = player_ship.get_3d_crosshair_position()
 	player_data_packet["left_playable_space"] = player_ship.left_playable_space
-	player_data_packet["HP"] = stats.HP
-	player_data_packet["maximum_HP"] = stats.maximum_HP
 
 	# Further alterations can be done here based on game logic.
 	new_player_data_packet.emit(player_data_packet)

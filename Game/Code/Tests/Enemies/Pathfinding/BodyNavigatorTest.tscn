@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bg7jlucscwyed"]
 
-[ext_resource type="PackedScene" uid="uid://bl6n1vj8qnvoe" path="res://Code/Entities/Enemies/EnemyComponents/BodyNavigator.tscn" id="1_sntd3"]
+[ext_resource type="PackedScene" uid="uid://bl6n1vj8qnvoe" path="res://Code/Entities/Enemies/v1/EnemyComponents/BodyNavigator.tscn" id="1_sntd3"]
 
 [node name="BodyNavigatorTest" type="Node3D"]
 

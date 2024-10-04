@@ -15,6 +15,10 @@ run/main_scene="res://Code/PrimaryScenes/Main/Main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Resources/Images/icon.svg"
 
+[autoload]
+
+PlayerData="*res://Code/Scripts/Globals/Classes/PlayerData.gd"
+
 [display]
 
 window/size/viewport_width=1280

@@ -9,7 +9,7 @@ signal game_killed
 @onready var arcade_level = load("res://Code/Levels/ArcadeLevel.tscn")
 @onready var ship_hud = load("res://Code/UI/InGame.tscn")
 @onready var level_complete_item = load("res://Code/Entities/Items/LevelComplete/LevelComplete.tscn")
-@onready var small_enemy_ship = load("res://Code/Entities/Enemies/SmallShip.tscn")
+@onready var small_enemy_ship = load("res://Code/Entities/Enemies/v2/EnemyScenes/BabyShip/BabyShip.tscn")
 @export var debug_enabled = false
 
 var game_is_active = false # Boolean used to control when the quit button is listening for user input.
@@ -19,14 +19,16 @@ var number_of_players = 1
 enum game_modes {ARCADE,COOP,DEATHMATCH}
 
 # Singleplayer game metadata
-var current_level
 var game_score := 0
 var game_level := 1
 var singleplayer_game_data_packet = {}
+var enemies_spawned = 0
+var enemies_defeated = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+	#PlayerData.player_HP_depleted.connect(self._on_player_destroyed())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -47,6 +49,8 @@ func _process(_delta):
 	
 
 func start_game(_number_of_players, _game_mode: game_modes) -> void:
+	PlayerData.reset_player_stats()
+	game_level = 1
 	game_is_active = true
 	if _game_mode == game_modes.ARCADE:
 		# Initialize a single viewport
@@ -81,7 +85,7 @@ func load_level(_game_mode: game_modes):
 	var hud_child = ship_hud.instantiate()
 	
 	# Level complete
-	var level_complete_child = level_complete_item.instantiate()
+	#var level_complete_child = level_complete_item.instantiate()
 	
 	# Connect UI to player object
 	player_child.new_player_data_packet.connect(hud_child._on_player_new_player_data_packet)
@@ -96,18 +100,23 @@ func load_level(_game_mode: game_modes):
 	player_child.new_player_data_packet.connect(self._on_new_player_data_packet)
 	
 	# Connect level complete to complete function
-	level_complete_child.position.z = 100
-	level_complete_child.body_entered.connect(self._on_level_complete_item_touched)
+	#level_complete_child.position.z = 100
+	#level_complete_child.body_entered.connect(self._on_level_complete_item_touched)
 	
 	# Spawn children
 	game_objects.add_child(hud_child)
 	game_objects.add_child(player_child)
-	game_objects.add_child(level_complete_child)
+	player_child.position.z = 300
+	#game_objects.add_child(level_complete_child)
 	
-	# Load level # TODO: Make tutorial levels, then randomly generate them
+		# Load level # TODO: Make tutorial levels, then randomly generate them
 	var arcade_level_child = arcade_level.instantiate()
 	game_objects.add_child(arcade_level_child)
-	spawn_enemy(Vector3(0,200,0))
+	enemies_spawned = 0
+	enemies_defeated = 0
+	for i in range(game_level):
+		spawn_enemy(Vector3(randi_range(-200,200),randi_range(-200,200),0))
+	
 
 func unload_level():
 	unpause_game(game_modes.ARCADE)
@@ -121,11 +130,18 @@ func game_over(_game_mode: game_modes):
 func spawn_enemy(spawn_position: Vector3):
 	pass # TODO: Make enemy entities spawn in the level
 	var enemy_instance = small_enemy_ship.instantiate()
+	enemies_spawned += 1
 	#enemy_instance.global_position = spawn_position
 	player_reference.new_player_data_packet.connect(enemy_instance._on_new_player_data_packet)
+	enemy_instance.enemy_defeated.connect(self._on_enemy_defeated)
 	game_objects.add_child(enemy_instance)
 	enemy_instance.global_position = spawn_position
 
+func spawn_complete_object(spawn_position: Vector3):
+	var level_complete_child = level_complete_item.instantiate()
+	level_complete_child.position = spawn_position
+	level_complete_child.body_entered.connect(self._on_level_complete_item_touched)
+	game_objects.add_child(level_complete_child)
 
 func _on_level_complete_item_touched(body):
 	if body.is_in_group("player"):
@@ -134,11 +150,15 @@ func _on_level_complete_item_touched(body):
 		game_level += 1
 		load_level(game_modes.ARCADE)
 
-func _on_enemy_perished(_entity_id):
+func _on_enemy_defeated(position_perished):
 	pass # TODO: Make enemy entities broadcast a signal to this function. Then, score and other veriables can be altered.
+	enemies_defeated += 1
+	if enemies_defeated >= enemies_spawned:
+		spawn_complete_object(position_perished)
+		pass # Spawn the level complete item
 
 func _on_player_destroyed():
 	game_over(game_modes.ARCADE)
 
-func _on_new_player_data_packet(packet):
+func _on_new_player_data_packet(_packet):
 	pass

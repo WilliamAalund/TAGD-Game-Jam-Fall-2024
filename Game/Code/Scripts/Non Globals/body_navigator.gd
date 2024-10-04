@@ -5,8 +5,8 @@ signal hit_by_projectile(projectile_kind)
 @onready var _child_look_at := $ChildLookAt
 
 @export var target_position := Vector3(0,5,0)
-@export var travel_speed = 15
-@export var rotation_speed_multiplier = 0.3
+@export var travel_speed = 25
+@export var rotation_speed_multiplier = 1.0
 
 # Positions target position switches between
 var active_target_position: Vector3 = Vector3(0,0,0)
@@ -34,6 +34,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		move_ship_forward()
 
+
 func interpolate_to_new_basis(delta):
 	_child_look_at.look_at(target_position)
 	var target_rotation = Quaternion(_child_look_at.global_transform.basis)
@@ -41,12 +42,17 @@ func interpolate_to_new_basis(delta):
 	var next_rotation = current_rotation.slerp(target_rotation, delta * rotation_speed_multiplier)
 	self.global_transform.basis = Basis(next_rotation)
 
+
 func move_ship_forward():
 	var direction_vector = -self.transform.basis.z.normalized()
 	self.velocity = direction_vector * travel_speed
 	move_and_slide()
 
+func damaged_by_projectile(projectile_kind): # Called by a colliding projectile area on the body navigator.
+	hit_by_projectile.emit(projectile_kind)
+
 func _on_player_new_player_data_packet(packet):
+	print(packet["global_pos"])
 	active_target_position = packet["global_pos"]
 
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://02m4dtv8f4ae"]
 
-[ext_resource type="PackedScene" uid="uid://hwx1esj16xh7" path="res://Code/Entities/Enemies/SmallShip.tscn" id="1_hvinf"]
+[ext_resource type="PackedScene" uid="uid://hwx1esj16xh7" path="res://Code/Entities/Enemies/v1/SmallShip.tscn" id="1_hvinf"]
 [ext_resource type="Script" path="res://Code/Scripts/TestScripts/small_ship_test.gd" id="1_r0l7a"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_03vsa"]

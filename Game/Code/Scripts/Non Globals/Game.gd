@@ -46,6 +46,8 @@ func _process(_delta):
 				unpause_game(game_modes.ARCADE)
 	singleplayer_game_data_packet["score"] = game_score
 	singleplayer_game_data_packet["level"] = game_level
+	singleplayer_game_data_packet["enemies_spawned"] = enemies_spawned
+	singleplayer_game_data_packet["enemies_defeated"] = enemies_defeated
 	new_game_data_packet.emit(singleplayer_game_data_packet)
 	
 

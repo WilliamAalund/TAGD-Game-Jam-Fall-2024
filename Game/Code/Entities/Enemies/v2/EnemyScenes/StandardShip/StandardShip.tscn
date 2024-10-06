@@ -15,7 +15,7 @@ radius = 1.5
 radius = 200.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yw3wf"]
-size = Vector3(20, 20, 122.015)
+size = Vector3(25, 25, 184.114)
 
 [node name="BabyShip" type="Node3D"]
 script = ExtResource("1_n8yne")
@@ -37,12 +37,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -103.778)
 shape = SubResource("SphereShape3D_s01ly")
 
 [node name="ProjectileSpawner" parent="ShipBody" instance=ExtResource("4_bh8ex")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.02405)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.5)
 
 [node name="PlayerInSightsDetector" parent="ShipBody" instance=ExtResource("5_g3dgw")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ShipBody/PlayerInSightsDetector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60.5161)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -91.5656)
 shape = SubResource("BoxShape3D_yw3wf")
 
 [node name="CoreStatsManager" parent="." instance=ExtResource("6_kav07")]

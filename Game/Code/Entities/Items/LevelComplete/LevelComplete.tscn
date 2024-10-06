@@ -3,7 +3,12 @@
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/level_complete.gd" id="1_xfcm2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1n4m2"]
+transparency = 1
 albedo_color = Color(0, 0.583254, 0.292522, 1)
+metallic = 0.52
+roughness = 0.55
+emission_enabled = true
+emission = Color(0.15335, 0.26664, 0.150275, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ahp3r"]
 material = SubResource("StandardMaterial3D_1n4m2")
@@ -75,3 +80,7 @@ shape = SubResource("ConcavePolygonShape3D_f1cka")
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 visible = false
 draw_pass_1 = SubResource("SphereMesh_37f02")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.32083, 0)
+light_color = Color(0.282883, 0.422593, 0.231159, 1)

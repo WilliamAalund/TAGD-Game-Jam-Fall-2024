@@ -33,7 +33,7 @@ func fire_projectile():
 func spawn_projectile():
 	var new_projectile = projectile_scene.instantiate()
 	new_projectile.set_up_projectile(3,self.global_transform.basis,"enemy")
-	get_parent().add_child(new_projectile) # Enables removal of lasers upon deletion of Parent node
+	get_parent().get_parent().add_child(new_projectile) # Enables removal of lasers upon deletion of Parent node
 	new_projectile.global_position = port_reference.global_position
 
 

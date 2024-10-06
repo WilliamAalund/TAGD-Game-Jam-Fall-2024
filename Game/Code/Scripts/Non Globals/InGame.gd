@@ -7,6 +7,7 @@ extends Control
 @onready var health_label = $MarginContainer2/VBoxContainer/Label
 @onready var level_label = $GameMetadata/Level
 @onready var velocity_label = $ShipModelContainer/VelocityLabel
+@onready var objective_label = $ShipModelContainer/ObjectiveLabel
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -30,3 +31,9 @@ func _on_player_new_player_data_packet(packet):
 # Process information about the game overall
 func _on_game_new_game_data_packet(packet):
 	level_label.text = "Level: " + str(packet["level"])
+	if packet["enemies_spawned"] - packet["enemies_defeated"] == 1:
+		objective_label.text = str(packet["enemies_spawned"] - packet["enemies_defeated"]) + " enemy remaining"
+	elif packet["enemies_spawned"] - packet["enemies_defeated"] != 0:
+		objective_label.text = str(packet["enemies_spawned"] - packet["enemies_defeated"]) + " enemies remaining"
+	else:
+		objective_label.text = "Collect green cylinder"

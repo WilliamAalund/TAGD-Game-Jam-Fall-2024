@@ -30,6 +30,8 @@ const SCRAPE_INVINCIBILITY_FRAMES = 4
 @export var HP_depleted := false
 @export var infinite_scrap := false
 @export var score := 0
+enum secondary_weapons {NONE,MISSILE,SCOPED,MINIGUN}
+@export var secondary_weapon: secondary_weapons
 
 var scrape_current_invincibility_frames = 0
 
@@ -43,7 +45,7 @@ func _physics_process(_delta: float) -> void:
 		scrape_current_invincibility_frames -= 1
 
 
-func inflict_damage(amount: int, damage_type):
+func inflict_damage(amount: int, damage_type: String):
 	if damage_type == "scrape" and scrape_current_invincibility_frames == 0:
 		HP -= amount
 		scrape_current_invincibility_frames = SCRAPE_INVINCIBILITY_FRAMES
@@ -57,7 +59,8 @@ func inflict_damage(amount: int, damage_type):
 func apply_upgrade(upgrade_type: upgrade_types):
 	pass # TODO: Implement upgrading stats through a shop
 	if upgrade_type == upgrade_types.IMPROVE_MAX_HP:
-		pass
+		maximum_HP += 10
+		HP += 10
 
 # Function called in the Game scene when a level begins.
 func reset_player_stats(): 

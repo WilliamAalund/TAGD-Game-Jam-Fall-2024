@@ -20,5 +20,4 @@ shape = SubResource("BoxShape3D_j4j5b")
 visible = false
 
 [node name="EnemyLaser" parent="." instance=ExtResource("3_qk257")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 visible = false

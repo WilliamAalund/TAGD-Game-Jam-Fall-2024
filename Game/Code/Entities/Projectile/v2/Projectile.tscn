@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://blhbo1jpmi5np"]
+[gd_scene load_steps=5 format=3 uid="uid://blhbo1jpmi5np"]
 
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/Projectilev2.gd" id="1_u3f7k"]
 [ext_resource type="PackedScene" uid="uid://df235afldqa3h" path="res://Resources/Meshes/Placeholder/Laser.tscn" id="2_dalxf"]
+[ext_resource type="PackedScene" uid="uid://cwsrflcunsur1" path="res://Resources/Meshes/Placeholder/EnemyLaser.tscn" id="3_qk257"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j4j5b"]
-size = Vector3(0.6, 0.6, 1.5)
+size = Vector3(1, 1, 1.5)
 
 [node name="Projectile" type="CharacterBody3D"]
 collision_layer = 0
@@ -16,3 +17,8 @@ script = ExtResource("1_u3f7k")
 shape = SubResource("BoxShape3D_j4j5b")
 
 [node name="Laser" parent="." instance=ExtResource("2_dalxf")]
+visible = false
+
+[node name="EnemyLaser" parent="." instance=ExtResource("3_qk257")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false

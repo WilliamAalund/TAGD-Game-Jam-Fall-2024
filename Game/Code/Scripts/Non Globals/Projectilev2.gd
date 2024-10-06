@@ -4,15 +4,21 @@ extends CharacterBody3D
 
 @export var basis_of_projectile_creator = Basis()
 @export var projectile_creator_group = "Not Set"
-enum type_enum {LASER, MISSILE}
+enum type_enum {LASER, MISSILE,TEST,ENEMY_LASER}
 @export var type: type_enum
 
 var distance_traveled
 var current_maximum_projectile_range
 var current_speed
 
-const SPEED_LASER = 1250.0
-const MAX_RANGE_LASER = 1500.0
+const SPEED_TEST = 30.0
+const MAX_RANGE_TEST = 100.0
+
+const SPEED_LASER = 1750.0
+const MAX_RANGE_LASER = 2000.0
+
+const SPEED_ENEMY_LASER = 600.0
+const MAX_RANGE_ENEMY_LASER = 1000.0
 
 func _ready() -> void:
 	self.basis = basis_of_projectile_creator
@@ -31,6 +37,7 @@ func _physics_process(delta: float) -> void:
 			var collider = collision.get_collider()
 			if collider.is_in_group("player") and projectile_creator_group == "enemy":
 				print("Player hit by projectile")
+				PlayerData.inflict_damage(15, "laser")
 			elif collider.is_in_group("enemy") and projectile_creator_group == "player":
 				print("Enemy hit by projectile")
 				if collider.has_method("damaged_by_projectile"):
@@ -48,6 +55,15 @@ func set_up_projectile(projectile_type: type_enum, creator_basis: Basis,creator_
 	if projectile_type == type_enum.LASER:
 		current_speed = SPEED_LASER
 		current_maximum_projectile_range = MAX_RANGE_LASER
+		$Laser.visible = true
+	elif projectile_type == type_enum.ENEMY_LASER:
+		current_speed = SPEED_ENEMY_LASER
+		current_maximum_projectile_range = MAX_RANGE_ENEMY_LASER
+		$EnemyLaser.visible = true
+	elif projectile_type == type_enum.TEST:
+		current_speed = SPEED_TEST
+		current_maximum_projectile_range = MAX_RANGE_TEST
+		$Laser.visible = true
 	else:
 		print("Warning: invalid projectile type")
 		current_speed = SPEED_LASER

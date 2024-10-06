@@ -7,10 +7,10 @@ signal ship_scraping_against_surface
 
 @export var debug_freeze_ship_position = false
 
-const MIN_TRAVEL_SPEED = -5.0
+const MIN_TRAVEL_SPEED = -15.0
 const BASE_TRAVEL_SPEED = 30.0
 const MAX_TRAVEL_SPEED = 80.0
-const ACCELERATION = 2.0
+const ACCELERATION = 1.5
 const MAX_BOOST = 100
 const BOOST_ENERGY_REENABLE_THRESHOLD = 25
 
@@ -24,7 +24,7 @@ var boost_energy_depletion_rate = 18
 var net_input_rate_multiplier = 8 # A constant that scales the rate at which the net input changes. Currently used by all three net values.
 var travel_speed = PlayerData.BASE_TRAVEL_SPEED # Speed at which the mesh moves forward in space. Forward for the mesh is defined as the positive z direction.
 var max_net_input: float = .5 # Increasing this value increases turn angle of ship # FIXME: This is a poor name for this variable.
-var max_rotate_net_input: float = 0.7
+var max_rotate_net_input: float = 0.9
 var minimum_net_input = 0.0005 # Used as a value to cull extremely small net input values
 var net_input_horizontal: float = 0 # The experienced input for horizontal rotation from the user. The raw input is interpolated to produce this value, which makes for a smoother turning experience.
 var net_input_vertical: float = 0 # Experienced for vertical
@@ -41,11 +41,14 @@ func _process(delta):
 		max_net_input = 0.4
 		net_input_rate_multiplier = 10
 	elif Input.is_action_pressed("break"):
-		max_net_input = 1.7
-		net_input_rate_multiplier = 6
+		max_net_input = 2.2
+		net_input_rate_multiplier = 14
+	elif Input.is_action_pressed("boost") and not boost_depleted:
+		max_net_input = 1.6
+		net_input_rate_multiplier = 10
 	else:
-		max_net_input = 1.2
-		net_input_rate_multiplier = 8
+		max_net_input = 1.4
+		net_input_rate_multiplier = 10
 	# Update net inputs for movement and rotation
 	update_net_input_horizontal(delta)
 	update_net_input_vertical(delta)

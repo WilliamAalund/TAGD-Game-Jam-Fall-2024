@@ -57,3 +57,8 @@ shape = SubResource("ConcavePolygonShape3D_repmn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.614602, 0.788837, 0, -0.788837, -0.614602, 0, 0, 0)
+light_color = Color(0.788222, 0.735658, 0.639648, 1)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.562776, -0.826609, 0, 0.826609, 0.562776, 0, 0, 0)
+light_color = Color(0.301867, 0.0430157, 0.309906, 1)

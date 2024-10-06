@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cin0g7wq0mvdq" path="res://Code/UI/MiniPlayerShipModel.tscn" id="1_tjb1n"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_p6mat"]
-viewport_path = NodePath("ShipBasisRect/SubViewport")
+viewport_path = NodePath("ShipModelContainer/ShipBasisRect/SubViewport")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_dw3no"]
 specular_color = Color(0.357496, 0.141901, 0.578092, 1)
@@ -65,7 +65,7 @@ custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 show_percentage = false
 
-[node name="ShipBasisRect" type="TextureRect" parent="."]
+[node name="ShipModelContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -73,13 +73,20 @@ anchor_right = 1.0
 offset_left = -200.0
 offset_bottom = 200.0
 grow_horizontal = 0
+
+[node name="ShipBasisRect" type="TextureRect" parent="ShipModelContainer"]
+layout_mode = 2
 texture = SubResource("ViewportTexture_p6mat")
 
-[node name="SubViewport" type="SubViewport" parent="ShipBasisRect"]
+[node name="SubViewport" type="SubViewport" parent="ShipModelContainer/ShipBasisRect"]
 transparent_bg = true
 size = Vector2i(200, 200)
 
-[node name="MiniPlayerShipModel" parent="ShipBasisRect/SubViewport" instance=ExtResource("1_tjb1n")]
+[node name="MiniPlayerShipModel" parent="ShipModelContainer/ShipBasisRect/SubViewport" instance=ExtResource("1_tjb1n")]
+
+[node name="VelocityLabel" type="Label" parent="ShipModelContainer"]
+layout_mode = 2
+text = "0.00 m/s"
 
 [node name="DialogueBox" type="TextureRect" parent="."]
 visible = false
@@ -226,8 +233,8 @@ offset_bottom = 40.0
 
 [node name="Crosshair" type="TextureRect" parent="Crosshair"]
 layout_mode = 1
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
 texture = SubResource("PlaceholderTexture2D_pptsw")

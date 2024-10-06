@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwsrflcunsur1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4cjq3"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.942366, 0.23694, 0.179802, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0tsjk"]
+material = SubResource("StandardMaterial3D_4cjq3")
+top_radius = 0.4
+bottom_radius = 0.6
+height = 1.0
+rings = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ttcvg"]
+shading_mode = 0
+albedo_color = Color(0.744398, 0.366688, 0.296824, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mrqpk"]
+material = SubResource("StandardMaterial3D_ttcvg")
+top_radius = 0.3
+bottom_radius = 0.0
+height = 2.5
+
+[node name="Laser" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+transparency = 0.09
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_0tsjk")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.599462, 0.134624, 0.180986, 1)
+omni_range = 7.56
+omni_attenuation = 0.203063
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.77362, 7.75276e-08)
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("CylinderMesh_mrqpk")

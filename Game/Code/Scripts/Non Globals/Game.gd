@@ -10,6 +10,7 @@ signal game_killed
 @onready var ship_hud = load("res://Code/UI/InGame.tscn")
 @onready var level_complete_item = load("res://Code/Entities/Items/LevelComplete/LevelComplete.tscn")
 @onready var small_enemy_ship = load("res://Code/Entities/Enemies/v2/EnemyScenes/BabyShip/BabyShip.tscn")
+@onready var standard_enemy_ship = load("res://Code/Entities/Enemies/v2/EnemyScenes/StandardShip/StandardShip.tscn")
 @export var debug_enabled = false
 
 var game_is_active = false # Boolean used to control when the quit button is listening for user input.
@@ -115,7 +116,10 @@ func load_level(_game_mode: game_modes):
 	enemies_spawned = 0
 	enemies_defeated = 0
 	for i in range(game_level):
-		spawn_enemy(Vector3(randi_range(-200,200),randi_range(-200,200),0))
+		if i < 3:
+			spawn_enemy(Vector3(randi_range(-200,200),randi_range(-200,200),0),small_enemy_ship)
+		else:
+			spawn_enemy(Vector3(randi_range(-200,200),randi_range(-200,200),0),standard_enemy_ship)
 	
 
 func unload_level():
@@ -127,9 +131,9 @@ func unload_level():
 func game_over(_game_mode: game_modes):
 	quit_game()
 	
-func spawn_enemy(spawn_position: Vector3):
+func spawn_enemy(spawn_position: Vector3, enemy_type):
 	pass # TODO: Make enemy entities spawn in the level
-	var enemy_instance = small_enemy_ship.instantiate()
+	var enemy_instance = enemy_type.instantiate()
 	enemies_spawned += 1
 	#enemy_instance.global_position = spawn_position
 	player_reference.new_player_data_packet.connect(enemy_instance._on_new_player_data_packet)

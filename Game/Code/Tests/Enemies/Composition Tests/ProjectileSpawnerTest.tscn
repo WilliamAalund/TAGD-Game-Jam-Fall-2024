@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcol8yygp5tnv"]
+
+[ext_resource type="PackedScene" uid="uid://dfji6m12utrpc" path="res://Code/Entities/Enemies/v2/Components/ProjectileSpawner.tscn" id="1_lw4sk"]
+
+[node name="ProjectileSpawnerTest" type="Node3D"]
+
+[node name="ProjectileSpawner" parent="." instance=ExtResource("1_lw4sk")]
+always_firing = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.29284e-08, -0.188427, 0.982087, -8.23641e-09, 0.982087, 0.188427, -1, 0, -4.37114e-08, 200, 50, 0)

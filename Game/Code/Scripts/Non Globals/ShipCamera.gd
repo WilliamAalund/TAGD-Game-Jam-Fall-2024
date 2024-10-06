@@ -24,7 +24,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("focus") and not breaking:
+	if Input.is_action_pressed("focus"):
 		if zoomed_in == false:
 			pass
 			front_camera_animation.play("front_camera_zoom_in")

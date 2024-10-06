@@ -1,11 +1,12 @@
 extends Control
 
 @onready var boost_bar = $VBoxContainer/Boost
-@onready var ship_model = $ShipBasisRect/SubViewport/MiniPlayerShipModel/Ship
+@onready var ship_model = $ShipModelContainer/ShipBasisRect/SubViewport/MiniPlayerShipModel/Ship
 @onready var crosshair = $Crosshair
 @onready var health = $MarginContainer2/VBoxContainer/Health
 @onready var health_label = $MarginContainer2/VBoxContainer/Label
 @onready var level_label = $GameMetadata/Level
+@onready var velocity_label = $ShipModelContainer/VelocityLabel
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -23,9 +24,9 @@ func _on_player_new_player_data_packet(packet):
 	boost_bar.value = packet["boost_energy"]
 	ship_model.basis = packet["ship_basis"]
 	crosshair.position = packet["crosshair_position_2d"]
+	velocity_label.text = str(packet["velocity"].length()).substr(0,5)
 
 
 # Process information about the game overall
 func _on_game_new_game_data_packet(packet):
 	level_label.text = "Level: " + str(packet["level"])
-	

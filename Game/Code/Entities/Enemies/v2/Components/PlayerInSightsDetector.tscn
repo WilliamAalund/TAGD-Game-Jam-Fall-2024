@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://265oq6xbr5ek"]
+
+[node name="PlayerInSightsDetector" type="Area3D"]
+collision_mask = 2

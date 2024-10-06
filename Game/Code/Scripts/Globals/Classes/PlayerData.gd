@@ -35,7 +35,6 @@ var scrape_current_invincibility_frames = 0
 
 func _process(_delta: float) -> void:
 	if HP_depleted:
-		print("HP depleted")
 		player_HP_depleted.emit()
 
 
@@ -48,6 +47,8 @@ func inflict_damage(amount: int, damage_type):
 	if damage_type == "scrape" and scrape_current_invincibility_frames == 0:
 		HP -= amount
 		scrape_current_invincibility_frames = SCRAPE_INVINCIBILITY_FRAMES
+	elif damage_type == "laser":
+		HP -= amount
 	if HP < 0: # Death will be taken care of in process loop
 		HP = 0
 		HP_depleted = true

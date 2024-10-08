@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxprnfg1nk8ja"]
+[gd_scene load_steps=11 format=3 uid="uid://bxprnfg1nk8ja"]
 
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/InGame.gd" id="1_20430"]
 [ext_resource type="PackedScene" uid="uid://cin0g7wq0mvdq" path="res://Code/UI/MiniPlayerShipModel.tscn" id="1_tjb1n"]
@@ -10,6 +10,9 @@ viewport_path = NodePath("ShipModelContainer/ShipBasisRect/SubViewport")
 specular_color = Color(0.357496, 0.141901, 0.578092, 1)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ofmld"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_t4efw"]
+viewport_path = NodePath("RearviewRect/SubViewport")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_f8jq6"]
 
@@ -146,7 +149,26 @@ offset_bottom = 23.0
 text = "Weapon
 Icon"
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="RearviewRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 12.0
+offset_right = 150.0
+offset_bottom = 112.0
+grow_horizontal = 2
+texture = SubResource("ViewportTexture_t4efw")
+expand_mode = 1
+
+[node name="SubViewport" type="SubViewport" parent="RearviewRect"]
+
+[node name="PlayerBackview" type="Node3D" parent="RearviewRect/SubViewport"]
+
+[node name="PlayerBackview" type="Camera3D" parent="RearviewRect/SubViewport/PlayerBackview"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1.5)
+fov = 50.0
 
 [node name="LaserCannonView" type="TextureRect" parent="."]
 visible = false
@@ -237,8 +259,8 @@ offset_bottom = 40.0
 
 [node name="Crosshair" type="TextureRect" parent="Crosshair"]
 layout_mode = 1
-offset_left = -3.0
-offset_top = -3.0
-offset_right = 3.0
-offset_bottom = 3.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
 texture = SubResource("PlaceholderTexture2D_pptsw")

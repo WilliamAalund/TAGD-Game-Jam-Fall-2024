@@ -131,6 +131,7 @@ func unload_level():
 		node.queue_free()
 
 func game_over(_game_mode: game_modes):
+	Saving.set_farthest_level(game_level)
 	quit_game()
 	
 func spawn_enemy(spawn_position: Vector3, enemy_type):

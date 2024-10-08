@@ -56,6 +56,11 @@ text = "Run Debug"
 layout_mode = 2
 text = "Quit"
 
+[node name="LevelRecord" type="Label" parent="UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
 [connection signal="pressed" from="UI/VBoxContainer/Arcade" to="." method="_on_arcade_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/Debug" to="." method="_on_debug_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlmqw5kcp5tij"]
+
+[ext_resource type="Script" path="res://Code/Scripts/TestScripts/aabb_tests.gd" id="1_d2kic"]
+
+[node name="AabbTests" type="Node3D"]
+script = ExtResource("1_d2kic")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.926134, 0.377194, 0, -0.377194, 0.926134, 0, 500, 600)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="MeshParent" type="Node3D" parent="."]

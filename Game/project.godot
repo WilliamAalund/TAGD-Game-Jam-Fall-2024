@@ -18,6 +18,7 @@ config/icon="res://Resources/Images/icon.svg"
 [autoload]
 
 PlayerData="*res://Code/Scripts/Globals/Classes/PlayerData.gd"
+Saving="*res://Code/Scripts/Globals/Saving.gd"
 
 [display]
 

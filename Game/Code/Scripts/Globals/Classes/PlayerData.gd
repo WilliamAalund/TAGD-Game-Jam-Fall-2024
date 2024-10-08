@@ -19,8 +19,12 @@ const BOOST_ENERGY_REENABLE_THRESHOLD := 25
 const BOOST_ENERGY_REGENERATION_RATE := 14
 const BOOST_ENERGE_DEPETION_RATE := 18
 
-# I-frames
-const SCRAPE_INVINCIBILITY_FRAMES = 4
+# Projectiles
+const LASER_RPM := 413.0
+
+# Frame times
+const SCRAPE_INVINCIBILITY_FRAMES := 4
+const SHIELD_TIME_TO_REGENERATE_BEGIN := 300
 
 @export var HP := BASE_MAXIMUM_HP
 @export var maximum_HP := BASE_MAXIMUM_HP
@@ -32,6 +36,7 @@ const SCRAPE_INVINCIBILITY_FRAMES = 4
 @export var score := 0
 enum secondary_weapons {NONE,MISSILE,SCOPED,MINIGUN}
 @export var secondary_weapon: secondary_weapons
+@export var secondary_weapon_selected := false
 
 var scrape_current_invincibility_frames = 0
 
@@ -51,7 +56,7 @@ func inflict_damage(amount: int, damage_type: String):
 		scrape_current_invincibility_frames = SCRAPE_INVINCIBILITY_FRAMES
 	elif damage_type == "laser":
 		HP -= amount
-	if HP < 0: # Death will be taken care of in process loop
+	if HP <= 0: # Death will be taken care of in process loop
 		HP = 0
 		HP_depleted = true
 
@@ -69,6 +74,8 @@ func reset_player_stats():
 	maximum_HP = BASE_MAXIMUM_HP
 	scrap = BASE_SCRAP
 	
+func prepare_player_stats_for_new_level():
+	pass # TODO: Reset any cooldowns, and refresh shield
 
 func enemy_destroyed():
 	score += 100

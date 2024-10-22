@@ -26,7 +26,6 @@ data = PackedVector3Array(0, 50, 0, 0, 50, 0, 0, 49.7736, 4.7528, 0, 50, 0, 0.46
 environment = ExtResource("1_tm44i")
 
 [node name="PlayBoundary" parent="." instance=ExtResource("2_a5ubv")]
-collision_mask = 3
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.439939, -0.898028, 0, 0.898028, 0.439939, 0, 66.6026, 124.188)
@@ -55,3 +54,11 @@ mesh = SubResource("SphereMesh_oi2et")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_repmn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.614602, 0.788837, 0, -0.788837, -0.614602, 0, 0, 0)
+light_color = Color(0.788222, 0.735658, 0.639648, 1)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.562776, -0.826609, 0, 0.826609, 0.562776, 0, 0, 0)
+light_color = Color(0.301867, 0.0430157, 0.309906, 1)

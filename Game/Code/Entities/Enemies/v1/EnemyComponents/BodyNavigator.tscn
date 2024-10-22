@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl6n1vj8qnvoe"]
+
+[ext_resource type="PackedScene" uid="uid://d2v1wa5se21xv" path="res://Resources/Meshes/Placeholder/SmallShip.tscn" id="1_12q7g"]
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/body_navigator.gd" id="1_lmgpe"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_na6vw"]
+height = 3.0
+radius = 1.2
+
+[node name="BodyNavigator" type="CharacterBody3D" groups=["enemy"]]
+motion_mode = 1
+script = ExtResource("1_lmgpe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.191)
+shape = SubResource("CylinderShape3D_na6vw")
+
+[node name="SmallShip" parent="." instance=ExtResource("1_12q7g")]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
+
+[node name="ChildLookAt" type="Node3D" parent="."]

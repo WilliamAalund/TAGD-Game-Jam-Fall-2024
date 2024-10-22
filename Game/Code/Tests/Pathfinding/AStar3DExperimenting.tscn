@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkpdlkj1sttfv"]
-
-[sub_resource type="NavigationMesh" id="NavigationMesh_q2qcr"]
-
-[node name="AStar3dExperimenting" type="Node3D"]
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-navigation_mesh = SubResource("NavigationMesh_q2qcr")

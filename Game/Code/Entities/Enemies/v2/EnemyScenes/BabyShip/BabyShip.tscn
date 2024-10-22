@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://dghrucvwldwpk"]
+
+[ext_resource type="PackedScene" uid="uid://b8qasgofojf3r" path="res://Code/Entities/Enemies/v2/Components/ShipBody.tscn" id="1_bci3o"]
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/enemy_metadata.gd" id="1_sadnt"]
+[ext_resource type="PackedScene" uid="uid://bhwhagdeanf43" path="res://Code/Entities/Enemies/v2/Components/CoreStatsManager.tscn" id="2_k6c6u"]
+[ext_resource type="PackedScene" uid="uid://c17cra5ohaeo7" path="res://Code/Entities/Enemies/v2/Components/PlayerDetector.tscn" id="3_06mm1"]
+[ext_resource type="PackedScene" uid="uid://dfji6m12utrpc" path="res://Code/Entities/Enemies/v2/Components/ProjectileSpawner.tscn" id="4_l5a8f"]
+[ext_resource type="PackedScene" uid="uid://265oq6xbr5ek" path="res://Code/Entities/Enemies/v2/Components/PlayerInSightsDetector.tscn" id="5_e2wht"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5rv2r"]
+height = 4.0
+radius = 1.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_s01ly"]
+radius = 200.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yw3wf"]
+size = Vector3(20, 20, 122.015)
+
+[node name="BabyShip" type="Node3D" groups=["enemy"]]
+script = ExtResource("1_sadnt")
+
+[node name="ShipBody" parent="." instance=ExtResource("1_bci3o")]
+velocity = Vector3(-23.3545, -1.34565e-06, -26.0685)
+rotation_speed_multiplier = 0.7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShipBody"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.343213)
+shape = SubResource("CylinderShape3D_5rv2r")
+
+[node name="PlayerDetector" parent="ShipBody" instance=ExtResource("3_06mm1")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShipBody/PlayerDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -103.778)
+shape = SubResource("SphereShape3D_s01ly")
+
+[node name="ProjectileSpawner" parent="ShipBody" instance=ExtResource("4_l5a8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.5)
+rounds_per_minute = 250
+
+[node name="PlayerInSightsDetector" parent="ShipBody" instance=ExtResource("5_e2wht")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShipBody/PlayerInSightsDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60.5161)
+shape = SubResource("BoxShape3D_yw3wf")
+
+[node name="CoreStatsManager" parent="." instance=ExtResource("2_k6c6u")]
+HP = 30
+maximum_HP = 30
+
+[connection signal="ship_hit_by_projectile" from="ShipBody" to="CoreStatsManager" method="_on_ship_body_ship_hit_by_projectile"]
+[connection signal="player_entered_area" from="ShipBody/PlayerDetector" to="ShipBody" method="_on_player_detector_player_entered_area"]
+[connection signal="player_exited_area" from="ShipBody/PlayerDetector" to="ShipBody" method="_on_player_detector_player_exited_area"]
+[connection signal="body_entered" from="ShipBody/PlayerInSightsDetector" to="ShipBody/ProjectileSpawner" method="_on_player_in_sights_detector_body_entered"]
+[connection signal="body_exited" from="ShipBody/PlayerInSightsDetector" to="ShipBody/ProjectileSpawner" method="_on_player_in_sights_detector_body_exited"]
+[connection signal="enemy_HP_depleted" from="CoreStatsManager" to="." method="_on_core_stats_manager_enemy_hp_depleted"]

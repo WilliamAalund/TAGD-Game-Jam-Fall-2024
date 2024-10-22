@@ -4,3 +4,5 @@
 
 [node name="CoreStatsManager" type="Node3D"]
 script = ExtResource("1_cmr0u")
+
+[connection signal="player_HP_depleted" from="." to="." method="_on_player_hp_depleted"]

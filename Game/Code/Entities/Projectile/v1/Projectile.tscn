@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxvum5kkp866g"]
+
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/Projectile.gd" id="1_vrim5"]
+[ext_resource type="PackedScene" uid="uid://df235afldqa3h" path="res://Resources/Meshes/Placeholder/Laser.tscn" id="2_3hfj1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qa2bj"]
+size = Vector3(0.3, 0.3, 1)
+
+[node name="Projectile" type="Area3D"]
+script = ExtResource("1_vrim5")
+
+[node name="LaserHitbox" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_qa2bj")
+
+[node name="Laser" parent="." instance=ExtResource("2_3hfj1")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

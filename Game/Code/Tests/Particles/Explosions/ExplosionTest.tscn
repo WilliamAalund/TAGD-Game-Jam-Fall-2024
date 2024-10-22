@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b61f8mcm07ajg"]
+
+[ext_resource type="Script" path="res://Code/Scripts/TestScripts/explosion_test.gd" id="1_oke57"]
+
+[node name="ExplosionTest" type="Node3D"]
+script = ExtResource("1_oke57")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.29688)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

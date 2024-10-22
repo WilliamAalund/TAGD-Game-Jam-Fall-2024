@@ -1,8 +1,53 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxl5frgge2xk7"]
+[gd_scene load_steps=5 format=3 uid="uid://cxl5frgge2xk7"]
 
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/Game.gd" id="1_s8h24"]
+
+[sub_resource type="Gradient" id="Gradient_04d1e"]
+offsets = PackedFloat32Array(0, 0.991071, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.419643, 0.419643, 0.419643, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_aemgi"]
+gradient = SubResource("Gradient_04d1e")
+
+[sub_resource type="LabelSettings" id="LabelSettings_qu70w"]
+font_size = 60
 
 [node name="Game" type="Node"]
 script = ExtResource("1_s8h24")
 
 [node name="GameObjects" type="Node3D" parent="."]
+
+[node name="PauseScreenPlaceholder" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PauseScreenPlaceholder"]
+modulate = Color(1, 1, 1, 0.360784)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_aemgi")
+
+[node name="Label" type="Label" parent="PauseScreenPlaceholder"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -11.5
+offset_right = 56.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME PAUSED"
+label_settings = SubResource("LabelSettings_qu70w")

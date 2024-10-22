@@ -35,36 +35,36 @@ height = 1.0
 mesh = SubResource("BoxMesh_rh4t3")
 
 [node name="Hull" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.674973)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.675)
 mesh = SubResource("CylinderMesh_sa2xw")
 
 [node name="GunRight" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.3, -0.1, 2)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.3, -0.1, -2)
 mesh = SubResource("CylinderMesh_fw01n")
 
 [node name="GunLeft" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.3, -0.1, 2)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.3, -0.1, -2)
 mesh = SubResource("CylinderMesh_fw01n")
 
 [node name="BoostLeft" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.6, 0, 0)
-mesh = SubResource("CylinderMesh_rwk0v")
-
-[node name="BoostRight" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.6, 0, 0)
 mesh = SubResource("CylinderMesh_rwk0v")
 
+[node name="BoostRight" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.6, 0, 0)
+mesh = SubResource("CylinderMesh_rwk0v")
+
 [node name="Cockpit" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.0542706, -0.998526, 0, 0.998526, -0.0542706, 0, 0.260872, 0)
+transform = Transform3D(1, 0, 0, 0, -0.0540788, 0.998536, 0, -0.998536, -0.0540788, 0, 0.260872, 0)
 mesh = SubResource("CapsuleMesh_upwot")
 
 [node name="BackLeftBoosterPoint" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, -0.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0.6)
 
 [node name="BackRightBoosterPoint" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, -0.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0.6)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 2.36698)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.367)
 spot_range = 75.0
 spot_attenuation = 0.435275

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bg7jlucscwyed"]
+
+[ext_resource type="PackedScene" uid="uid://bl6n1vj8qnvoe" path="res://Code/Entities/Enemies/v1/EnemyComponents/BodyNavigator.tscn" id="1_sntd3"]
+
+[node name="BodyNavigatorTest" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.937452, 0.348114, 0, -0.348114, 0.937452, 0, 5.60472, 9.46384)
+
+[node name="BodyNavigator" parent="." instance=ExtResource("1_sntd3")]

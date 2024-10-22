@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=3 uid="uid://d2v1wa5se21xv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ji0fs"]
+size = Vector3(2.5, 0.1, 0.7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vq4t"]
+albedo_color = Color(0.781834, 0.609247, 0.349103, 1)
+metallic = 0.51
+roughness = 0.53
+emission_enabled = true
+emission = Color(0.524299, 0.333114, 0.121557, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_y8lao"]
+material = SubResource("StandardMaterial3D_5vq4t")
+top_radius = 0.6
+bottom_radius = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3xyk5"]
+albedo_color = Color(1, 0.324241, 0.257667, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fw01n"]
+material = SubResource("StandardMaterial3D_3xyk5")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xdb73"]
+albedo_color = Color(0.674228, 0, 0.137223, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rwk0v"]
+material = SubResource("StandardMaterial3D_xdb73")
+top_radius = 0.2
+bottom_radius = 0.2
+height = 1.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5bg5n"]
+albedo_color = Color(0.440478, 0.584362, 0.971946, 1)
+metallic = 0.7
+roughness = 0.3
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_upwot"]
+material = SubResource("StandardMaterial3D_5bg5n")
+radius = 0.2
+height = 1.0
+
+[node name="SmallShip" type="MeshInstance3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("BoxMesh_ji0fs")
+
+[node name="Hull" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.161714)
+mesh = SubResource("CylinderMesh_y8lao")
+
+[node name="GunRight" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.3, -0.1, -0.961842)
+mesh = SubResource("CylinderMesh_fw01n")
+
+[node name="GunLeft" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.3, -0.1, -0.961842)
+mesh = SubResource("CylinderMesh_fw01n")
+
+[node name="BoostLeft" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.6, 0, 0)
+mesh = SubResource("CylinderMesh_rwk0v")
+
+[node name="BoostRight" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.6, 0, 0)
+mesh = SubResource("CylinderMesh_rwk0v")
+
+[node name="Cockpit" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.269861, -0.962899, 0, 0.962899, 0.269861, 0, 0.521301, 0)
+mesh = SubResource("CapsuleMesh_upwot")
+
+[node name="BackLeftBoosterPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, -0.6)
+
+[node name="BackRightBoosterPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, -0.6)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.07608)
+light_color = Color(0.960421, 0, 0.235797, 1)
+spot_range = 150.0
+spot_attenuation = 0.3
+spot_angle = 7.5

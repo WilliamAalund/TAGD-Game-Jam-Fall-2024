@@ -2,6 +2,7 @@ extends Node
 
 @onready var background = load("res://Code/PrimaryScenes/TitleScreen/TitleScreenBackground.tscn")
 @onready var top_menu_button = $UI/VBoxContainer/Arcade
+@onready var level_label = $UI/LevelRecord
 
 signal play_arcade(player_count: int)
 signal play_debug
@@ -13,7 +14,7 @@ func _ready():
 	var background_child = background.instantiate()
 	self.add_child(background_child)
 	top_menu_button.grab_focus()
-
+	set_farthest_level_label()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -28,7 +29,15 @@ func show():
 	var background_child = background.instantiate()
 	self.add_child(background_child)
 	$UI.visible = true
+	set_farthest_level_label()
 	top_menu_button.grab_focus()
+
+func set_farthest_level_label():
+	var farthest_level = Saving.get_farthest_level_reached()
+	if farthest_level == -1:
+		level_label.text = "No save file yet"
+	else:
+		level_label.text = "Farthest level reached: " + str(Saving.get_farthest_level_reached())
 
 func _on_debug_pressed():
 	play_debug.emit()

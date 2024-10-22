@@ -7,12 +7,10 @@ signal ship_scraping_against_surface
 
 @export var debug_freeze_ship_position = false
 
-var net_input_rate_multiplier = 8 # A constant that scales the rate at which the net input changes. Currently used by all three net values.
-
-const MIN_TRAVEL_SPEED = -40.0
-const BASE_TRAVEL_SPEED = 40.0
-const MAX_TRAVEL_SPEED = 150.0
-const ACCELERATION = 1.0
+const MIN_TRAVEL_SPEED = -15.0
+const BASE_TRAVEL_SPEED = 30.0
+const MAX_TRAVEL_SPEED = 80.0
+const ACCELERATION = 1.5
 const MAX_BOOST = 100
 const BOOST_ENERGY_REENABLE_THRESHOLD = 25
 
@@ -23,9 +21,10 @@ const BOOST_ENERGY_REENABLE_THRESHOLD = 25
 var boost_energy_regeneration_rate = 14
 var boost_energy_depletion_rate = 18
 
-var travel_speed = BASE_TRAVEL_SPEED # Speed at which the mesh moves forward in space. Forward for the mesh is defined as the positive z direction.
-var max_net_input: float = 2 # Increasing this value increases turn angle of ship
-var max_rotate_net_input: float = 1.25
+var net_input_rate_multiplier = 4 # A constant that scales the rate at which the net input changes. Currently used by all three net values.
+var travel_speed = PlayerData.BASE_TRAVEL_SPEED # Speed at which the mesh moves forward in space. Forward for the mesh is defined as the positive z direction.
+var max_net_input: float = .5 # Increasing this value increases turn angle of ship # FIXME: This is a poor name for this variable.
+var max_rotate_net_input: float = 0.9
 var minimum_net_input = 0.0005 # Used as a value to cull extremely small net input values
 var net_input_horizontal: float = 0 # The experienced input for horizontal rotation from the user. The raw input is interpolated to produce this value, which makes for a smoother turning experience.
 var net_input_vertical: float = 0 # Experienced for vertical
@@ -39,9 +38,17 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _process(delta):
 	if Input.is_action_pressed("focus"):
-		max_net_input = 0.5
+		max_net_input = 0.4
+		net_input_rate_multiplier = 10
+	elif Input.is_action_pressed("break"):
+		max_net_input = 2.2
+		net_input_rate_multiplier = 14
+	elif Input.is_action_pressed("boost") and not boost_depleted:
+		max_net_input = 1.6
+		net_input_rate_multiplier = 10
 	else:
-		max_net_input = 1.5
+		max_net_input = 1.4
+		net_input_rate_multiplier = 10
 	# Update net inputs for movement and rotation
 	update_net_input_horizontal(delta)
 	update_net_input_vertical(delta)
@@ -98,19 +105,19 @@ func update_net_input_horizontal(delta):
 	
 func update_net_input_vertical(delta):
 	var input = 0
-	if Input.is_action_pressed("debug_up"):
-		input = max_net_input * Input.get_action_strength("debug_up")
-	elif Input.is_action_pressed("debug_down"):
-		input = -max_net_input * Input.get_action_strength("debug_down")
+	if Input.is_action_pressed("pitch_down"):
+		input = -max_net_input * Input.get_action_strength("pitch_down")
+	elif Input.is_action_pressed("pitch_up"):
+		input = max_net_input * Input.get_action_strength("pitch_up")
 	if input != net_input_vertical:
 		net_input_vertical += (input - net_input_vertical) * delta * net_input_rate_multiplier
 
 func update_net_input_rotational(delta):
 	var input = 0
-	if Input.is_action_pressed("debug_rotate_right"):
-		input = max_rotate_net_input * Input.get_action_strength("debug_rotate_right")
-	elif Input.is_action_pressed("debug_rotate_left"):
-		input = -max_rotate_net_input * Input.get_action_strength("debug_rotate_left")
+	if Input.is_action_pressed("debug_rotate_left"):
+		input = max_rotate_net_input * Input.get_action_strength("debug_rotate_left")
+	elif Input.is_action_pressed("debug_rotate_right"):
+		input = -max_rotate_net_input * Input.get_action_strength("debug_rotate_right")
 	if input != net_input_rotational:
 		net_input_rotational += (input - net_input_rotational) * delta * net_input_rate_multiplier
 
@@ -148,7 +155,7 @@ func apply_rotation(delta):
 
 # Moves the ship forward based on its current orientation
 func move_ship_forward():
-	var direction_vector = self.transform.basis.z.normalized()
+	var direction_vector = -self.transform.basis.z.normalized()
 	self.velocity = direction_vector * travel_speed
 	move_and_slide()
 

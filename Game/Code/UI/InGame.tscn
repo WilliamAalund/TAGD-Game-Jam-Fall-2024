@@ -1,19 +1,25 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxprnfg1nk8ja"]
+[gd_scene load_steps=12 format=3 uid="uid://bxprnfg1nk8ja"]
 
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/InGame.gd" id="1_20430"]
-[ext_resource type="PackedScene" uid="uid://cin0g7wq0mvdq" path="res://Code/UI/MiniShipModel.tscn" id="1_tjb1n"]
+[ext_resource type="PackedScene" uid="uid://cin0g7wq0mvdq" path="res://Code/UI/MiniPlayerShipModel.tscn" id="1_tjb1n"]
+[ext_resource type="PackedScene" uid="uid://c8nuhu0qufpad" path="res://Code/UI/ObjectivePointers.tscn" id="3_0jc4c"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_p6mat"]
-viewport_path = NodePath("ShipBasisRect/SubViewport")
+viewport_path = NodePath("ShipModelContainer/ShipBasisRect/SubViewport")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_dw3no"]
 specular_color = Color(0.357496, 0.141901, 0.578092, 1)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ofmld"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_t4efw"]
+viewport_path = NodePath("RearviewRect/SubViewport")
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_f8jq6"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_glwv4"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_udp2q"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pptsw"]
 
@@ -63,7 +69,7 @@ custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 show_percentage = false
 
-[node name="ShipBasisRect" type="TextureRect" parent="."]
+[node name="ShipModelContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -71,13 +77,24 @@ anchor_right = 1.0
 offset_left = -200.0
 offset_bottom = 200.0
 grow_horizontal = 0
+
+[node name="ShipBasisRect" type="TextureRect" parent="ShipModelContainer"]
+layout_mode = 2
 texture = SubResource("ViewportTexture_p6mat")
 
-[node name="SubViewport" type="SubViewport" parent="ShipBasisRect"]
+[node name="SubViewport" type="SubViewport" parent="ShipModelContainer/ShipBasisRect"]
 transparent_bg = true
 size = Vector2i(200, 200)
 
-[node name="MiniShipModel" parent="ShipBasisRect/SubViewport" instance=ExtResource("1_tjb1n")]
+[node name="MiniPlayerShipModel" parent="ShipModelContainer/ShipBasisRect/SubViewport" instance=ExtResource("1_tjb1n")]
+
+[node name="VelocityLabel" type="Label" parent="ShipModelContainer"]
+layout_mode = 2
+text = "0.00 m/s"
+
+[node name="ObjectiveLabel" type="Label" parent="ShipModelContainer"]
+layout_mode = 2
+text = "Collect Green Cylinder"
 
 [node name="DialogueBox" type="TextureRect" parent="."]
 visible = false
@@ -133,16 +150,26 @@ offset_bottom = 23.0
 text = "Weapon
 Icon"
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="RearviewRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 12.0
+offset_right = 150.0
+offset_bottom = 112.0
+grow_horizontal = 2
+texture = SubResource("ViewportTexture_t4efw")
+expand_mode = 1
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Level: 0
-Score: 0000000000
-Time: 00:00:00
-"
+[node name="SubViewport" type="SubViewport" parent="RearviewRect"]
+
+[node name="PlayerBackview" type="Node3D" parent="RearviewRect/SubViewport"]
+
+[node name="PlayerBackview" type="Camera3D" parent="RearviewRect/SubViewport/PlayerBackview"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1.5)
+fov = 50.0
 
 [node name="LaserCannonView" type="TextureRect" parent="."]
 visible = false
@@ -196,8 +223,47 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Crosshair" type="TextureRect" parent="."]
+[node name="GameMetadata" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Level" type="Label" parent="GameMetadata"]
 layout_mode = 0
-offset_right = 9.0
-offset_bottom = 10.0
+offset_right = 143.0
+offset_bottom = 75.0
+text = "Level: 0
+Score: 0000000000
+Time: 00:00:00
+"
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color(0.560712, 0.133876, 0.213372, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.5
+offset_top = -2.0
+offset_right = 2.5
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_udp2q")
+
+[node name="Crosshair" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Crosshair" type="TextureRect" parent="Crosshair"]
+layout_mode = 1
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
 texture = SubResource("PlaceholderTexture2D_pptsw")
+
+[node name="ObjectivePointers" parent="." instance=ExtResource("3_0jc4c")]

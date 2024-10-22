@@ -8,11 +8,8 @@ signal enemy_defeated(defeat_position)
 func _ready() -> void:
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+func get_ship_position():
+	return body.global_position
 
 func _on_core_stats_manager_enemy_hp_depleted() -> void:
 	enemy_defeated.emit(body.global_position)

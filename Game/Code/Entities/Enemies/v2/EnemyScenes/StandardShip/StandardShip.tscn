@@ -17,7 +17,7 @@ radius = 200.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_yw3wf"]
 size = Vector3(25, 25, 184.114)
 
-[node name="BabyShip" type="Node3D"]
+[node name="BabyShip" type="Node3D" groups=["enemy"]]
 script = ExtResource("1_n8yne")
 
 [node name="ShipBody" parent="." instance=ExtResource("2_nbtcb")]

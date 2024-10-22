@@ -38,3 +38,6 @@ func construct_player_data_packet():
 
 func _on_core_stats_manager_player_hp_depleted() -> void:
 	player_destroyed.emit()
+
+func _on_new_game_data_packet(packet):
+	print(packet)

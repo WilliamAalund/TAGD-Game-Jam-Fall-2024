@@ -21,7 +21,7 @@ const BOOST_ENERGY_REENABLE_THRESHOLD = 25
 var boost_energy_regeneration_rate = 14
 var boost_energy_depletion_rate = 18
 
-var net_input_rate_multiplier = 8 # A constant that scales the rate at which the net input changes. Currently used by all three net values.
+var net_input_rate_multiplier = 4 # A constant that scales the rate at which the net input changes. Currently used by all three net values.
 var travel_speed = PlayerData.BASE_TRAVEL_SPEED # Speed at which the mesh moves forward in space. Forward for the mesh is defined as the positive z direction.
 var max_net_input: float = .5 # Increasing this value increases turn angle of ship # FIXME: This is a poor name for this variable.
 var max_rotate_net_input: float = 0.9

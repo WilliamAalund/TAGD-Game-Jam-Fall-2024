@@ -35,7 +35,7 @@ func show():
 func set_farthest_level_label():
 	var farthest_level = Saving.get_farthest_level_reached()
 	if farthest_level == -1:
-		level_label.text = ""
+		level_label.text = "No save file yet"
 	else:
 		level_label.text = "Farthest level reached: " + str(Saving.get_farthest_level_reached())
 

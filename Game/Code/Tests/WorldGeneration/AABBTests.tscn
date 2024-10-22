@@ -6,7 +6,7 @@
 script = ExtResource("1_d2kic")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.926134, 0.377194, 0, -0.377194, 0.926134, 0, 500, 600)
+transform = Transform3D(1, 0, 0, 0, 0.926134, 0.377194, 0, -0.377194, 0.926134, 242.233, 369.346, 396.375)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 

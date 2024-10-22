@@ -53,6 +53,7 @@ func set_farthest_level(level_reached: int) -> bool:
 	var current_save_data = load_data()
 	if level_reached > current_save_data["farthest_level"]:
 		current_save_data["farthest_level"] = level_reached
+		print("set_farthest_level: attempting to save data")
 		save_data(current_save_data)
 		print("Saving: Farthest level increased to: ", level_reached)
 		return true

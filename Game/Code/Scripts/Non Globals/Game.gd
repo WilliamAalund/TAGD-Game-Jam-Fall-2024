@@ -48,6 +48,11 @@ func _process(_delta):
 	singleplayer_game_data_packet["level"] = game_level
 	singleplayer_game_data_packet["enemies_spawned"] = enemies_spawned
 	singleplayer_game_data_packet["enemies_defeated"] = enemies_defeated
+	var enemy_global_positions_array = []
+	for child in game_objects.get_children():
+		if child.is_in_group("enemy"):
+			enemy_global_positions_array.append(child.get_ship_position())
+	singleplayer_game_data_packet["enemy_positions"] = enemy_global_positions_array
 	new_game_data_packet.emit(singleplayer_game_data_packet)
 	
 
@@ -101,7 +106,7 @@ func load_level(_game_mode: game_modes):
 	
 	# Connect player data packet to game
 	player_child.new_player_data_packet.connect(self._on_new_player_data_packet)
-	
+	self.new_game_data_packet.connect(player_child._on_new_game_data_packet)
 	# Connect level complete to complete function
 	#level_complete_child.position.z = 100
 	#level_complete_child.body_entered.connect(self._on_level_complete_item_touched)

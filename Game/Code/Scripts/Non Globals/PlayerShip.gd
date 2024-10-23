@@ -18,6 +18,8 @@ const BOOST_ENERGY_REENABLE_THRESHOLD = 25
 @export var boost_depleted: bool = false # If the boost hits a value of 0, it will shut off for a bit until it reaches BOOST_ENERGY_REENABLE_THRESHOLD.
 @export var left_playable_space: bool = false
 
+var ship_steering_input = ShipSteeringInput.new()
+
 var boost_energy_regeneration_rate = 14
 var boost_energy_depletion_rate = 18
 
@@ -131,6 +133,7 @@ func apply_cumulative_rotation(delta):
 # Calculates cumulative rotation from net inputs
 func calculate_cumulative_rotation() -> Vector3:
 	var cumulative_rotation = Vector3.ZERO
+	
 	
 	# Accumulate rotation if net input is above minimum threshold
 	if abs(net_input_horizontal) > minimum_net_input:

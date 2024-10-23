@@ -120,13 +120,18 @@ func load_level(_game_mode: game_modes):
 		# Load level # TODO: Make tutorial levels, then randomly generate them
 	var arcade_level_child = arcade_level.instantiate()
 	game_objects.add_child(arcade_level_child)
+	
+	# Generate random environment objects
+	var world_rng = RNG.new()
+	var random_positions = world_rng.get_random_points(game_level,Vector3(-200,-200,-200),Vector3(200,200,200), 35)
+	
 	enemies_spawned = 0
 	enemies_defeated = 0
 	for i in range(game_level):
 		if i < 3:
-			spawn_enemy(Vector3(randi_range(-200,200),randi_range(-200,200),0),small_enemy_ship)
+			spawn_enemy(random_positions[i],small_enemy_ship)
 		else:
-			spawn_enemy(Vector3(randi_range(-200,200),randi_range(-200,200),0),standard_enemy_ship)
+			spawn_enemy(random_positions[i],standard_enemy_ship)
 	
 
 func unload_level():

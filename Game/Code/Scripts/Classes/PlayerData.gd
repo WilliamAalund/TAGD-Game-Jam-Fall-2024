@@ -80,3 +80,8 @@ func prepare_player_stats_for_new_level():
 func enemy_destroyed():
 	score += 100
 	scrap += 10
+
+func canBuy(Item):
+	#check if player can buy item
+	#if(Item.priceItem)
+	return true

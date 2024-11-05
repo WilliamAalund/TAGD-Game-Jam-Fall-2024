@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://blheuomdr3anl"]
+
+[ext_resource type="Script" path="res://Code/Scripts/TestScripts/ShopTest.gd" id="1_ww0oy"]
+[ext_resource type="PackedScene" uid="uid://517ufem84oyx" path="res://Code/Tests/ItemButton.tscn" id="2_panc0"]
+
+[node name="ShopTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ww0oy")
+
+[node name="ItemButton1" parent="." instance=ExtResource("2_panc0")]
+layout_mode = 1
+offset_left = 100.0
+offset_top = 200.0
+offset_right = -936.0
+offset_bottom = -354.0
+
+[node name="ItemButton2" parent="." instance=ExtResource("2_panc0")]
+layout_mode = 1
+offset_left = 500.0
+offset_top = 200.0
+offset_right = -536.0
+offset_bottom = -354.0
+
+[node name="ItemButton" parent="." instance=ExtResource("2_panc0")]
+layout_mode = 1
+offset_left = 900.0
+offset_top = 200.0
+offset_right = -136.0
+offset_bottom = -354.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -100.0
+offset_right = -30.0
+offset_bottom = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Continue"
+
+[connection signal="pressed" from="ItemButton1" to="." method="_on_item_button_pressed"]

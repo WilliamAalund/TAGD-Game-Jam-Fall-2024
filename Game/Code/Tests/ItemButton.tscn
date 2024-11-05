@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://517ufem84oyx"]
+
+[sub_resource type="Gradient" id="Gradient_8tq1o"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c1dw8"]
+gradient = SubResource("Gradient_8tq1o")
+
+[node name="ItemButton" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = -100.0
+offset_right = 19.0
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Item
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.0
+offset_right = 25.0
+offset_bottom = 50.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="BoxContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("GradientTexture2D_c1dw8")
+expand_mode = 1

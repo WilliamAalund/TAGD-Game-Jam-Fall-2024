@@ -4,6 +4,7 @@ var Items = {
 	"Blaster":
 	{
 		"price": 50,
+		"image": "image",
 		"description": "A powerful blaster",
 		"type": "Weapon",
 		"modifier": 1.2,

@@ -2,33 +2,38 @@ extends Node
 # Load the dictionary script
 var item_data = preload("res://Code/Scripts/TestScripts/ItemDict.gd").new()
 
-
+var target_types = ["Weapon", "Boost", "Health"]  # Adjust as needed
 
 
 # Function to select random items ensuring they are from different types
 var selected_items = []
+# Function to select random items ensuring each button displays a specific type
 func select_random_items():
-	var used_types = []
-
-#CHANGE IF STATEMENT IN WHILE LOOP TO TRY CATCH
-	while selected_items.size() < 3:
-		var item_names = item_data.Items.keys()
-		var random_item_name = item_names[randi() % item_names.size()]
-		var random_item = item_data.Items[random_item_name]
+	selected_items.clear()
+	
+	# For each target type, select a random item of that type
+	for target_type in target_types:
+		var items_of_type = []
 		
-		#Check if the item type has already been selected
-		if random_item.type not in used_types:
+		# Collect all items that match the current target type
+		for item_name in item_data.Items.keys():
+			var item = item_data.Items[item_name]
+			if item.type == target_type:
+				items_of_type.append(item_name)
+		
+		# Select a random item from the items of this type (if any exist)
+		if items_of_type.size() > 0:
+			var random_item_name = items_of_type[randi() % items_of_type.size()]
 			selected_items.append(random_item_name)
-			used_types.append(random_item.type)  # Keep track of used types
 
 
 func update_ui():
 	if selected_items.size() < 3:
 		return
 		
-	update_ui_box(get_node("ItemButton1"), selected_items[0])
-	update_ui_box(get_node("ItemButton2"), selected_items[1])
-	update_ui_box(get_node("ItemButton3"), selected_items[2])
+	update_ui_box(get_node("ItemButton1"), selected_items[0]) #Weapon
+	update_ui_box(get_node("ItemButton2"), selected_items[1]) #Boost
+	update_ui_box(get_node("ItemButton3"), selected_items[2]) #Health
 
 
 func update_ui_box(ui_box, item_name):

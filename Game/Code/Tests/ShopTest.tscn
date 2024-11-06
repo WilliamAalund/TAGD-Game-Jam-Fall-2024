@@ -48,6 +48,34 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Continue"
 
+[node name="Weapon Label" type="Label" parent="."]
+layout_mode = 1
+offset_left = 150.0
+offset_top = 125.0
+offset_right = 269.0
+offset_bottom = 167.0
+theme_override_font_sizes/font_size = 30
+text = "Weapon"
+
+[node name="BoostLabel" type="Label" parent="."]
+layout_mode = 1
+offset_left = 600.0
+offset_top = 125.0
+offset_right = 719.0
+offset_bottom = 167.0
+theme_override_font_sizes/font_size = 30
+text = "Boost"
+
+[node name="HealthLabel" type="Label" parent="."]
+layout_mode = 1
+offset_left = 1000.0
+offset_top = 125.0
+offset_right = 1119.0
+offset_bottom = 167.0
+theme_override_font_sizes/font_size = 30
+text = "Health
+"
+
 [connection signal="pressed" from="ItemButton1" to="." method="_on_item_button_pressed"]
 [connection signal="pressed" from="ItemButton2" to="." method="_on_item_button_pressed"]
 [connection signal="pressed" from="ItemButton3" to="." method="_on_item_button_pressed"]

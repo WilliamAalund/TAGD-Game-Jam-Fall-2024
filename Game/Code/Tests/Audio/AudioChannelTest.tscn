@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://da15bda8l18c3"]
+
+[ext_resource type="AudioStream" uid="uid://d38uno13bdvvv" path="res://Resources/Audio/big_explosion.wav" id="1_a2fmb"]
+[ext_resource type="Script" path="res://Code/Scripts/TestScripts/audio_channel_test.gd" id="1_l7xn8"]
+
+[node name="AudioChannelTest" type="Node"]
+script = ExtResource("1_l7xn8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_a2fmb")
+volume_db = -20.444

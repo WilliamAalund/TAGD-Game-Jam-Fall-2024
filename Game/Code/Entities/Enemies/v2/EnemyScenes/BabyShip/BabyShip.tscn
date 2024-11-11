@@ -45,8 +45,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60.5161)
 shape = SubResource("BoxShape3D_yw3wf")
 
 [node name="CoreStatsManager" parent="." instance=ExtResource("2_k6c6u")]
-HP = 30
-maximum_HP = 30
+HP = 35
+maximum_HP = 35
 
 [connection signal="ship_hit_by_projectile" from="ShipBody" to="CoreStatsManager" method="_on_ship_body_ship_hit_by_projectile"]
 [connection signal="player_entered_area" from="ShipBody/PlayerDetector" to="ShipBody" method="_on_player_detector_player_entered_area"]

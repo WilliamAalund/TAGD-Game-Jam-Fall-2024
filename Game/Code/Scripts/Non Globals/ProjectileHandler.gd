@@ -1,11 +1,13 @@
 extends Node3D
 
+signal projectile_fired(projectile_name)
+
 @onready var projectile_scene = load("res://Code/Entities/Projectile/v2/Projectile.tscn")
 
 @onready var left = $LaserCannons/Left
 @onready var right = $LaserCannons/Right
 
-var rpm = 413 # Rounds per minute
+var rpm = 500 # Rounds per minute
 var fire_rate = 60.0 / rpm # Time between shots in seconds
 var time_since_last_fire = 0.0 # Timer to track time since last shot
 
@@ -40,6 +42,7 @@ func fire_projectile():
 		current_port = fire_port.RIGHT
 	else:
 		current_port = fire_port.LEFT
+	self.projectile_fired.emit(fire_mode)
 
 func spawn_projectile():
 	var new_projectile = projectile_scene.instantiate()

@@ -11,6 +11,7 @@ signal game_killed
 @onready var level_complete_item = load("res://Code/Entities/Items/LevelComplete/LevelComplete.tscn")
 @onready var small_enemy_ship = load("res://Code/Entities/Enemies/v2/EnemyScenes/BabyShip/BabyShip.tscn")
 @onready var standard_enemy_ship = load("res://Code/Entities/Enemies/v2/EnemyScenes/StandardShip/StandardShip.tscn")
+@onready var small_rock = load("res://Code/Entities/Environment/SmallRock.tscn")
 @export var debug_enabled = false
 
 var game_is_active = false # Boolean used to control when the quit button is listening for user input.
@@ -122,16 +123,19 @@ func load_level(_game_mode: game_modes):
 	game_objects.add_child(arcade_level_child)
 	
 	# Generate random environment objects
+	var num_random_positions = game_level + 5
+	
 	var world_rng = RNG.new()
-	var random_positions = world_rng.get_random_points(game_level,Vector3(-200,-200,-200),Vector3(200,200,200), 35)
+	var random_positions = world_rng.get_random_points(num_random_positions,Vector3(-200,-200,-200),Vector3(200,200,200), 35)
+	print(random_positions.size())
 	
 	enemies_spawned = 0
 	enemies_defeated = 0
-	for i in range(game_level):
-		if i < 3:
+	for i in range(num_random_positions):
+		if i < game_level:
 			spawn_enemy(random_positions[i],small_enemy_ship)
 		else:
-			spawn_enemy(random_positions[i],standard_enemy_ship)
+			spawn_rock(random_positions[i],standard_enemy_ship)
 	
 
 func unload_level():
@@ -154,6 +158,13 @@ func spawn_enemy(spawn_position: Vector3, enemy_type):
 	game_objects.add_child(enemy_instance)
 	enemy_instance.global_position = spawn_position
 
+func spawn_rock(spawn_position: Vector3, environment_type):
+	pass
+	var small_rock_instance = small_rock.instantiate()
+	game_objects.add_child(small_rock_instance)
+	small_rock_instance.global_position = spawn_position
+
+
 func spawn_complete_object(spawn_position: Vector3):
 	var level_complete_child = level_complete_item.instantiate()
 	level_complete_child.position = spawn_position
@@ -169,6 +180,7 @@ func _on_level_complete_item_touched(body):
 
 func _on_enemy_defeated(position_perished):
 	pass # TODO: Make enemy entities broadcast a signal to this function. Then, score and other veriables can be altered.
+	PlayerData.enemy_destroyed()
 	enemies_defeated += 1
 	if enemies_defeated >= enemies_spawned:
 		spawn_complete_object(position_perished)

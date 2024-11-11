@@ -1,8 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxprnfg1nk8ja"]
+[gd_scene load_steps=15 format=3 uid="uid://bxprnfg1nk8ja"]
 
-[ext_resource type="Script" path="res://Code/Scripts/Non Globals/InGame.gd" id="1_20430"]
+[ext_resource type="Theme" uid="uid://cvn6e33yj56j7" path="res://Resources/UIElements/InGameUI.tres" id="1_0h4aj"]
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/InGameUI.gd" id="1_20430"]
 [ext_resource type="PackedScene" uid="uid://cin0g7wq0mvdq" path="res://Code/UI/MiniPlayerShipModel.tscn" id="1_tjb1n"]
+[ext_resource type="Texture2D" uid="uid://nqm57oc6t07n" path="res://Resources/UIElements/Health Bar Frame.png" id="2_emmwd"]
 [ext_resource type="PackedScene" uid="uid://c8nuhu0qufpad" path="res://Code/UI/ObjectivePointers.tscn" id="3_0jc4c"]
+[ext_resource type="Texture2D" uid="uid://y0rwykwme2fn" path="res://Resources/UIElements/HealthBar.png" id="3_4cx3i"]
+[ext_resource type="Texture2D" uid="uid://bdgux43h3mmvm" path="res://Resources/Textures/CrosshairLaser.png" id="3_s1o8n"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_p6mat"]
 viewport_path = NodePath("ShipModelContainer/ShipBasisRect/SubViewport")
@@ -21,8 +25,6 @@ viewport_path = NodePath("RearviewRect/SubViewport")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_udp2q"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pptsw"]
-
 [node name="InGame" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -30,6 +32,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_0h4aj")
 script = ExtResource("1_20430")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -52,10 +55,12 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 27.0
-offset_top = -82.0
-offset_right = 491.0
+offset_left = 15.0
+offset_top = -100.0
+offset_right = 933.0
+offset_bottom = 27.0
 grow_vertical = 0
+scale = Vector2(0.6, 0.6)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
 layout_mode = 2
@@ -64,10 +69,12 @@ layout_mode = 2
 layout_mode = 2
 text = "HP:"
 
-[node name="Health" type="ProgressBar" parent="MarginContainer2/VBoxContainer"]
+[node name="Health" type="TextureProgressBar" parent="MarginContainer2/VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
-show_percentage = false
+value = 100.0
+texture_over = ExtResource("2_emmwd")
+texture_progress = ExtResource("3_4cx3i")
 
 [node name="ShipModelContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -238,6 +245,7 @@ Time: 00:00:00
 "
 
 [node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
 modulate = Color(0.560712, 0.133876, 0.213372, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -260,10 +268,11 @@ offset_bottom = 40.0
 
 [node name="Crosshair" type="TextureRect" parent="Crosshair"]
 layout_mode = 1
-offset_left = -2.0
-offset_top = -2.0
-offset_right = 2.0
-offset_bottom = 2.0
-texture = SubResource("PlaceholderTexture2D_pptsw")
+offset_left = -32.0
+offset_top = -24.0
+offset_right = 184.0
+offset_bottom = 138.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_s1o8n")
 
 [node name="ObjectivePointers" parent="." instance=ExtResource("3_0jc4c")]

@@ -43,4 +43,3 @@ func _on_line_edit_text_submitted(new_text):
 		fire_rate = 60.0 / rpm # Time between shots in seconds
 		time_since_last_fire = 0.0 # Timer to track time since last shot
 		rpm_label.text = "RPM: " + str(rpm)
-

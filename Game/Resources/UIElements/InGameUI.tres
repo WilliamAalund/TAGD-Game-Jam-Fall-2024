@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cvn6e33yj56j7"]
+
+[ext_resource type="FontFile" uid="uid://c5aaayuhy8o3h" path="res://Resources/UIElements/FunnelSans-VariableFont_wght.ttf" id="1_6p3y8"]
+
+[resource]
+default_font = ExtResource("1_6p3y8")

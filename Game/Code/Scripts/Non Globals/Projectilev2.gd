@@ -36,10 +36,10 @@ func _physics_process(delta: float) -> void:
 			#print("Collided with body: ",collision.get_collider())
 			var collider = collision.get_collider()
 			if collider.is_in_group("player") and projectile_creator_group == "enemy":
-				print("Player hit by projectile")
+				#print("Player hit by projectile")
 				PlayerData.inflict_damage(10, "laser")
 			elif collider.is_in_group("enemy") and projectile_creator_group == "player":
-				print("Enemy hit by projectile")
+				#print("Enemy hit by projectile")
 				if collider.has_method("damaged_by_projectile"):
 					collider.damaged_by_projectile(type)
 		#print("I have travelled for my maximum distance")

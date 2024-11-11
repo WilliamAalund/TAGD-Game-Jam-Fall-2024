@@ -35,7 +35,7 @@ func _on_player_new_player_data_packet(packet):
 
 # Process information about the game overall
 func _on_game_new_game_data_packet(packet):
-	level_label.text = "Level: " + str(packet["level"])
+	level_label.text = "Level: " + str(packet["level"]) + "\nScore: " + str(PlayerData.score)
 	if packet["enemy_positions"].size() != 0:
 		objective_pointers.look_at(packet["enemy_positions"][0])
 	

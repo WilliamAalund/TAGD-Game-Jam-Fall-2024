@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var camera_following_player := true
+
 @onready var spring_arm = $SpringArm3D
 @onready var camera = $SpringArm3D/Camera3D
 @onready var front_camera_animation = $SpringArm3D/Camera3D/AnimationPlayer
@@ -10,6 +12,7 @@ var focus_camera_rotate_speed = 200.0 # FIXME: These Values dont do anything!!! 
 var base_camera_fov = 65.0
 
 var focus_camera_fov = 45.0
+var fov_control = 1.0 # Used to control camera zoom in.
 var zoomed_in = false
 var breaking = true
 
@@ -24,6 +27,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	camera.fov = base_camera_fov * fov_control
 	if Input.is_action_pressed("focus"):
 		if zoomed_in == false:
 			pass
@@ -54,6 +59,7 @@ func get_unprojected_position_from_camera(coordinate: Vector3):
 	return camera.unproject_position(coordinate)
 
 func _on_player_new_player_data_packet(packet):
-	self.global_position = packet["global_pos"] 
-	target_basis = packet["ship_basis"]
+	if camera_following_player:
+		self.global_position = packet["global_pos"] 
+		target_basis = packet["ship_basis"]
 	spring_arm.spring_length = 8 # + packet["velocity"].length() / 10

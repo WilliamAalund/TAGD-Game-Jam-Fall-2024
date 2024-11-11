@@ -5,6 +5,7 @@ signal game_killed
 
 @onready var game_objects = $GameObjects # Reference to node where objects are stored
 @onready var pause_screen = $PauseScreenPlaceholder
+@onready var level_complete_screen = $LevelCompletePlaceholder
 @onready var player_ship = load("res://Code/Entities/Player/v1/Player.tscn")
 @onready var arcade_level = load("res://Code/Levels/ArcadeLevel.tscn")
 @onready var ship_hud = load("res://Code/UI/InGame.tscn")
@@ -115,7 +116,8 @@ func load_level(_game_mode: game_modes):
 	# Spawn children
 	game_objects.add_child(hud_child)
 	game_objects.add_child(player_child)
-	player_child.position.z = 300
+	player_child.position.z = 350
+	player_child.position.y = 100
 	#game_objects.add_child(level_complete_child)
 	
 		# Load level # TODO: Make tutorial levels, then randomly generate them
@@ -174,9 +176,18 @@ func spawn_complete_object(spawn_position: Vector3):
 func _on_level_complete_item_touched(body):
 	if body.is_in_group("player"):
 		print("Player collected level complete item")
+		game_objects.call_deferred("set", "process_mode", Node.PROCESS_MODE_DISABLED)
+		level_complete_screen.visible = true
+		await get_tree().create_timer(2).timeout
+		level_complete_screen.visible = false
+		game_objects.process_mode = Node.PROCESS_MODE_INHERIT
 		unload_level()
 		game_level += 1
 		load_level(game_modes.ARCADE)
+
+func level_complete_animation():
+	level_complete_screen.visible = true
+	pass
 
 func _on_enemy_defeated(position_perished):
 	pass # TODO: Make enemy entities broadcast a signal to this function. Then, score and other veriables can be altered.

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxl5frgge2xk7"]
+[gd_scene load_steps=7 format=3 uid="uid://cxl5frgge2xk7"]
 
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/Game.gd" id="1_s8h24"]
+[ext_resource type="Theme" uid="uid://cvn6e33yj56j7" path="res://Resources/UIElements/InGameUI.tres" id="2_qtu5r"]
 
 [sub_resource type="Gradient" id="Gradient_04d1e"]
 offsets = PackedFloat32Array(0, 0.991071, 1)
@@ -11,6 +12,9 @@ gradient = SubResource("Gradient_04d1e")
 
 [sub_resource type="LabelSettings" id="LabelSettings_qu70w"]
 font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_xjkv5"]
+font_size = 55
 
 [node name="Game" type="Node"]
 script = ExtResource("1_s8h24")
@@ -51,3 +55,29 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "GAME PAUSED"
 label_settings = SubResource("LabelSettings_qu70w")
+
+[node name="LevelCompletePlaceholder" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="LevelCompletePlaceholder"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_qtu5r")
+text = "Level Complete"
+label_settings = SubResource("LabelSettings_xjkv5")

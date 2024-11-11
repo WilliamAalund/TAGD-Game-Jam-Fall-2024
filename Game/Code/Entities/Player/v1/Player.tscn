@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cue5suxaxwn1t"]
+[gd_scene load_steps=12 format=3 uid="uid://cue5suxaxwn1t"]
 
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/Player.gd" id="1_h3sec"]
 [ext_resource type="PackedScene" uid="uid://2fpkavmcoexg" path="res://Code/Entities/Player/v1/Ship.tscn" id="2_ijeku"]
@@ -8,6 +8,115 @@
 [ext_resource type="PackedScene" uid="uid://mwdnu3g0yeef" path="res://Code/Entities/Player/v1/PlayAreaSeeker.tscn" id="5_u7qfv"]
 [ext_resource type="PackedScene" uid="uid://cwuqqftk7pvtn" path="res://Code/Entities/Player/v1/CoreStatsManager.tscn" id="6_ng4yd"]
 [ext_resource type="PackedScene" uid="uid://bbgic7t57ie7l" path="res://Code/Entities/Player/v1/SoundController.tscn" id="7_12a38"]
+
+[sub_resource type="Animation" id="Animation_qi1js"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ship:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShipCamera:camera_following_player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ship:input_enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Ship:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kyjcv"]
+resource_name = "ship_fly_in"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ship:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.566667, 0.966667, 1.13333),
+"transitions": PackedFloat32Array(0.554784, 0.63728, 0.68302, 0.15932),
+"update": 0,
+"values": [Vector3(-15, 15, 0), Vector3(4, -4, 0), Vector3(-1, 1, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShipCamera:camera_following_player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ship:input_enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Ship:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.433333, 1, 1.16667),
+"transitions": PackedFloat32Array(1, 1, 0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.502655), Vector3(0, 0, 0.167552), Vector3(0, 0, -0.174533), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lakrw"]
+_data = {
+"RESET": SubResource("Animation_qi1js"),
+"ship_fly_in": SubResource("Animation_kyjcv")
+}
 
 [node name="Player" type="Node3D"]
 script = ExtResource("1_h3sec")
@@ -22,10 +131,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998406, 0)
 script = ExtResource("5_tyl6p")
 
 [node name="ShipCamera" parent="." instance=ExtResource("3_8kkb1")]
+camera_following_player = false
 
 [node name="ProjectileHandler" parent="." instance=ExtResource("4_l1hh6")]
 
 [node name="CoreStatsManager" parent="." instance=ExtResource("6_ng4yd")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lakrw")
+}
 
 [connection signal="new_player_data_packet" from="." to="Ship/PlayAreaSeeker" method="_on_player_new_player_data_packet"]
 [connection signal="new_player_data_packet" from="." to="ShipCamera" method="_on_player_new_player_data_packet"]

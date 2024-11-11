@@ -6,16 +6,21 @@ signal player_destroyed
 @onready var player_ship = $Ship
 @onready var camera = $ShipCamera
 @onready var stats = $CoreStatsManager
+@onready var animation = $AnimationPlayer
 
 var player_data_packet = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Initial setup can be done here.
+	camera.global_position = player_ship.global_position
+	animation.play("ship_fly_in")
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	construct_player_data_packet()
+
 
 # Function to construct and optionally alter the player data packet.
 func construct_player_data_packet():

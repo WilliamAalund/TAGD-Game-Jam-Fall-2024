@@ -6,6 +6,7 @@ extends CharacterBody3D
 signal ship_scraping_against_surface
 
 @export var debug_freeze_ship_position = false
+@export var input_enabled := true
 
 const MIN_TRAVEL_SPEED = -15.0
 const BASE_TRAVEL_SPEED = 30.0
@@ -39,24 +40,25 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
 func _process(delta):
-	if Input.is_action_pressed("focus"):
-		max_net_input = 0.4
-		net_input_rate_multiplier = 10
-	elif Input.is_action_pressed("break"):
-		max_net_input = 2.2
-		net_input_rate_multiplier = 14
-	elif Input.is_action_pressed("boost") and not boost_depleted:
-		max_net_input = 1.6
-		net_input_rate_multiplier = 10
-	else:
-		max_net_input = 1.4
-		net_input_rate_multiplier = 10
-	# Update net inputs for movement and rotation
-	update_net_input_horizontal(delta)
-	update_net_input_vertical(delta)
-	update_net_input_rotational(delta)
-	# Calculate and apply cumulative rotation based on net inputs
-	apply_cumulative_rotation(delta)
+	if input_enabled:
+		if Input.is_action_pressed("focus"):
+			max_net_input = 0.4
+			net_input_rate_multiplier = 10
+		elif Input.is_action_pressed("break"):
+			max_net_input = 2.2
+			net_input_rate_multiplier = 14
+		elif Input.is_action_pressed("boost") and not boost_depleted:
+			max_net_input = 1.6
+			net_input_rate_multiplier = 10
+		else:
+			max_net_input = 1.4
+			net_input_rate_multiplier = 10
+		# Update net inputs for movement and rotation
+		update_net_input_horizontal(delta)
+		update_net_input_vertical(delta)
+		update_net_input_rotational(delta)
+		# Calculate and apply cumulative rotation based on net inputs
+		apply_cumulative_rotation(delta)
 
 func _physics_process(delta):
 	if self.get_slide_collision_count() > 0:

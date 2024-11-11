@@ -182,6 +182,7 @@ func _on_enemy_defeated(position_perished):
 	pass # TODO: Make enemy entities broadcast a signal to this function. Then, score and other veriables can be altered.
 	PlayerData.enemy_destroyed()
 	enemies_defeated += 1
+	
 	if enemies_defeated >= enemies_spawned:
 		spawn_complete_object(position_perished)
 		pass # Spawn the level complete item

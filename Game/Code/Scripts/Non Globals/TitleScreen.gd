@@ -7,6 +7,7 @@ extends Node
 signal play_arcade(player_count: int)
 signal play_debug
 signal quit_game
+signal title_clear_save
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,3 +48,6 @@ func _on_quit_pressed():
 
 func _on_arcade_pressed():
 	play_arcade.emit(1)
+
+func _on_button_pressed() -> void:
+	title_clear_save.emit()

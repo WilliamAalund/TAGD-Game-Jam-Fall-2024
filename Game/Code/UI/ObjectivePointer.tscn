@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://baip2y24vj10c"]
+[gd_scene load_steps=2 format=3 uid="uid://baip2y24vj10c"]
+
+[ext_resource type="PackedScene" uid="uid://y1pw42yf1wpp" path="res://Resources/Meshes/Placeholder/HUD3DEnemyPointer.tscn" id="1_4x3yv"]
 
 [node name="ObjectivePointer" type="Node3D"]
+
+[node name="Hud3dEnemyPointer" parent="." instance=ExtResource("1_4x3yv")]

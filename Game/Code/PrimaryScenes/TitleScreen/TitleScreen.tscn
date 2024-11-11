@@ -40,6 +40,10 @@ visible = false
 layout_mode = 2
 text = "Run Debug"
 
+[node name="Button" type="Button" parent="UI/VBoxContainer"]
+layout_mode = 2
+text = "Clear Save File"
+
 [node name="Quit" type="Button" parent="UI/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
@@ -60,4 +64,5 @@ offset_bottom = 340.0
 
 [connection signal="pressed" from="UI/VBoxContainer/Arcade" to="." method="_on_arcade_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/Debug" to="." method="_on_debug_pressed"]
+[connection signal="pressed" from="UI/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

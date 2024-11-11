@@ -11,3 +11,7 @@ It is also a credits page of sorts, logging the documentation and resources we u
 ## UI 
 [Godot Documentation: User Interface](https://docs.godotengine.org/en/stable/tutorials/ui/index.html/)
 
+## Playstation Controller Buttons
+https://www.figma.com/community/file/968584708653901737/playstation-controller-icons
+
+

@@ -29,7 +29,7 @@ func _on_body_navigator_hit_by_projectile(_projectile_kind: Variant) -> void:
 
 
 func _on_enemy_hp_depleted() -> void:
-	PlayerData.enemy_destroyed() # Handle updating information that the player needs
+	pass
 	
 
 

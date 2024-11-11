@@ -37,3 +37,9 @@ func _on_title_screen_quit_game(): # End the game
 func _on_game_game_killed():
 	print("Main: User killed game")
 	title_screen.show()
+
+
+func _on_title_screen_title_clear_save() -> void:
+	print("User requested to delete save data")
+	Saving.reset_save_data()
+	title_screen.set_farthest_level_label()

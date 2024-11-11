@@ -19,4 +19,5 @@ debug_enabled = true
 [connection signal="play_arcade" from="TitleScreen" to="." method="_on_title_screen_play_arcade"]
 [connection signal="play_debug" from="TitleScreen" to="." method="_on_title_screen_play_debug"]
 [connection signal="quit_game" from="TitleScreen" to="." method="_on_title_screen_quit_game"]
+[connection signal="title_clear_save" from="TitleScreen" to="." method="_on_title_screen_title_clear_save"]
 [connection signal="debug_quit" from="Debug" to="." method="_on_debug_debug_quit"]

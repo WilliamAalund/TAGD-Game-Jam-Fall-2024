@@ -22,7 +22,9 @@ script = ExtResource("1_sadnt")
 
 [node name="ShipBody" parent="." instance=ExtResource("1_bci3o")]
 velocity = Vector3(-23.3545, -1.34565e-06, -26.0685)
+off_course_travel_speed = 25
 rotation_speed_multiplier = 0.7
+alters_speed_when_off_target = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ShipBody"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.343213)

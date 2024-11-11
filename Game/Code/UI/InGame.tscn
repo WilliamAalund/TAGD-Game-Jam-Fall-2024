@@ -7,14 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://c8nuhu0qufpad" path="res://Code/UI/ObjectivePointers.tscn" id="3_0jc4c"]
 [ext_resource type="Texture2D" uid="uid://y0rwykwme2fn" path="res://Resources/UIElements/HealthBar.png" id="3_4cx3i"]
 [ext_resource type="Texture2D" uid="uid://bdgux43h3mmvm" path="res://Resources/Textures/CrosshairLaser.png" id="3_s1o8n"]
+[ext_resource type="Texture2D" uid="uid://dmntm7c5eyqn" path="res://Resources/Textures/Laser.png" id="6_wdw1u"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_p6mat"]
 viewport_path = NodePath("ShipModelContainer/ShipBasisRect/SubViewport")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_dw3no"]
 specular_color = Color(0.357496, 0.141901, 0.578092, 1)
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_ofmld"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_t4efw"]
 viewport_path = NodePath("RearviewRect/SubViewport")
@@ -147,15 +146,8 @@ Weapon Ammo"
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_vertical = 4
-texture = SubResource("CanvasTexture_ofmld")
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Weapon Graphic"]
-modulate = Color(0.169245, 0.169245, 0.169245, 1)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Weapon
-Icon"
+texture = ExtResource("6_wdw1u")
+expand_mode = 2
 
 [node name="RearviewRect" type="TextureRect" parent="."]
 layout_mode = 1

@@ -1,10 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ces21elw3d5xw"]
+[gd_scene load_steps=4 format=3 uid="uid://ces21elw3d5xw"]
 
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/TitleScreen.gd" id="1_k7ege"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_y0qpl"]
-font_size = 80
-font_color = Color(0.351231, 0.487575, 0.710945, 1)
+[ext_resource type="Texture2D" uid="uid://hrhj3xlhiocg" path="res://Resources/Textures/Logo.png" id="2_6xq4g"]
+[ext_resource type="Theme" uid="uid://cvn6e33yj56j7" path="res://Resources/UIElements/InGameUI.tres" id="2_iav23"]
 
 [node name="TitleScreen" type="Node"]
 script = ExtResource("1_k7ege")
@@ -16,19 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Label" type="Label" parent="UI"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -131.0
-offset_right = 131.0
-offset_bottom = 67.0
-grow_horizontal = 2
-text = "Planeteene
-"
-label_settings = SubResource("LabelSettings_y0qpl")
+theme = ExtResource("2_iav23")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI"]
 layout_mode = 1
@@ -43,12 +29,14 @@ offset_right = 46.5
 offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.3, 1.3)
 
 [node name="Arcade" type="Button" parent="UI/VBoxContainer"]
 layout_mode = 2
 text = "Arcade"
 
 [node name="Debug" type="Button" parent="UI/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Run Debug"
 
@@ -56,10 +44,19 @@ text = "Run Debug"
 layout_mode = 2
 text = "Quit"
 
+[node name="TextureRect" type="TextureRect" parent="UI"]
+layout_mode = 2
+offset_right = 2360.0
+offset_bottom = 1640.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_6xq4g")
+
 [node name="LevelRecord" type="Label" parent="UI"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+layout_mode = 2
+offset_left = 1.0
+offset_top = 320.0
+offset_right = 2361.0
+offset_bottom = 340.0
 
 [connection signal="pressed" from="UI/VBoxContainer/Arcade" to="." method="_on_arcade_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/Debug" to="." method="_on_debug_pressed"]

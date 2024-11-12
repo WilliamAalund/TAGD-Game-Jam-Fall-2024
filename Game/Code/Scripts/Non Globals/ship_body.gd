@@ -60,6 +60,7 @@ func interpolate_to_new_basis(delta):
 	var current_rotation := Quaternion(self.global_transform.basis)
 	
 	angle_to_target_position = current_rotation.angle_to(target_rotation)
+	rotation_speed_multiplier = min(1 / angle_to_target_position, 1.5)
 	
 	var next_rotation := current_rotation.slerp(target_rotation, delta * rotation_speed_multiplier)
 	self.global_transform.basis = Basis(next_rotation)

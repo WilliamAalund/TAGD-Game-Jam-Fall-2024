@@ -43,16 +43,16 @@ func _process(delta):
 	if input_enabled:
 		if Input.is_action_pressed("focus"):
 			max_net_input = 0.4
-			net_input_rate_multiplier = 10
+			net_input_rate_multiplier = 25
 		elif Input.is_action_pressed("break"):
 			max_net_input = 2.4
-			net_input_rate_multiplier = 14
+			net_input_rate_multiplier = 16
 		elif Input.is_action_pressed("boost") and not boost_depleted:
 			max_net_input = 1.6
-			net_input_rate_multiplier = 10
+			net_input_rate_multiplier = 8
 		else:
 			max_net_input = 1.6
-			net_input_rate_multiplier = 10
+			net_input_rate_multiplier = 14
 		# Update net inputs for movement and rotation
 		update_net_input_horizontal(delta)
 		update_net_input_vertical(delta)

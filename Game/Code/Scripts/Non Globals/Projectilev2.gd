@@ -17,7 +17,7 @@ const MAX_RANGE_TEST = 100.0
 const SPEED_LASER = 1750.0
 const MAX_RANGE_LASER = 2000.0
 
-const SPEED_ENEMY_LASER = 600.0
+const SPEED_ENEMY_LASER = 400.0
 const MAX_RANGE_ENEMY_LASER = 1000.0
 
 func _ready() -> void:
@@ -56,14 +56,17 @@ func set_up_projectile(projectile_type: type_enum, creator_basis: Basis,creator_
 		current_speed = SPEED_LASER
 		current_maximum_projectile_range = MAX_RANGE_LASER
 		$Laser.visible = true
+		$PlayerLaserHitbox.disabled = false
 	elif projectile_type == type_enum.ENEMY_LASER:
 		current_speed = SPEED_ENEMY_LASER
 		current_maximum_projectile_range = MAX_RANGE_ENEMY_LASER
 		$EnemyLaser.visible = true
+		$EnemyLaserHitbox.disabled = false
 	elif projectile_type == type_enum.TEST:
 		current_speed = SPEED_TEST
 		current_maximum_projectile_range = MAX_RANGE_TEST
 		$Laser.visible = true
+		$EnemyLaserHitbox.disabled = false
 	else:
 		print("Warning: invalid projectile type")
 		current_speed = SPEED_LASER

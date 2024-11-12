@@ -42,6 +42,7 @@ shape = SubResource("CylinderShape3D_sd0qs")
 [node name="PlayerDetector" parent="ShipBody" instance=ExtResource("3_e1jbc")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ShipBody/PlayerDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -196.814)
 shape = SubResource("SphereShape3D_s01ly")
 
 [node name="ProjectileSpawner" parent="ShipBody" instance=ExtResource("4_pmjuh")]

@@ -1,6 +1,7 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://cvn6e33yj56j7"]
 
-[ext_resource type="FontFile" uid="uid://c5aaayuhy8o3h" path="res://Resources/UIElements/FunnelSans-VariableFont_wght.ttf" id="1_6p3y8"]
+[ext_resource type="FontFile" uid="uid://cfte7264p84d7" path="res://Resources/UIElements/Galindo-Regular.ttf" id="1_ai3cd"]
 
 [resource]
-default_font = ExtResource("1_6p3y8")
+default_font = ExtResource("1_ai3cd")
+Label/colors/font_color = Color(7.70092e-07, 0.642653, 0.709842, 1)

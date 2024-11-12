@@ -15,7 +15,7 @@ height = 2.5
 radius = 0.8
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s01ly"]
-radius = 250.0
+radius = 175.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yw3wf"]
 size = Vector3(30, 30, 263.682)
@@ -42,6 +42,7 @@ shape = SubResource("CylinderShape3D_sd0qs")
 [node name="PlayerDetector" parent="ShipBody" instance=ExtResource("3_d2777")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ShipBody/PlayerDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -146.442)
 shape = SubResource("SphereShape3D_s01ly")
 
 [node name="ProjectileSpawner" parent="ShipBody" instance=ExtResource("4_mo451")]

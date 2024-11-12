@@ -5,7 +5,7 @@ signal player_HP_depleted
 
 enum upgrade_types {HEAL_HP,IMPROVE_MAX_HP,IMPROVE_MAX_SHIELD}
 
-const BASE_MAXIMUM_HP := 150
+const BASE_MAXIMUM_HP := 100
 const BASE_SCRAP := 0
 const BASE_SHIELD = 0
 

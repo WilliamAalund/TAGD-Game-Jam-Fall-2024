@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ci4vcaiif0ff2"]
+[gd_scene load_steps=11 format=3 uid="uid://ci4vcaiif0ff2"]
 
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/ShipCamera.gd" id="1_r0uoc"]
 
@@ -10,26 +10,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:fov")
+tracks/0/path = NodePath("../..:current_camera_rotate_speed")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [75.0]
+"values": [120.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../..:current_camera_rotate_speed")
+tracks/1/path = NodePath("../..:fov_control")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [120.0]
+"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_mcmlt"]
@@ -70,26 +70,14 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:fov")
+tracks/0/path = NodePath("../..:fov_control")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(0.378929, 0.277392),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [75.0, 60.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("../..:current_camera_rotate_speed")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(0.840897, 1),
-"update": 0,
-"values": [50.0, 100.0]
+"values": [1.0, 0.8]
 }
 
 [sub_resource type="Animation" id="Animation_r1kgg"]
@@ -98,33 +86,54 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:fov")
+tracks/0/path = NodePath("../..:fov_control")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [60.0, 75.0]
+"values": [0.8, 1.0]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("../..:current_camera_rotate_speed")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
+
+[sub_resource type="Animation" id="Animation_jkkka"]
+resource_name = "accelerate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..:fov_control")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [100.0, 50.0]
+"values": [1.0, 1.2]
+}
+
+[sub_resource type="Animation" id="Animation_vthwf"]
+resource_name = "decelerate"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..:fov_control")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.2, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gfsjc"]
 _data = {
 "RESET": SubResource("Animation_2hd3j"),
+"accelerate": SubResource("Animation_jkkka"),
 "break_end": SubResource("Animation_mcmlt"),
 "break_start": SubResource("Animation_fkx6m"),
+"decelerate": SubResource("Animation_vthwf"),
 "front_camera_zoom_in": SubResource("Animation_0nstr"),
 "front_camera_zoom_out": SubResource("Animation_r1kgg")
 }
@@ -140,6 +149,7 @@ spring_length = 5.0
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
 cull_mask = 1048063
+fov = 60.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SpringArm3D/Camera3D"]
 libraries = {

@@ -12,9 +12,10 @@ var focus_camera_rotate_speed = 200.0 # FIXME: These Values dont do anything!!! 
 var base_camera_fov = 65.0
 
 var focus_camera_fov = 45.0
-var fov_control = 1.0 # Used to control camera zoom in.
+@export var fov_control = 1.0 # Used to control camera zoom in.
 var zoomed_in = false
 var breaking = true
+var speeding = false
 
 @export var current_camera_rotate_speed: float = base_camera_rotate_speed
 
@@ -29,6 +30,14 @@ func _ready():
 func _process(delta):
 	
 	camera.fov = base_camera_fov * fov_control
+	if Input.is_action_pressed("boost"):
+		if speeding == false:
+			front_camera_animation.play("accelerate")
+		speeding = true
+	else:
+		if speeding == true:
+			front_camera_animation.play("decelerate")
+		speeding = false
 	if Input.is_action_pressed("focus"):
 		if zoomed_in == false:
 			pass

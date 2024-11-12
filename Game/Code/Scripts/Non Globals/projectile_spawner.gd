@@ -19,6 +19,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	fire_rate = 60.0 / rounds_per_minute # Time between shots in seconds
 	# Increment the timer by the time elapsed since the last frame
 	time_since_last_fire += delta
 	# Check if it's time to fire the next projectile

@@ -24,7 +24,7 @@ var ship_steering_input = ShipSteeringInput.new()
 var boost_energy_regeneration_rate = 14
 var boost_energy_depletion_rate = 18
 
-var net_input_rate_multiplier = 3 # A constant that scales the rate at which the net input changes. Currently used by all three net values.
+var net_input_rate_multiplier = 1 # A constant that scales the rate at which the net input changes. Currently used by all three net values.
 var travel_speed = PlayerData.BASE_TRAVEL_SPEED # Speed at which the mesh moves forward in space. Forward for the mesh is defined as the positive z direction.
 var max_net_input: float = .5 # Increasing this value increases turn angle of ship # FIXME: This is a poor name for this variable.
 var max_rotate_net_input: float = 0.9
@@ -43,16 +43,16 @@ func _process(delta):
 	if input_enabled:
 		if Input.is_action_pressed("focus"):
 			max_net_input = 0.4
-			net_input_rate_multiplier = 10
+			net_input_rate_multiplier = 8
 		elif Input.is_action_pressed("break"):
-			max_net_input = 2.2
-			net_input_rate_multiplier = 14
+			max_net_input = 2.4
+			net_input_rate_multiplier = 12
 		elif Input.is_action_pressed("boost") and not boost_depleted:
 			max_net_input = 1.6
-			net_input_rate_multiplier = 10
+			net_input_rate_multiplier = 8
 		else:
-			max_net_input = 1.4
-			net_input_rate_multiplier = 10
+			max_net_input = 1.6
+			net_input_rate_multiplier = 8
 		# Update net inputs for movement and rotation
 		update_net_input_horizontal(delta)
 		update_net_input_vertical(delta)

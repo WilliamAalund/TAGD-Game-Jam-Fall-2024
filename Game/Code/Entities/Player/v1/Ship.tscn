@@ -9,7 +9,7 @@ height = 1.0
 radius = 0.6
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cf2ht"]
-size = Vector3(2.53, 0.15, 1)
+size = Vector3(2.5, 0.15, 0.8)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_v0pkj"]
 radius = 0.4
@@ -33,6 +33,7 @@ shape = SubResource("CylinderShape3D_s5lm4")
 visible = false
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.098532)
 shape = SubResource("BoxShape3D_cf2ht")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]

@@ -8,10 +8,10 @@ script = ExtResource("1_tspc8")
 [node name="LaserCannons" type="Node3D" parent="."]
 
 [node name="Left" type="Marker3D" parent="LaserCannons"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, -0.1, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, -0.1, -1.5)
 
 [node name="Right" type="Marker3D" parent="LaserCannons"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, -0.1, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, -0.1, -1.5)
 
 [node name="Center" type="Marker3D" parent="LaserCannons"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.00874)

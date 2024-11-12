@@ -13,6 +13,7 @@ signal game_killed
 @onready var small_enemy_ship = load("res://Code/Entities/Enemies/v2/EnemyScenes/BabyShip/BabyShip.tscn")
 @onready var standard_enemy_ship = load("res://Code/Entities/Enemies/v2/EnemyScenes/StandardShip/StandardShip.tscn")
 @onready var tiny_turret = load("res://Code/Entities/Enemies/v2/EnemyScenes/TinyTurret/TinyTurret.tscn")
+@onready var giga_turret = load("res://Code/Entities/Enemies/v2/EnemyScenes/GigaTurret/GigaTurret.tscn")
 @onready var small_rock = load("res://Code/Entities/Environment/SmallRock.tscn")
 @export var debug_enabled = false
 
@@ -136,16 +137,22 @@ func load_level(_game_mode: game_modes):
 	enemies_defeated = 0
 	for i in range(num_random_positions):
 		if i < game_level:
-			var random_number = randi_range(0,2)
-			if random_number == 0:
-				spawn_enemy(random_positions[i],small_enemy_ship)
-			elif random_number == 1:
-				if game_level > 5:
-					spawn_enemy(random_positions[i],standard_enemy_ship)
+		
+			if game_level == 1:
+				spawn_enemy(random_positions[i], tiny_turret)
+			else:
+				var random_number = randi_range(0,3)
+				if random_number == 0:
+					spawn_enemy(random_positions[i],small_enemy_ship)
+				elif random_number == 1:
+					if game_level > 5:
+						spawn_enemy(random_positions[i],standard_enemy_ship)
+					else:
+						spawn_enemy(random_positions[i],tiny_turret)
+				elif random_number == 2:
+					spawn_enemy(random_positions[i], giga_turret)
 				else:
 					spawn_enemy(random_positions[i],tiny_turret)
-			else:
-				spawn_enemy(random_positions[i],tiny_turret)
 		else:
 			spawn_rock(random_positions[i],standard_enemy_ship)
 	

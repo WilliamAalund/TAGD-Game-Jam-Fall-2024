@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://cg3h6tl40v5cs"]
+
+[ext_resource type="Material" uid="uid://uqyu446333vo" path="res://Resources/Materials/Placeholder/RedMetallic.tres" id="1_3m8hc"]
+[ext_resource type="Material" uid="uid://dv4evy0j5ptc3" path="res://Resources/Materials/Placeholder/Metal.tres" id="2_70jru"]
+[ext_resource type="Material" uid="uid://bd4ybnvo61hpq" path="res://Resources/Materials/Placeholder/PlayAreaSeeker.tres" id="3_i0mjj"]
+[ext_resource type="Material" uid="uid://qkt34qm0t3q7" path="res://Resources/Materials/Placeholder/Boundary.tres" id="4_xncfv"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_sbu57"]
+material = ExtResource("1_3m8hc")
+radius = 1.5
+height = 3.0
+
+[sub_resource type="PrismMesh" id="PrismMesh_5op2q"]
+material = ExtResource("2_70jru")
+size = Vector3(1, 1, 2)
+
+[sub_resource type="PrismMesh" id="PrismMesh_xv0ov"]
+material = ExtResource("3_i0mjj")
+size = Vector3(0.6, 0.6, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_76g0l"]
+material = ExtResource("4_xncfv")
+radius = 0.4
+height = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_1e02b"]
+size = Vector3(0.4, 0.4, 1)
+
+[node name="TinyTurretHead" type="Node3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_sbu57")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.01205)
+mesh = SubResource("PrismMesh_5op2q")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.59048)
+mesh = SubResource("PrismMesh_xv0ov")
+
+[node name="Eye" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.801226, 0.727555, -0.867562)
+mesh = SubResource("SphereMesh_76g0l")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28399, -0.54859, 0)
+mesh = SubResource("BoxMesh_1e02b")

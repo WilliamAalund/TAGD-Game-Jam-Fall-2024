@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b68dst4wjm1e5"]
+
+[ext_resource type="Script" path="res://Code/Scripts/TestScripts/core_weapon_stat_manager.gd" id="2_2o4fu"]
+[ext_resource type="PackedScene" uid="uid://cv03wle265tbk" path="res://Code/Tests/Weapons/FiringPorts.tscn" id="2_dat1x"]
+
+[node name="Weapon" type="Node3D"]
+
+[node name="FiringPorts" parent="." instance=ExtResource("2_dat1x")]
+
+[node name="CoreWeaponStatManager" type="Node3D" parent="."]
+script = ExtResource("2_2o4fu")

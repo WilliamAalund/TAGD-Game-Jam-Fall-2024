@@ -14,4 +14,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, -0.1, -1.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, -0.1, -1.5)
 
 [node name="Center" type="Marker3D" parent="LaserCannons"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.00874)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -1.502)

@@ -73,31 +73,33 @@ func _physics_process(delta):
 
 # Adjusts the ship's travel speed based on debug input
 func adjust_travel_speed_based_on_input(delta):
-	var target_travel_speed: float = BASE_TRAVEL_SPEED
-	# Increase velocity
-	if Input.is_action_pressed("boost") and boost_energy > 0 and boost_depleted == false:
-		target_travel_speed = MAX_TRAVEL_SPEED
-		Input.start_joy_vibration(0,0.5,0.2,0.1)
-		boost_energy -= boost_energy_depletion_rate * delta
-		if boost_energy <= 0.0:
-			boost_energy = 0
-			boost_depleted = true
-	# Decrease velocity
-	elif Input.is_action_pressed("break"):
-		target_travel_speed = MIN_TRAVEL_SPEED
-		Input.start_joy_vibration(0,0.2,0.3,0.1)
-		boost_energy += boost_energy_regeneration_rate * delta
-		if boost_energy > BOOST_ENERGY_REENABLE_THRESHOLD:
-			boost_depleted = false
+	if input_enabled: 
+		var target_travel_speed: float = BASE_TRAVEL_SPEED
+		# Increase velocity
+		if Input.is_action_pressed("boost") and boost_energy > 0 and boost_depleted == false:
+			target_travel_speed = MAX_TRAVEL_SPEED
+			Input.start_joy_vibration(0,0.5,0.2,0.1)
+			boost_energy -= boost_energy_depletion_rate * delta
+			if boost_energy <= 0.0:
+				boost_energy = 0
+				boost_depleted = true
+		# Decrease velocity
+		elif Input.is_action_pressed("break"):
+			target_travel_speed = MIN_TRAVEL_SPEED
+			Input.start_joy_vibration(0,0.2,0.3,0.1)
+			boost_energy += boost_energy_regeneration_rate * delta
+			if boost_energy > BOOST_ENERGY_REENABLE_THRESHOLD:
+				boost_depleted = false
+		else:
+			boost_energy += boost_energy_regeneration_rate * delta
+			if boost_energy > BOOST_ENERGY_REENABLE_THRESHOLD:
+				boost_depleted = false
+		if boost_energy > MAX_BOOST:
+			boost_energy = MAX_BOOST
+		# Interpolate current velocity towards target velocity
+		travel_speed = lerp(travel_speed, target_travel_speed, ACCELERATION * delta)
 	else:
-		boost_energy += boost_energy_regeneration_rate * delta
-		if boost_energy > BOOST_ENERGY_REENABLE_THRESHOLD:
-			boost_depleted = false
-	if boost_energy > MAX_BOOST:
-		boost_energy = MAX_BOOST
-	# Interpolate current velocity towards target velocity
-	travel_speed = lerp(travel_speed, target_travel_speed, ACCELERATION * delta)
-
+		travel_speed = 0.0
 func update_net_input_horizontal(delta):
 	var directional_input_strength = 0
 	if Input.is_action_pressed("yaw_left"):
@@ -182,3 +184,9 @@ func left_playable_area():
 func entered_playable_area():
 	print("Ship entered playable area")
 	left_playable_space = false
+
+# Delete the hitbox of the ship when HP reaches zero
+func destroy_ship_hitbox():
+	$CollisionShape3D.disabled = true
+	$CollisionShape3D2.disabled = true
+	

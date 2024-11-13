@@ -43,11 +43,11 @@ func load_data() -> Dictionary:
 
 # Example API functions to work with the data
 func set_player_data(player_name: String, player_score: int) -> void: # FIXME: Not a very useful function. 
-	var player_data = {
+	var run_data = {
 		"name": player_name,
 		"score": player_score
 	}
-	save_data(player_data)
+	save_data(run_data)
 
 func set_farthest_level(level_reached: int) -> bool:
 	var current_save_data = load_data()

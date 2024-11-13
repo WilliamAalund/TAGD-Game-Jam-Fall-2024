@@ -4,4 +4,4 @@
 
 [resource]
 default_font = ExtResource("1_ai3cd")
-Label/colors/font_color = Color(7.70092e-07, 0.642653, 0.709842, 1)
+Label/colors/font_color = Color(1.34766e-05, 0.902417, 0.987984, 1)

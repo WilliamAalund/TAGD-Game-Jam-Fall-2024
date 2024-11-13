@@ -1,0 +1,270 @@
+[gd_scene load_steps=15 format=3 uid="uid://bxprnfg1nk8ja"]
+
+[ext_resource type="Theme" uid="uid://cvn6e33yj56j7" path="res://Resources/UIElements/InGameUI.tres" id="1_31owh"]
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/InGameUI.gd" id="2_vkrl8"]
+[ext_resource type="Texture2D" uid="uid://nqm57oc6t07n" path="res://Resources/UIElements/Health Bar Frame.png" id="3_reivc"]
+[ext_resource type="Texture2D" uid="uid://y0rwykwme2fn" path="res://Resources/UIElements/HealthBar.png" id="4_qx1sq"]
+[ext_resource type="PackedScene" uid="uid://cin0g7wq0mvdq" path="res://Code/UI/MiniPlayerShipModel.tscn" id="5_4xxp0"]
+[ext_resource type="Texture2D" uid="uid://dmntm7c5eyqn" path="res://Resources/Textures/Laser.png" id="6_inpih"]
+[ext_resource type="Texture2D" uid="uid://bdgux43h3mmvm" path="res://Resources/Textures/CrosshairLaser.png" id="7_oo6fl"]
+[ext_resource type="PackedScene" uid="uid://c8nuhu0qufpad" path="res://Code/UI/ObjectivePointers.tscn" id="8_jfjt6"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_p6mat"]
+viewport_path = NodePath("ShipModelContainer/ShipBasisRect/SubViewport")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_dw3no"]
+specular_color = Color(0.357496, 0.141901, 0.578092, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_t4efw"]
+viewport_path = NodePath("RearviewRect/SubViewport")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_f8jq6"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_glwv4"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_udp2q"]
+
+[node name="InGameHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_31owh")
+script = ExtResource("2_vkrl8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 141.0
+offset_right = 45.0
+offset_bottom = 583.0
+
+[node name="Boost" type="ProgressBar" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+fill_mode = 3
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Boost"
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -100.0
+offset_right = 933.0
+offset_bottom = 27.0
+grow_vertical = 0
+scale = Vector2(0.6, 0.6)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = "HP:"
+
+[node name="Health" type="TextureProgressBar" parent="MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("3_reivc")
+texture_progress = ExtResource("4_qx1sq")
+
+[node name="ShipModelContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_bottom = 200.0
+grow_horizontal = 0
+
+[node name="ShipBasisRect" type="TextureRect" parent="ShipModelContainer"]
+layout_mode = 2
+texture = SubResource("ViewportTexture_p6mat")
+
+[node name="SubViewport" type="SubViewport" parent="ShipModelContainer/ShipBasisRect"]
+transparent_bg = true
+size = Vector2i(208, 200)
+
+[node name="MiniPlayerShipModel" parent="ShipModelContainer/ShipBasisRect/SubViewport" instance=ExtResource("5_4xxp0")]
+
+[node name="VelocityLabel" type="Label" parent="ShipModelContainer"]
+layout_mode = 2
+text = "0.00 m/s"
+
+[node name="ObjectiveLabel" type="Label" parent="ShipModelContainer"]
+layout_mode = 2
+text = "Collect Green Cylinder"
+
+[node name="DialogueBox" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -491.0
+offset_top = 159.0
+offset_right = -240.0
+offset_bottom = 336.0
+grow_horizontal = 0
+texture = SubResource("CanvasTexture_dw3no")
+
+[node name="Label" type="Label" parent="DialogueBox"]
+modulate = Color(0.351563, 0.351563, 0.351563, 1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Dialogue box"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -223.0
+offset_top = -112.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Weapon Name
+Weapon Ammo"
+
+[node name="Weapon Graphic" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("6_inpih")
+expand_mode = 2
+
+[node name="RearviewRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 12.0
+offset_right = 150.0
+offset_bottom = 112.0
+grow_horizontal = 2
+texture = SubResource("ViewportTexture_t4efw")
+expand_mode = 1
+
+[node name="SubViewport" type="SubViewport" parent="RearviewRect"]
+
+[node name="PlayerBackview" type="Node3D" parent="RearviewRect/SubViewport"]
+
+[node name="PlayerBackview" type="Camera3D" parent="RearviewRect/SubViewport/PlayerBackview"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1.5)
+fov = 50.0
+
+[node name="LaserCannonView" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 161.0
+offset_top = 107.0
+offset_right = 408.0
+offset_bottom = 324.0
+texture = SubResource("CanvasTexture_f8jq6")
+
+[node name="Label" type="Label" parent="LaserCannonView"]
+modulate = Color(0.359069, 0.359069, 0.359069, 1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Laser Cannon View"
+
+[node name="SecondaryWeapon" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -184.0
+offset_top = -164.0
+offset_right = -123.0
+offset_bottom = -107.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = SubResource("CanvasTexture_glwv4")
+
+[node name="Notification Icons" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -56.0
+offset_right = 222.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Notification Icons Will go here"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameMetadata" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Level" type="Label" parent="GameMetadata"]
+layout_mode = 0
+offset_right = 143.0
+offset_bottom = 75.0
+text = "Level: 0
+Score: 0000000000
+Time: 00:00:00
+"
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0.560712, 0.133876, 0.213372, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.5
+offset_top = -2.0
+offset_right = 2.5
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_udp2q")
+
+[node name="Crosshair" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Crosshair" type="TextureRect" parent="Crosshair"]
+layout_mode = 1
+offset_left = -32.0
+offset_top = -24.0
+offset_right = 184.0
+offset_bottom = 138.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_oo6fl")
+
+[node name="ObjectivePointers" parent="." instance=ExtResource("8_jfjt6")]

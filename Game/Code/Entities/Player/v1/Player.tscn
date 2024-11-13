@@ -131,6 +131,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998406, 0)
 script = ExtResource("5_tyl6p")
 
 [node name="ShipCamera" parent="." instance=ExtResource("3_8kkb1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.06951)
 camera_following_player = false
 
 [node name="ProjectileHandler" parent="." instance=ExtResource("4_l1hh6")]

@@ -6,10 +6,13 @@ signal game_killed
 @onready var audio_stream_player = $AudioStreamPlayer
 @onready var game_objects = $GameObjects # Reference to node where objects are stored
 @onready var pause_screen = $PauseScreenPlaceholder
+@onready var game_over_screen = $GameOverPopup
+@onready var score_label = $GameOverPopup/VBoxContainer/FinalScoreLabel
+@onready var farthest_level_label = $GameOverPopup/VBoxContainer/FarthestLevelLabel
 @onready var level_complete_screen = $LevelCompletePlaceholder
 @onready var player_ship = load("res://Code/Entities/Player/v1/Player.tscn")
 @onready var arcade_level = load("res://Code/Levels/ArcadeLevel.tscn")
-@onready var ship_hud = load("res://Code/UI/InGame.tscn")
+@onready var ship_hud = load("res://Code/UI/InGameHUD.tscn")
 @onready var level_complete_item = load("res://Code/Entities/Items/LevelComplete/LevelComplete.tscn")
 @onready var small_enemy_ship = load("res://Code/Entities/Enemies/v2/EnemyScenes/BabyShip/BabyShip.tscn")
 @onready var standard_enemy_ship = load("res://Code/Entities/Enemies/v2/EnemyScenes/StandardShip/StandardShip.tscn")
@@ -20,6 +23,8 @@ signal game_killed
 
 var game_is_active = false # Boolean used to control when the quit button is listening for user input.
 var player_reference = null
+var in_level_complete_screen = false
+var pause_screen_enabled = true
 # Game metadata
 var number_of_players = 1
 enum game_modes {ARCADE,COOP,DEATHMATCH}
@@ -44,7 +49,7 @@ func _process(_delta):
 		if Input.is_action_just_pressed("debug_quit"):
 			quit_game()
 	if game_is_active:
-		if Input.is_action_just_pressed("toggle_pause"):
+		if Input.is_action_just_pressed("toggle_pause") and not in_level_complete_screen and pause_screen_enabled:
 			print("Pause toggled")
 			if game_objects.process_mode == Node.PROCESS_MODE_INHERIT:
 				pause_game(game_modes.ARCADE)
@@ -171,8 +176,26 @@ func unload_level():
 
 func game_over(_game_mode: game_modes):
 	Saving.set_farthest_level(game_level)
-	quit_game()
+	setup_game_over_screen()
 	
+	pause_screen_enabled = false
+	# spawn timer
+	await get_tree().create_timer(2).timeout
+	game_over_screen.visible = false
+	pause_screen_enabled = true
+	quit_game()
+
+func setup_game_over_screen():
+	var score = PlayerData.score
+	#print(score)
+	score_label.text = "Final Score: " + str(score)
+	farthest_level_label.text = "Farthest Level: " + str(game_level)
+	game_over_screen.visible = true
+
+func spawn_objects():
+	pass
+
+
 func spawn_enemy(spawn_position: Vector3, enemy_type):
 	pass # TODO: Make enemy entities spawn in the level
 	var enemy_instance = enemy_type.instantiate()
@@ -189,6 +212,8 @@ func spawn_rock(spawn_position: Vector3, environment_type):
 	game_objects.add_child(small_rock_instance)
 	small_rock_instance.global_position = spawn_position
 
+func spawn_player(spawn_position: Vector3):
+	pass
 
 func spawn_complete_object(spawn_position: Vector3):
 	var level_complete_child = level_complete_item.instantiate()
@@ -196,17 +221,20 @@ func spawn_complete_object(spawn_position: Vector3):
 	level_complete_child.body_entered.connect(self._on_level_complete_item_touched)
 	game_objects.add_child(level_complete_child)
 
-func _on_level_complete_item_touched(body):
+func _on_level_complete_item_touched(body): # This function handles what happens when a level completes
 	if body.is_in_group("player"):
 		print("Player collected level complete item")
+		in_level_complete_screen = true
 		game_objects.call_deferred("set", "process_mode", Node.PROCESS_MODE_DISABLED)
 		level_complete_screen.visible = true
 		await get_tree().create_timer(2).timeout
 		level_complete_screen.visible = false
+		
 		game_objects.process_mode = Node.PROCESS_MODE_INHERIT
 		unload_level()
 		game_level += 1
 		load_level(game_modes.ARCADE)
+		in_level_complete_screen = false
 
 func level_complete_animation():
 	level_complete_screen.visible = true

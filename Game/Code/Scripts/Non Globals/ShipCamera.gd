@@ -13,6 +13,7 @@ var base_camera_fov = 65.0
 
 var focus_camera_fov = 45.0
 @export var fov_control = 1.0 # Used to control camera zoom in.
+@export var camera_control_enabled = true
 var zoomed_in = false
 var breaking = true
 var speeding = false
@@ -30,39 +31,40 @@ func _ready():
 func _process(delta):
 	
 	camera.fov = base_camera_fov * fov_control
-	if Input.is_action_pressed("boost"):
-		if speeding == false:
-			front_camera_animation.play("accelerate")
-		speeding = true
-	else:
-		if speeding == true:
-			front_camera_animation.play("decelerate")
-		speeding = false
-	if Input.is_action_pressed("focus"):
-		if zoomed_in == false:
-			pass
-			front_camera_animation.play("front_camera_zoom_in")
-		zoomed_in = true
-	else:
-		if zoomed_in == true:
-			pass
-			front_camera_animation.play("front_camera_zoom_out")
-		zoomed_in = false
-	if Input.is_action_pressed("break") and not zoomed_in:
-		if breaking == false:
-			pass
-			#front_camera_animation.play("break_start")
-		breaking = true
-	else:
-		if breaking == true:
-			pass
-			#front_camera_animation.play("break_end")
-		breaking = false
-	target_basis = target_basis.orthonormalized()
-	var new_basis = self.transform.basis.slerp(target_basis, delta * current_camera_rotate_speed)
-	new_basis = new_basis.orthonormalized()
-	self.transform.basis = target_basis.orthonormalized() #new_basis
-	#$Label.text = "Prev basis: " + str(self.transform.basis) + " New Basis: " + str(new_basis)
+	if camera_control_enabled:
+		if Input.is_action_pressed("boost"):
+			if speeding == false:
+				front_camera_animation.play("accelerate")
+			speeding = true
+		else:
+			if speeding == true:
+				front_camera_animation.play("decelerate")
+			speeding = false
+		if Input.is_action_pressed("focus"):
+			if zoomed_in == false:
+				pass
+				front_camera_animation.play("front_camera_zoom_in")
+			zoomed_in = true
+		else:
+			if zoomed_in == true:
+				pass
+				front_camera_animation.play("front_camera_zoom_out")
+			zoomed_in = false
+		if Input.is_action_pressed("break") and not zoomed_in:
+			if breaking == false:
+				pass
+				#front_camera_animation.play("break_start")
+			breaking = true
+		else:
+			if breaking == true:
+				pass
+				#front_camera_animation.play("break_end")
+			breaking = false
+		target_basis = target_basis.orthonormalized()
+		var new_basis = self.transform.basis.slerp(target_basis, delta * current_camera_rotate_speed)
+		new_basis = new_basis.orthonormalized()
+		self.transform.basis = target_basis.orthonormalized() #new_basis
+		#$Label.text = "Prev basis: " + str(self.transform.basis) + " New Basis: " + str(new_basis)
 
 func get_unprojected_position_from_camera(coordinate: Vector3):
 	return camera.unproject_position(coordinate)

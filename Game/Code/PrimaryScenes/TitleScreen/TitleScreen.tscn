@@ -49,9 +49,12 @@ layout_mode = 2
 text = "Quit"
 
 [node name="TextureRect" type="TextureRect" parent="UI"]
-layout_mode = 2
-offset_right = 2360.0
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 1080.0
 offset_bottom = 1640.0
+grow_horizontal = 2
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_6xq4g")
 
@@ -61,6 +64,12 @@ offset_left = 1.0
 offset_top = 320.0
 offset_right = 2361.0
 offset_bottom = 340.0
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "TAGD Team 24 Presents"
 
 [connection signal="pressed" from="UI/VBoxContainer/Arcade" to="." method="_on_arcade_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/Debug" to="." method="_on_debug_pressed"]

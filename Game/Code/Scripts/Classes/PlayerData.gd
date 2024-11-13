@@ -73,6 +73,7 @@ func reset_player_stats():
 	HP = BASE_MAXIMUM_HP
 	maximum_HP = BASE_MAXIMUM_HP
 	scrap = BASE_SCRAP
+	score = 0
 	
 func prepare_player_stats_for_new_level():
 	pass # TODO: Reset any cooldowns, and refresh shield
@@ -81,7 +82,7 @@ func enemy_destroyed():
 	score += 100
 	scrap += 10
 
-func canBuy(Item):
+func canBuy(item_to_buy: Item):
 	#check if player can buy item
 	#if(Item.priceItem)
 	return true

@@ -7,6 +7,7 @@ signal player_destroyed
 @onready var camera = $ShipCamera
 @onready var stats = $CoreStatsManager
 @onready var animation = $AnimationPlayer
+@onready var projectile_handler = $ProjectileHandler
 
 var player_data_packet = {}
 
@@ -36,13 +37,18 @@ func construct_player_data_packet():
 	player_data_packet["crosshair_position_2d"] = crosshair_position_2d
 	player_data_packet["player_3d_crosshair_position"] = player_ship.get_3d_crosshair_position()
 	player_data_packet["left_playable_space"] = player_ship.left_playable_space
-
 	# Further alterations can be done here based on game logic.
 	new_player_data_packet.emit(player_data_packet)
 
 
 func _on_core_stats_manager_player_hp_depleted() -> void:
 	player_destroyed.emit()
+	player_ship.destroy_ship_hitbox()
+	player_ship.input_enabled = false
+	player_ship.debug_freeze_ship_position = false
+	camera.camera_control_enabled = false
+	projectile_handler.input_enabled = false
+	player_ship.visible = false
 
 func _on_new_game_data_packet(packet):
 	pass

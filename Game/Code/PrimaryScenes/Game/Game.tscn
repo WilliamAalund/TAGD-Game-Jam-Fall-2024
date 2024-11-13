@@ -1,21 +1,29 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxl5frgge2xk7"]
+[gd_scene load_steps=12 format=3 uid="uid://cxl5frgge2xk7"]
 
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/Game.gd" id="1_s8h24"]
+[ext_resource type="Texture2D" uid="uid://d20buag7ms05r" path="res://Resources/UIElements/PS5Controls.png" id="2_aw5qb"]
+[ext_resource type="FontFile" uid="uid://cfte7264p84d7" path="res://Resources/UIElements/Galindo-Regular.ttf" id="2_ihmpu"]
+[ext_resource type="FontFile" uid="uid://c5aaayuhy8o3h" path="res://Resources/UIElements/FunnelSans-VariableFont_wght.ttf" id="2_murm4"]
 [ext_resource type="Theme" uid="uid://cvn6e33yj56j7" path="res://Resources/UIElements/InGameUI.tres" id="2_qtu5r"]
 [ext_resource type="AudioStream" uid="uid://dgpnj0hyq8705" path="res://Resources/Audio/music fragment 2.wav" id="3_6q0hk"]
 
 [sub_resource type="Gradient" id="Gradient_04d1e"]
-offsets = PackedFloat32Array(0, 0.991071, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.419643, 0.419643, 0.419643, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.00558659, 0.223464, 0.991071)
+colors = PackedColorArray(0.868985, 0.868985, 0.868985, 1, 0.435192, 0.435192, 0.435192, 1, 0.454524, 0.454524, 0.454524, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_aemgi"]
 gradient = SubResource("Gradient_04d1e")
 
 [sub_resource type="LabelSettings" id="LabelSettings_qu70w"]
+font = ExtResource("2_murm4")
 font_size = 60
 
 [sub_resource type="LabelSettings" id="LabelSettings_xjkv5"]
 font_size = 55
+
+[sub_resource type="LabelSettings" id="LabelSettings_dc3ec"]
+font = ExtResource("2_ihmpu")
+font_size = 60
 
 [node name="Game" type="Node"]
 script = ExtResource("1_s8h24")
@@ -32,7 +40,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="PauseScreenPlaceholder"]
-modulate = Color(1, 1, 1, 0.360784)
+modulate = Color(1, 1, 1, 0.760784)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,6 +64,12 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "GAME PAUSED"
 label_settings = SubResource("LabelSettings_qu70w")
+
+[node name="TextureRect2" type="TextureRect" parent="PauseScreenPlaceholder"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_aw5qb")
 
 [node name="LevelCompletePlaceholder" type="Control" parent="."]
 visible = false
@@ -86,3 +100,40 @@ label_settings = SubResource("LabelSettings_xjkv5")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_6q0hk")
 volume_db = -15.0
+
+[node name="GameOverPopup" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverPopup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -186.5
+offset_top = -42.5
+offset_right = 186.5
+offset_bottom = 42.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="GameOverPopup/VBoxContainer"]
+layout_mode = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_dc3ec")
+
+[node name="NewHighScoreLabel" type="Label" parent="GameOverPopup/VBoxContainer"]
+layout_mode = 2
+
+[node name="FinalScoreLabel" type="Label" parent="GameOverPopup/VBoxContainer"]
+layout_mode = 2
+
+[node name="FarthestLevelLabel" type="Label" parent="GameOverPopup/VBoxContainer"]
+layout_mode = 2

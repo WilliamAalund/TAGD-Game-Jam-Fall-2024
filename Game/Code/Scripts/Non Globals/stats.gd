@@ -5,6 +5,7 @@ extends Node3D
 # If this node is deleted, all of the nodes it broadcasts signals to will need to receive the PlayerData signal version of it
 
 signal player_HP_depleted
+var emitted_player_death = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,5 +18,7 @@ func _on_ship_ship_scraping_against_surface() -> void:
 
 
 func _on_player_data_hp_depleted() -> void:
-	print("Player data global says that HP is depleted")
-	player_HP_depleted.emit() # FIXME: This signal is redundant.
+	if not emitted_player_death:
+		print("Player data global says that HP is depleted")
+		player_HP_depleted.emit() # FIXME: This signal is redundant.
+		emitted_player_death = true

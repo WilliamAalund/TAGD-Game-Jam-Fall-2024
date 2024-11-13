@@ -7,6 +7,8 @@ signal projectile_fired(projectile_name)
 @onready var left = $LaserCannons/Left
 @onready var right = $LaserCannons/Right
 
+@export var input_enabled = true
+
 var rpm = 500 # Rounds per minute
 var fire_rate = 60.0 / rpm # Time between shots in seconds
 var time_since_last_fire = 0.0 # Timer to track time since last shot
@@ -25,10 +27,10 @@ func _process(delta):
 	# Increment the timer by the time elapsed since the last frame
 	time_since_last_fire += delta
 	# Check if it's time to fire the next projectile
-	if Input.is_action_just_pressed("switch_weapon"):
+	if Input.is_action_just_pressed("switch_weapon") and input_enabled:
 		if PlayerData.secondary_weapon != PlayerData.secondary_weapons.NONE:
 			fire_mode = PlayerData
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_pressed("shoot") and input_enabled:
 		if time_since_last_fire >= fire_rate:
 			fire_projectile()
 			time_since_last_fire = 0 # Reset the timer after firing

@@ -17,7 +17,7 @@ const MAX_RANGE_TEST = 100.0
 const SPEED_LASER = 1750.0
 const MAX_RANGE_LASER = 2000.0
 
-const SPEED_ENEMY_LASER = 400.0
+const SPEED_ENEMY_LASER = 300.0
 const MAX_RANGE_ENEMY_LASER = 1000.0
 
 func _ready() -> void:

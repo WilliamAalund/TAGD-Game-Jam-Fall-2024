@@ -51,7 +51,7 @@ func _process(delta):
 			max_net_input = 1.6
 			net_input_rate_multiplier = 8
 		else:
-			max_net_input = 1.6
+			max_net_input = 1.8
 			net_input_rate_multiplier = 14
 		# Update net inputs for movement and rotation
 		update_net_input_horizontal(delta)

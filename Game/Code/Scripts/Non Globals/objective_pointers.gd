@@ -8,11 +8,15 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_pressed("expand_hud"):
+		self.visible = true
+	else:
+		self.visible = false
 
 # Function to update the enemy position pointers.
 func update_enemy_position_pointers(enemy_positions: Array) -> void:
 	# If no enemy positions are provided, clear all existing children
+	
 	if enemy_positions.size() == 0:
 		# Remove all children
 		for child in get_children():

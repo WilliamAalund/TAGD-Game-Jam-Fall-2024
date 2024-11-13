@@ -1,4 +1,3 @@
-@tool
 extends Node3D
 
 @onready var animation = $AnimationPlayer
@@ -27,9 +26,14 @@ func _process(_delta: float) -> void:
 	#explosive_mesh.transparency = lerp(beginning_transparency,end_transparency,interpolation_time)
 
 
+#
+
+
 func explode():
 	if explosion_type == explosion_types.LASER:
 		animation.play("quick_explosion")
+	elif explosion_type == explosion_types.ENEMY_SHIP:
+		animation.play("enemy_ship_explosion")
 	
 
 

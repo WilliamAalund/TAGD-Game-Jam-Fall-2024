@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxl5frgge2xk7"]
+[gd_scene load_steps=8 format=3 uid="uid://cxl5frgge2xk7"]
 
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/Game.gd" id="1_s8h24"]
 [ext_resource type="Theme" uid="uid://cvn6e33yj56j7" path="res://Resources/UIElements/InGameUI.tres" id="2_qtu5r"]
+[ext_resource type="AudioStream" uid="uid://dgpnj0hyq8705" path="res://Resources/Audio/music fragment 2.wav" id="3_6q0hk"]
 
 [sub_resource type="Gradient" id="Gradient_04d1e"]
 offsets = PackedFloat32Array(0, 0.991071, 1)
@@ -81,3 +82,7 @@ grow_vertical = 2
 theme = ExtResource("2_qtu5r")
 text = "Level Complete"
 label_settings = SubResource("LabelSettings_xjkv5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6q0hk")
+volume_db = -15.0

@@ -3,6 +3,7 @@ extends Node
 signal new_game_data_packet(packet)
 signal game_killed
 
+@onready var audio_stream_player = $AudioStreamPlayer
 @onready var game_objects = $GameObjects # Reference to node where objects are stored
 @onready var pause_screen = $PauseScreenPlaceholder
 @onready var level_complete_screen = $LevelCompletePlaceholder
@@ -36,6 +37,7 @@ func _ready():
 	#PlayerData.player_HP_depleted.connect(self._on_player_destroyed())
 
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if debug_enabled and game_is_active:
@@ -59,11 +61,13 @@ func _process(_delta):
 	singleplayer_game_data_packet["enemy_positions"] = enemy_global_positions_array
 	new_game_data_packet.emit(singleplayer_game_data_packet)
 	
+	
 
 func start_game(_number_of_players, _game_mode: game_modes) -> void:
 	PlayerData.reset_player_stats()
 	game_level = 1
 	game_is_active = true
+	audio_stream_player.play()
 	if _game_mode == game_modes.ARCADE:
 		# Initialize a single viewport
 		
@@ -76,6 +80,7 @@ func start_game(_number_of_players, _game_mode: game_modes) -> void:
 func pause_game(_game_mode: game_modes):
 	game_objects.process_mode = Node.PROCESS_MODE_DISABLED
 	pause_screen.visible = true
+	audio_stream_player.stop()
 	pass
 
 func unpause_game(_game_mode: game_modes):
@@ -87,6 +92,7 @@ func quit_game():
 	# Kill all child nodes in the GameObjects node
 	game_is_active = false
 	unload_level()
+	audio_stream_player.stop()
 	game_killed.emit()
 
 func load_level(_game_mode: game_modes):

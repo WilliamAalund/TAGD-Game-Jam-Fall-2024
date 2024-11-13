@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/objective_pointers.gd" id="1_bisc7"]
 
 [node name="ObjectivePointers" type="Node3D"]
+visible = false
 script = ExtResource("1_bisc7")

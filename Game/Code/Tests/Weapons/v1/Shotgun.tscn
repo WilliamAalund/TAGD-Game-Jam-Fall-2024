@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bftad2h0artb1"]
+
+[ext_resource type="PackedScene" uid="uid://b68dst4wjm1e5" path="res://Code/Tests/Weapons/v1/Weapon.tscn" id="1_bh7gc"]
+[ext_resource type="Script" path="res://Code/Tests/Weapons/v1/ShotgunTest.gd" id="2_1xhw5"]
+
+[node name="Weapon" instance=ExtResource("1_bh7gc")]
+script = ExtResource("2_1xhw5")
+
+[node name="FiringPorts" parent="." index="0"]
+port_mode = 1

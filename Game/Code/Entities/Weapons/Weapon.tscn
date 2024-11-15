@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhwunq28wyi18"]
+
+[ext_resource type="Script" path="res://Code/Tests/Weapons/v1/weapon.gd" id="1_muct8"]
+[ext_resource type="PackedScene" uid="uid://dofne8q1s7eqh" path="res://Code/Entities/Weapons/FiringPorts.tscn" id="2_827gt"]
+
+[node name="Weapon" type="Node3D"]
+script = ExtResource("1_muct8")
+
+[node name="FiringPorts" parent="." instance=ExtResource("2_827gt")]

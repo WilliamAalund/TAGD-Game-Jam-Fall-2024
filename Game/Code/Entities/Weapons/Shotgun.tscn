@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://e2stg3aeuxcl"]
+
+[ext_resource type="PackedScene" uid="uid://bhwunq28wyi18" path="res://Code/Entities/Weapons/Weapon.tscn" id="1_s1sac"]
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/Shotgun.gd" id="2_okngs"]
+
+[node name="Shotgun" instance=ExtResource("1_s1sac")]
+script = ExtResource("2_okngs")
+num_pellets = 4

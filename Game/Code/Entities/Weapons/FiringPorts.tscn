@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dofne8q1s7eqh"]
+
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/firing_ports.gd" id="1_ytpf5"]
+
+[node name="FiringPorts" type="Node3D"]
+script = ExtResource("1_ytpf5")
+
+[node name="Left" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, -1.5)
+
+[node name="Enemy" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+
+[node name="Right" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0, -1.5)
+
+[node name="Middle" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

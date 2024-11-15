@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://deqy7u3l5jbuk"]
+
+[ext_resource type="PackedScene" uid="uid://bftad2h0artb1" path="res://Code/Tests/Weapons/v1/Shotgun.tscn" id="1_bjws6"]
+
+[node name="WeaponTest" type="Node3D"]
+
+[node name="Weapon" parent="." instance=ExtResource("1_bjws6")]
+weapon_enabled = true

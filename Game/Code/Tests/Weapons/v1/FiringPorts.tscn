@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv03wle265tbk"]
+
+[ext_resource type="Script" path="res://Code/Tests/Weapons/v1/firing_ports.gd" id="1_fajeb"]
+
+[node name="FiringPorts" type="Node3D"]
+script = ExtResource("1_fajeb")
+
+[node name="Left" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -1.5)
+
+[node name="Enemy" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+
+[node name="Right" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -1.5)
+
+[node name="Middle" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

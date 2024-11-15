@@ -6,6 +6,7 @@ extends CharacterBody3D
 @export var projectile_creator_group = "Not Set"
 enum type_enum {LASER, MISSILE,TEST,ENEMY_LASER}
 @export var type: type_enum
+@export var damage: int = 10
 
 var distance_traveled
 var current_maximum_projectile_range
@@ -37,7 +38,7 @@ func _physics_process(delta: float) -> void:
 			var collider = collision.get_collider()
 			if collider.is_in_group("player") and projectile_creator_group == "enemy":
 				#print("Player hit by projectile")
-				PlayerData.inflict_damage(10, "laser")
+				PlayerData.inflict_damage(damage, "laser")
 			elif collider.is_in_group("enemy") and projectile_creator_group == "player":
 				#print("Enemy hit by projectile")
 				if collider.has_method("damaged_by_projectile"):
@@ -48,15 +49,33 @@ func _physics_process(delta: float) -> void:
 		end_explosion.global_position = self.global_position
 		self.queue_free()
 
-func set_up_projectile(projectile_type: type_enum, creator_basis: Basis,creator_group: String):
+
+func set_up_projectile_v2(creator_basis: Basis, projectile_damage: int, projectile_range: float, projectile_velocity: float, creator_group: String = "player", projectile_type: type_enum = type_enum.LASER):
+	print(creator_basis)
+	basis_of_projectile_creator = creator_basis
+	projectile_creator_group = creator_group
+	distance_traveled = 0.0
+	current_speed = projectile_velocity
+	current_maximum_projectile_range = projectile_range
+	damage = projectile_damage
+	if projectile_type == type_enum.LASER:
+		$Laser.visible = true
+		$PlayerLaserHitbox.disabled = false
+	elif projectile_type == type_enum.ENEMY_LASER:
+		$EnemyLaser.visible = true
+		$EnemyLaserHitbox.disabled = false
+	else:
+		$Laser.visible = true
+		$PlayerLaserHitbox.disabled = false
+
+func set_up_projectile(projectile_type: type_enum, creator_basis: Basis,creator_group: String): # Deprecated. use set_up_projectile_v2 instead
 	basis_of_projectile_creator = creator_basis
 	projectile_creator_group = creator_group
 	distance_traveled = 0.0
 	if projectile_type == type_enum.LASER:
 		current_speed = SPEED_LASER
 		current_maximum_projectile_range = MAX_RANGE_LASER
-		$Laser.visible = true
-		$PlayerLaserHitbox.disabled = false
+
 	elif projectile_type == type_enum.ENEMY_LASER:
 		current_speed = SPEED_ENEMY_LASER
 		current_maximum_projectile_range = MAX_RANGE_ENEMY_LASER

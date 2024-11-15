@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b68dst4wjm1e5"]
+
+[ext_resource type="PackedScene" uid="uid://cv03wle265tbk" path="res://Code/Tests/Weapons/v1/FiringPorts.tscn" id="2_dat1x"]
+
+[node name="Weapon" type="Node3D"]
+
+[node name="FiringPorts" parent="." instance=ExtResource("2_dat1x")]

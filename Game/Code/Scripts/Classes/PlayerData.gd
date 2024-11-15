@@ -34,8 +34,9 @@ const SHIELD_TIME_TO_REGENERATE_BEGIN := 300
 @export var HP_depleted := false
 @export var infinite_scrap := false
 @export var score := 0
-enum secondary_weapons {NONE,MISSILE,SCOPED,MINIGUN}
-@export var secondary_weapon: secondary_weapons
+#enum secondary_weapons {NONE,MISSILE,SCOPED,MINIGUN}
+@export var primary_weapon_id = 0
+@export var secondary_weapon_id = -1
 @export var secondary_weapon_selected := false
 
 var scrape_current_invincibility_frames = 0

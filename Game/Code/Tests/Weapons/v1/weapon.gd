@@ -6,6 +6,7 @@ signal weapon_fired
 @onready var firing_ports = $FiringPorts
 
 # Weapon parameters
+@export var weapon_name := ""
 @export var enemy_weapon := false # If true, controls what firing ports are used by the subclass
 @export var weapon_enabled := false # If weapon is useable or not
 @export var rounds_per_minute: float = 200.0 :

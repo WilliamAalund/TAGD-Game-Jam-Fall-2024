@@ -19,6 +19,7 @@ config/icon="res://Resources/Images/icon.svg"
 
 PlayerData="*res://Code/Scripts/Classes/PlayerData.gd"
 Saving="*res://Code/Scripts/Globals/Saving.gd"
+WeaponConstants="*res://Code/Scripts/Globals/WeaponConstants.gd"
 
 [display]
 

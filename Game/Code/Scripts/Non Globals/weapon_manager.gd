@@ -9,16 +9,6 @@ extends Node3D
 
 var weapon_count = 0
 
-const DEFAULT_LASER_WEAPON = {
-	"name": "Laser",
-	"rpm": 500.0,
-	"automatic": true,
-	"range": 1000.0,
-	"velocity": 700.0,
-	"spread": 0.5,
-	"damage": 8,
-	"firing_mode": "Alternate"
-}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,14 +17,14 @@ func _ready() -> void:
 		
 
 func get_weapon_parameter_dictionary(weapon_id: int) -> Dictionary:
-	return DEFAULT_LASER_WEAPON # TODO: Implement this
+	return WeaponConstants.WEAPO # TODO: Implement this
 
 func spawn_weapon(weapon_id: int):
 	# Convert weapon id to dictionary
 	var weapon_parameters = get_weapon_parameter_dictionary(weapon_id)
 	var weapon_child
 	
-	if weapon_parameters["name"] == "Laser":
+	if weapon_parameters["type"] == "Laser":
 		weapon_child = laser_scene.instantiate()
 		if weapon_count == 0:
 			weapon_child.weapon_enabled = true

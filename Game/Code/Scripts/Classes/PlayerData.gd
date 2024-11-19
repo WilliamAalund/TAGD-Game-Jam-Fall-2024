@@ -85,5 +85,6 @@ func enemy_destroyed():
 
 func canBuy(item_to_buy: Item):
 	#check if player can buy item
-	#if(Item.priceItem)
+	if(scrap < item_to_buy.priceItem):
+		return false
 	return true

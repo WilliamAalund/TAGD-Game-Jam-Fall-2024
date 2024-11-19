@@ -3,7 +3,7 @@ extends Node
 var Items = {
 	"Blaster":
 	{
-		"price": 50,
+		"weapID": 1,
 		"image": "image",
 		"description": "A powerful blaster",
 		"type": "Weapon",
@@ -13,7 +13,8 @@ var Items = {
 	},
 	"Laser":
 	{
-		"price": 100,
+		"weapID": 2,
+		"image": "res://Resources/Textures/Laser.png",
 		"description": "A powerful laser beam",
 		"type": "Weapon",
 		"modifier": 1.5,
@@ -21,7 +22,7 @@ var Items = {
 	},
 	"Missile":
 	{
-		"price": 150,
+		"price": 3,
 		"description": "A powerful missile",
 		"type": "Weapon",
 		"modifier": 2,
@@ -29,7 +30,7 @@ var Items = {
 	},
 	"Speed Boost":
 	{
-		"price": 50,
+		"weapID": 99,
 		"description": "A minor speed boost",
 		"type": "Boost",
 		"modifier": 1.5,
@@ -37,7 +38,7 @@ var Items = {
 	},
 	"Health Boost":
 	{
-		"price": 50,
+		"weapID": 99,
 		"description": "A minor health boost",
 		"type": "Health",
 		"modifier": 1.2,

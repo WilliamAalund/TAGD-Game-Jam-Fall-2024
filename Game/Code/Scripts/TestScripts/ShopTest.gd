@@ -83,3 +83,11 @@ func _on_continue_button_pressed() -> void:
 	pass 
 	print("go to game")
 	player_continue.emit()
+
+
+func _on_item_button_2_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_item_button_3_pressed() -> void:
+	pass # Replace with function body.

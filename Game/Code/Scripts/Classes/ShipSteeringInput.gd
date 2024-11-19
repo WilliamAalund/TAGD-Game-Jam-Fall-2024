@@ -20,7 +20,7 @@ func get_user_input() -> Vector2:
 
 
 func update_user_input() -> void:
-	curr_upper_threshold = get_viewport().size.y / 2
+	#curr_upper_threshold = get_viewport().size.y / 2
 	print("updating user input")
 	if using_controller:
 		var input_horizontal = Input.get_action_strength("yaw_right") - Input.get_action_strength("yaw_left")

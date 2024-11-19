@@ -140,4 +140,3 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ShopTest" parent="." instance=ExtResource("7_tev1m")]
-visible = false

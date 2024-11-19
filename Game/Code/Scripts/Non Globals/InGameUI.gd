@@ -8,7 +8,7 @@ extends Control
 @onready var health_label = $MarginContainer2/VBoxContainer/Label
 @onready var level_label = $GameMetadata/Level
 @onready var velocity_label = $ShipModelContainer/VelocityLabel
-@onready var objective_label = $ShipModelContainer/ObjectiveLabel
+@onready var objective_label = $RearviewRect/ObjectiveLabel
 @onready var objective_pointers = $ObjectivePointers
 # Called when the node enters the scene tree for the first time.
 func _ready():

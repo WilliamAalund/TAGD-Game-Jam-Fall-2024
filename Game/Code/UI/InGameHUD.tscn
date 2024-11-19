@@ -98,10 +98,6 @@ size = Vector2i(208, 200)
 layout_mode = 2
 text = "0.00 m/s"
 
-[node name="ObjectiveLabel" type="Label" parent="ShipModelContainer"]
-layout_mode = 2
-text = "Collect Green Cylinder"
-
 [node name="DialogueBox" type="TextureRect" parent="."]
 visible = false
 layout_mode = 1
@@ -162,6 +158,18 @@ grow_horizontal = 2
 texture = SubResource("ViewportTexture_t4efw")
 expand_mode = 1
 
+[node name="ObjectiveLabel" type="Label" parent="RearviewRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.0
+offset_top = 105.0
+offset_right = 104.0
+offset_bottom = 128.0
+grow_horizontal = 2
+text = "Collect Green Cylinder"
+
 [node name="SubViewport" type="SubViewport" parent="RearviewRect"]
 
 [node name="PlayerBackview" type="Node3D" parent="RearviewRect/SubViewport"]
@@ -203,6 +211,7 @@ grow_vertical = 0
 texture = SubResource("CanvasTexture_glwv4")
 
 [node name="Notification Icons" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

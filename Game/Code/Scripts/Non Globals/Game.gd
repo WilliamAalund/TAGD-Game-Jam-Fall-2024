@@ -10,6 +10,7 @@ signal game_killed
 @onready var score_label = $GameOverPopup/VBoxContainer/FinalScoreLabel
 @onready var farthest_level_label = $GameOverPopup/VBoxContainer/FarthestLevelLabel
 @onready var level_complete_screen = $LevelCompletePlaceholder
+@onready var shop_screen = $ShopTest
 @onready var player_ship = load("res://Code/Entities/Player/v1/Player.tscn")
 @onready var arcade_level = load("res://Code/Levels/ArcadeLevel.tscn")
 @onready var ship_hud = load("res://Code/UI/InGameHUD.tscn")
@@ -22,6 +23,7 @@ signal game_killed
 @onready var big_rock = load("res://Code/Entities/Environment/BigRock.tscn")
 @onready var giant_rock = load("res://Code/Entities/Environment/GiantRock.tscn")
 @export var debug_enabled = false
+
 
 var game_is_active = false # Boolean used to control when the quit button is listening for user input.
 var player_reference = null
@@ -200,10 +202,6 @@ func setup_game_over_screen():
 	farthest_level_label.text = "Farthest Level: " + str(game_level)
 	game_over_screen.visible = true
 
-func spawn_objects():
-	pass
-
-
 func spawn_enemy(spawn_position: Vector3, enemy_type):
 	pass # TODO: Make enemy entities spawn in the level
 	var enemy_instance = enemy_type.instantiate()
@@ -237,6 +235,12 @@ func _on_level_complete_item_touched(body): # This function handles what happens
 		level_complete_screen.visible = true
 		await get_tree().create_timer(2).timeout
 		level_complete_screen.visible = false
+		if (game_level % 1 == 0):
+			pass # Implement shop
+			shop_screen.shop_level = game_level
+			shop_screen.visible = true
+			await shop_screen.player_continue
+			shop_screen.visible = false
 		
 		game_objects.process_mode = Node.PROCESS_MODE_INHERIT
 		unload_level()

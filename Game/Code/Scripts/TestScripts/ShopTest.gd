@@ -1,4 +1,7 @@
 extends Node
+
+signal player_continue
+
 # Load the dictionary script
 var item_data = preload("res://Code/Scripts/TestScripts/ItemDict.gd").new()
 
@@ -8,7 +11,7 @@ var target_types = ["Weapon", "Boost", "Health"]  # Adjust as needed
 # Function to select random items ensuring they are from different types
 var selected_items = []
 
-var level = Game.game_level
+@export var shop_level = 1
 
 # Function to select random items ensuring each button displays a specific type
 func select_random_items():
@@ -21,7 +24,7 @@ func select_random_items():
 		# Collect all items that match the current target type
 		for item_name in item_data.Items.keys():
 			var item = item_data.Items[item_name]
-			if item.type == target_type and item.reqlvl <= level:
+			if item.type == target_type and item.reqlvl <= shop_level:
 				items_of_type.append(item_name)
 		
 		# Select a random item from the items of this type (if any exist)
@@ -33,6 +36,7 @@ func select_random_items():
 
 
 func update_ui():
+	
 	update_ui_box(get_node("ItemButton1"), selected_items[0]) #Weapon
 	update_ui_box(get_node("ItemButton2"), selected_items[1]) #Boost
 	update_ui_box(get_node("ItemButton3"), selected_items[2]) #Health
@@ -41,17 +45,19 @@ func update_ui():
 func update_ui_box(ui_box, item_name):
 	if item_name == null:
 		# If no item is available, display "No Item Available"
-		ui_box.get_node("ItemName").text = "No Item Available"
-		ui_box.get_node("ItemPrice").text = ""
-		ui_box.get_node("ItemDescription").text = "No items meet the level requirement."
-		ui_box.get_node("ItemType").text = ""
+		ui_box.update_button_elements("null", 999, "item.description", "")
+		#ui_box.get_node("ItemName").text = "No Item Available"
+		#ui_box.get_node("ItemPrice").text = ""
+		#ui_box.get_node("ItemDescription").text = "No items meet the level requirement."
+		#ui_box.get_node("ItemType").text = ""
 	else:
 		# Display the selected item's details
 		var item = item_data.Items[item_name]
-		ui_box.get_node("ItemName").text = item_name
-		ui_box.get_node("ItemPrice").text = "Price: $" + str(item.price)
-		ui_box.get_node("ItemDescription").text = item.description
-		ui_box.get_node("ItemType").text = "Type: " + item.type
+		ui_box.update_button_elements(item_name, 999, item.description, item.type)
+		#ui_box.get_node("ItemName").text = item_name
+		#ui_box.get_node("ItemPrice").text = "Price: $"
+		#ui_box.get_node("ItemDescription").text = item.description
+		#ui_box.get_node("ItemType").text = "Type: " + item.type
 # Randomize on ready
 func _ready():
 	randomize()
@@ -72,3 +78,4 @@ func _on_item_button_pressed() -> void:
 func _on_continue_button_pressed() -> void:
 	pass 
 	print("go to game")
+	player_continue.emit()

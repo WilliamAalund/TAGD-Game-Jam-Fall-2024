@@ -19,7 +19,7 @@ const BOOST_ENERGY_REENABLE_THRESHOLD = 25
 @export var boost_depleted: bool = false # If the boost hits a value of 0, it will shut off for a bit until it reaches BOOST_ENERGY_REENABLE_THRESHOLD.
 @export var left_playable_space: bool = false
 
-var ship_steering_input = ShipSteeringInput.new()
+#var ship_steering_input = ShipSteeringInput.new()
 
 var boost_energy_regeneration_rate = 14
 var boost_energy_depletion_rate = 18
@@ -32,12 +32,14 @@ var minimum_net_input = 0.0005 # Used as a value to cull extremely small net inp
 var net_input_horizontal: float = 0 # The experienced input for horizontal rotation from the user. The raw input is interpolated to produce this value, which makes for a smoother turning experience.
 var net_input_vertical: float = 0 # Experienced for vertical
 var net_input_rotational: float = 0
-
+var user_input_getter = ShipSteeringInput.new()
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+func _ready() -> void:
+	self.add_child(user_input_getter)
 
 func _process(delta):
 	if input_enabled:
@@ -101,7 +103,7 @@ func adjust_travel_speed_based_on_input(delta):
 	else:
 		travel_speed = 0.0
 func update_net_input_horizontal(delta):
-	var directional_input_strength = 0
+	var directional_input_strength = user_input_getter.get_user_input().x
 	if Input.is_action_pressed("yaw_left"):
 		directional_input_strength = max_net_input * Input.get_action_strength("yaw_left")
 	elif Input.is_action_pressed("yaw_right"):
@@ -110,11 +112,11 @@ func update_net_input_horizontal(delta):
 		net_input_horizontal += (directional_input_strength - net_input_horizontal) * delta * net_input_rate_multiplier
 	
 func update_net_input_vertical(delta):
-	var input = 0
-	if Input.is_action_pressed("pitch_down"):
-		input = -max_net_input * Input.get_action_strength("pitch_down")
-	elif Input.is_action_pressed("pitch_up"):
-		input = max_net_input * Input.get_action_strength("pitch_up")
+	var input = user_input_getter.get_user_input().y
+	#if Input.is_action_pressed("pitch_down"):
+		#input = -max_net_input * Input.get_action_strength("pitch_down")
+	#elif Input.is_action_pressed("pitch_up"):
+		#input = max_net_input * Input.get_action_strength("pitch_up")
 	if input != net_input_vertical:
 		net_input_vertical += (input - net_input_vertical) * delta * net_input_rate_multiplier
 

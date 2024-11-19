@@ -124,6 +124,7 @@ script = ExtResource("1_h3sec")
 
 [node name="Ship" parent="." instance=ExtResource("2_ijeku")]
 physics_interpolation_mode = 1
+input_enabled = true
 
 [node name="PlayAreaSeeker" parent="Ship" instance=ExtResource("5_u7qfv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998406, 0)

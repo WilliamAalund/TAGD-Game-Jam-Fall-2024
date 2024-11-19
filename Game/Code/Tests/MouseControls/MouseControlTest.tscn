@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://uf02pqn1ard"]
+
+[ext_resource type="Script" path="res://Code/Scripts/TestScripts/mouse_control_test.gd" id="1_1ww0d"]
+
+[node name="MouseControlTest" type="Node2D"]
+script = ExtResource("1_1ww0d")

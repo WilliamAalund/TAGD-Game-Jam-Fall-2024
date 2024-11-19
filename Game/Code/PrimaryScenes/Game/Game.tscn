@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cxl5frgge2xk7"]
+[gd_scene load_steps=13 format=3 uid="uid://cxl5frgge2xk7"]
 
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/Game.gd" id="1_s8h24"]
 [ext_resource type="Texture2D" uid="uid://d20buag7ms05r" path="res://Resources/UIElements/PS5Controls.png" id="2_aw5qb"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://c5aaayuhy8o3h" path="res://Resources/UIElements/FunnelSans-VariableFont_wght.ttf" id="2_murm4"]
 [ext_resource type="Theme" uid="uid://cvn6e33yj56j7" path="res://Resources/UIElements/InGameUI.tres" id="2_qtu5r"]
 [ext_resource type="AudioStream" uid="uid://dgpnj0hyq8705" path="res://Resources/Audio/music fragment 2.wav" id="3_6q0hk"]
+[ext_resource type="PackedScene" uid="uid://blheuomdr3anl" path="res://Code/Tests/ShopTest.tscn" id="7_tev1m"]
 
 [sub_resource type="Gradient" id="Gradient_04d1e"]
 offsets = PackedFloat32Array(0, 0.00558659, 0.223464, 0.991071)
@@ -137,3 +138,6 @@ layout_mode = 2
 
 [node name="FarthestLevelLabel" type="Label" parent="GameOverPopup/VBoxContainer"]
 layout_mode = 2
+
+[node name="ShopTest" parent="." instance=ExtResource("7_tev1m")]
+visible = false

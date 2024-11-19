@@ -3,15 +3,7 @@ extends Node
 var Weapons = {
 	1:
 	{
-		"Name": "Base",
-		"rpm": 10,
-		"auto": true,
-		"range": 500,
-		"velocity": 500,
-		"spread": 0,
-		"damage": 2,
-		"mode": 3
-		
+		"weapon": WeaponConstants.DEFAULT_LASER_WEAPON
 	},
 	2:
 	{

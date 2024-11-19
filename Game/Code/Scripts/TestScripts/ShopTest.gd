@@ -4,6 +4,7 @@ signal player_continue
 
 # Load the dictionary script
 var item_data = preload("res://Code/Scripts/TestScripts/ItemDict.gd").new()
+var texture = load("res://Resources/Textures/Laser.png")
 
 var target_types = ["Weapon", "Boost", "Health"]  # Adjust as needed
 
@@ -12,6 +13,8 @@ var target_types = ["Weapon", "Boost", "Health"]  # Adjust as needed
 var selected_items = []
 
 @export var shop_level = 1
+var level_price_multiplier = 15
+
 
 # Function to select random items ensuring each button displays a specific type
 func select_random_items():
@@ -37,6 +40,7 @@ func select_random_items():
 
 func update_ui():
 	
+	$ScrapLabel.text = "Scrap: " + str(PlayerData.scrap)
 	update_ui_box(get_node("ItemButton1"), selected_items[0]) #Weapon
 	update_ui_box(get_node("ItemButton2"), selected_items[1]) #Boost
 	update_ui_box(get_node("ItemButton3"), selected_items[2]) #Health
@@ -53,7 +57,7 @@ func update_ui_box(ui_box, item_name):
 	else:
 		# Display the selected item's details
 		var item = item_data.Items[item_name]
-		ui_box.update_button_elements(item_name, 999, item.description, item.type)
+		ui_box.update_button_elements(item_name, shop_level * level_price_multiplier, item.description, item.type, item["image"])
 		#ui_box.get_node("ItemName").text = item_name
 		#ui_box.get_node("ItemPrice").text = "Price: $"
 		#ui_box.get_node("ItemDescription").text = item.description

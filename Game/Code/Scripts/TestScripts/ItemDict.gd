@@ -4,7 +4,7 @@ var Items = {
 	"Blaster":
 	{
 		"weapID": 1,
-		"image": "image",
+		"image": "res://Resources/Textures/Laser.png",
 		"description": "A powerful blaster",
 		"type": "Weapon",
 		"modifier": 1.2,
@@ -23,6 +23,7 @@ var Items = {
 	"Missile":
 	{
 		"price": 3,
+		"image": "sfdsfS",
 		"description": "A powerful missile",
 		"type": "Weapon",
 		"modifier": 2,
@@ -31,6 +32,7 @@ var Items = {
 	"Speed Boost":
 	{
 		"weapID": 99,
+		"image": "res://Resources/Images/icon.svg",
 		"description": "A minor speed boost",
 		"type": "Boost",
 		"modifier": 1.5,
@@ -39,6 +41,7 @@ var Items = {
 	"Health Boost":
 	{
 		"weapID": 99,
+		"image": "fafdads",
 		"description": "A minor health boost",
 		"type": "Health",
 		"modifier": 1.2,

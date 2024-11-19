@@ -1,11 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://517ufem84oyx"]
+[gd_scene load_steps=3 format=3 uid="uid://517ufem84oyx"]
 
 [ext_resource type="Script" path="res://Code/Scripts/item_button.gd" id="1_vbvb1"]
-
-[sub_resource type="Gradient" id="Gradient_8tq1o"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_c1dw8"]
-gradient = SubResource("Gradient_8tq1o")
+[ext_resource type="Texture2D" uid="uid://dmntm7c5eyqn" path="res://Resources/Textures/Laser.png" id="2_p8s0l"]
 
 [node name="ItemButton" type="Button"]
 anchors_preset = 15
@@ -48,7 +44,7 @@ custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = SubResource("GradientTexture2D_c1dw8")
+texture = ExtResource("2_p8s0l")
 expand_mode = 1
 
 [node name="ItemDescription" type="Label" parent="VBoxContainer"]

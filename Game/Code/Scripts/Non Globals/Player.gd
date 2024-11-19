@@ -8,6 +8,7 @@ signal player_destroyed
 @onready var stats = $CoreStatsManager
 @onready var animation = $AnimationPlayer
 @onready var projectile_handler = $ProjectileHandler
+@onready var weapon_manager = $WeaponManager
 
 var player_data_packet = {}
 
@@ -48,6 +49,7 @@ func _on_core_stats_manager_player_hp_depleted() -> void:
 	player_ship.debug_freeze_ship_position = false
 	camera.camera_control_enabled = false
 	projectile_handler.input_enabled = false
+	weapon_manager.input_enabled = false
 	player_ship.visible = false
 
 func _on_new_game_data_packet(packet):

@@ -11,14 +11,9 @@ var port_index = 0
 func _ready() -> void:
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 #set_up_projectile(projectile_type: type_enum, creator_basis: Basis,creator_group: String):
 
-func spawn_projectile(spread: float, projectile_damage: float, projectile_range: float, projectile_velocity: float, enemy_projectile: bool, port_mode: port_modes = port_modes.ALTERNATE) -> void:
+func spawn_projectile(spread: float, projectile_damage: float, projectile_range: float, projectile_velocity: float, _enemy_projectile: bool, port_mode: port_modes = port_modes.ALTERNATE) -> void:
 	var projectile_to_spawn = projectile_scene.instantiate()
 
 	var rotation_basis = self.global_transform.basis

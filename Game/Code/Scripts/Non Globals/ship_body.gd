@@ -75,8 +75,8 @@ func move_ship_forward():
 	move_and_slide()
 
 
-func damaged_by_projectile(projectile_kind): # Called by a colliding projectile area on the body navigator.
-	ship_hit_by_projectile.emit(projectile_kind)
+func damaged_by_projectile(projectile_kind, damage): # Called by a colliding projectile area on the body navigator.
+	ship_hit_by_projectile.emit(projectile_kind, damage)
 
 
 func _on_player_new_player_data_packet(packet):

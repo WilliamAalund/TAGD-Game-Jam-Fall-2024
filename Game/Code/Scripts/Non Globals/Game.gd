@@ -19,6 +19,8 @@ signal game_killed
 @onready var tiny_turret = load("res://Code/Entities/Enemies/v2/EnemyScenes/TinyTurret/TinyTurret.tscn")
 @onready var giga_turret = load("res://Code/Entities/Enemies/v2/EnemyScenes/GigaTurret/GigaTurret.tscn")
 @onready var small_rock = load("res://Code/Entities/Environment/SmallRock.tscn")
+@onready var big_rock = load("res://Code/Entities/Environment/BigRock.tscn")
+@onready var giant_rock = load("res://Code/Entities/Environment/GiantRock.tscn")
 @export var debug_enabled = false
 
 var game_is_active = false # Boolean used to control when the quit button is listening for user input.
@@ -165,7 +167,13 @@ func load_level(_game_mode: game_modes):
 				else:
 					spawn_enemy(random_positions[i],tiny_turret)
 		else:
-			spawn_rock(random_positions[i],standard_enemy_ship)
+			var rock_rng = randi_range(0,2)
+			if rock_rng == 0:
+				spawn_rock(random_positions[i],small_rock)
+			elif rock_rng == 1:
+				spawn_rock(random_positions[i],giant_rock)
+			else:
+				spawn_rock(random_positions[i],big_rock)
 	
 
 func unload_level():
@@ -208,7 +216,7 @@ func spawn_enemy(spawn_position: Vector3, enemy_type):
 
 func spawn_rock(spawn_position: Vector3, environment_type):
 	pass
-	var small_rock_instance = small_rock.instantiate()
+	var small_rock_instance = environment_type.instantiate()
 	game_objects.add_child(small_rock_instance)
 	small_rock_instance.global_position = spawn_position
 

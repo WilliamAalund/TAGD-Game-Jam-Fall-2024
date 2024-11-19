@@ -29,6 +29,7 @@ func _on_player_new_player_data_packet(packet):
 	boost_bar.value = packet["boost_energy"]
 	ship_model.basis = packet["ship_basis"]
 	crosshair.position = packet["crosshair_position_2d"]
+	#print(crosshair.position)
 	velocity_label.text = str(packet["velocity"].length()).substr(0,5)
 	objective_pointers.global_position = packet["global_pos"]
 

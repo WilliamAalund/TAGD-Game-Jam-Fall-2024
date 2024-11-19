@@ -17,7 +17,7 @@ func _ready() -> void:
 		
 
 func get_weapon_parameter_dictionary(weapon_id: int) -> Dictionary:
-	return WeaponConstants.WEAPO # TODO: Implement this
+	return WeaponConstants.SNIPER # TODO: Implement this
 
 func spawn_weapon(weapon_id: int):
 	# Convert weapon id to dictionary
@@ -38,11 +38,6 @@ func spawn_weapon(weapon_id: int):
 	
 	self.add_child(weapon_child)
 	weapon_count += 1
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func _on_player_new_player_data_packet(packet: Variant) -> void:
 	self.global_position = packet["global_pos"] 

@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 			elif collider.is_in_group("enemy") and projectile_creator_group == "player":
 				#print("Enemy hit by projectile")
 				if collider.has_method("damaged_by_projectile"):
-					collider.damaged_by_projectile(type)
+					collider.damaged_by_projectile(type, damage)
 		#print("I have travelled for my maximum distance")
 		var end_explosion = explosion_scene.instantiate()
 		get_parent().add_child(end_explosion)

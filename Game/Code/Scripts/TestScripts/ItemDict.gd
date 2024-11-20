@@ -26,9 +26,41 @@ var Items = {
 		"type": "Weapon",
 		"reqlvl": 0
 	},
+	"Weapon1":
+	{
+		"weapID": 3,
+		"image": "sfdsfS",
+		"description": "A powerful missile 1",
+		"type": "Weapon",
+		"reqlvl": 0
+	},
+	"Weapon2":
+	{
+		"weapID": 3,
+		"image": "sfdsfS",
+		"description": "A powerful missile 2",
+		"type": "Weapon",
+		"reqlvl": 0
+	},
+	"Weapon3":
+	{
+		"weapID": 3,
+		"image": "sfdsfS",
+		"description": "A powerful missile 3",
+		"type": "Weapon",
+		"reqlvl": 0
+	},
+	"Weapon4":
+	{
+		"weapID": 3,
+		"image": "sfdsfS",
+		"description": "A powerful missile 4",
+		"type": "Weapon",
+		"reqlvl": 0
+	},
 	"Speed Boost":
 	{
-		"weapID": 99,
+		"weapID": 98,
 		"image": "res://Resources/Images/icon.svg",
 		"description": "A minor speed boost",
 		"type": "Boost",

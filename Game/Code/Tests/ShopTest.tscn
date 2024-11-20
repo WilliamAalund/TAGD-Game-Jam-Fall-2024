@@ -17,7 +17,7 @@ theme = ExtResource("1_h8ugx")
 script = ExtResource("1_ww0oy")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(0, 0, 0, 0.811765)
+modulate = Color(0, 0, 0, 0.87451)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

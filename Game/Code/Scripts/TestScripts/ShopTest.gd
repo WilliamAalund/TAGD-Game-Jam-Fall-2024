@@ -12,7 +12,7 @@ var target_types = ["Weapon", "Boost", "Health"]  # Adjust as needed
 var selected_items = []
 
 @export var shop_level = 1
-@export var price = shop_level*15
+@export var price = shop_level*200
 @export var multiplier = shop_level*8
 @export var health_multiplier = shop_level*1.1
 
@@ -61,6 +61,8 @@ func update_ui_box(ui_box, item_name):
 		#ui_box.get_node("ItemType").text = ""
 	else:
 		# Display the selected item's details
+		if(PlayerData.scrap < price):
+			ui_box.get_node("Panel").visible = true
 		var item = item_data.Items[item_name]
 		ui_box.update_button_elements(item_name, price, item.description, item.type, item["image"])
 		#ui_box.get_node("ItemName").text = item_name

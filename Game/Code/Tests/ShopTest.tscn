@@ -76,7 +76,7 @@ offset_right = 135.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Spend scrp to buy better items!"
+text = "Spend scrap to buy better items!"
 
 [node name="ContinueButton" type="Button" parent="."]
 layout_mode = 1

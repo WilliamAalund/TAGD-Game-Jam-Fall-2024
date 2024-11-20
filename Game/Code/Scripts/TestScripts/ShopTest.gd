@@ -12,7 +12,7 @@ var target_types = ["Weapon", "Boost", "Health"]  # Adjust as needed
 var selected_items = []
 
 @export var shop_level = 1
-@export var price = shop_level*200
+@export var price = shop_level*15
 @export var multiplier = shop_level*8
 @export var health_multiplier = shop_level*1.1
 
@@ -84,7 +84,8 @@ func _process(delta: float) -> void:
 
 
 func _on_item_button_pressed() -> void:
-	PlayerData.buyWeapon(selected_items[0], price)
+	var item = item_data.Items[selected_items[0]]
+	PlayerData.buyWeapon(item, price)
 	player_continue.emit()
 
 

@@ -115,6 +115,7 @@ func buyItem(item_name, price):
 			speed_boost += 0.2
 		else:
 			health_boost += 0.2
+			maximum_HP = BASE_MAXIMUM_HP
 			maximum_HP *= health_boost
 			HP = maximum_HP
 

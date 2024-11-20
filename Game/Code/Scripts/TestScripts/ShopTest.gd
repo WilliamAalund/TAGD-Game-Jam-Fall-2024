@@ -14,6 +14,9 @@ var selected_items = []
 @export var shop_level = 1
 @export var price = shop_level*15
 
+func set_up_ui(new_shop_level: int) -> void:
+	shop_level = new_shop_level
+	$ItemButton1.grab_focus()
 
 # Function to select random items ensuring each button displays a specific type
 func select_random_items():

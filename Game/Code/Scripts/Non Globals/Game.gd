@@ -240,7 +240,7 @@ func _on_level_complete_item_touched(body): # This function handles what happens
 		await get_tree().create_timer(2).timeout
 		level_complete_screen.visible = false
 		if (game_level % 1 == 0):
-			shop_screen.shop_level = game_level
+			shop_screen.set_up_ui(game_level)
 			shop_screen.visible = true
 			await shop_screen.player_continue
 			shop_screen.visible = false

@@ -86,6 +86,8 @@ func reset_player_stats():
 	maximum_HP = BASE_MAXIMUM_HP
 	scrap = BASE_SCRAP
 	score = 0
+	primary_weapon_id = 0
+	secondary_weapon_id = -1
 	
 func prepare_player_stats_for_new_level():
 	pass # TODO: Reset any cooldowns, and refresh shield

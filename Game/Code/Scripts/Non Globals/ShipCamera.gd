@@ -5,6 +5,8 @@ extends Node3D
 @onready var spring_arm = $SpringArm3D
 @onready var camera = $SpringArm3D/Camera3D
 @onready var front_camera_animation = $SpringArm3D/Camera3D/AnimationPlayer
+@onready var ads_in_sound_effect = $ADSIn
+@onready var ads_out_sound_effect = $ADSOut
 
 var target_basis
 var base_camera_rotate_speed = 30.0 ##
@@ -39,6 +41,7 @@ func _process(delta):
 		
 		if Input.is_action_pressed("boost"):
 			fov_control = lerp(fov_control, FOV_CONTROL_BOOST_MAX, delta * 4)
+			
 		elif Input.is_action_pressed("focus"):
 			pass
 			fov_control -= 0.01
@@ -48,6 +51,16 @@ func _process(delta):
 			fov_control = lerp(fov_control, FOV_CONTROL_BOOST_MIN, delta * 3)
 		else:
 			fov_control = lerp(fov_control, FOV_CONTROL_BASE, delta)
+			
+		if Input.is_action_just_pressed("focus") and not Input.is_action_pressed("boost"):
+			zoomed_in = true
+			ads_in_sound_effect.play()
+		if not Input.is_action_pressed("focus") and zoomed_in:
+			ads_out_sound_effect.play()
+			zoomed_in = false
+			
+			
+			
 		#if Input.is_action_pressed("boost"):
 			#if speeding == false:
 				#front_camera_animation.play("accelerate")

@@ -12,8 +12,8 @@ var target_types = ["Weapon", "Boost", "Health"]  # Adjust as needed
 var selected_items = []
 
 @export var shop_level = 1
-@export var price = shop_level*100
-@export var multiplier = shop_level*8
+@export var price = shop_level*15
+@export var multiplier = 1.1
 @export var health_multiplier = shop_level*1.1
 
 func set_up_ui(new_shop_level: int) -> void:

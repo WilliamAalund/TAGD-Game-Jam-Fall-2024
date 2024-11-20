@@ -76,7 +76,7 @@ func _physics_process(delta):
 # Adjusts the ship's travel speed based on debug input
 func adjust_travel_speed_based_on_input(delta):
 	if input_enabled: 
-		var target_travel_speed: float = BASE_TRAVEL_SPEED
+		var target_travel_speed: float = BASE_TRAVEL_SPEED * PlayerData.speed_boost
 		# Increase velocity
 		if Input.is_action_pressed("boost") and boost_energy > 0 and boost_depleted == false:
 			target_travel_speed = MAX_TRAVEL_SPEED

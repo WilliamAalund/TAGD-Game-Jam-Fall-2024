@@ -9,6 +9,11 @@ const BASE_MAXIMUM_HP := 100
 const BASE_SCRAP := 0
 const BASE_SHIELD = 0
 
+# Scrap values
+const ENEMY_DESTROYED_SCRAP_VALUE = 5
+const LEVEL_COMPLETED_SCRAP_VALUE = 10
+const LEVEL_PERFECT_SCRAP_VALUE = 5
+
 # Ship
 const MIN_TRAVEL_SPEED := -10.0
 const BASE_TRAVEL_SPEED := 20.0
@@ -39,6 +44,8 @@ const SHIELD_TIME_TO_REGENERATE_BEGIN := 300
 @export var secondary_weapon_id = -1
 @export var secondary_weapon_selected := false
 
+var player_hit_during_current_level = false
+
 var scrape_current_invincibility_frames = 0
 
 func _process(_delta: float) -> void:
@@ -52,6 +59,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func inflict_damage(amount: int, damage_type: String):
+	player_hit_during_current_level = true
 	if damage_type == "scrape" and scrape_current_invincibility_frames == 0:
 		HP -= amount
 		scrape_current_invincibility_frames = SCRAPE_INVINCIBILITY_FRAMES
@@ -78,10 +86,17 @@ func reset_player_stats():
 	
 func prepare_player_stats_for_new_level():
 	pass # TODO: Reset any cooldowns, and refresh shield
+	player_hit_during_current_level = false
 
 func enemy_destroyed():
 	score += 100
-	scrap += 10
+	scrap += ENEMY_DESTROYED_SCRAP_VALUE
+
+func award_scrap_for_level_completion():
+	scrap += LEVEL_COMPLETED_SCRAP_VALUE
+	print("Was player hit? ",player_hit_during_current_level)
+	if not player_hit_during_current_level:
+		scrap += LEVEL_PERFECT_SCRAP_VALUE
 
 func buyWeapon(weapon, price):
 	if canBuy(price):

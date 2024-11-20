@@ -26,6 +26,8 @@ signal game_killed
 @export var debug_enabled = false
 
 
+
+
 var game_is_active = false # Boolean used to control when the quit button is listening for user input.
 var player_reference = null
 var in_level_complete_screen = false
@@ -146,7 +148,7 @@ func load_level(_game_mode: game_modes):
 	var num_random_positions = game_level + 5
 	
 	var world_rng = RNG.new()
-	var random_positions = world_rng.get_random_points(num_random_positions,Vector3(-200,-200,-200),Vector3(200,200,200), 35)
+	var random_positions = world_rng.get_random_points(num_random_positions,Vector3(-200,-200,-200),Vector3(200,200,200), 65)
 	print(random_positions.size())
 	
 	enemies_spawned = 0
@@ -233,7 +235,8 @@ func spawn_complete_object(spawn_position: Vector3):
 func _on_level_complete_item_touched(body): # This function handles what happens when a level completes
 	if body.is_in_group("player"):
 		print("Player collected level complete item")
-		PlayerData.scrap += 10
+		PlayerData.award_scrap_for_level_completion()
+		PlayerData.prepare_player_stats_for_new_level()
 		in_level_complete_screen = true
 		game_objects.call_deferred("set", "process_mode", Node.PROCESS_MODE_DISABLED)
 		level_complete_screen.visible = true

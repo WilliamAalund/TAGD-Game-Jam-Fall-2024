@@ -14,8 +14,12 @@ var weapon_count = 0
 func _ready() -> void:
 	print("Equipping weapons")
 	set_up_weapons() 
-	
-	
+
+func set_weapons_enabled(enabled: bool) -> void:
+	if enabled:
+		set_up_weapons()
+	else:
+		clear_current_weapons()
 
 func get_weapon_parameter_dictionary(weapon_id: int) -> Dictionary:
 	return WeaponConstants.WEAPONS[weapon_id] # TODO: Implement this

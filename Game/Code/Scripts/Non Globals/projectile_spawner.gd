@@ -30,6 +30,7 @@ func _process(delta):
 
 func fire_projectile():
 	spawn_projectile()
+	$AudioStreamPlayer3D.play()
 
 func spawn_projectile():
 	var new_projectile = projectile_scene.instantiate()

@@ -15,8 +15,11 @@ var player_data_packet = {}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Initial setup can be done here.
+	weapon_manager.set_weapons_enabled(false)
 	camera.global_position = player_ship.global_position
 	animation.play("ship_fly_in")
+	await animation.animation_finished
+	weapon_manager.set_weapons_enabled(true)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

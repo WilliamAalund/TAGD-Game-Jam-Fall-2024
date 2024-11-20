@@ -1,6 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://ci4vcaiif0ff2"]
+[gd_scene load_steps=13 format=3 uid="uid://ci4vcaiif0ff2"]
 
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/ShipCamera.gd" id="1_r0uoc"]
+[ext_resource type="AudioStream" uid="uid://6ixvisbq2itk" path="res://Resources/Audio/ads-in.wav" id="2_euk7a"]
+[ext_resource type="AudioStream" uid="uid://do737bcugmw0r" path="res://Resources/Audio/ads-out.wav" id="3_uauk5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3h43c"]
 radius = 0.7
@@ -163,3 +165,11 @@ anchor_bottom = 1.0
 offset_top = -23.0
 offset_right = 40.0
 grow_vertical = 0
+
+[node name="ADSIn" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_euk7a")
+volume_db = -8.791
+
+[node name="ADSOut" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_uauk5")
+volume_db = -8.791

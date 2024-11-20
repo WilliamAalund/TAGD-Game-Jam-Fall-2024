@@ -28,7 +28,7 @@ var Items = {
 	},
 	"Weapon1":
 	{
-		"weapID": 3,
+		"weapID": 4,
 		"image": "sfdsfS",
 		"description": "A powerful missile 1",
 		"type": "Weapon",
@@ -36,7 +36,7 @@ var Items = {
 	},
 	"Weapon2":
 	{
-		"weapID": 3,
+		"weapID": 5,
 		"image": "sfdsfS",
 		"description": "A powerful missile 2",
 		"type": "Weapon",
@@ -44,7 +44,7 @@ var Items = {
 	},
 	"Weapon3":
 	{
-		"weapID": 3,
+		"weapID": 6,
 		"image": "sfdsfS",
 		"description": "A powerful missile 3",
 		"type": "Weapon",
@@ -52,7 +52,7 @@ var Items = {
 	},
 	"Weapon4":
 	{
-		"weapID": 3,
+		"weapID": 7,
 		"image": "sfdsfS",
 		"description": "A powerful missile 4",
 		"type": "Weapon",

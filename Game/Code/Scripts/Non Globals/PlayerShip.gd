@@ -79,7 +79,7 @@ func adjust_travel_speed_based_on_input(delta):
 		var target_travel_speed: float = BASE_TRAVEL_SPEED * PlayerData.speed_boost
 		# Increase velocity
 		if Input.is_action_pressed("boost") and boost_energy > 0 and boost_depleted == false:
-			target_travel_speed = MAX_TRAVEL_SPEED
+			target_travel_speed = MAX_TRAVEL_SPEED * PlayerData.speed_boost
 			Input.start_joy_vibration(0,0.5,0.2,0.1)
 			boost_energy -= boost_energy_depletion_rate * delta
 			if boost_energy <= 0.0:

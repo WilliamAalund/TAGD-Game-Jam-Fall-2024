@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bxprnfg1nk8ja"]
+[gd_scene load_steps=19 format=3 uid="uid://bxprnfg1nk8ja"]
 
 [ext_resource type="Theme" uid="uid://cvn6e33yj56j7" path="res://Resources/UIElements/InGameUI.tres" id="1_31owh"]
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/InGameUI.gd" id="2_vkrl8"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dmntm7c5eyqn" path="res://Resources/Textures/Laser.png" id="6_inpih"]
 [ext_resource type="Texture2D" uid="uid://bdgux43h3mmvm" path="res://Resources/Textures/CrosshairLaser.png" id="7_oo6fl"]
 [ext_resource type="PackedScene" uid="uid://c8nuhu0qufpad" path="res://Code/UI/ObjectivePointers.tscn" id="8_jfjt6"]
+[ext_resource type="AudioStream" uid="uid://d20dg3ufsq07t" path="res://Resources/Audio/alarm-short.wav" id="12_dcm32"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_p6mat"]
 viewport_path = NodePath("ShipModelContainer/ShipBasisRect/SubViewport")
@@ -304,3 +305,7 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("7_oo6fl")
 
 [node name="ObjectivePointers" parent="." instance=ExtResource("8_jfjt6")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_dcm32")
+volume_db = -10.215

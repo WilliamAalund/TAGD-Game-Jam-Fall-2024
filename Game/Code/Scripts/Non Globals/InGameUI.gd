@@ -16,11 +16,21 @@ func _ready():
 	crosshair.position = Vector2(0,0)
 
 
+var audio_stream_played = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	health_label.text = "HP: " + str(PlayerData.HP) + " / " + str(PlayerData.maximum_HP)
 	health.value = PlayerData.HP
 	health.max_value = PlayerData.maximum_HP
+	if float(PlayerData.HP) / PlayerData.maximum_HP < 0.3 and not audio_stream_played:
+		low_health_alert()
+		audio_stream_played = true
+		
+
+func low_health_alert():
+	$AudioStreamPlayer.play()
+	await $AudioStreamPlayer.finished
+	$AudioStreamPlayer.play()
 
 # Process information about the player
 func _on_player_new_player_data_packet(packet):

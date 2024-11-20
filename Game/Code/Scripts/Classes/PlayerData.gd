@@ -2,6 +2,7 @@ extends Node
 class_name player_data
 
 signal player_HP_depleted
+signal player_bought_weapon(id)
 
 enum upgrade_types {HEAL_HP,IMPROVE_MAX_HP,IMPROVE_MAX_SHIELD}
 

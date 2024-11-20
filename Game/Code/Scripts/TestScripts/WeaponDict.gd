@@ -1,11 +1,35 @@
 extends Node
 
 var Weapons = {
-	1:
+	0:
 	{
 		"weapon": WeaponConstants.DEFAULT_LASER_WEAPON
 	},
+	1:
+	{
+		"weapon": WeaponConstants.SNIPER
+	},
 	2:
+	{
+		"weapon": WeaponConstants.ACCURO_RAY
+	},
+	3:
+	{
+		"weapon": WeaponConstants.SNIPER
+	},
+	4:
+	{
+		"weapon": WeaponConstants.SNIPER
+	},
+	5:
+	{
+		"weapon": WeaponConstants.SNIPER
+	},
+	6:
+	{
+		"weapon": WeaponConstants.SNIPER
+	},
+	7:
 	{
 		"weapon": WeaponConstants.SNIPER
 	}

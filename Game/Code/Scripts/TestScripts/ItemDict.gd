@@ -7,7 +7,6 @@ var Items = {
 		"image": "res://Resources/Textures/Laser.png",
 		"description": "A powerful blaster",
 		"type": "Weapon",
-		"modifier": 1.2,
 		"reqlvl": 0
 		
 	},
@@ -17,17 +16,15 @@ var Items = {
 		"image": "res://Resources/Textures/Laser.png",
 		"description": "A powerful laser beam",
 		"type": "Weapon",
-		"modifier": 1.5,
-		"reqlvl": 5
+		"reqlvl": 0
 	},
 	"Missile":
 	{
-		"price": 3,
+		"weapID": 3,
 		"image": "sfdsfS",
 		"description": "A powerful missile",
 		"type": "Weapon",
-		"modifier": 2,
-		"reqlvl": 10
+		"reqlvl": 0
 	},
 	"Speed Boost":
 	{
@@ -35,8 +32,7 @@ var Items = {
 		"image": "res://Resources/Images/icon.svg",
 		"description": "A minor speed boost",
 		"type": "Boost",
-		"modifier": 1.5,
-		"reqlvl": 0	
+		"reqlvl": 0
 	},
 	"Health Boost":
 	{
@@ -44,7 +40,6 @@ var Items = {
 		"image": "res://Resources/Textures/health.png",
 		"description": "A minor health boost",
 		"type": "Health",
-		"modifier": 1.2,
 		"reqlvl": 0
 	}
 }

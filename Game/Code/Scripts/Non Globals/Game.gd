@@ -98,6 +98,7 @@ func pause_game(_game_mode: game_modes):
 func unpause_game(_game_mode: game_modes):
 	game_objects.process_mode = Node.PROCESS_MODE_INHERIT
 	pause_screen.visible = false
+	audio_stream_player.play()
 	pass
 
 func quit_game():
@@ -242,7 +243,7 @@ func _on_level_complete_item_touched(body): # This function handles what happens
 		level_complete_screen.visible = true
 		await get_tree().create_timer(2).timeout
 		level_complete_screen.visible = false
-		if (game_level % 1 == 0):
+		if (game_level % 3 == 0): # Determines the frequency of the shop
 			shop_screen.set_up_ui(game_level)
 			shop_screen.visible = true
 			await shop_screen.player_continue

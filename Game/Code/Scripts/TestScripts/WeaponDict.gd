@@ -7,14 +7,7 @@ var Weapons = {
 	},
 	2:
 	{
-		"Name": "Laser",
-		"rpm": 100,
-		"auto": true,
-		"range": 500,
-		"velocity": 1000,
-		"spread": 0,
-		"damage": 2,
-		"mode": 1
+		"weapon": WeaponConstants.SNIPER
 	}
 }
 

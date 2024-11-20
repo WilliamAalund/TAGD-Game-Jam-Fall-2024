@@ -63,11 +63,3 @@ text = "Cost: 0 Scrap
 "
 horizontal_alignment = 1
 vertical_alignment = 2
-
-[node name="ItemLevel" type="Label" parent="VBoxContainer"]
-z_index = 1
-layout_mode = 2
-text = "Level Required: 0
-"
-horizontal_alignment = 1
-vertical_alignment = 2

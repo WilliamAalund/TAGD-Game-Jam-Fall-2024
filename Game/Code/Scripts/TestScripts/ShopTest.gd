@@ -4,7 +4,6 @@ signal player_continue
 
 # Load the dictionary script
 var item_data = preload("res://Code/Scripts/TestScripts/ItemDict.gd").new()
-var texture = load("res://Resources/Textures/Laser.png")
 
 var target_types = ["Weapon", "Boost", "Health"]  # Adjust as needed
 
@@ -13,7 +12,7 @@ var target_types = ["Weapon", "Boost", "Health"]  # Adjust as needed
 var selected_items = []
 
 @export var shop_level = 1
-var level_price_multiplier = 15
+@export var price = shop_level*15
 
 
 # Function to select random items ensuring each button displays a specific type
@@ -57,7 +56,7 @@ func update_ui_box(ui_box, item_name):
 	else:
 		# Display the selected item's details
 		var item = item_data.Items[item_name]
-		ui_box.update_button_elements(item_name, shop_level * level_price_multiplier, item.description, item.type, item["image"])
+		ui_box.update_button_elements(item_name, price, item.description, item.type, item["image"])
 		#ui_box.get_node("ItemName").text = item_name
 		#ui_box.get_node("ItemPrice").text = "Price: $"
 		#ui_box.get_node("ItemDescription").text = item.description
@@ -75,19 +74,21 @@ func _process(delta: float) -> void:
 	pass
 
 
+
 func _on_item_button_pressed() -> void:
-	pass # Replace with function body.
+	var item = item_data.Items[selected_items[0]]
+	if PlayerData.buyWeapon(item, price):
+		player_continue.emit()
 
 
 func _on_continue_button_pressed() -> void:
-	pass 
 	print("go to game")
 	player_continue.emit()
 
 
 func _on_item_button_2_pressed() -> void:
-	pass # Replace with function body.
+	PlayerData.buyItem(selected_items[1], price)
 
 
 func _on_item_button_3_pressed() -> void:
-	pass # Replace with function body.
+	PlayerData.buyItem(selected_items[2], price)

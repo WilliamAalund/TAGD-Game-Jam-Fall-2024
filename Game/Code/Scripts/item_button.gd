@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 	
 func update_button_elements(weapon_name, price, description, type, image):
 	name_label.text = weapon_name
-	price_label.text = str(price)
+	price_label.text = "Cost: " + str(price) + " scrap"
 	description_label.text = description
 	var picture = load(image)
 	$VBoxContainer/ItemImage.texture = picture

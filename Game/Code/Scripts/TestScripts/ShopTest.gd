@@ -13,8 +13,6 @@ var selected_items = []
 
 @export var shop_level = 1
 @export var price = shop_level*15
-@export var multiplier = 1.1
-@export var health_multiplier = shop_level*1.1
 
 func set_up_ui(new_shop_level: int) -> void:
 	shop_level = new_shop_level
@@ -62,7 +60,13 @@ func update_ui_box(ui_box, item_name):
 		#ui_box.get_node("ItemType").text = ""
 	else:
 		# Display the selected item's details
-		ui_box.update_button_elements(item_name, price, item.description, item.type, item["image"])
+		if(ui_box == get_node("ItemButton1")):
+			ui_box.update_button_elements(item_name, price, item.description, item.type, item["image"])
+		elif(ui_box == get_node("ItemButton2")):
+			ui_box.update_button_elements(item_name, price, "Increases speed by " + str(PlayerData.speed_boost+0.2) + "x", item.type, item["image"])
+		else:
+			ui_box.update_button_elements(item_name, price, "Increases health by " + str(PlayerData.health_boost+0.2) + "x", item.type, item["image"])
+
 		if(PlayerData.scrap < price || (ui_box == get_node("ItemButton1") && PlayerData.primary_weapon_id == item.weapID)):
 			ui_box.disabled = true
 		else:
@@ -97,10 +101,10 @@ func _on_continue_button_pressed() -> void:
 
 
 func _on_item_button_2_pressed() -> void:
-	PlayerData.buyItem(selected_items[1], price, multiplier)
+	PlayerData.buyItem(selected_items[1], price)
 	player_continue.emit()
 
 
 func _on_item_button_3_pressed() -> void:
-	PlayerData.buyItem(selected_items[2], price, health_multiplier)
+	PlayerData.buyItem(selected_items[2], price)
 	player_continue.emit()

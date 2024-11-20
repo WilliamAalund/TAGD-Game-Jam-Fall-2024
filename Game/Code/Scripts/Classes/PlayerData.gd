@@ -36,6 +36,7 @@ const SHIELD_TIME_TO_REGENERATE_BEGIN := 300
 @export var shield := 0
 @export var maximum_shield := 0
 @export var speed_boost := 1.0
+@export var health_boost := 1.0
 @export var scrap := 0
 @export var HP_depleted := false
 @export var infinite_scrap := false
@@ -104,14 +105,14 @@ func buyWeapon(weapon, price):
 		scrap -= price
 		primary_weapon_id = weapon.weapID
 	
-func buyItem(item_name, price, multiplier):
+func buyItem(item_name, price):
 	if canBuy(price):
 		scrap -= price
 		if (item_name == "Speed Boost"):
 			speed_boost += 0.2
-			print("NEW SPEED BOOST " + str(speed_boost))
 		else:
-			maximum_HP *= multiplier
+			health_boost += 0.2
+			maximum_HP *= health_boost
 			HP = maximum_HP
 
 func canBuy(price):

@@ -12,7 +12,7 @@ var target_types = ["Weapon", "Boost", "Health"]  # Adjust as needed
 var selected_items = []
 
 @export var shop_level = 1
-@export var price = shop_level*15
+@export var price = shop_level*100
 @export var multiplier = shop_level*8
 @export var health_multiplier = shop_level*1.1
 
@@ -52,6 +52,7 @@ func update_ui():
 
 
 func update_ui_box(ui_box, item_name):
+	var item = item_data.Items[item_name]
 	if item_name == null:
 		# If no item is available, display "No Item Available"
 		ui_box.update_button_elements("null", 999, "item.description", "")
@@ -61,10 +62,11 @@ func update_ui_box(ui_box, item_name):
 		#ui_box.get_node("ItemType").text = ""
 	else:
 		# Display the selected item's details
-		if(PlayerData.scrap < price):
-			ui_box.get_node("Panel").visible = true
-		var item = item_data.Items[item_name]
 		ui_box.update_button_elements(item_name, price, item.description, item.type, item["image"])
+		if(PlayerData.scrap < price || (ui_box == get_node("ItemButton1") && PlayerData.primary_weapon_id == item.weapID)):
+			ui_box.disabled = true
+		else:
+			ui_box.disabled = false
 		#ui_box.get_node("ItemName").text = item_name
 		#ui_box.get_node("ItemPrice").text = "Price: $"
 		#ui_box.get_node("ItemDescription").text = item.description

@@ -13,6 +13,8 @@ var selected_items = []
 
 @export var shop_level = 1
 @export var price = shop_level*15
+@export var multiplier = shop_level*8
+@export var health_multiplier = shop_level*1.1
 
 func set_up_ui(new_shop_level: int) -> void:
 	shop_level = new_shop_level
@@ -80,9 +82,8 @@ func _process(delta: float) -> void:
 
 
 func _on_item_button_pressed() -> void:
-	var item = item_data.Items[selected_items[0]]
-	if PlayerData.buyWeapon(item, price):
-		player_continue.emit()
+	PlayerData.buyWeapon(selected_items[0], price)
+	player_continue.emit()
 
 
 func _on_continue_button_pressed() -> void:
@@ -91,8 +92,10 @@ func _on_continue_button_pressed() -> void:
 
 
 func _on_item_button_2_pressed() -> void:
-	PlayerData.buyItem(selected_items[1], price)
+	PlayerData.buyItem(selected_items[1], price, multiplier)
+	player_continue.emit()
 
 
 func _on_item_button_3_pressed() -> void:
-	PlayerData.buyItem(selected_items[2], price)
+	PlayerData.buyItem(selected_items[2], price, health_multiplier)
+	player_continue.emit()

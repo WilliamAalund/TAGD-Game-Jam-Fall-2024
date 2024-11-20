@@ -88,8 +88,15 @@ func buyWeapon(weapon, price):
 		scrap -= price
 		primary_weapon_id = weapon.weapID
 	
-func buyItem(item_name, price):
-	pass
+func buyItem(item_name, price, multiplier):
+	if canBuy(price):
+		scrap -= price
+		if (item_name == "Speed Boost"):
+			#BASE_TRAVEL_SPEED *= multiplier
+			pass
+		else:
+			maximum_HP *= multiplier
+			HP = maximum_HP
 
 func canBuy(price):
 	#check if player can buy item

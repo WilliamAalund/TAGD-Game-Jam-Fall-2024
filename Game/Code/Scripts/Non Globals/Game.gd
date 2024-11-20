@@ -148,7 +148,7 @@ func load_level(_game_mode: game_modes):
 	var num_random_positions = game_level + 5
 	
 	var world_rng = RNG.new()
-	var random_positions = world_rng.get_random_points(num_random_positions,Vector3(-200,-200,-200),Vector3(200,200,200), 65)
+	var random_positions = world_rng.get_random_points(num_random_positions,Vector3(-300,-300,-300),Vector3(300,300,300), 75)
 	print(random_positions.size())
 	
 	enemies_spawned = 0

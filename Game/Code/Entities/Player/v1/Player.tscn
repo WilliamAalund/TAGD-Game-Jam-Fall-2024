@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cue5suxaxwn1t"]
+[gd_scene load_steps=12 format=3 uid="uid://cue5suxaxwn1t"]
 
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/Player.gd" id="1_h3sec"]
 [ext_resource type="PackedScene" uid="uid://2fpkavmcoexg" path="res://Code/Entities/Player/v1/Ship.tscn" id="2_ijeku"]
 [ext_resource type="PackedScene" uid="uid://ci4vcaiif0ff2" path="res://Code/Entities/Player/v1/ShipCamera.tscn" id="3_8kkb1"]
 [ext_resource type="PackedScene" uid="uid://bsd6fwc36gynx" path="res://Code/Entities/Player/v1/ProjectileHandler.tscn" id="4_l1hh6"]
-[ext_resource type="Script" path="res://Code/Scripts/Non Globals/sound_controller.gd" id="5_tyl6p"]
 [ext_resource type="PackedScene" uid="uid://mwdnu3g0yeef" path="res://Code/Entities/Player/v1/PlayAreaSeeker.tscn" id="5_u7qfv"]
 [ext_resource type="PackedScene" uid="uid://cwuqqftk7pvtn" path="res://Code/Entities/Player/v1/CoreStatsManager.tscn" id="6_ng4yd"]
 [ext_resource type="PackedScene" uid="uid://bbgic7t57ie7l" path="res://Code/Entities/Player/v1/SoundController.tscn" id="7_12a38"]
@@ -134,7 +133,6 @@ left_playable_space = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998406, 0)
 
 [node name="SoundController" parent="Ship" instance=ExtResource("7_12a38")]
-script = ExtResource("5_tyl6p")
 
 [node name="ShipCamera" parent="." instance=ExtResource("3_8kkb1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.06951)

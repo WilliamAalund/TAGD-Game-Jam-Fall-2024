@@ -230,6 +230,8 @@ autostart = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_gryr5")
+volume_db = -15.824
+unit_size = 37.45
 panning_strength = 0.49
 doppler_tracking = 2
 

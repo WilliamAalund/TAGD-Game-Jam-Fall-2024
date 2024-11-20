@@ -38,14 +38,14 @@ func spawn_weapon(weapon_id: int) -> void:
 		else:
 			print("Error adding weapon: too many weapons equipped")
 			return
-			weapon_child.weapon_enabled = true
-			weapon_child.rounds_per_minute = weapon_parameters["rpm"]
-			weapon_child.automatic_firing = weapon_parameters["automatic"]
-			weapon_child.projectile_range = weapon_parameters["range"]
-			weapon_child.projectile_velocity = weapon_parameters["velocity"]
-			weapon_child.projectile_spread_angle = weapon_parameters["spread"]
-			weapon_child.projectile_damage = weapon_parameters["damage"]
-			weapon_child.firing_port_mode = weapon_parameters["firing_mode"]
+		weapon_child.weapon_enabled = true
+		weapon_child.rounds_per_minute = weapon_parameters["rpm"]
+		weapon_child.automatic_firing = weapon_parameters["automatic"]
+		weapon_child.projectile_range = weapon_parameters["range"]
+		weapon_child.projectile_velocity = weapon_parameters["velocity"]
+		weapon_child.projectile_spread_angle = weapon_parameters["spread"]
+		weapon_child.projectile_damage = weapon_parameters["damage"]
+		weapon_child.firing_port_mode = weapon_parameters["firing_mode"]
 	elif weapon_parameters["type"] == "Shotgun":
 		weapon_child = shotgun_scene.instantiate()
 		if weapon_count == 0:

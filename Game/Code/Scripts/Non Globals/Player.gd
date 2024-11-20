@@ -52,6 +52,6 @@ func _on_core_stats_manager_player_hp_depleted() -> void:
 	weapon_manager.input_enabled = false
 	player_ship.visible = false
 
-func _on_new_game_data_packet(packet):
+func _on_new_game_data_packet(_packet):
 	pass
 	#print(packet)

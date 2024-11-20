@@ -68,13 +68,13 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Ship:position")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.566667, 0.966667, 1.13333),
-"transitions": PackedFloat32Array(0.554784, 0.63728, 0.68302, 0.15932),
+"times": PackedFloat32Array(-0.0333333, 0.566667, 0.9, 1.2),
+"transitions": PackedFloat32Array(0.732042, 0.87055, 0.707107, 0.812252),
 "update": 0,
-"values": [Vector3(-15, 15, 0), Vector3(4, -4, 0), Vector3(-1, 1, 0), Vector3(0, 0, 0)]
+"values": [Vector3(-15, 15, 1), Vector3(3, -2, 0), Vector3(-1.5, 1.5, -1), Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -107,10 +107,10 @@ tracks/3/path = NodePath("Ship:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.433333, 1, 1.16667),
-"transitions": PackedFloat32Array(1, 1, 0.5, 1),
+"times": PackedFloat32Array(-0.0333333, 0.466667, 0.933333, 1.06667, 1.2),
+"transitions": PackedFloat32Array(0.392292, 0.307786, 0.574349, 0.812252, 1),
 "update": 0,
-"values": [Vector3(0, 0, -0.502655), Vector3(0, 0, 0.167552), Vector3(0, 0, -0.174533), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, -1.5708), Vector3(0, 0, 0.167552), Vector3(0, 0, -0.139626), Vector3(0, 0, 0.0698132), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lakrw"]
@@ -124,7 +124,11 @@ script = ExtResource("1_h3sec")
 
 [node name="Ship" parent="." instance=ExtResource("2_ijeku")]
 physics_interpolation_mode = 1
+debug_freeze_ship_position = false
 input_enabled = true
+boost_energy = 100.0
+boost_depleted = false
+left_playable_space = false
 
 [node name="PlayAreaSeeker" parent="Ship" instance=ExtResource("5_u7qfv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998406, 0)

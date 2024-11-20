@@ -1,7 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxprnfg1nk8ja"]
+[gd_scene load_steps=18 format=3 uid="uid://bxprnfg1nk8ja"]
 
 [ext_resource type="Theme" uid="uid://cvn6e33yj56j7" path="res://Resources/UIElements/InGameUI.tres" id="1_31owh"]
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/InGameUI.gd" id="2_vkrl8"]
+[ext_resource type="Texture2D" uid="uid://dbicqu0b566he" path="res://Resources/UIElements/TopHud.png" id="3_hdhk5"]
+[ext_resource type="Texture2D" uid="uid://cvvqwejvblh57" path="res://Resources/UIElements/Boost.png" id="3_k0k5e"]
+[ext_resource type="Texture2D" uid="uid://bchdskdth6356" path="res://Resources/UIElements/BoostUnder.png" id="3_m87se"]
 [ext_resource type="Texture2D" uid="uid://nqm57oc6t07n" path="res://Resources/UIElements/Health Bar Frame.png" id="3_reivc"]
 [ext_resource type="Texture2D" uid="uid://y0rwykwme2fn" path="res://Resources/UIElements/HealthBar.png" id="4_qx1sq"]
 [ext_resource type="PackedScene" uid="uid://cin0g7wq0mvdq" path="res://Code/UI/MiniPlayerShipModel.tscn" id="5_4xxp0"]
@@ -34,16 +37,38 @@ grow_vertical = 2
 theme = ExtResource("1_31owh")
 script = ExtResource("2_vkrl8")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_top = 141.0
-offset_right = 45.0
-offset_bottom = 583.0
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -172.5
+offset_top = -5.0
+offset_right = 172.5
+offset_bottom = 146.0
+grow_horizontal = 2
+texture = ExtResource("3_hdhk5")
 
-[node name="Boost" type="ProgressBar" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = -221.0
+offset_right = 67.0
+offset_bottom = 208.0
+grow_vertical = 2
+alignment = 1
+
+[node name="Boost" type="TextureProgressBar" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+step = 0.1
+value = 50.0
 fill_mode = 3
+texture_under = ExtResource("3_m87se")
+texture_progress = ExtResource("3_k0k5e")
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
@@ -151,9 +176,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -150.0
-offset_top = 12.0
+offset_top = 6.0
 offset_right = 150.0
-offset_bottom = 112.0
+offset_bottom = 106.0
 grow_horizontal = 2
 texture = SubResource("ViewportTexture_t4efw")
 expand_mode = 1
@@ -164,9 +189,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -104.0
-offset_top = 105.0
+offset_top = 107.0
 offset_right = 104.0
-offset_bottom = 128.0
+offset_bottom = 130.0
 grow_horizontal = 2
 text = "Collect Green Cylinder"
 
@@ -238,8 +263,10 @@ offset_bottom = 40.0
 
 [node name="Level" type="Label" parent="GameMetadata"]
 layout_mode = 0
-offset_right = 143.0
-offset_bottom = 75.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 196.0
+offset_bottom = 90.0
 text = "Level: 0
 Score: 0000000000
 Time: 00:00:00

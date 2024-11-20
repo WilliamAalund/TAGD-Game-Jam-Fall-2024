@@ -50,10 +50,10 @@ func _process(delta):
 			max_net_input = 2.4
 			net_input_rate_multiplier = 16
 		elif Input.is_action_pressed("boost") and not boost_depleted:
-			max_net_input = 1.6
+			max_net_input = 1.5
 			net_input_rate_multiplier = 8
 		else:
-			max_net_input = 1.8
+			max_net_input = 1.6
 			net_input_rate_multiplier = 14
 		# Update net inputs for movement and rotation
 		update_net_input_horizontal(delta)
@@ -102,17 +102,18 @@ func adjust_travel_speed_based_on_input(delta):
 		travel_speed = lerp(travel_speed, target_travel_speed, ACCELERATION * delta)
 	else:
 		travel_speed = 0.0
+		
 func update_net_input_horizontal(delta):
-	var directional_input_strength = user_input_getter.get_user_input().x
-	if Input.is_action_pressed("yaw_left"):
-		directional_input_strength = max_net_input * Input.get_action_strength("yaw_left")
-	elif Input.is_action_pressed("yaw_right"):
-		directional_input_strength = -max_net_input * Input.get_action_strength("yaw_right")
+	var directional_input_strength = user_input_getter.get_user_input().x * max_net_input
+	#if Input.is_action_pressed("yaw_left"):
+		#directional_input_strength = max_net_input * Input.get_action_strength("yaw_left")
+	#elif Input.is_action_pressed("yaw_right"):
+		#directional_input_strength = -max_net_input * Input.get_action_strength("yaw_right")
 	if directional_input_strength != net_input_horizontal:
 		net_input_horizontal += (directional_input_strength - net_input_horizontal) * delta * net_input_rate_multiplier
 	
 func update_net_input_vertical(delta):
-	var input = user_input_getter.get_user_input().y
+	var input = user_input_getter.get_user_input().y * max_net_input
 	#if Input.is_action_pressed("pitch_down"):
 		#input = -max_net_input * Input.get_action_strength("pitch_down")
 	#elif Input.is_action_pressed("pitch_up"):

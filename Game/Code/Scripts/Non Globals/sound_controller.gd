@@ -8,10 +8,10 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
-func _on_projectile_handler_projectile_fired(projectile_name: Variant) -> void:
+func _on_projectile_handler_projectile_fired(_projectile_name: Variant) -> void:
 	pass # Replace with function body.
 	audio_stream.play()

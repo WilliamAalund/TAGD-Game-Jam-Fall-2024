@@ -17,7 +17,7 @@ func _ready() -> void:
 		
 
 func get_weapon_parameter_dictionary(weapon_id: int) -> Dictionary:
-	return WeaponConstants.SNIPER # TODO: Implement this
+	return WeaponConstants.DEFAULT_LASER_WEAPON # TODO: Implement this
 
 func spawn_weapon(weapon_id: int):
 	# Convert weapon id to dictionary

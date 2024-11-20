@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3ai0aaqr4fhq"]
+
+[ext_resource type="FontFile" uid="uid://c5aaayuhy8o3h" path="res://Resources/UIElements/FunnelSans-VariableFont_wght.ttf" id="1_6ofpp"]
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/intro.gd" id="1_i6gvv"]
+[ext_resource type="Theme" uid="uid://cvn6e33yj56j7" path="res://Resources/UIElements/InGameUI.tres" id="2_xxvv6"]
+[ext_resource type="Texture2D" uid="uid://d20buag7ms05r" path="res://Resources/UIElements/PS5Controls.png" id="3_pji0p"]
+[ext_resource type="Texture2D" uid="uid://ctitv0o25qskx" path="res://Resources/UIElements/Keyboard Controls.png" id="4_waq2x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cvqu2"]
+font = ExtResource("1_6ofpp")
+font_size = 30
+
+[node name="Intro" type="Node"]
+script = ExtResource("1_i6gvv")
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -534.5
+offset_top = 50.0
+offset_right = 534.5
+offset_bottom = 252.0
+grow_horizontal = 2
+text = "You live on a cold dwarf planet in the outer reaches of the solar system.
+Aliens have declared war and are invading your home planet. 
+They plan to use the ultimate bioweapon, the Planeteene, to destroy your planet.
+Failure means the entire star system is at risk...
+Suit up pilot, and defeat your enemies!"
+label_settings = SubResource("LabelSettings_cvqu2")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.5
+offset_top = -27.5
+offset_right = 62.5
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_xxvv6")
+text = "Continue"
+
+[node name="KeyboardControls" type="TextureRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -522.0
+offset_top = -320.0
+offset_right = 522.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_waq2x")
+
+[node name="PS5Controls" type="TextureRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -386.0
+offset_top = -300.0
+offset_right = 386.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_pji0p")

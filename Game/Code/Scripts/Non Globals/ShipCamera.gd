@@ -12,6 +12,11 @@ var focus_camera_rotate_speed = 200.0 # FIXME: These Values dont do anything!!! 
 var base_camera_fov = 65.0
 
 var focus_camera_fov = 45.0
+const FOV_CONTROL_BOOST_MAX = 1.1
+const FOV_CONTROL_BOOST_MIN = 0.9
+const FOV_CONTROL_MAX = 1.5
+const FOV_CONTROL_BASE = 1.0
+const FOV_CONTROL_MIN = 0.9
 @export var fov_control = 1.0 # Used to control camera zoom in.
 @export var camera_control_enabled = true
 var zoomed_in = false
@@ -29,37 +34,51 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
 	camera.fov = base_camera_fov * fov_control
 	if camera_control_enabled:
+		
 		if Input.is_action_pressed("boost"):
-			if speeding == false:
-				front_camera_animation.play("accelerate")
-			speeding = true
+			fov_control = lerp(fov_control, FOV_CONTROL_BOOST_MAX, delta * 4)
+		elif Input.is_action_pressed("focus"):
+			pass
+			fov_control -= 0.03
+			if fov_control < FOV_CONTROL_MIN:
+				fov_control = FOV_CONTROL_MIN
+		elif Input.is_action_pressed("break"):
+			fov_control = lerp(fov_control, FOV_CONTROL_BOOST_MIN, delta * 3)
 		else:
-			if speeding == true:
-				front_camera_animation.play("decelerate")
-			speeding = false
-		if Input.is_action_pressed("focus"):
-			if zoomed_in == false:
-				pass
-				front_camera_animation.play("front_camera_zoom_in")
-			zoomed_in = true
-		else:
-			if zoomed_in == true:
-				pass
-				front_camera_animation.play("front_camera_zoom_out")
-			zoomed_in = false
-		if Input.is_action_pressed("break") and not zoomed_in:
-			if breaking == false:
-				pass
-				#front_camera_animation.play("break_start")
-			breaking = true
-		else:
-			if breaking == true:
-				pass
-				#front_camera_animation.play("break_end")
-			breaking = false
+			fov_control = lerp(fov_control, FOV_CONTROL_BASE, delta)
+		#if Input.is_action_pressed("boost"):
+			#if speeding == false:
+				#front_camera_animation.play("accelerate")
+			#speeding = true
+		#else:
+			#if speeding == true:
+				#front_camera_animation.play("decelerate")
+			#speeding = false
+		#if Input.is_action_pressed("focus"):
+			#if zoomed_in == false:
+				#pass
+				#front_camera_animation.play("front_camera_zoom_in")
+			#zoomed_in = true
+		#else:
+			#if zoomed_in == true:
+				#pass
+				#front_camera_animation.play_backwards("front_camera_zoom_out")
+			#zoomed_in = false
+		#if Input.is_action_pressed("break") and not zoomed_in:
+			#if breaking == false:
+				#pass
+				##front_camera_animation.play("break_start")
+			#breaking = true
+		#else:
+			#if breaking == true:
+				#pass
+				##front_camera_animation.play("break_end")
+			#breaking = false
+			
+			
+		
 		target_basis = target_basis.orthonormalized()
 		var new_basis = self.transform.basis.slerp(target_basis, delta * current_camera_rotate_speed)
 		new_basis = new_basis.orthonormalized()

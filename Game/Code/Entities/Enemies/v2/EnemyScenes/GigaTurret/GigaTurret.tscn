@@ -47,6 +47,7 @@ shape = SubResource("SphereShape3D_s01ly")
 
 [node name="ProjectileSpawner" parent="ShipBody" instance=ExtResource("4_pmjuh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.19829)
+rounds_per_minute = 300
 
 [node name="PlayerInSightsDetector" parent="ShipBody" instance=ExtResource("5_jjfr0")]
 

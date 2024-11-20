@@ -15,8 +15,7 @@ func save_data(data: Dictionary) -> void:
 	var file = FileAccess.open(save_file_path, FileAccess.WRITE)
 	if file:
 		# Create an instance of the JSON class to convert the dictionary to JSON string
-		var json = JSON.new()
-		var json_string = json.stringify(data)
+		var json_string = JSON.stringify(data)
 		file.store_string(json_string)
 		file.close()
 		print("Data saved successfully!")
@@ -64,8 +63,7 @@ func reset_save_data():
 	var file = FileAccess.open(save_file_path, FileAccess.WRITE)
 	if file:
 		# Create an instance of the JSON class to convert the dictionary to JSON string
-		var json = JSON.new()
-		var json_string = json.stringify(fresh_save_file)
+		var json_string = JSON.stringify(fresh_save_file)
 		file.store_string(json_string)
 		file.close()
 		print("Data reset successfully!")

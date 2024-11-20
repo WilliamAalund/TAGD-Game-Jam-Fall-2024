@@ -77,6 +77,7 @@ func _process(delta: float) -> void:
 
 func _on_item_button_pressed() -> void:
 	pass # Replace with function body.
+	#PlayerData.buyWeapon(ite)
 
 
 func _on_continue_button_pressed() -> void:

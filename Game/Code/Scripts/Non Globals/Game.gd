@@ -17,6 +17,7 @@ signal game_killed
 @onready var level_complete_item = load("res://Code/Entities/Items/LevelComplete/LevelComplete.tscn")
 @onready var small_enemy_ship = load("res://Code/Entities/Enemies/v2/EnemyScenes/BabyShip/BabyShip.tscn")
 @onready var standard_enemy_ship = load("res://Code/Entities/Enemies/v2/EnemyScenes/StandardShip/StandardShip.tscn")
+@onready var advanced_ship_a = load("res://Code/Entities/Enemies/v2/EnemyScenes/AdvancedShipA/AdvancedShipA.tscn")
 @onready var tiny_turret = load("res://Code/Entities/Enemies/v2/EnemyScenes/TinyTurret/TinyTurret.tscn")
 @onready var giga_turret = load("res://Code/Entities/Enemies/v2/EnemyScenes/GigaTurret/GigaTurret.tscn")
 @onready var small_rock = load("res://Code/Entities/Environment/SmallRock.tscn")
@@ -164,8 +165,10 @@ func load_level(_game_mode: game_modes):
 						spawn_enemy(random_positions[i],standard_enemy_ship)
 					else:
 						spawn_enemy(random_positions[i],tiny_turret)
-				elif random_number == 2:
+				elif random_number == 2 and game_level > 9:
 					spawn_enemy(random_positions[i], giga_turret)
+				elif random_number == 3 and game_level > 9:
+					spawn_enemy(random_positions[i], advanced_ship_a)
 				else:
 					spawn_enemy(random_positions[i],tiny_turret)
 		else:
@@ -230,17 +233,18 @@ func spawn_complete_object(spawn_position: Vector3):
 func _on_level_complete_item_touched(body): # This function handles what happens when a level completes
 	if body.is_in_group("player"):
 		print("Player collected level complete item")
+		PlayerData.scrap += 10
 		in_level_complete_screen = true
 		game_objects.call_deferred("set", "process_mode", Node.PROCESS_MODE_DISABLED)
 		level_complete_screen.visible = true
 		await get_tree().create_timer(2).timeout
 		level_complete_screen.visible = false
-		if (game_level % 1 == 0):
-			pass # Implement shop
-			shop_screen.shop_level = game_level
-			shop_screen.visible = true
-			await shop_screen.player_continue
-			shop_screen.visible = false
+		#if (game_level % 1 == 0):
+			#pass # Implement shop
+			#shop_screen.shop_level = game_level
+			#shop_screen.visible = true
+			#await shop_screen.player_continue
+			#shop_screen.visible = false
 		
 		game_objects.process_mode = Node.PROCESS_MODE_INHERIT
 		unload_level()

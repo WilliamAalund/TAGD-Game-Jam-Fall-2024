@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cxl5frgge2xk7"]
+[gd_scene load_steps=16 format=3 uid="uid://cxl5frgge2xk7"]
 
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/Game.gd" id="1_s8h24"]
 [ext_resource type="Texture2D" uid="uid://d20buag7ms05r" path="res://Resources/UIElements/PS5Controls.png" id="2_aw5qb"]
@@ -19,8 +19,70 @@ gradient = SubResource("Gradient_04d1e")
 font = ExtResource("2_murm4")
 font_size = 60
 
-[sub_resource type="LabelSettings" id="LabelSettings_xjkv5"]
-font_size = 55
+[sub_resource type="LabelSettings" id="LabelSettings_klmhi"]
+font_size = 75
+font_color = Color(0.967642, 0.859791, 0.586996, 1)
+
+[sub_resource type="Animation" id="Animation_j4lbk"]
+resource_name = "Constant Loop"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.733333),
+"transitions": PackedFloat32Array(0.812252, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(0.9, 0.9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.174533, -0.10472]
+}
+
+[sub_resource type="Animation" id="Animation_obrpt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_65vnu"]
+_data = {
+"Constant Loop": SubResource("Animation_j4lbk"),
+"RESET": SubResource("Animation_obrpt")
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_dc3ec"]
 font = ExtResource("2_ihmpu")
@@ -52,24 +114,31 @@ texture = SubResource("GradientTexture1D_aemgi")
 
 [node name="Label" type="Label" parent="PauseScreenPlaceholder"]
 layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.5
+offset_top = 30.0
+offset_right = 200.5
+offset_bottom = 105.0
+grow_horizontal = 2
+text = "GAME PAUSED"
+label_settings = SubResource("LabelSettings_qu70w")
+
+[node name="TextureRect2" type="TextureRect" parent="PauseScreenPlaceholder"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -56.0
-offset_top = -11.5
-offset_right = 56.0
-offset_bottom = 11.5
+offset_left = -546.0
+offset_top = -157.0
+offset_right = 226.0
+offset_bottom = 83.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "GAME PAUSED"
-label_settings = SubResource("LabelSettings_qu70w")
-
-[node name="TextureRect2" type="TextureRect" parent="PauseScreenPlaceholder"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+scale = Vector2(1.4, 1.4)
 texture = ExtResource("2_aw5qb")
 
 [node name="LevelCompletePlaceholder" type="Control" parent="."]
@@ -94,9 +163,16 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(210, 37)
 theme = ExtResource("2_qtu5r")
 text = "Level Complete"
-label_settings = SubResource("LabelSettings_xjkv5")
+label_settings = SubResource("LabelSettings_klmhi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LevelCompletePlaceholder"]
+libraries = {
+"": SubResource("AnimationLibrary_65vnu")
+}
+autoplay = "Constant Loop"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_6q0hk")
@@ -140,3 +216,4 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ShopTest" parent="." instance=ExtResource("7_tev1m")]
+visible = false

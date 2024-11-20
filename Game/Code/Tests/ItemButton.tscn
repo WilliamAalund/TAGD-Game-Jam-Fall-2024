@@ -48,11 +48,11 @@ expand_mode = 1
 [node name="ItemDescription" type="Label" parent="VBoxContainer"]
 z_index = 1
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 3
 text = "Description of the item.
 "
 horizontal_alignment = 1
-vertical_alignment = 2
+autowrap_mode = 2
 
 [node name="ItemPrice" type="Label" parent="VBoxContainer"]
 z_index = 1

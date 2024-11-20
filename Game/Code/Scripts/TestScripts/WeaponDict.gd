@@ -7,27 +7,27 @@ var Weapons = {
 	},
 	1:
 	{
-		"weapon": WeaponConstants.SNIPER
+		"weapon": WeaponConstants.GRANDPA_LASER
 	},
 	2:
 	{
-		"weapon": WeaponConstants.ACCURO_RAY
+		"weapon": WeaponConstants.PEA_SHOOTER
 	},
 	3:
 	{
-		"weapon": WeaponConstants.SNIPER
+		"weapon": WeaponConstants.AI_GENERATED_LASER
 	},
 	4:
 	{
-		"weapon": WeaponConstants.SNIPER
+		"weapon": WeaponConstants.SAWED_OFF_LASER_SHOT
 	},
 	5:
 	{
-		"weapon": WeaponConstants.SNIPER
+		"weapon": WeaponConstants.ACCURO_RAY
 	},
 	6:
 	{
-		"weapon": WeaponConstants.SNIPER
+		"weapon": WeaponConstants.DML
 	},
 	7:
 	{

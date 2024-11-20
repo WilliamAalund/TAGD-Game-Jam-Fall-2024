@@ -47,6 +47,7 @@ func spawn_weapon(weapon_id: int) -> void:
 		weapon_child.projectile_damage = weapon_parameters["damage"]
 		weapon_child.firing_port_mode = weapon_parameters["firing_mode"]
 	elif weapon_parameters["type"] == "Shotgun":
+		print("Spawning shotgun")
 		weapon_child = shotgun_scene.instantiate()
 		if weapon_count == 0:
 			weapon_child.weapon_enabled = true

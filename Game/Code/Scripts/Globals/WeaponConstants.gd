@@ -62,7 +62,7 @@ const AI_GENERATED_LASER = {
 
 const SAWED_OFF_LASER_SHOT = {
 	"name": "Sawed Off Laser Shot",
-	"type": "Laser",
+	"type": "Shotgun",
 	"rpm": 150,
 	"automatic": true,
 	"range": 300.0,

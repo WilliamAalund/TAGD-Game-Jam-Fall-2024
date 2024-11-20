@@ -41,7 +41,7 @@ var Items = {
 	"Health Boost":
 	{
 		"weapID": 99,
-		"image": "fafdads",
+		"image": "res://Resources/Textures/health.png",
 		"description": "A minor health boost",
 		"type": "Health",
 		"modifier": 1.2,

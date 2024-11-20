@@ -239,12 +239,11 @@ func _on_level_complete_item_touched(body): # This function handles what happens
 		level_complete_screen.visible = true
 		await get_tree().create_timer(2).timeout
 		level_complete_screen.visible = false
-		#if (game_level % 1 == 0):
-			#pass # Implement shop
-			#shop_screen.shop_level = game_level
-			#shop_screen.visible = true
-			#await shop_screen.player_continue
-			#shop_screen.visible = false
+		if (game_level % 1 == 0):
+			shop_screen.shop_level = game_level
+			shop_screen.visible = true
+			await shop_screen.player_continue
+			shop_screen.visible = false
 		
 		game_objects.process_mode = Node.PROCESS_MODE_INHERIT
 		unload_level()

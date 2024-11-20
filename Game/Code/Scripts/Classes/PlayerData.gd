@@ -83,22 +83,16 @@ func enemy_destroyed():
 	score += 100
 	scrap += 10
 
-func itemBought():
+func buyWeapon(weapon, price):
+	if canBuy(price):
+		scrap -= price
+		primary_weapon_id = weapon.weapID
+	
+func buyItem(item_name, price):
 	pass
 
-func buyBoost():
-	pass
-
-func buyWeapon(weapon_to_buy: Item):
-	if canBuy(weapon_to_buy):
-		print("Buy weapon")
-	else:
-		print("Don't buy weapon")
-	pass
-
-
-func canBuy(item_to_buy: Item) -> bool:
+func canBuy(price):
 	#check if player can buy item
-	if(scrap < item_to_buy.priceItem):
+	if(scrap < price):
 		return false
 	return true

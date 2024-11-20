@@ -1,60 +1,60 @@
 extends Node
 
 var Items = {
-	"Blaster":
+	"Slightly-Modified Blaster":
 	{
 		"weapID": 1,
 		"image": "res://Resources/Textures/Laser.png",
-		"description": "A powerful blaster",
+		"description": "An older weapon that packs a punch, but is less reliable at range.",
 		"type": "Weapon",
 		"reqlvl": 0
 		
 	},
-	"Laser":
+	"Pea Shooter":
 	{
 		"weapID": 2,
 		"image": "res://Resources/Textures/Laser.png",
-		"description": "A powerful laser beam",
+		"description": "Fires a quick stream of accurate but weak laser beams.",
 		"type": "Weapon",
 		"reqlvl": 0
 	},
-	"Missile":
+	"AI Generated Laser":
 	{
 		"weapID": 3,
 		"image": "sfdsfS",
-		"description": "A powerful missile",
+		"description": "Behold! A marvel of modern technology. Soon, all laser manufacturers will be out of business.",
 		"type": "Weapon",
 		"reqlvl": 0
 	},
-	"Weapon1":
+	"Sawed Off Laser Shot":
 	{
 		"weapID": 4,
 		"image": "sfdsfS",
-		"description": "A powerful missile 1",
+		"description": "A close range cannon that fires multiple pellets at once.",
 		"type": "Weapon",
 		"reqlvl": 0
 	},
-	"Weapon2":
+	"Accuro Ray":
 	{
 		"weapID": 5,
 		"image": "sfdsfS",
-		"description": "A powerful missile 2",
+		"description": "A highly advanced laser cannon developed by Dr. Accuro. It fires lasers that are completely accurate.",
 		"type": "Weapon",
 		"reqlvl": 0
 	},
-	"Weapon3":
+	"D.M.L.":
 	{
 		"weapID": 6,
 		"image": "sfdsfS",
-		"description": "A powerful missile 3",
+		"description": "A semi-automatic laser cannon that serves well at medium to long range.",
 		"type": "Weapon",
 		"reqlvl": 0
 	},
-	"Weapon4":
+	"Sniper":
 	{
 		"weapID": 7,
 		"image": "sfdsfS",
-		"description": "A powerful missile 4",
+		"description": "A lethal, accurate, long range weapon.",
 		"type": "Weapon",
 		"reqlvl": 0
 	},

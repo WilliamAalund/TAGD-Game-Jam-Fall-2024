@@ -1,6 +1,15 @@
 extends Node
 
 var Items = {
+	"Blaster":
+	{
+		"weapID": 0,
+		"image": "res://Resources/Textures/Laser.png",
+		"description": "Standard issue, reliable laser.",
+		"type": "Weapon",
+		"reqlvl": 0
+		
+	},
 	"Slightly-Modified Blaster":
 	{
 		"weapID": 1,

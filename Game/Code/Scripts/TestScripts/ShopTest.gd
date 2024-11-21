@@ -74,7 +74,7 @@ func update_ui_box(ui_box, item_name):
 		else:
 			ui_box.update_button_elements(item_name, health_price, "Increases health by " + str(PlayerData.health_boost+0.2) + "x", item.type, item["image"])
 
-		if(PlayerData.scrap < weapon_price || PlayerData.scrap < speed_price || PlayerData.scrap < health_price || (ui_box == get_node("ItemButton1") && PlayerData.primary_weapon_id == item.weapID)):
+		if((PlayerData.scrap < weapon_price && ui_box == get_node("ItemButton1")) || (PlayerData.scrap < speed_price && ui_box == get_node("ItemButton2")) || (PlayerData.scrap < health_price && ui_box == get_node("ItemButton3")) || (ui_box == get_node("ItemButton1") && PlayerData.primary_weapon_id == item.weapID)):
 			ui_box.disabled = true
 		else:
 			ui_box.disabled = false

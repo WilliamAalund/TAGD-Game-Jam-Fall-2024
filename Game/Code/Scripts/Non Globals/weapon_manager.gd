@@ -29,6 +29,8 @@ func spawn_weapon(weapon_id: int) -> void:
 	var weapon_parameters = get_weapon_parameter_dictionary(weapon_id)
 	var weapon_child
 	
+	#print("Current weapon parameter: ", weapon_parameters["type"])
+	
 	if weapon_parameters["type"] == "Laser":
 		weapon_child = laser_scene.instantiate()
 		if weapon_count == 0:
@@ -47,7 +49,7 @@ func spawn_weapon(weapon_id: int) -> void:
 		weapon_child.projectile_damage = weapon_parameters["damage"]
 		weapon_child.firing_port_mode = weapon_parameters["firing_mode"]
 	elif weapon_parameters["type"] == "Shotgun":
-		print("Spawning shotgun")
+		#print("Spawning shotgun")
 		weapon_child = shotgun_scene.instantiate()
 		if weapon_count == 0:
 			weapon_child.weapon_enabled = true
@@ -56,15 +58,15 @@ func spawn_weapon(weapon_id: int) -> void:
 		else:
 			print("Error adding weapon: too many weapons equipped")
 			return
-			weapon_child.weapon_enabled = true
-			weapon_child.rounds_per_minute = weapon_parameters["rpm"]
-			weapon_child.automatic_firing = weapon_parameters["automatic"]
-			weapon_child.projectile_range = weapon_parameters["range"]
-			weapon_child.projectile_velocity = weapon_parameters["velocity"]
-			weapon_child.projectile_spread_angle = weapon_parameters["spread"]
-			weapon_child.projectile_damage = weapon_parameters["damage"]
-			weapon_child.firing_port_mode = weapon_parameters["firing_mode"]
-			weapon_child.num_pellets = weapon_parameters["number_of_pellets"]
+		weapon_child.weapon_enabled = true
+		weapon_child.rounds_per_minute = weapon_parameters["rpm"]
+		weapon_child.automatic_firing = weapon_parameters["automatic"]
+		weapon_child.projectile_range = weapon_parameters["range"]
+		weapon_child.projectile_velocity = weapon_parameters["velocity"]
+		weapon_child.projectile_spread_angle = weapon_parameters["spread"]
+		weapon_child.projectile_damage = weapon_parameters["damage"]
+		weapon_child.firing_port_mode = weapon_parameters["firing_mode"]
+		weapon_child.num_pellets = weapon_parameters["number_of_pellets"]
 	
 	self.add_child(weapon_child)
 	weapon_count += 1
@@ -72,6 +74,7 @@ func spawn_weapon(weapon_id: int) -> void:
 func clear_current_weapons() -> void:
 	for child in self.get_children():
 		child.queue_free()
+	weapon_count = 0
 
 func set_up_weapons() -> void:
 	clear_current_weapons()

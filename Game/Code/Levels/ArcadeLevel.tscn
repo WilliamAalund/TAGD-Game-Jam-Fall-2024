@@ -10,7 +10,7 @@ albedo_texture = ExtResource("3_w1ge1")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jcb4r"]
 material = SubResource("StandardMaterial3D_1j6tn")
-size = Vector2(1200, 1200)
+size = Vector2(1700, 1200)
 
 [node name="ArcadeLevel" type="Node3D"]
 

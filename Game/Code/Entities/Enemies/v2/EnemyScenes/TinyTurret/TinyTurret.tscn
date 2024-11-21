@@ -22,10 +22,10 @@ height = 350.0
 size = Vector3(30, 30, 263.682)
 
 [node name="TinyTurret" type="Node3D" groups=["enemy"]]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_vllsg")
 
 [node name="ShipBody" parent="." instance=ExtResource("2_1xsrk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 velocity = Vector3(-23.3545, -1.34565e-06, -26.0685)
 ship_mesh_path = "res://Resources/Meshes/Placeholder/TinyTurretHead.tscn"
 travel_speed = 0

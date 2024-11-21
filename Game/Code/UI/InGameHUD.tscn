@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bxprnfg1nk8ja"]
+[gd_scene load_steps=23 format=3 uid="uid://bxprnfg1nk8ja"]
 
 [ext_resource type="Theme" uid="uid://cvn6e33yj56j7" path="res://Resources/UIElements/InGameUI.tres" id="1_31owh"]
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/InGameUI.gd" id="2_vkrl8"]
@@ -27,6 +27,47 @@ viewport_path = NodePath("RearviewRect/SubViewport")
 [sub_resource type="CanvasTexture" id="CanvasTexture_glwv4"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_udp2q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qo4x4"]
+font_size = 13
+font_color = Color(0.260053, 0.673152, 0.872963, 1)
+
+[sub_resource type="Animation" id="Animation_widlk"]
+resource_name = "ToolTipPulsate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667, 0.966667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.530994, 0.454365, 0.521789, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2eabd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1q0ge"]
+_data = {
+"RESET": SubResource("Animation_2eabd"),
+"ToolTipPulsate": SubResource("Animation_widlk")
+}
 
 [node name="InGameHUD" type="Control"]
 layout_mode = 3
@@ -311,14 +352,20 @@ stream = ExtResource("12_dcm32")
 volume_db = -10.215
 
 [node name="ToolTipLabel" type="Label" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -176.0
-offset_top = 160.0
-offset_right = 176.0
-offset_bottom = 183.0
+offset_left = -188.0
+offset_top = 150.0
+offset_right = 189.0
+offset_bottom = 215.0
 grow_horizontal = 2
-text = "(For a list of controls, press esc/menu)"
+text = "View enemy positions by pressing Triangle/Z."
+label_settings = SubResource("LabelSettings_qo4x4")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ToolTipLabel"]
+libraries = {
+"": SubResource("AnimationLibrary_1q0ge")
+}

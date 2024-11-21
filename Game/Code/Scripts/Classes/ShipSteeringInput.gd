@@ -63,7 +63,7 @@ func _process(delta: float) -> void:
 
 # Detect input events
 func _input(event) -> void:
-	if event is InputEventJoypadMotion:
+	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
 		using_controller = true
 		controller_used = Input.get_joy_name(0)
 	elif event is InputEventKey or event is InputEventMouseMotion:

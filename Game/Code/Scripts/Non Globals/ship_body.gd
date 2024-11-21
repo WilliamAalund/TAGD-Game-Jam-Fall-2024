@@ -9,6 +9,7 @@ signal ship_hit_by_projectile(projectile_kind)
 const MAX_ANGLE_TO_TARGET_POSITION_BEFORE_SLOWDOWN = 1.3
 
 # Ship mesh paths are found in the Resources directory
+
 @export var ship_mesh_path = "res://Resources/Meshes/Placeholder/SmallShip.tscn"
 @export var travel_speed := 25
 @export var off_course_travel_speed := 45

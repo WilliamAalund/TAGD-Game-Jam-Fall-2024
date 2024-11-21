@@ -34,4 +34,5 @@ func _on_enemy_hp_depleted() -> void:
 
 
 func _on_ship_body_ship_hit_by_projectile(projectile_kind: Variant, damage: Variant) -> void:
-	inflict_damage(damage, "projectile")
+	if HP > 0:
+		inflict_damage(damage, "projectile")

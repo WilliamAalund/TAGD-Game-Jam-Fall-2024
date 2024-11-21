@@ -24,7 +24,7 @@ func _ready():
 	tooltip_label_animation.play("ToolTipPulsate")
 	tooltip_label.visible = true
 	await get_tree().create_timer(6).timeout
-	tooltip_label.visible = false
+	tooltip_label_animation.stop()
 
 
 var audio_stream_played = false
@@ -37,7 +37,7 @@ func _process(_delta):
 		low_health_alert()
 		audio_stream_played = true
 	if player_input.get_using_controller():
-		tooltip_label.text = "View enemy positions by pressing Z"
+		tooltip_label.text = "View enemy positions by pressing Triangle"
 	else:
 		
 		tooltip_label.text = "View enemy positions by pressing Z"

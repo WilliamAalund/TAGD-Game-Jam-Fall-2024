@@ -16,7 +16,7 @@ var selected_items = []
 
 func set_up_ui(new_shop_level: int) -> void:
 	shop_level = new_shop_level
-	price += 15
+	price += 10
 	randomize()
 	select_random_items()
 	update_ui()

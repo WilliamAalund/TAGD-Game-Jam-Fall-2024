@@ -32,6 +32,10 @@ var Weapons = {
 	7:
 	{
 		"weapon": WeaponConstants.SNIPER
+	},
+	8:
+	{
+		"weapon": WeaponConstants.EXACTO_BEAM
 	}
 }
 

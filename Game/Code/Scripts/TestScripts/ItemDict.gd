@@ -67,6 +67,14 @@ var Items = {
 		"type": "Weapon",
 		"reqlvl": 0
 	},
+	"Exacto-Beam":
+	{
+		"weapID": 8,
+		"image": "sfdsfS",
+		"description": "A beam of concentrated energy. Need I say more?",
+		"type": "Weapon",
+		"reqlvl": 0
+	},
 	"Speed Boost":
 	{
 		"weapID": 98,

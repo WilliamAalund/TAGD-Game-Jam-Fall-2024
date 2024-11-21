@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/PlayerShip.gd" id="1_50gf5"]
 [ext_resource type="PackedScene" uid="uid://bl8vbh3ys2syn" path="res://Resources/Meshes/Placeholder/PlayerShip.tscn" id="1_71dhf"]
-[ext_resource type="ArrayMesh" uid="uid://brg364tim116r" path="res://Resources/Meshes/Final/ship1.obj" id="3_wppsn"]
+[ext_resource type="ArrayMesh" uid="uid://b7dl2gdlkcilf" path="res://Resources/Meshes/Final/shipModel.obj" id="3_j5at1"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_s5lm4"]
 height = 1.0
@@ -61,4 +61,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1455)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-mesh = ExtResource("3_wppsn")
+mesh = ExtResource("3_j5at1")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55621, -1.49442, 4.62962)
+light_color = Color(1.03962e-05, 0.690199, 0.950686, 1)
+light_energy = 0.5
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="MeshInstance3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -1.49922, -1.49442, 4.62962)
+light_color = Color(1.03962e-05, 0.690199, 0.950686, 1)
+light_energy = 0.5

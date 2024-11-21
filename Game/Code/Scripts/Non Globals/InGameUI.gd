@@ -11,10 +11,14 @@ extends Control
 @onready var objective_label = $RearviewRect/ObjectiveLabel
 @onready var objective_pointers = $ObjectivePointers
 @onready var weapon_label = $MarginContainer/HBoxContainer/Label
+@onready var tooltip_label = $ToolTipLabel
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 	crosshair.position = Vector2(0,0)
+	tooltip_label.visible = true
+	await get_tree().create_timer(3).timeout
+	tooltip_label.visible = false
 
 
 var audio_stream_played = false

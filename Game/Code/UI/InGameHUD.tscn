@@ -309,3 +309,16 @@ texture = ExtResource("7_oo6fl")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_dcm32")
 volume_db = -10.215
+
+[node name="ToolTipLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -176.0
+offset_top = 160.0
+offset_right = 176.0
+offset_bottom = 183.0
+grow_horizontal = 2
+text = "(To see enemy locations, press triangle/z)"

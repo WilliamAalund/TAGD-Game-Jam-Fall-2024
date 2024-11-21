@@ -13,11 +13,15 @@ extends Control
 @onready var weapon_label = $MarginContainer/HBoxContainer/Label
 @onready var tooltip_label = $ToolTipLabel
 # Called when the node enters the scene tree for the first time.
+
+var player_input = ShipSteeringInput.new()
+
 func _ready():
 	pass # Replace with function body.
+	self.add_child(player_input)
 	crosshair.position = Vector2(0,0)
 	tooltip_label.visible = true
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(6).timeout
 	tooltip_label.visible = false
 
 
@@ -30,6 +34,11 @@ func _process(_delta):
 	if float(PlayerData.HP) / PlayerData.maximum_HP < 0.3 and not audio_stream_played:
 		low_health_alert()
 		audio_stream_played = true
+	if player_input.get_using_controller():
+		tooltip_label.text = "View enemy positions by pressing Z"
+	else:
+		
+		tooltip_label.text = "View enemy positions by pressing Z"
 		
 
 func low_health_alert():

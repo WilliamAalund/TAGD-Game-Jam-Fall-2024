@@ -8,7 +8,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_cvqu2"]
 font = ExtResource("1_6ofpp")
-font_size = 40
+font_size = 35
 
 [node name="Intro" type="Node"]
 script = ExtResource("1_i6gvv")
@@ -32,11 +32,11 @@ offset_top = 50.0
 offset_right = 534.5
 offset_bottom = 252.0
 grow_horizontal = 2
-text = "You live on a cold dwarf planet in the outer reaches of the solar system.
+text = "You live on Aronus, a cold dwarf planet in the outer reaches of the solar system.
 Aliens have declared war and are invading your home planet. 
 They plan to use the ultimate bioweapon, the Planeteene, to destroy it.
 Failure means the entire star system is at risk...
-Suit up pilot, and defeat your enemies!"
+Board your space ship, and protect Aronus!"
 label_settings = SubResource("LabelSettings_cvqu2")
 
 [node name="Button" type="Button" parent="Control"]

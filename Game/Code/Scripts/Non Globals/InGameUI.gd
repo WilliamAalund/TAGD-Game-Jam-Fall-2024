@@ -23,8 +23,8 @@ func _ready():
 	crosshair.position = Vector2(0,0)
 	tooltip_label_animation.play("ToolTipPulsate")
 	tooltip_label.visible = true
-	await get_tree().create_timer(4).timeout
-	tooltip_label_animation.stop()
+	await get_tree().create_timer(6).timeout
+	tooltip_label.visible = false
 
 
 var audio_stream_played = false
@@ -37,7 +37,7 @@ func _process(_delta):
 		low_health_alert()
 		audio_stream_played = true
 	if player_input.get_using_controller():
-		tooltip_label.text = "View enemy positions by pressing Triangle"
+		tooltip_label.text = "View enemy positions by pressing Z"
 	else:
 		
 		tooltip_label.text = "View enemy positions by pressing Z"

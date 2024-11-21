@@ -10,7 +10,7 @@ func get_name_for_id(weapon_id: int) -> String:
 	return WEAPONS[weapon_id]["name"]
 
 const DEFAULT_LASER_WEAPON = {
-	"name": "Baby Laser",
+	"name": "Blaster",
 	"type": "Laser",
 	"rpm": 500.0,
 	"automatic": true,

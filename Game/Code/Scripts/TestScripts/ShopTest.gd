@@ -12,11 +12,15 @@ var target_types = ["Weapon", "Boost", "Health"]  # Adjust as needed
 var selected_items = []
 
 @export var shop_level = 1
-@export var price = 0
+@export var weapon_price = 0
+@export var speed_price = 0
+@export var health_price = 0
 
 func set_up_ui(new_shop_level: int) -> void:
 	shop_level = new_shop_level
-	price += 10
+	weapon_price += 25
+	speed_price += 15
+	health_price += 20
 	randomize()
 	select_random_items()
 	update_ui()
@@ -64,13 +68,13 @@ func update_ui_box(ui_box, item_name):
 	else:
 		# Display the selected item's details
 		if(ui_box == get_node("ItemButton1")):
-			ui_box.update_button_elements(item_name, price, item.description, item.type, item["image"])
+			ui_box.update_button_elements(item_name, weapon_price, item.description, item.type, item["image"])
 		elif(ui_box == get_node("ItemButton2")):
-			ui_box.update_button_elements(item_name, price, "Increases speed by " + str(PlayerData.speed_boost+0.2) + "x", item.type, item["image"])
+			ui_box.update_button_elements(item_name, speed_price, "Increases speed by " + str(PlayerData.speed_boost+0.2) + "x", item.type, item["image"])
 		else:
-			ui_box.update_button_elements(item_name, price, "Increases health by " + str(PlayerData.health_boost+0.2) + "x", item.type, item["image"])
+			ui_box.update_button_elements(item_name, health_price, "Increases health by " + str(PlayerData.health_boost+0.2) + "x", item.type, item["image"])
 
-		if(PlayerData.scrap < price || (ui_box == get_node("ItemButton1") && PlayerData.primary_weapon_id == item.weapID)):
+		if(PlayerData.scrap < weapon_price || PlayerData.scrap < speed_price || PlayerData.scrap < health_price || (ui_box == get_node("ItemButton1") && PlayerData.primary_weapon_id == item.weapID)):
 			ui_box.disabled = true
 		else:
 			ui_box.disabled = false
@@ -94,7 +98,7 @@ func _process(delta: float) -> void:
 
 func _on_item_button_pressed() -> void:
 	var item = item_data.Items[selected_items[0]]
-	PlayerData.buyWeapon(item, price)
+	PlayerData.buyWeapon(item, weapon_price)
 	player_continue.emit()
 
 
@@ -104,10 +108,10 @@ func _on_continue_button_pressed() -> void:
 
 
 func _on_item_button_2_pressed() -> void:
-	PlayerData.buyItem(selected_items[1], price)
+	PlayerData.buyItem(selected_items[1], speed_price)
 	player_continue.emit()
 
 
 func _on_item_button_3_pressed() -> void:
-	PlayerData.buyItem(selected_items[2], price)
+	PlayerData.buyItem(selected_items[2], health_price)
 	player_continue.emit()

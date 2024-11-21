@@ -24,7 +24,7 @@ const DEFAULT_LASER_WEAPON = {
 }
 
 const GRANDPA_LASER = {
-	"name": "Grandpa Laser",
+	"name": "Slightly-Modified Blaster",
 	"type": "Laser",
 	"rpm": 360.0,
 	"automatic": true,

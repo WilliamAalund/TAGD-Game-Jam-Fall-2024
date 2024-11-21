@@ -19,6 +19,7 @@ func _ready():
 	self.transform.basis = basis_of_projectile_creator
 	current_speed = base_projectile_speed
 	distance_traveled = 0.0
+	$AudioStreamPlayer3D.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

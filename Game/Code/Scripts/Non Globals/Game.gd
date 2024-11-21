@@ -61,8 +61,10 @@ func _process(_delta):
 			print("Pause toggled")
 			if game_objects.process_mode == Node.PROCESS_MODE_INHERIT:
 				pause_game(game_modes.ARCADE)
+				audio_stream_player.stop()
 			elif game_objects.process_mode == Node.PROCESS_MODE_DISABLED:
 				unpause_game(game_modes.ARCADE)
+				audio_stream_player.play()
 	singleplayer_game_data_packet["score"] = game_score
 	singleplayer_game_data_packet["level"] = game_level
 	singleplayer_game_data_packet["enemies_spawned"] = enemies_spawned
@@ -94,14 +96,14 @@ func pause_game(_game_mode: game_modes):
 	game_objects.process_mode = Node.PROCESS_MODE_DISABLED
 	pause_screen.visible = true
 	game_paused = true
-	audio_stream_player.stop()
+	
 	pass
 
 func unpause_game(_game_mode: game_modes):
 	game_objects.process_mode = Node.PROCESS_MODE_INHERIT
 	pause_screen.visible = false
 	game_paused = false
-	audio_stream_player.play()
+	#audio_stream_player.play()
 	pass
 
 func quit_game():

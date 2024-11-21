@@ -152,6 +152,7 @@ spring_length = 5.0
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
 cull_mask = 1048063
 fov = 60.0
+far = 6000.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SpringArm3D/Camera3D"]
 libraries = {

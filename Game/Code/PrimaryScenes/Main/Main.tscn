@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgf05yuxxtwdm"]
+[gd_scene load_steps=7 format=3 uid="uid://cgf05yuxxtwdm"]
 
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/Main.gd" id="1_jc0tf"]
 [ext_resource type="PackedScene" uid="uid://cxl5frgge2xk7" path="res://Code/PrimaryScenes/Game/Game.tscn" id="1_yjf3o"]
 [ext_resource type="PackedScene" uid="uid://ces21elw3d5xw" path="res://Code/PrimaryScenes/TitleScreen/TitleScreen.tscn" id="2_bcffg"]
 [ext_resource type="PackedScene" uid="uid://mdpsnqlv666y" path="res://Code/PrimaryScenes/Debug/Debug.tscn" id="3_sog8d"]
 [ext_resource type="PackedScene" uid="uid://b3ai0aaqr4fhq" path="res://Code/PrimaryScenes/Intro/Intro.tscn" id="5_55m7o"]
+[ext_resource type="AudioStream" uid="uid://ba12wej8t84im" path="res://Resources/Audio/menu_click.wav" id="6_3oshc"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_jc0tf")
@@ -17,6 +18,9 @@ debug_enabled = true
 [node name="Debug" parent="." instance=ExtResource("3_sog8d")]
 
 [node name="Intro" parent="." instance=ExtResource("5_55m7o")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_3oshc")
 
 [connection signal="game_killed" from="Game" to="." method="_on_game_game_killed"]
 [connection signal="play_arcade" from="TitleScreen" to="." method="_on_title_screen_play_arcade"]

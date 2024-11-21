@@ -24,6 +24,7 @@ func _process(_delta: float) -> void:
 			pass
 		else:
 			pass
+			$Control/PS5Controls.visible = true
 	else:
 		#print("Player using computer controls")
 		$Control/PS5Controls.visible = false

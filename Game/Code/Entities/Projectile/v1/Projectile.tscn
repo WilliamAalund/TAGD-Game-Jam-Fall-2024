@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxvum5kkp866g"]
+[gd_scene load_steps=5 format=3 uid="uid://cxvum5kkp866g"]
 
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/Projectile.gd" id="1_vrim5"]
 [ext_resource type="PackedScene" uid="uid://df235afldqa3h" path="res://Resources/Meshes/Placeholder/Laser.tscn" id="2_3hfj1"]
+[ext_resource type="AudioStream" uid="uid://b6wmrojwgvgsn" path="res://Resources/Audio/LaserWhur.wav" id="3_4oyvw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qa2bj"]
 size = Vector3(0.3, 0.3, 1)
@@ -13,5 +14,13 @@ script = ExtResource("1_vrim5")
 shape = SubResource("BoxShape3D_qa2bj")
 
 [node name="Laser" parent="." instance=ExtResource("2_3hfj1")]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_4oyvw")
+unit_size = 33.05
+pitch_scale = 1.96
+autoplay = true
+stream_paused = true
+max_distance = 2115.52
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

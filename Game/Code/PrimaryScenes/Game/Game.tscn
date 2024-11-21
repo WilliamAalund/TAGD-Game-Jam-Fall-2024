@@ -189,7 +189,7 @@ autoplay = "Constant Loop"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_6q0hk")
-volume_db = -15.0
+volume_db = -18.429
 
 [node name="GameOverPopup" type="Control" parent="."]
 visible = false

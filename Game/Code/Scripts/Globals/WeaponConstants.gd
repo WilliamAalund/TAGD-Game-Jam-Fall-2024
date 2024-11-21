@@ -12,7 +12,7 @@ func get_name_for_id(weapon_id: int) -> String:
 const DEFAULT_LASER_WEAPON = {
 	"name": "Blaster",
 	"type": "Laser",
-	"rpm": 500.0,
+	"rpm": 550.0,
 	"automatic": true,
 	"range": 800.0,
 	"velocity": 600.0,
@@ -26,7 +26,7 @@ const DEFAULT_LASER_WEAPON = {
 const GRANDPA_LASER = {
 	"name": "Grandpa Laser",
 	"type": "Laser",
-	"rpm": 333.3,
+	"rpm": 360.0,
 	"automatic": true,
 	"range": 750.0,
 	"velocity": 400.0,
@@ -52,16 +52,16 @@ const PEA_SHOOTER = {
 }
 
 const AI_GENERATED_LASER = {
-	"name": "Pea Shooter",
+	"name": "AI Generated Lazer",
 	"type": "Laser",
 	"rpm": 400,
 	"automatic": true,
 	"range": 700.0,
 	"velocity": 500.0,
-	"spread": 0.7,
-	"damage": 7,
+	"spread": 0.9,
+	"damage": 6,
 	"firing_mode": port_modes.BOTTOM,
-	"description": "Behold! A marvel of modern technology. Soon, all laser manufacturers will be out of business.",
+	"description": "A marvel of modern technology. Soon, all laser manufacturers will be out of business.",
 	"cost": 640
 }
 
@@ -73,7 +73,7 @@ const SAWED_OFF_LASER_SHOT = {
 	"range": 300.0,
 	"velocity": 500.0,
 	"spread": 1.2,
-	"damage": 4,
+	"damage": 5,
 	"number_of_pellets": 4,
 	"firing_mode": port_modes.BOTTOM,
 	"description": "A close range cannon that fires multiple pellets at once.",
@@ -90,7 +90,7 @@ const ACCURO_RAY = {
 	"spread": 0.0,
 	"damage": 7,
 	"firing_mode": port_modes.BOTTOM,
-	"description": "A highly advanced laser cannon developed by Dr. Accuro. It fires lasers that are completely accurate.",
+	"description": "An advanced weapon platform developed by Dr. Accuro. It fires lasers that are perfectly accurate.",
 	"cost": 170
 }
 
@@ -123,7 +123,7 @@ const SNIPER = {
 }
 
 const EXACTO_BEAM = {
-	"name": "Accuro Ray",
+	"name": "Exacto Beam",
 	"type": "Laser",
 	"rpm": 3500,
 	"automatic": true,
@@ -136,11 +136,33 @@ const EXACTO_BEAM = {
 	"cost": 170
 }
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
+# NOT IMPLEMENTED
+const DEFAULT_LASER_V2 = {
+	"name": "Blaster 2",
+	"type": "Laser",
+	"rpm": 800.0,
+	"automatic": true,
+	"range": 900.0,
+	"velocity": 900.0,
+	"spread": 0.3,
+	"damage": 11,
+	"firing_mode": port_modes.ALTERNATE,
+	"description": "Good news folks. They saw Blaster and decided to make Blaster 2.",
+	"cost": 170
+}
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+const HEAVY_LASER_SHOT = {
+	"name": "Heavy Laser Shot",
+	"type": "Shotgun",
+	"rpm": 700.0,
+	"automatic": true,
+	"range": 150.0,
+	"velocity": 900.0,
+	"spread": 0.3,
+	"damage": 9,
+	"number_of_pellets": 6,
+	"firing_mode": port_modes.ALTERNATE,
+	"description": "A heavy laser cannon that melts through enemies at close range, but is utterly useless anywhere else.",
+	"cost": 170
+}

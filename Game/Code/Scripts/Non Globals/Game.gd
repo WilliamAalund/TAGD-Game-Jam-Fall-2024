@@ -239,7 +239,7 @@ func spawn_complete_object(spawn_position: Vector3):
 func _on_level_complete_item_touched(body): # This function handles what happens when a level completes
 	if body.is_in_group("player"):
 		print("Player collected level complete item")
-		PlayerData.award_scrap_for_level_completion()
+		PlayerData.award_scrap_for_level_completion(game_level)
 		PlayerData.prepare_player_stats_for_new_level()
 		in_level_complete_screen = true
 		game_objects.call_deferred("set", "process_mode", Node.PROCESS_MODE_DISABLED)

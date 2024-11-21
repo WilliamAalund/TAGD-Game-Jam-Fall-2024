@@ -39,7 +39,7 @@ func spawn_projectile(spread: float, projectile_damage: float, projectile_range:
 	projectile_to_spawn.set_up_projectile_v2(rotation_basis, projectile_damage, projectile_range, projectile_velocity) #projectile_to_spawn.type_enum.LASER,projectile_velocity,
 	
 	get_parent().get_parent().get_parent().add_child(projectile_to_spawn)
-	print("Port mode: ", port_mode)
+	#print("Port mode: ", port_mode)
 	if port_mode == port_modes.BOTTOM:
 		projectile_to_spawn.global_position = $Bottom.global_position
 	elif port_mode == port_modes.CENTER:

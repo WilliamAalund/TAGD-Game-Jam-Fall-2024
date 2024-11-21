@@ -97,8 +97,8 @@ func enemy_destroyed():
 	score += 100
 	scrap += ENEMY_DESTROYED_SCRAP_VALUE
 
-func award_scrap_for_level_completion():
-	scrap += LEVEL_COMPLETED_SCRAP_VALUE
+func award_scrap_for_level_completion(game_level):
+	scrap += LEVEL_COMPLETED_SCRAP_VALUE + game_level * 3
 	print("Was player hit? ",player_hit_during_current_level)
 	if not player_hit_during_current_level:
 		scrap += LEVEL_PERFECT_SCRAP_VALUE

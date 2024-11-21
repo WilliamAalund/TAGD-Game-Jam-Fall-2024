@@ -51,7 +51,7 @@ func _physics_process(delta: float) -> void:
 
 
 func set_up_projectile_v2(creator_basis: Basis, projectile_damage: int, projectile_range: float, projectile_velocity: float, creator_group: String = "player", projectile_type: type_enum = type_enum.LASER):
-	print(creator_basis)
+	#print(creator_basis)
 	basis_of_projectile_creator = creator_basis
 	projectile_creator_group = creator_group
 	distance_traveled = 0.0

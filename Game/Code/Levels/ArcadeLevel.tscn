@@ -1,16 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwhipa8i3wtbq"]
+[gd_scene load_steps=9 format=3 uid="uid://dwhipa8i3wtbq"]
 
 [ext_resource type="Environment" uid="uid://d2d77gop005fh" path="res://Resources/Environments/ArcadeEnvironment.tres" id="1_tm44i"]
 [ext_resource type="PackedScene" uid="uid://cxx78nk5kmt2d" path="res://Code/Tools/PlayBoundary.tscn" id="2_a5ubv"]
+[ext_resource type="Texture2D" uid="uid://cuver84omx36l" path="res://Resources/Textures/planet.png" id="3_a6gpp"]
 [ext_resource type="Texture2D" uid="uid://dslc0mu6ygyxo" path="res://Resources/Textures/fish.png" id="3_w1ge1"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1j6tn"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7wcc8"]
+transparency = 1
+albedo_texture = ExtResource("3_a6gpp")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jcb4r"]
+material = SubResource("StandardMaterial3D_7wcc8")
+size = Vector2(1200, 900)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nvpms"]
 transparency = 1
 albedo_texture = ExtResource("3_w1ge1")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_jcb4r"]
-material = SubResource("StandardMaterial3D_1j6tn")
-size = Vector2(1700, 1200)
+[sub_resource type="PlaneMesh" id="PlaneMesh_122e1"]
+material = SubResource("StandardMaterial3D_nvpms")
+size = Vector2(1200, 1000)
 
 [node name="ArcadeLevel" type="Node3D"]
 
@@ -30,3 +39,7 @@ light_color = Color(0.301867, 0.0430157, 0.309906, 1)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.860475, -0.47965, -0.171808, 0.354833, -0.322184, -0.877662, 0.365617, -0.81617, 0.447427, 2300, 2300, 2300)
 mesh = SubResource("PlaneMesh_jcb4r")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.3408, 0.488409, -0.803313, -0.392253, -0.850408, -0.350633, -0.854396, 0.195607, 0.481399, -3380.39, 1704.17, -195.813)
+mesh = SubResource("PlaneMesh_122e1")

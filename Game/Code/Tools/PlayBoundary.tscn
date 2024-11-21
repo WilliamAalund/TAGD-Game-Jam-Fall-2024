@@ -8,8 +8,8 @@ radius = 500.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_gv62k"]
 material = ExtResource("2_6tyxb")
-radius = 1000.0
-height = 2000.0
+radius = 500.0
+height = 1000.0
 
 [node name="PlayBoundary" type="Area3D"]
 collision_layer = 0

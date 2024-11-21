@@ -10,6 +10,7 @@ extends Control
 @onready var velocity_label = $ShipModelContainer/VelocityLabel
 @onready var objective_label = $RearviewRect/ObjectiveLabel
 @onready var objective_pointers = $ObjectivePointers
+@onready var weapon_label = $MarginContainer/HBoxContainer/Label
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -42,6 +43,7 @@ func _on_player_new_player_data_packet(packet):
 	#print(crosshair.position)
 	velocity_label.text = str(packet["velocity"].length()).substr(0,5)
 	objective_pointers.global_position = packet["global_pos"]
+	weapon_label.text = WeaponConstants.get_name_for_id(PlayerData.primary_weapon_id)
 
 
 # Process information about the game overall

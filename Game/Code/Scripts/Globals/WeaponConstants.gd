@@ -4,6 +4,9 @@ const WEAPONS = [DEFAULT_LASER_WEAPON, GRANDPA_LASER, PEA_SHOOTER, AI_GENERATED_
 
 const COMMON_WEAPONS = [DEFAULT_LASER_WEAPON, GRANDPA_LASER, PEA_SHOOTER]
 
+func get_name_for_id(weapon_id: int) -> String:
+	return WEAPONS[weapon_id]["name"]
+
 const DEFAULT_LASER_WEAPON = {
 	"name": "Baby Laser",
 	"type": "Laser",

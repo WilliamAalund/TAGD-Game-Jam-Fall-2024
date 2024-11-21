@@ -18,6 +18,7 @@ signal game_killed
 @onready var small_enemy_ship = load("res://Code/Entities/Enemies/v2/EnemyScenes/BabyShip/BabyShip.tscn")
 @onready var standard_enemy_ship = load("res://Code/Entities/Enemies/v2/EnemyScenes/StandardShip/StandardShip.tscn")
 @onready var advanced_ship_a = load("res://Code/Entities/Enemies/v2/EnemyScenes/AdvancedShipA/AdvancedShipA.tscn")
+@onready var advanced_ship_b = load("res://Code/Entities/Enemies/v2/EnemyScenes/AdvancedShipB/AdvancedShipB.tscn")
 @onready var tiny_turret = load("res://Code/Entities/Enemies/v2/EnemyScenes/TinyTurret/TinyTurret.tscn")
 @onready var giga_turret = load("res://Code/Entities/Enemies/v2/EnemyScenes/GigaTurret/GigaTurret.tscn")
 @onready var small_rock = load("res://Code/Entities/Environment/SmallRock.tscn")
@@ -160,7 +161,7 @@ func load_level(_game_mode: game_modes):
 			if game_level == 1:
 				spawn_enemy(random_positions[i], tiny_turret)
 			else:
-				var random_number = randi_range(0,3)
+				var random_number = randi_range(0,4)
 				if random_number == 0:
 					spawn_enemy(random_positions[i],small_enemy_ship)
 				elif random_number == 1:
@@ -172,6 +173,8 @@ func load_level(_game_mode: game_modes):
 					spawn_enemy(random_positions[i], giga_turret)
 				elif random_number == 3 and game_level > 9:
 					spawn_enemy(random_positions[i], advanced_ship_a)
+				elif random_number == 4 and game_level > 12:
+					spawn_enemy(random_positions[i],advanced_ship_b)
 				else:
 					spawn_enemy(random_positions[i],tiny_turret)
 		else:

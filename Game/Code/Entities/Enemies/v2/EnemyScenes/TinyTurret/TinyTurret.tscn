@@ -14,8 +14,9 @@ radius = 2.5
 height = 2.5
 radius = 0.8
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_s01ly"]
-radius = 175.0
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jupjr"]
+radius = 95.0
+height = 350.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yw3wf"]
 size = Vector3(30, 30, 263.682)
@@ -42,8 +43,8 @@ shape = SubResource("CylinderShape3D_sd0qs")
 [node name="PlayerDetector" parent="ShipBody" instance=ExtResource("3_d2777")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ShipBody/PlayerDetector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -146.442)
-shape = SubResource("SphereShape3D_s01ly")
+transform = Transform3D(1, 0, 0, 0, 0.00499159, 0.999988, 0, -0.999988, 0.00499159, 0, 0, -163.749)
+shape = SubResource("CapsuleShape3D_jupjr")
 
 [node name="ProjectileSpawner" parent="ShipBody" instance=ExtResource("4_mo451")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.19829)
@@ -56,8 +57,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -131.35)
 shape = SubResource("BoxShape3D_yw3wf")
 
 [node name="CoreStatsManager" parent="." instance=ExtResource("6_ql1jb")]
-HP = 35
-maximum_HP = 35
+HP = 25
+maximum_HP = 25
 
 [connection signal="ship_hit_by_projectile" from="ShipBody" to="CoreStatsManager" method="_on_ship_body_ship_hit_by_projectile"]
 [connection signal="player_entered_area" from="ShipBody/PlayerDetector" to="ShipBody" method="_on_player_detector_player_entered_area"]

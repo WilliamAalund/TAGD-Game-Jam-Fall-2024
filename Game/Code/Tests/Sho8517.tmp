@@ -1,0 +1,160 @@
+[gd_scene load_steps=5 format=3 uid="uid://blheuomdr3anl"]
+
+[ext_resource type="Theme" uid="uid://cvn6e33yj56j7" path="res://Resources/UIElements/InGameUI.tres" id="1_h8ugx"]
+[ext_resource type="Script" path="res://Code/Scripts/TestScripts/ShopTest.gd" id="1_ww0oy"]
+[ext_resource type="PackedScene" uid="uid://517ufem84oyx" path="res://Code/Tests/ItemButton.tscn" id="2_panc0"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_6kw4v"]
+
+[node name="ShopTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_h8ugx")
+script = ExtResource("1_ww0oy")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 0.631373)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_6kw4v")
+
+[node name="ItemButton1" parent="." instance=ExtResource("2_panc0")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -200.0
+offset_right = 420.0
+offset_bottom = 200.0
+grow_horizontal = 1
+
+[node name="ItemButton2" parent="." instance=ExtResource("2_panc0")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+
+[node name="ItemButton3" parent="." instance=ExtResource("2_panc0")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -420.0
+offset_top = -200.0
+offset_right = -20.0
+offset_bottom = 200.0
+grow_horizontal = 0
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_top = 15.0
+offset_right = 64.0
+offset_bottom = 87.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Shop"
+
+[node name="TitleSubLabel" type="Label" parent="TitleLabel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -135.0
+offset_top = -7.0
+offset_right = 135.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Spend scrap to buy better items!"
+
+[node name="ContinueButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -100.0
+offset_right = 75.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Continue"
+
+[node name="Weapon Label" type="Label" parent="."]
+layout_mode = 1
+offset_left = 150.0
+offset_top = 125.0
+offset_right = 269.0
+offset_bottom = 167.0
+theme_override_font_sizes/font_size = 30
+text = "Weapon"
+
+[node name="BoostLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -59.5
+offset_top = 125.0
+offset_right = 59.5
+offset_bottom = 168.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Boost"
+
+[node name="HealthLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -280.0
+offset_top = 125.0
+offset_right = -161.0
+offset_bottom = 168.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "Health
+"
+
+[node name="ScrapLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 50.0
+offset_right = -40.0
+offset_bottom = 73.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 35
+text = "Scrap: 999"
+
+[connection signal="pressed" from="ItemButton1" to="." method="_on_item_button_pressed"]
+[connection signal="pressed" from="ItemButton2" to="." method="_on_item_button_2_pressed"]
+[connection signal="pressed" from="ItemButton3" to="." method="_on_item_button_3_pressed"]
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

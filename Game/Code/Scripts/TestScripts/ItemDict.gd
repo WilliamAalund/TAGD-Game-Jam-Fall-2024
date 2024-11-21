@@ -1,15 +1,6 @@
 extends Node
 
 var Items = {
-	"Blaster":
-	{
-		"weapID": 0,
-		"image": "res://Resources/Textures/Laser.png",
-		"description": "Standard issue, reliable laser.",
-		"type": "Weapon",
-		"reqlvl": 0
-		
-	},
 	"Slightly-Modified Blaster":
 	{
 		"weapID": 1,
@@ -33,7 +24,7 @@ var Items = {
 		"image": "sfdsfS",
 		"description": "Behold! A marvel of modern technology. Soon, all laser manufacturers will be out of business.",
 		"type": "Weapon",
-		"reqlvl": 0
+		"reqlvl": 5
 	},
 	"Sawed Off Laser Shot":
 	{
@@ -41,7 +32,7 @@ var Items = {
 		"image": "sfdsfS",
 		"description": "A close range cannon that fires multiple pellets at once.",
 		"type": "Weapon",
-		"reqlvl": 0
+		"reqlvl": 5
 	},
 	"Accuro Ray":
 	{
@@ -49,7 +40,7 @@ var Items = {
 		"image": "sfdsfS",
 		"description": "A highly advanced laser cannon developed by Dr. Accuro. It fires lasers that are completely accurate.",
 		"type": "Weapon",
-		"reqlvl": 0
+		"reqlvl": 15
 	},
 	"D.M.L.":
 	{
@@ -57,7 +48,7 @@ var Items = {
 		"image": "sfdsfS",
 		"description": "A semi-automatic laser cannon that serves well at medium to long range.",
 		"type": "Weapon",
-		"reqlvl": 0
+		"reqlvl": 10
 	},
 	"Sniper":
 	{
@@ -65,7 +56,7 @@ var Items = {
 		"image": "sfdsfS",
 		"description": "A lethal, accurate, long range weapon.",
 		"type": "Weapon",
-		"reqlvl": 0
+		"reqlvl": 10
 	},
 	"Exacto-Beam":
 	{
@@ -73,7 +64,7 @@ var Items = {
 		"image": "sfdsfS",
 		"description": "A beam of concentrated energy. Need I say more?",
 		"type": "Weapon",
-		"reqlvl": 0
+		"reqlvl": 18
 	},
 	"Speed Boost":
 	{

@@ -12,10 +12,11 @@ var target_types = ["Weapon", "Boost", "Health"]  # Adjust as needed
 var selected_items = []
 
 @export var shop_level = 1
-@export var price = 1
+@export var price = 0
 
 func set_up_ui(new_shop_level: int) -> void:
 	shop_level = new_shop_level
+	price += 15
 	randomize()
 	select_random_items()
 	update_ui()
@@ -45,7 +46,6 @@ func select_random_items():
 
 func update_ui():
 	
-	price += 15
 	$ScrapLabel.text = "Scrap: " + str(PlayerData.scrap)
 	update_ui_box(get_node("ItemButton1"), selected_items[0]) #Weapon
 	update_ui_box(get_node("ItemButton2"), selected_items[1]) #Boost

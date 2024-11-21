@@ -8,7 +8,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_cvqu2"]
 font = ExtResource("1_6ofpp")
-font_size = 30
+font_size = 40
 
 [node name="Intro" type="Node"]
 script = ExtResource("1_i6gvv")
@@ -34,7 +34,7 @@ offset_bottom = 252.0
 grow_horizontal = 2
 text = "You live on a cold dwarf planet in the outer reaches of the solar system.
 Aliens have declared war and are invading your home planet. 
-They plan to use the ultimate bioweapon, the Planeteene, to destroy your planet.
+They plan to use the ultimate bioweapon, the Planeteene, to destroy it.
 Failure means the entire star system is at risk...
 Suit up pilot, and defeat your enemies!"
 label_settings = SubResource("LabelSettings_cvqu2")
@@ -56,7 +56,7 @@ theme = ExtResource("2_xxvv6")
 text = "Continue"
 
 [node name="KeyboardControls" type="TextureRect" parent="Control"]
-visible = false
+modulate = Color(0.276316, 0.564387, 0.779278, 1)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -86,3 +86,20 @@ offset_bottom = -60.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("3_pji0p")
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = 50.0
+offset_right = 225.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "(Controls can be viewed anytime by pausing the game.)"
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

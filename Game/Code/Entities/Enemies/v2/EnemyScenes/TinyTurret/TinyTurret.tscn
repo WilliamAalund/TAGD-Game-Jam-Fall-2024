@@ -22,6 +22,7 @@ height = 350.0
 size = Vector3(30, 30, 263.682)
 
 [node name="TinyTurret" type="Node3D" groups=["enemy"]]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_vllsg")
 
 [node name="ShipBody" parent="." instance=ExtResource("2_1xsrk")]

@@ -3,6 +3,7 @@ extends Node
 @onready var game = $Game
 @onready var title_screen = $TitleScreen
 @onready var debug = $Debug
+@onready var intro = $Intro
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,7 +17,12 @@ func _process(_delta):
 
 func _on_title_screen_play_arcade(_player_count):
 	print("Main: User started arcade mode")
+	title_screen.hide_ui_elements()
+	intro.show()
+	await intro.player_moved_past_intro
+	title_screen.show_ui_elements()
 	title_screen.hide()
+	intro.hide()
 	game.start_game(_player_count,0)
 	pass # Replace with function body.
 

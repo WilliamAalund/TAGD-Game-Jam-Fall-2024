@@ -3,6 +3,7 @@ extends Node
 @onready var background = load("res://Code/PrimaryScenes/TitleScreen/TitleScreenBackground.tscn")
 @onready var top_menu_button = $UI/VBoxContainer/Arcade
 @onready var level_label = $UI/LevelRecord
+@onready var ui = $UI
 
 signal play_arcade(player_count: int)
 signal play_debug
@@ -20,6 +21,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
+
+func hide_ui_elements():
+	ui.visible = false
+
+func show_ui_elements():
+	ui.visible = true
 
 func hide():
 	self.remove_child($Background)

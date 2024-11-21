@@ -28,7 +28,7 @@ signal game_killed
 
 
 
-
+var game_paused = false
 var game_is_active = false # Boolean used to control when the quit button is listening for user input.
 var player_reference = null
 var in_level_complete_screen = false
@@ -53,7 +53,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if debug_enabled and game_is_active:
+	if debug_enabled and game_is_active and game_paused:
 		if Input.is_action_just_pressed("debug_quit"):
 			quit_game()
 	if game_is_active:
@@ -93,12 +93,14 @@ func start_game(_number_of_players, _game_mode: game_modes) -> void:
 func pause_game(_game_mode: game_modes):
 	game_objects.process_mode = Node.PROCESS_MODE_DISABLED
 	pause_screen.visible = true
+	game_paused = true
 	audio_stream_player.stop()
 	pass
 
 func unpause_game(_game_mode: game_modes):
 	game_objects.process_mode = Node.PROCESS_MODE_INHERIT
 	pause_screen.visible = false
+	game_paused = false
 	audio_stream_player.play()
 	pass
 

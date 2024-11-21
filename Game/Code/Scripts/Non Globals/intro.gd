@@ -1,6 +1,9 @@
 extends Node
 
+signal player_moved_past_intro
+
 var player_input = ShipSteeringInput.new()
+var intro_displayed_already = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,7 +31,15 @@ func _process(_delta: float) -> void:
 		$Control/KeyboardControls.visible = true
 
 func hide():
-	pass
+	$Control.visible = false
 
 func show():
-	pass
+	if intro_displayed_already:
+		player_moved_past_intro.emit()
+	$Control.visible = true
+	$Control/Button.grab_focus()
+	intro_displayed_already = true
+
+
+func _on_button_pressed() -> void:
+	player_moved_past_intro.emit()

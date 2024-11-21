@@ -50,10 +50,10 @@ func _process(delta):
 			max_net_input = 2.4
 			net_input_rate_multiplier = 16
 		elif Input.is_action_pressed("boost") and not boost_depleted:
-			max_net_input = 1.5
+			max_net_input = 1.4
 			net_input_rate_multiplier = 8
 		else:
-			max_net_input = 1.6
+			max_net_input = 1.5
 			net_input_rate_multiplier = 14
 		# Update net inputs for movement and rotation
 		update_net_input_horizontal(delta)

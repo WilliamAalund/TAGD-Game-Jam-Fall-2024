@@ -321,4 +321,4 @@ offset_top = 160.0
 offset_right = 176.0
 offset_bottom = 183.0
 grow_horizontal = 2
-text = "(To see enemy locations, press triangle/z)"
+text = "(For a list of controls, press esc/menu)"

@@ -1,6 +1,6 @@
 extends Node
 
-const WEAPONS = [DEFAULT_LASER_WEAPON, GRANDPA_LASER, PEA_SHOOTER, AI_GENERATED_LASER, SAWED_OFF_LASER_SHOT, ACCURO_RAY, DML, SNIPER]
+const WEAPONS = [DEFAULT_LASER_WEAPON, GRANDPA_LASER, PEA_SHOOTER, AI_GENERATED_LASER, SAWED_OFF_LASER_SHOT, ACCURO_RAY, DML, SNIPER, EXACTO_BEAM]
 
 #const COMMON_WEAPONS = [DEFAULT_LASER_WEAPON, GRANDPA_LASER, PEA_SHOOTER]
 
@@ -83,13 +83,13 @@ const SAWED_OFF_LASER_SHOT = {
 const ACCURO_RAY = {
 	"name": "Accuro Ray",
 	"type": "Laser",
-	"rpm": 1200,
+	"rpm": 1500,
 	"automatic": true,
 	"range": 1250.0,
 	"velocity": 1000.0,
 	"spread": 0.0,
 	"damage": 7,
-	"firing_mode": port_modes.ALTERNATE,
+	"firing_mode": port_modes.BOTTOM,
 	"description": "A highly advanced laser cannon developed by Dr. Accuro. It fires lasers that are completely accurate.",
 	"cost": 170
 }
@@ -120,6 +120,20 @@ const SNIPER = {
 	"firing_mode": port_modes.BOTTOM,
 	"description": "A lethal, accurate, long range weapon.",
 	"cost": 500
+}
+
+const EXACTO_BEAM = {
+	"name": "Accuro Ray",
+	"type": "Laser",
+	"rpm": 3500,
+	"automatic": true,
+	"range": 600.0,
+	"velocity": 750.0,
+	"spread": 0.2,
+	"damage": 4,
+	"firing_mode": port_modes.BOTTOM,
+	"description": "A beam of concentrated energy. Need I say more?",
+	"cost": 170
 }
 
 # Called when the node enters the scene tree for the first time.

@@ -4,6 +4,8 @@ const WEAPONS = [DEFAULT_LASER_WEAPON, GRANDPA_LASER, PEA_SHOOTER, AI_GENERATED_
 
 #const COMMON_WEAPONS = [DEFAULT_LASER_WEAPON, GRANDPA_LASER, PEA_SHOOTER]
 
+enum port_modes{ALTERNATE,BOTTOM,THREE,ENEMY,CENTER}
+
 func get_name_for_id(weapon_id: int) -> String:
 	return WEAPONS[weapon_id]["name"]
 
@@ -16,7 +18,7 @@ const DEFAULT_LASER_WEAPON = {
 	"velocity": 600.0,
 	"spread": 0.6,
 	"damage": 8,
-	"firing_mode": "Alternate",
+	"firing_mode": port_modes.ALTERNATE,
 	"description": "Standard issue, reliable laser.",
 	"cost": 0
 }
@@ -30,7 +32,7 @@ const GRANDPA_LASER = {
 	"velocity": 400.0,
 	"spread": 0.7,
 	"damage": 13,
-	"firing_mode": "Alternate",
+	"firing_mode": port_modes.ALTERNATE,
 	"description": "An older weapon that packs a punch, but is less reliable at range.",
 	"cost": 230
 }
@@ -44,7 +46,7 @@ const PEA_SHOOTER = {
 	"velocity": 750.0,
 	"spread": 0.5,
 	"damage": 6,
-	"firing_mode": "Alternate",
+	"firing_mode": port_modes.ALTERNATE,
 	"description": "Fires a quick stream of accurate but weak laser beams.",
 	"cost": 170
 }
@@ -58,7 +60,7 @@ const AI_GENERATED_LASER = {
 	"velocity": 500.0,
 	"spread": 0.7,
 	"damage": 7,
-	"firing_mode": "Alternate",
+	"firing_mode": port_modes.BOTTOM,
 	"description": "Behold! A marvel of modern technology. Soon, all laser manufacturers will be out of business.",
 	"cost": 640
 }
@@ -73,7 +75,7 @@ const SAWED_OFF_LASER_SHOT = {
 	"spread": 1.2,
 	"damage": 4,
 	"number_of_pellets": 4,
-	"firing_mode": "Bottom",
+	"firing_mode": port_modes.BOTTOM,
 	"description": "A close range cannon that fires multiple pellets at once.",
 	"cost": 640
 }
@@ -87,7 +89,7 @@ const ACCURO_RAY = {
 	"velocity": 1000.0,
 	"spread": 0.0,
 	"damage": 7,
-	"firing_mode": "Alternate",
+	"firing_mode": port_modes.ALTERNATE,
 	"description": "A highly advanced laser cannon developed by Dr. Accuro. It fires lasers that are completely accurate.",
 	"cost": 170
 }
@@ -101,7 +103,7 @@ const DML = {
 	"velocity": 900.0,
 	"spread": 0.4,
 	"damage": 14,
-	"firing_mode": "Alternate",
+	"firing_mode": port_modes.BOTTOM,
 	"description": "A semi-automatic laser cannon that serves well at medium to long range.",
 	"cost": 300
 }
@@ -115,7 +117,7 @@ const SNIPER = {
 	"velocity": 1300.0,
 	"spread": 0.05,
 	"damage": 50,
-	"firing_mode": "Alternate",
+	"firing_mode": port_modes.BOTTOM,
 	"description": "A lethal, accurate, long range weapon.",
 	"cost": 500
 }

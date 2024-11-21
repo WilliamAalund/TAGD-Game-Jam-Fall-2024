@@ -12,7 +12,6 @@ var weapon_count = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("Equipping weapons")
 	set_up_weapons() 
 
 func set_weapons_enabled(enabled: bool) -> void:
@@ -47,6 +46,7 @@ func spawn_weapon(weapon_id: int) -> void:
 		weapon_child.projectile_velocity = weapon_parameters["velocity"]
 		weapon_child.projectile_spread_angle = weapon_parameters["spread"]
 		weapon_child.projectile_damage = weapon_parameters["damage"]
+		
 		weapon_child.firing_port_mode = weapon_parameters["firing_mode"]
 	elif weapon_parameters["type"] == "Shotgun":
 		#print("Spawning shotgun")

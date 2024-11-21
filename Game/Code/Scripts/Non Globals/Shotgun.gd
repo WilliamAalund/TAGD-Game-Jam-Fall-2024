@@ -2,12 +2,6 @@ extends WeaponTest
 
 @export var num_pellets := 4
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-	print("Shotgun spawned")
-
-
 func shoot():
 	print("Shotgun form of shoot")
 	for pellet in range(num_pellets):

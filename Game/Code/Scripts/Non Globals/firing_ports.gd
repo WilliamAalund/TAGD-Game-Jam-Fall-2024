@@ -2,6 +2,9 @@ extends Node3D
 
 @onready var projectile_scene = load("res://Code/Entities/Projectile/v2/Projectile.tscn")
 
+@export var port_mode = port_modes.ALTERNATE
+
+
 enum port_modes{ALTERNATE,BOTTOM,THREE,ENEMY,CENTER}
 #@export var port_mode: port_modes
 
@@ -13,7 +16,7 @@ func _ready() -> void:
 
 #set_up_projectile(projectile_type: type_enum, creator_basis: Basis,creator_group: String):
 
-func spawn_projectile(spread: float, projectile_damage: float, projectile_range: float, projectile_velocity: float, _enemy_projectile: bool, port_mode: port_modes = port_modes.ALTERNATE) -> void:
+func spawn_projectile(spread: float, projectile_damage: float, projectile_range: float, projectile_velocity: float, _enemy_projectile: bool) -> void:
 	var projectile_to_spawn = projectile_scene.instantiate()
 
 	var rotation_basis = self.global_transform.basis
@@ -36,8 +39,10 @@ func spawn_projectile(spread: float, projectile_damage: float, projectile_range:
 	projectile_to_spawn.set_up_projectile_v2(rotation_basis, projectile_damage, projectile_range, projectile_velocity) #projectile_to_spawn.type_enum.LASER,projectile_velocity,
 	
 	get_parent().get_parent().get_parent().add_child(projectile_to_spawn)
-	
-	if port_mode == port_modes.CENTER:
+	print("Port mode: ", port_mode)
+	if port_mode == port_modes.BOTTOM:
+		projectile_to_spawn.global_position = $Bottom.global_position
+	elif port_mode == port_modes.CENTER:
 		projectile_to_spawn.global_position = $Middle.global_position
 	elif port_mode == port_modes.ALTERNATE:
 		if port_index == 0:
@@ -52,4 +57,4 @@ func spawn_projectile(spread: float, projectile_damage: float, projectile_range:
 			$RightAudio.pitch_scale = randf_range(0.9,1.1)
 	elif port_mode == port_modes.BOTTOM:
 		projectile_to_spawn.global_position = $Middle.global_position
-	print("Spawning Projectile")
+	#print("Spawning Projectile")

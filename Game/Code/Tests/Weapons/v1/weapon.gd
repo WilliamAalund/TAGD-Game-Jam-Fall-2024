@@ -21,7 +21,7 @@ var fire_rate := 60.0 / rounds_per_minute # Not directly altered by other code.
 @export var projectile_velocity := 10.0 # Velocity at which projectile will travel
 @export var projectile_spread_angle := 5.0
 @export var projectile_damage := 5
-@export var firing_port_mode = "Alternate" # FIXME: This is not implemented
+@export var firing_port_mode = WeaponConstants.port_modes.ALTERNATE # FIXME: This is not implemented
 
 var elapsed_time_since_last_shot := 0.0
 var can_shoot := true
@@ -29,6 +29,8 @@ var can_shoot := true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
+	print("New weapon with firing port mode: ", firing_port_mode)
+	firing_ports.port_mode = firing_port_mode
 
 func weapon_process(delta: float):
 	if not can_shoot:

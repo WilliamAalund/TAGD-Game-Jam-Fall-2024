@@ -89,6 +89,7 @@ func _process(_delta):
 	
 
 func start_game(_number_of_players, _game_mode: game_modes) -> void:
+	$ShopTest.reset_shop()
 	game_over_screen_active = false
 	PlayerData.reset_player_stats()
 	game_level = 1
@@ -211,6 +212,7 @@ func unload_level():
 func game_over(_game_mode: game_modes):
 	game_over_screen_active = false
 	Saving.set_farthest_level(game_level)
+	Saving.set_highest_score(PlayerData.score)
 	setup_game_over_screen()
 	
 	audio_stream_player.stop()

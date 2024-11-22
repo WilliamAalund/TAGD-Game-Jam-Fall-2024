@@ -48,6 +48,17 @@ func set_player_data(player_name: String, player_score: int) -> void: # FIXME: N
 	}
 	save_data(run_data)
 
+func set_highest_score(scored: int) -> bool:
+	var current_save_data = load_data()
+	if scored > current_save_data["high_score"]:
+		current_save_data["high_score"] = scored
+		print("set_farthest_level: attempting to save data")
+		save_data(current_save_data)
+		print("Saving: Highest score increased to: ", scored)
+		return true
+	else:
+		return false
+
 func set_farthest_level(level_reached: int) -> bool:
 	var current_save_data = load_data()
 	if level_reached > current_save_data["farthest_level"]:
@@ -73,6 +84,10 @@ func reset_save_data():
 func get_farthest_level_reached() -> int:
 	var current_save_data = load_data()
 	return current_save_data["farthest_level"]
+
+func get_high_score() -> int:
+	var current_save_data = load_data()
+	return current_save_data["high_score"]
 
 
 func get_player_data() -> Dictionary:

@@ -13,7 +13,8 @@ const MAX_ANGLE_TO_TARGET_POSITION_BEFORE_SLOWDOWN = 1.3
 @export var ship_mesh_path = "res://Resources/Meshes/Placeholder/SmallShip.tscn"
 @export var travel_speed := 25
 @export var off_course_travel_speed := 45
-@export var rotation_speed_multiplier := 1.0
+@export var maximum_rotation_speed_multiplier = 0.8
+var rotation_speed_multiplier := 1.0
 @export var avoids_collisions = false # TODO: Implement this variable
 @export var alters_speed_when_off_target = true
 
@@ -36,6 +37,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#print(pursuing_active_target_position)
 	# Figure out if feelers are detecting object.
 	# If they are, override target basis interpolation with another interpolation technique that rotates ship properly.
 	if not Engine.is_editor_hint():
@@ -61,7 +63,7 @@ func interpolate_to_new_basis(delta):
 	var current_rotation := Quaternion(self.global_transform.basis)
 	
 	angle_to_target_position = current_rotation.angle_to(target_rotation)
-	rotation_speed_multiplier = min(1 / angle_to_target_position, 1.5)
+	rotation_speed_multiplier = min(1 / angle_to_target_position, maximum_rotation_speed_multiplier)
 	
 	var next_rotation := current_rotation.slerp(target_rotation, delta * rotation_speed_multiplier)
 	self.global_transform.basis = Basis(next_rotation)

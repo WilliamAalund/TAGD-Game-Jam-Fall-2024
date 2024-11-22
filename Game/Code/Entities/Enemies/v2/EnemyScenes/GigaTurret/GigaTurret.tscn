@@ -28,7 +28,7 @@ velocity = Vector3(-23.3545, -1.34565e-06, -26.0685)
 ship_mesh_path = "res://Resources/Meshes/Placeholder/GigaTurretHead.tscn"
 travel_speed = 0
 off_course_travel_speed = 0
-rotation_speed_multiplier = 1.1
+maximum_rotation_speed_multiplier = 1.1
 alters_speed_when_off_target = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ShipBody"]

@@ -15,11 +15,11 @@ height = 2.5
 radius = 0.8
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jupjr"]
-radius = 95.0
-height = 350.0
+radius = 48.764
+height = 196.208
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yw3wf"]
-size = Vector3(30, 30, 263.682)
+size = Vector3(30, 30, 158.332)
 
 [node name="TinyTurret" type="Node3D" groups=["enemy"]]
 script = ExtResource("1_vllsg")
@@ -30,7 +30,7 @@ velocity = Vector3(-23.3545, -1.34565e-06, -26.0685)
 ship_mesh_path = "res://Resources/Meshes/Placeholder/TinyTurretHead.tscn"
 travel_speed = 0
 off_course_travel_speed = 0
-rotation_speed_multiplier = 0.6
+maximum_rotation_speed_multiplier = 0.5
 alters_speed_when_off_target = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ShipBody"]
@@ -44,7 +44,7 @@ shape = SubResource("CylinderShape3D_sd0qs")
 [node name="PlayerDetector" parent="ShipBody" instance=ExtResource("3_d2777")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ShipBody/PlayerDetector"]
-transform = Transform3D(1, 0, 0, 0, 0.00499159, 0.999988, 0, -0.999988, 0.00499159, 0, 0, -163.749)
+transform = Transform3D(1, 0, 0, 0, 0.00499159, 0.999988, 0, -0.999988, 0.00499159, 0, 0, -79.4381)
 shape = SubResource("CapsuleShape3D_jupjr")
 
 [node name="ProjectileSpawner" parent="ShipBody" instance=ExtResource("4_mo451")]
@@ -54,7 +54,7 @@ rounds_per_minute = 125
 [node name="PlayerInSightsDetector" parent="ShipBody" instance=ExtResource("5_17dvi")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ShipBody/PlayerInSightsDetector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -131.35)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -78.6749)
 shape = SubResource("BoxShape3D_yw3wf")
 
 [node name="CoreStatsManager" parent="." instance=ExtResource("6_ql1jb")]

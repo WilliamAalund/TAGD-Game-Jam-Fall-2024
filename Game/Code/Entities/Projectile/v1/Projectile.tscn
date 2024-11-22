@@ -20,7 +20,6 @@ stream = ExtResource("3_4oyvw")
 unit_size = 33.05
 pitch_scale = 1.96
 autoplay = true
-stream_paused = true
 max_distance = 2115.52
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

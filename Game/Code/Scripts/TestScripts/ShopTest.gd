@@ -16,6 +16,12 @@ var selected_items = []
 @export var speed_price = 0
 @export var health_price = 0
 
+func reset_shop() -> void:
+	weapon_price = 0
+	speed_price = 0
+	health_price = 0
+
+
 func set_up_ui(new_shop_level: int) -> void:
 	shop_level = new_shop_level
 	weapon_price += 25

@@ -240,6 +240,7 @@ text = "Collect Green Cylinder"
 [node name="PlayerBackview" type="Camera3D" parent="RearviewRect/SubViewport/PlayerBackview"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 1.5)
 fov = 50.0
+far = 6000.0
 
 [node name="LaserCannonView" type="TextureRect" parent="."]
 visible = false

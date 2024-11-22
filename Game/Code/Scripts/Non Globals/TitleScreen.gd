@@ -46,7 +46,7 @@ func set_farthest_level_label():
 	if farthest_level == -1 or high_score == -1:
 		level_label.text = "No save file yet"
 	else:
-		level_label.text = "Farthest level reached: " + str(Saving.get_farthest_level_reached()) + "\nHighest Score: " + str(high_score)
+		level_label.text = "Farthest level reached: " + str(farthest_level) + "\nHighest Score: " + str(high_score)
 
 func _on_debug_pressed():
 	play_debug.emit()

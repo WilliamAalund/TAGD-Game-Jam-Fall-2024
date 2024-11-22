@@ -16,6 +16,9 @@ func _process(delta: float) -> void:
 # Function to update the enemy position pointers.
 func update_enemy_position_pointers(enemy_positions: Array) -> void:
 	# If no enemy positions are provided, clear all existing children
+	var positions_to_point_to := enemy_positions
+	if PlayerData.level_complete_item_avaliable:
+		positions_to_point_to.append(PlayerData.level_complete_item_position)
 	
 	if enemy_positions.size() == 0:
 		# Remove all children
@@ -26,7 +29,7 @@ func update_enemy_position_pointers(enemy_positions: Array) -> void:
 	# Get the current list of children
 	var current_children = get_children()
 	var current_count = current_children.size()
-	var target_count = enemy_positions.size()
+	var target_count = positions_to_point_to.size()
 
 	# If we have fewer children than positions, spawn new children
 	if target_count > current_count:
@@ -44,5 +47,5 @@ func update_enemy_position_pointers(enemy_positions: Array) -> void:
 	current_children = get_children()  # Re-fetch the updated list of children
 	for i in range(target_count):
 		var child = current_children[i]
-		var target_position = enemy_positions[i]
+		var target_position = positions_to_point_to[i]
 		child.look_at(target_position)  # Point the child towards the target position

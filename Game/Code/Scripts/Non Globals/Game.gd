@@ -289,6 +289,8 @@ func _on_enemy_defeated(position_perished):
 	enemies_defeated += 1
 	
 	if enemies_defeated >= enemies_spawned:
+		PlayerData.level_complete_item_position = position_perished
+		PlayerData.level_complete_item_avaliable = true
 		spawn_complete_object(position_perished)
 		pass # Spawn the level complete item
 

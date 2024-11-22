@@ -409,6 +409,7 @@ libraries = {
 autoplay = "ToolTipPulsate"
 
 [node name="ReturnLabel" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

@@ -39,10 +39,10 @@ func _process(_delta):
 		low_health_alert()
 		audio_stream_played = true
 	if player_input.get_using_controller():
-		tooltip_label.text = "View enemy positions by pressing Triangle"
+		tooltip_label.text = "View objective positions by pressing Triangle"
 	else:
 		
-		tooltip_label.text = "View enemy positions by pressing D"
+		tooltip_label.text = "View objective positions by pressing D"
 		
 
 func low_health_alert():
@@ -79,4 +79,4 @@ func _on_game_new_game_data_packet(packet):
 	elif packet["enemies_spawned"] - packet["enemies_defeated"] != 0:
 		objective_label.text = str(packet["enemies_spawned"] - packet["enemies_defeated"]) + " enemies remaining"
 	else:
-		objective_label.text = "Collect green cylinder"
+		objective_label.text = "Collect the Grubbite"

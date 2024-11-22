@@ -49,6 +49,9 @@ const SHIELD_TIME_TO_REGENERATE_BEGIN := 300
 
 @export var hit_sound_effect_needs_to_be_played = false
 
+var level_complete_item_position := Vector3()
+var level_complete_item_avaliable := false
+
 var player_hit_during_current_level = false
 
 var scrape_current_invincibility_frames = 0
@@ -97,6 +100,7 @@ func reset_player_stats():
 func prepare_player_stats_for_new_level():
 	pass # TODO: Reset any cooldowns, and refresh shield
 	player_hit_during_current_level = false
+	level_complete_item_avaliable = false
 
 func enemy_destroyed():
 	score += 100

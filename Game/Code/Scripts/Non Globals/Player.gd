@@ -45,6 +45,7 @@ func construct_player_data_packet():
 	player_data_packet["crosshair_position_2d"] = crosshair_position_2d
 	player_data_packet["player_3d_crosshair_position"] = player_ship.get_3d_crosshair_position()
 	player_data_packet["left_playable_space"] = player_ship.left_playable_space
+	player_data_packet["time_left_until_death"] = $BoundaryTimer.time_left
 	# Further alterations can be done here based on game logic.
 	new_player_data_packet.emit(player_data_packet)
 
@@ -68,3 +69,15 @@ func _on_core_stats_manager_player_hp_depleted() -> void:
 func _on_new_game_data_packet(_packet):
 	pass
 	#print(packet)
+
+
+func _on_boundary_timer_timeout() -> void:
+	PlayerData.killPlayer()
+
+
+func _on_ship_ship_left_play_area() -> void:
+	$BoundaryTimer.start()
+
+
+func _on_ship_ship_entered_play_area() -> void:
+	$BoundaryTimer.stop()

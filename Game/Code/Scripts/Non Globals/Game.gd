@@ -187,12 +187,12 @@ func load_level(_game_mode: game_modes):
 						spawn_enemy(random_positions[i],tiny_turret)
 				elif random_number == 2 and game_level > 9:
 					spawn_enemy(random_positions[i], giga_turret)
-				elif random_number == 3 and game_level > 9:
+				elif random_number == 3 and game_level > 12:
 					spawn_enemy(random_positions[i], advanced_ship_a)
-				elif random_number == 4 and game_level > 12:
+				elif random_number == 4 and game_level > 15:
 					spawn_enemy(random_positions[i],advanced_ship_b)
 				else:
-					spawn_enemy(random_positions[i],tiny_turret)
+					spawn_enemy(random_positions[i],small_enemy_ship)
 		else:
 			var rock_rng = randi_range(0,2)
 			if rock_rng == 0:

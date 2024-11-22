@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0hqsojsoryr2"]
+
+[ext_resource type="AudioStream" uid="uid://cst5bed0wvcf5" path="res://Resources/Audio/TakenDamage.wav" id="1_kqy0t"]
+[ext_resource type="Script" path="res://Code/Scripts/Non Globals/projectile_damage_noise.gd" id="2_dpli7"]
+
+[node name="ProjectileDamageNoise" type="AudioStreamPlayer3D"]
+stream = ExtResource("1_kqy0t")
+volume_db = -33.406
+unit_size = 68.19
+max_db = -5.571
+max_distance = 75.0
+script = ExtResource("2_dpli7")

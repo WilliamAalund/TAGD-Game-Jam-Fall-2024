@@ -145,11 +145,17 @@ libraries = {
 "": SubResource("AnimationLibrary_lakrw")
 }
 
+[node name="BoundaryTimer" type="Timer" parent="."]
+wait_time = 12.0
+
 [connection signal="new_player_data_packet" from="." to="Ship/PlayAreaSeeker" method="_on_player_new_player_data_packet"]
 [connection signal="new_player_data_packet" from="." to="Ship/SoundController" method="_on_player_new_player_data_packet"]
 [connection signal="new_player_data_packet" from="." to="ShipCamera" method="_on_player_new_player_data_packet"]
 [connection signal="new_player_data_packet" from="." to="WeaponManager" method="_on_player_new_player_data_packet"]
 [connection signal="new_player_data_packet" from="." to="ProjectileHandler" method="_on_player_new_player_data_packet"]
+[connection signal="ship_entered_play_area" from="Ship" to="." method="_on_ship_ship_entered_play_area"]
+[connection signal="ship_left_play_area" from="Ship" to="." method="_on_ship_ship_left_play_area"]
 [connection signal="ship_scraping_against_surface" from="Ship" to="CoreStatsManager" method="_on_ship_ship_scraping_against_surface"]
 [connection signal="projectile_fired" from="ProjectileHandler" to="Ship/SoundController" method="_on_projectile_handler_projectile_fired"]
 [connection signal="player_HP_depleted" from="CoreStatsManager" to="." method="_on_core_stats_manager_player_hp_depleted"]
+[connection signal="timeout" from="BoundaryTimer" to="." method="_on_boundary_timer_timeout"]

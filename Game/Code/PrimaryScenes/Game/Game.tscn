@@ -36,7 +36,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.333333, 0.733333),
-"transitions": PackedFloat32Array(0.812252, 1, 1),
+"transitions": PackedFloat32Array(0.812252, 0.615572, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(0.9, 0.9)]
 }
@@ -164,7 +164,6 @@ offset_bottom = 61.0
 text = "Enable/ Disable Music"
 
 [node name="LevelCompletePlaceholder" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

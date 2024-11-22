@@ -13,6 +13,7 @@ extends Control
 @onready var weapon_label = $MarginContainer/HBoxContainer/Label
 @onready var tooltip_label = $ToolTipLabel
 @onready var tooltip_label_animation = $ToolTipLabel/AnimationPlayer
+@onready var return_to_playable_area_label = $ReturnLabel
 # Called when the node enters the scene tree for the first time.
 
 var player_input = ShipSteeringInput.new()
@@ -41,7 +42,7 @@ func _process(_delta):
 		tooltip_label.text = "View enemy positions by pressing Triangle"
 	else:
 		
-		tooltip_label.text = "View enemy positions by pressing Z"
+		tooltip_label.text = "View enemy positions by pressing D"
 		
 
 func low_health_alert():
@@ -60,6 +61,10 @@ func _on_player_new_player_data_packet(packet):
 	velocity_label.text = str(packet["velocity"].length()).substr(0,5)
 	objective_pointers.global_position = packet["global_pos"]
 	weapon_label.text = WeaponConstants.get_name_for_id(PlayerData.primary_weapon_id)
+	return_to_playable_area_label.visible = packet["left_playable_space"] and not PlayerData.HP_depleted
+	return_to_playable_area_label.text = "RETURN TO PLAYABLE AREA! \n" + str(packet["time_left_until_death"]).substr(0,5)
+	
+	
 
 
 # Process information about the game overall

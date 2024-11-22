@@ -70,6 +70,8 @@ func inflict_damage(amount: int, damage_type: String):
 		scrape_current_invincibility_frames = SCRAPE_INVINCIBILITY_FRAMES
 	elif damage_type == "laser":
 		HP -= amount
+	elif damage_type == "outofbounds":
+		HP = 0
 	if HP <= 0: # Death will be taken care of in process loop
 		HP = 0
 		HP_depleted = true
@@ -132,4 +134,5 @@ func hit_registered(): # Runs when the player successfully hits something
 	pass
 	hit_sound_effect_needs_to_be_played = true
 	
-	
+func killPlayer():
+	inflict_damage(1, "outofbounds")

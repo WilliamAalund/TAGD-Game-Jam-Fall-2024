@@ -79,6 +79,7 @@ func move_ship_forward():
 
 
 func damaged_by_projectile(projectile_kind, damage): # Called by a colliding projectile area on the body navigator.
+	$AudioStreamPlayer3D.play()
 	ship_hit_by_projectile.emit(projectile_kind, damage)
 
 

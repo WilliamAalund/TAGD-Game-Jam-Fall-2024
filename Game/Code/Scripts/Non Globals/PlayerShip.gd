@@ -1,8 +1,8 @@
 extends CharacterBody3D
 # This script controls the behavior of the player's ship in a 3D space environment. It handles movement, including forward motion and rotational adjustments based on user input. 
 
-#signal ship_left_play_space#
-#signal ship_entered_play_space
+signal ship_left_play_area
+signal ship_entered_play_area
 signal ship_scraping_against_surface
 
 @export var debug_freeze_ship_position = false
@@ -182,10 +182,12 @@ func get_3d_crosshair_position():
 # Setters for left_playable_space. Called by other nodes on ship node
 func left_playable_area():
 	print("Ship left playable area")
+	ship_left_play_area.emit()
 	left_playable_space = true
 
 func entered_playable_area():
 	print("Ship entered playable area")
+	ship_entered_play_area.emit()
 	left_playable_space = false
 
 # Delete the hitbox of the ship when HP reaches zero

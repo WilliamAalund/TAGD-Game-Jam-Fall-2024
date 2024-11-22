@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @onready var explosion_scene = load("res://Code/Entities/Explosion/Explosion.tscn")
+@onready var projectile_damage_noise = load("res://Code/Entities/Projectile/v2/ProjectileDamageNoise.tscn")
 
 @export var basis_of_projectile_creator = Basis()
 @export var projectile_creator_group = "Not Set"
@@ -40,15 +41,20 @@ func _physics_process(delta: float) -> void:
 			if collider.is_in_group("player") and projectile_creator_group == "enemy":
 				#print("Player hit by projectile")
 				PlayerData.inflict_damage(damage, "laser")
+				var damage_noise = projectile_damage_noise.instantiate()
+				get_parent().add_child(damage_noise)
+				damage_noise.global_position = self.global_position
 			elif collider.is_in_group("enemy") and projectile_creator_group == "player":
 				#print("Enemy hit by projectile")
 				if collider.has_method("damaged_by_projectile"):
 					collider.damaged_by_projectile(type, damage)
 					PlayerData.hit_registered()
+					
 		#print("I have travelled for my maximum distance")
 		var end_explosion = explosion_scene.instantiate()
 		get_parent().add_child(end_explosion)
 		end_explosion.global_position = self.global_position
+		
 		self.queue_free()
 
 

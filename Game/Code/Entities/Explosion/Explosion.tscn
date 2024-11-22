@@ -232,6 +232,7 @@ autostart = true
 stream = ExtResource("2_gryr5")
 volume_db = -15.824
 unit_size = 37.45
+max_db = -1.945
 panning_strength = 0.49
 doppler_tracking = 2
 

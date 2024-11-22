@@ -11,7 +11,7 @@ albedo_texture = ExtResource("3_a6gpp")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jcb4r"]
 material = SubResource("StandardMaterial3D_7wcc8")
-size = Vector2(1200, 900)
+size = Vector2(1600, 1000)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nvpms"]
 transparency = 1

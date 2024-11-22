@@ -146,6 +146,7 @@ libraries = {
 }
 
 [connection signal="new_player_data_packet" from="." to="Ship/PlayAreaSeeker" method="_on_player_new_player_data_packet"]
+[connection signal="new_player_data_packet" from="." to="Ship/SoundController" method="_on_player_new_player_data_packet"]
 [connection signal="new_player_data_packet" from="." to="ShipCamera" method="_on_player_new_player_data_packet"]
 [connection signal="new_player_data_packet" from="." to="WeaponManager" method="_on_player_new_player_data_packet"]
 [connection signal="new_player_data_packet" from="." to="ProjectileHandler" method="_on_player_new_player_data_packet"]

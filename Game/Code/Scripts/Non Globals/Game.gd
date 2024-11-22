@@ -27,7 +27,9 @@ signal game_killed
 @export var debug_enabled = false
 
 
+var game_over_screen_active = false
 
+var music_disabled = false
 var game_paused = false
 var game_is_active = false # Boolean used to control when the quit button is listening for user input.
 var player_reference = null
@@ -53,6 +55,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if PlayerData.hit_sound_effect_needs_to_be_played:
+		$HitmarkerStream.play()
+		PlayerData.hit_sound_effect_needs_to_be_played = false
+	if music_disabled or game_paused:
+		audio_stream_player.stop()
+	else:
+		if not audio_stream_player.playing and game_is_active and not game_over_screen_active:
+			audio_stream_player.play()
 	if debug_enabled and game_is_active and game_paused:
 		if Input.is_action_just_pressed("debug_quit"):
 			quit_game()
@@ -198,19 +208,23 @@ func unload_level():
 		node.queue_free()
 
 func game_over(_game_mode: game_modes):
+	game_over_screen_active = false
 	Saving.set_farthest_level(game_level)
 	setup_game_over_screen()
 	
+	audio_stream_player.stop()
 	pause_screen_enabled = false
 	# spawn timer
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(3).timeout
 	game_over_screen.visible = false
 	pause_screen_enabled = true
+	
 	quit_game()
 
 func setup_game_over_screen():
 	var score = PlayerData.score
 	#print(score)
+	game_over_screen_active = true
 	score_label.text = "Final Score: " + str(score)
 	farthest_level_label.text = "Farthest Level: " + str(game_level)
 	game_over_screen.visible = true
@@ -241,26 +255,27 @@ func spawn_complete_object(spawn_position: Vector3):
 	game_objects.add_child(level_complete_child)
 
 func _on_level_complete_item_touched(body): # This function handles what happens when a level completes
-	if body.is_in_group("player"):
-		print("Player collected level complete item")
-		PlayerData.award_scrap_for_level_completion(game_level)
-		PlayerData.prepare_player_stats_for_new_level()
-		in_level_complete_screen = true
-		game_objects.call_deferred("set", "process_mode", Node.PROCESS_MODE_DISABLED)
-		level_complete_screen.visible = true
-		await get_tree().create_timer(2).timeout
-		level_complete_screen.visible = false
-		if (game_level % 1 == 0): # Determines the frequency of the shop
-			shop_screen.set_up_ui(game_level)
-			shop_screen.visible = true
-			await shop_screen.player_continue
-			shop_screen.visible = false
-		
-		game_objects.process_mode = Node.PROCESS_MODE_INHERIT
-		unload_level()
-		game_level += 1
-		load_level(game_modes.ARCADE)
-		in_level_complete_screen = false
+	if not game_over_screen_active:
+		if body.is_in_group("player"):
+			print("Player collected level complete item")
+			PlayerData.award_scrap_for_level_completion(game_level)
+			PlayerData.prepare_player_stats_for_new_level()
+			in_level_complete_screen = true
+			game_objects.call_deferred("set", "process_mode", Node.PROCESS_MODE_DISABLED)
+			level_complete_screen.visible = true
+			await get_tree().create_timer(2).timeout
+			level_complete_screen.visible = false
+			if (game_level % 2 == 0): # Determines the frequency of the shop
+				shop_screen.set_up_ui(game_level)
+				shop_screen.visible = true
+				await shop_screen.player_continue
+				shop_screen.visible = false
+			
+			game_objects.process_mode = Node.PROCESS_MODE_INHERIT
+			unload_level()
+			game_level += 1
+			load_level(game_modes.ARCADE)
+			in_level_complete_screen = false
 
 func level_complete_animation():
 	level_complete_screen.visible = true
@@ -280,3 +295,6 @@ func _on_player_destroyed():
 
 func _on_new_player_data_packet(_packet):
 	pass
+
+func _on_toggle_music_button_pressed() -> void:
+	music_disabled = !music_disabled

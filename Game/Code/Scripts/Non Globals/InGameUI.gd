@@ -30,6 +30,7 @@ func _ready():
 var audio_stream_played = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	
 	health_label.text = "HP: " + str(PlayerData.HP) + " / " + str(PlayerData.maximum_HP)
 	health.value = PlayerData.HP
 	health.max_value = PlayerData.maximum_HP

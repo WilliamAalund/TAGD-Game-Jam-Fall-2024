@@ -34,7 +34,8 @@ func explode():
 		animation.play("quick_explosion")
 	elif explosion_type == explosion_types.ENEMY_SHIP:
 		animation.play("enemy_ship_explosion")
-	
+	elif explosion_type == explosion_types.PLAYER_SHIP:
+		animation.play("enemy_ship_explosion")
 
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:

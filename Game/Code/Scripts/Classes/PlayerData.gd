@@ -47,6 +47,8 @@ const SHIELD_TIME_TO_REGENERATE_BEGIN := 300
 @export var secondary_weapon_id = -1
 @export var secondary_weapon_selected := false
 
+@export var hit_sound_effect_needs_to_be_played = false
+
 var player_hit_during_current_level = false
 
 var scrape_current_invincibility_frames = 0
@@ -88,6 +90,7 @@ func reset_player_stats():
 	score = 0
 	primary_weapon_id = 0
 	secondary_weapon_id = -1
+	speed_boost = 1.0
 	
 func prepare_player_stats_for_new_level():
 	pass # TODO: Reset any cooldowns, and refresh shield
@@ -124,3 +127,9 @@ func canBuy(price):
 	if(scrap < price):
 		return false
 	return true
+
+func hit_registered(): # Runs when the player successfully hits something
+	pass
+	hit_sound_effect_needs_to_be_played = true
+	
+	

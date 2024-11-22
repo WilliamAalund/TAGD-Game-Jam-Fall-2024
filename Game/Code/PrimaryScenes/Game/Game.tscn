@@ -1,13 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://cxl5frgge2xk7"]
+[gd_scene load_steps=18 format=3 uid="uid://cxl5frgge2xk7"]
 
 [ext_resource type="Script" path="res://Code/Scripts/Non Globals/Game.gd" id="1_s8h24"]
 [ext_resource type="Texture2D" uid="uid://d20buag7ms05r" path="res://Resources/UIElements/PS5Controls.png" id="2_aw5qb"]
 [ext_resource type="FontFile" uid="uid://cfte7264p84d7" path="res://Resources/UIElements/Galindo-Regular.ttf" id="2_ihmpu"]
 [ext_resource type="FontFile" uid="uid://c5aaayuhy8o3h" path="res://Resources/UIElements/FunnelSans-VariableFont_wght.ttf" id="2_murm4"]
 [ext_resource type="Theme" uid="uid://cvn6e33yj56j7" path="res://Resources/UIElements/InGameUI.tres" id="2_qtu5r"]
-[ext_resource type="AudioStream" uid="uid://dgpnj0hyq8705" path="res://Resources/Audio/music fragment 2.wav" id="3_6q0hk"]
 [ext_resource type="Texture2D" uid="uid://ctitv0o25qskx" path="res://Resources/UIElements/Keyboard Controls.png" id="4_grriv"]
+[ext_resource type="AudioStream" uid="uid://dx84ba55j8yiu" path="res://Resources/Audio/more_ambient.wav" id="6_tt87s"]
 [ext_resource type="PackedScene" uid="uid://blheuomdr3anl" path="res://Code/Tests/ShopTest.tscn" id="7_tev1m"]
+[ext_resource type="AudioStream" uid="uid://8vxm5n1s03eo" path="res://Resources/Audio/hitmarker.wav" id="9_sh6fn"]
 
 [sub_resource type="Gradient" id="Gradient_04d1e"]
 offsets = PackedFloat32Array(0, 0.00558659, 0.223464, 0.991071)
@@ -154,6 +155,14 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("4_grriv")
 
+[node name="ToggleMusicButton" type="Button" parent="PauseScreenPlaceholder"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 207.0
+offset_bottom = 61.0
+text = "Enable/ Disable Music"
+
 [node name="LevelCompletePlaceholder" type="Control" parent="."]
 visible = false
 layout_mode = 3
@@ -188,8 +197,8 @@ libraries = {
 autoplay = "Constant Loop"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_6q0hk")
-volume_db = -18.429
+stream = ExtResource("6_tt87s")
+volume_db = -17.286
 
 [node name="GameOverPopup" type="Control" parent="."]
 visible = false
@@ -228,5 +237,13 @@ layout_mode = 2
 [node name="FarthestLevelLabel" type="Label" parent="GameOverPopup/VBoxContainer"]
 layout_mode = 2
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameOverPopup"]
+
 [node name="ShopTest" parent="." instance=ExtResource("7_tev1m")]
 visible = false
+
+[node name="HitmarkerStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_sh6fn")
+volume_db = -9.649
+
+[connection signal="pressed" from="PauseScreenPlaceholder/ToggleMusicButton" to="." method="_on_toggle_music_button_pressed"]

@@ -12,12 +12,12 @@ func get_name_for_id(weapon_id: int) -> String:
 const DEFAULT_LASER_WEAPON = {
 	"name": "Blaster",
 	"type": "Laser",
-	"rpm": 550.0,
+	"rpm": 575.0,
 	"automatic": true,
 	"range": 800.0,
 	"velocity": 600.0,
-	"spread": 0.6,
-	"damage": 8,
+	"spread": 0.7,
+	"damage": 6,
 	"firing_mode": port_modes.ALTERNATE,
 	"description": "Standard issue, reliable laser.",
 	"cost": 0

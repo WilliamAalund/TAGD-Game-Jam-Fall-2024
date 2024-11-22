@@ -8,6 +8,7 @@ enum type_enum {LASER, MISSILE,TEST,ENEMY_LASER}
 @export var type: type_enum
 @export var damage: int = 10
 
+
 var distance_traveled
 var current_maximum_projectile_range
 var current_speed
@@ -43,6 +44,7 @@ func _physics_process(delta: float) -> void:
 				#print("Enemy hit by projectile")
 				if collider.has_method("damaged_by_projectile"):
 					collider.damaged_by_projectile(type, damage)
+					PlayerData.hit_registered()
 		#print("I have travelled for my maximum distance")
 		var end_explosion = explosion_scene.instantiate()
 		get_parent().add_child(end_explosion)

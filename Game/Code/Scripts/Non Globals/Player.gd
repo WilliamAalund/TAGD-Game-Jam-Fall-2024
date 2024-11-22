@@ -3,12 +3,15 @@ extends Node3D
 signal new_player_data_packet(packet)
 signal player_destroyed
 
+@onready var explosion_scene = load("res://Code/Entities/Explosion/Explosion.tscn")
+
 @onready var player_ship = $Ship
 @onready var camera = $ShipCamera
 @onready var stats = $CoreStatsManager
 @onready var animation = $AnimationPlayer
 @onready var projectile_handler = $ProjectileHandler
 @onready var weapon_manager = $WeaponManager
+@onready var sound_controller = $Ship/SoundController
 
 var player_data_packet = {}
 
@@ -31,6 +34,7 @@ func _process(_delta):
 func construct_player_data_packet():
 	player_data_packet["global_pos"] = player_ship.global_position
 	player_data_packet["velocity"] = player_ship.velocity
+	player_data_packet["speed"] = player_ship.travel_speed
 	player_data_packet["direction"] = player_ship.transform.basis.z
 	player_data_packet["ship_basis"] = player_ship.transform.basis
 	player_data_packet["boost_energy"] = player_ship.boost_energy
@@ -54,6 +58,11 @@ func _on_core_stats_manager_player_hp_depleted() -> void:
 	projectile_handler.input_enabled = false
 	weapon_manager.set_weapons_enabled(false)
 	player_ship.visible = false
+	sound_controller.sound_enabled = false
+	var explosion = explosion_scene.instantiate()
+	explosion.global_position = player_ship.global_position
+	explosion.explosion_type = explosion.explosion_types.PLAYER_SHIP
+	self.get_parent().add_child(explosion)
 	
 
 func _on_new_game_data_packet(_packet):

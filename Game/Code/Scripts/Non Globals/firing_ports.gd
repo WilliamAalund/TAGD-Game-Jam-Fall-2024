@@ -57,4 +57,5 @@ func spawn_projectile(spread: float, projectile_damage: float, projectile_range:
 			$RightAudio.pitch_scale = randf_range(0.9,1.1)
 	elif port_mode == port_modes.BOTTOM:
 		projectile_to_spawn.global_position = $Middle.global_position
+		$Bottom.play()
 	#print("Spawning Projectile")

@@ -187,9 +187,9 @@ func load_level(_game_mode: game_modes):
 						spawn_enemy(random_positions[i],tiny_turret)
 				elif random_number == 2 and game_level > 9:
 					spawn_enemy(random_positions[i], giga_turret)
-				elif random_number == 3 and game_level > 12:
+				elif random_number == 3 and game_level > 13:
 					spawn_enemy(random_positions[i], advanced_ship_a)
-				elif random_number == 4 and game_level > 15:
+				elif random_number == 4 and game_level > 16:
 					spawn_enemy(random_positions[i],advanced_ship_b)
 				else:
 					spawn_enemy(random_positions[i],small_enemy_ship)
@@ -268,7 +268,7 @@ func _on_level_complete_item_touched(body): # This function handles what happens
 			level_complete_screen.visible = true
 			await get_tree().create_timer(2).timeout
 			level_complete_screen.visible = false
-			if (game_level % 2 == 0): # Determines the frequency of the shop
+			if (game_level % 1 == 0): # Determines the frequency of the shop
 				shop_screen.set_up_ui(game_level)
 				shop_screen.visible = true
 				await shop_screen.player_continue

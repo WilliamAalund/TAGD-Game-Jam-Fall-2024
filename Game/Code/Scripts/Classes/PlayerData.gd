@@ -107,10 +107,13 @@ func enemy_destroyed():
 	scrap += ENEMY_DESTROYED_SCRAP_VALUE
 
 func award_scrap_for_level_completion(game_level):
-	scrap += LEVEL_COMPLETED_SCRAP_VALUE + game_level * 2
-	print("Was player hit? ",player_hit_during_current_level)
+	
+	var scrap_to_add = LEVEL_COMPLETED_SCRAP_VALUE + game_level * 2
 	if not player_hit_during_current_level:
-		scrap += LEVEL_PERFECT_SCRAP_VALUE
+		scrap_to_add += game_level
+	scrap += scrap_to_add
+	#print("Was player hit? ",player_hit_during_current_level)
+	
 
 func buyWeapon(weapon, price):
 	if canBuy(price):

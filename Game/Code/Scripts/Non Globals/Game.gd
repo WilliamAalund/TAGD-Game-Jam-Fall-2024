@@ -89,6 +89,7 @@ func _process(_delta):
 	
 
 func start_game(_number_of_players, _game_mode: game_modes) -> void:
+	game_over_screen_active = false
 	PlayerData.reset_player_stats()
 	game_level = 1
 	game_is_active = true

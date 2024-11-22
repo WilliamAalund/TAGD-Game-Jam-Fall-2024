@@ -21,7 +21,7 @@ var Items = {
 	"AI Generated Laser":
 	{
 		"weapID": 3,
-		"image": "sfdsfS",
+		"image": "res://Resources/Textures/Laser.png",
 		"description": "Behold! A marvel of modern technology. Soon, all laser manufacturers will be out of business.",
 		"type": "Weapon",
 		"reqlvl": 5
@@ -29,7 +29,7 @@ var Items = {
 	"Sawed Off Laser Shot":
 	{
 		"weapID": 4,
-		"image": "sfdsfS",
+		"image": "res://Resources/Textures/Laser.png",
 		"description": "A close range cannon that fires multiple pellets at once.",
 		"type": "Weapon",
 		"reqlvl": 5
@@ -37,23 +37,23 @@ var Items = {
 	"Accuro Ray":
 	{
 		"weapID": 5,
-		"image": "sfdsfS",
+		"image": "res://Resources/Textures/Laser.png",
 		"description": "A highly advanced laser cannon developed by Dr. Accuro. It fires lasers that are completely accurate.",
 		"type": "Weapon",
-		"reqlvl": 15
+		"reqlvl": 10
 	},
 	"D.M.L.":
 	{
 		"weapID": 6,
-		"image": "sfdsfS",
+		"image": "res://Resources/Textures/Laser.png",
 		"description": "A semi-automatic laser cannon that serves well at medium to long range.",
 		"type": "Weapon",
-		"reqlvl": 10
+		"reqlvl": 5
 	},
 	"Sniper":
 	{
 		"weapID": 7,
-		"image": "sfdsfS",
+		"image": "res://Resources/Textures/Laser.png",
 		"description": "A lethal, accurate, long range weapon.",
 		"type": "Weapon",
 		"reqlvl": 10
@@ -61,7 +61,7 @@ var Items = {
 	"Exacto-Beam":
 	{
 		"weapID": 8,
-		"image": "sfdsfS",
+		"image": "res://Resources/Textures/Laser.png",
 		"description": "A beam of concentrated energy. Need I say more?",
 		"type": "Weapon",
 		"reqlvl": 18

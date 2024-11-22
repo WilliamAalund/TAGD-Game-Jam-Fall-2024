@@ -25,7 +25,7 @@ velocity = Vector3(-23.3545, -1.34565e-06, -26.0685)
 ship_mesh_path = "res://Resources/Meshes/Placeholder/AdvancedShipA.tscn"
 travel_speed = 35
 off_course_travel_speed = 50
-rotation_speed_multiplier = 1.4
+maximum_rotation_speed_multiplier = 1.2
 avoids_collisions = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ShipBody"]

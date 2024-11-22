@@ -271,11 +271,10 @@ func _on_level_complete_item_touched(body): # This function handles what happens
 				shop_screen.visible = true
 				await shop_screen.player_continue
 				shop_screen.visible = false
-			
-			game_objects.process_mode = Node.PROCESS_MODE_INHERIT
 			unload_level()
-			game_level += 1
 			load_level(game_modes.ARCADE)
+			game_objects.process_mode = Node.PROCESS_MODE_INHERIT
+			game_level += 1
 			in_level_complete_screen = false
 
 func level_complete_animation():

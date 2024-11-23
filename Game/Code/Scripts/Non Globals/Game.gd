@@ -184,10 +184,8 @@ func load_level(_game_mode: game_modes):
 				else:
 					spawn_rock(random_positions[i], big_rock)
 	else: # Normal Spawn Logic
-		print("Normal spawn logic")
 		for i in range(num_random_positions):
-			print(i <= game_level)
-			if i <= game_level:
+			if i < game_level:
 				# For all levels after 1, or for all other positions, spawn normally
 				var random_number = randi_range(0, 4)
 				if random_number == 0:

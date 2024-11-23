@@ -171,37 +171,50 @@ func load_level(_game_mode: game_modes):
 	
 	enemies_spawned = 0
 	enemies_defeated = 0
-	for i in range(num_random_positions):
-		if i < game_level:
-		
-			if game_level == 1:
-				spawn_enemy(random_positions[i], tiny_turret)
-			else:
-				var random_number = randi_range(0,4)
+	print("Spawning enemies for game level: ", game_level)
+	if game_level == 1:
+		spawn_enemy(random_positions[0], tiny_turret)
+		for i in range(num_random_positions - 1):
+			if i >= game_level:
+				var rock_rng = randi_range(0, 2)
+				if rock_rng == 0:
+					spawn_rock(random_positions[i], small_rock)
+				elif rock_rng == 1:
+					spawn_rock(random_positions[i], giant_rock)
+				else:
+					spawn_rock(random_positions[i], big_rock)
+	else: # Normal Spawn Logic
+		print("Normal spawn logic")
+		for i in range(num_random_positions):
+			print(i <= game_level)
+			if i <= game_level:
+				# For all levels after 1, or for all other positions, spawn normally
+				var random_number = randi_range(0, 4)
 				if random_number == 0:
-					spawn_enemy(random_positions[i],small_enemy_ship)
+					spawn_enemy(random_positions[i], small_enemy_ship)
 				elif random_number == 1:
 					if game_level > 5:
-						spawn_enemy(random_positions[i],standard_enemy_ship)
+						spawn_enemy(random_positions[i], standard_enemy_ship)
 					else:
-						spawn_enemy(random_positions[i],tiny_turret)
-				elif random_number == 2 and game_level > 9:
+						spawn_enemy(random_positions[i], tiny_turret)
+				elif random_number == 2 and game_level > 6:
 					spawn_enemy(random_positions[i], giga_turret)
-				elif random_number == 3 and game_level > 13:
+				elif random_number == 3 and game_level > 10:
 					spawn_enemy(random_positions[i], advanced_ship_a)
-				elif random_number == 4 and game_level > 16:
-					spawn_enemy(random_positions[i],advanced_ship_b)
+				elif random_number == 4 and game_level > 13:
+					spawn_enemy(random_positions[i], advanced_ship_b)
 				else:
-					spawn_enemy(random_positions[i],small_enemy_ship)
-		else:
-			var rock_rng = randi_range(0,2)
-			if rock_rng == 0:
-				spawn_rock(random_positions[i],small_rock)
-			elif rock_rng == 1:
-				spawn_rock(random_positions[i],giant_rock)
+					spawn_enemy(random_positions[i], small_enemy_ship) 
+			# Else spawn rocks
 			else:
-				spawn_rock(random_positions[i],big_rock)
-	
+				var rock_rng = randi_range(0, 2)
+				if rock_rng == 0:
+					spawn_rock(random_positions[i], small_rock)
+				elif rock_rng == 1:
+					spawn_rock(random_positions[i], giant_rock)
+				else:
+					spawn_rock(random_positions[i], big_rock)
+
 
 func unload_level():
 	unpause_game(game_modes.ARCADE)
@@ -274,9 +287,9 @@ func _on_level_complete_item_touched(body): # This function handles what happens
 				await shop_screen.player_continue
 				shop_screen.visible = false
 			unload_level()
+			game_level += 1
 			load_level(game_modes.ARCADE)
 			game_objects.process_mode = Node.PROCESS_MODE_INHERIT
-			game_level += 1
 			in_level_complete_screen = false
 
 func level_complete_animation():

@@ -154,7 +154,7 @@ func load_level(_game_mode: game_modes):
 	# Spawn children
 	game_objects.add_child(hud_child)
 	game_objects.add_child(player_child)
-	player_child.position.z = 350
+	player_child.position.z = 400
 	player_child.position.y = 100
 	#game_objects.add_child(level_complete_child)
 	

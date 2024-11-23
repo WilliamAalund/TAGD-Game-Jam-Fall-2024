@@ -13,7 +13,7 @@ autoplay = true
 
 [node name="BoostStream" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_o7woq")
-volume_db = -2.0
+volume_db = -9.0
 pitch_scale = 1.44
 
 [node name="TakenDamageStream" type="AudioStreamPlayer3D" parent="."]

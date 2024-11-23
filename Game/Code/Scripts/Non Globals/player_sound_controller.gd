@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 		boost_stream.stop()
 	if not boost_stream.playing:
 		boost_stream.play()
-	boost_stream.pitch_scale = (current_speed / upper_speed) + 0.8
+	boost_stream.pitch_scale = (current_speed / upper_speed) + 1
 	
 
 

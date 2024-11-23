@@ -18,7 +18,7 @@ const FOV_CONTROL_BOOST_MAX = 1.1
 const FOV_CONTROL_BOOST_MIN = 0.9
 const FOV_CONTROL_MAX = 1.5
 const FOV_CONTROL_BASE = 1.0
-const FOV_CONTROL_MIN = 0.8
+const FOV_CONTROL_MIN = 0.7
 @export var fov_control = 1.0 # Used to control camera zoom in.
 @export var camera_control_enabled = true
 var zoomed_in = false
@@ -44,13 +44,13 @@ func _process(delta):
 			
 		elif Input.is_action_pressed("focus"):
 			pass
-			fov_control -= 0.01
+			fov_control -= 1.8 * delta
 			if fov_control < FOV_CONTROL_MIN:
 				fov_control = FOV_CONTROL_MIN
 		elif Input.is_action_pressed("break"):
 			fov_control = lerp(fov_control, FOV_CONTROL_BOOST_MIN, delta * 3)
 		else:
-			fov_control = lerp(fov_control, FOV_CONTROL_BASE, delta)
+			fov_control = lerp(fov_control, FOV_CONTROL_BASE, delta * 2)
 			
 		if Input.is_action_just_pressed("focus") and not Input.is_action_pressed("boost"):
 			zoomed_in = true

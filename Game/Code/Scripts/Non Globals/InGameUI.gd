@@ -79,4 +79,4 @@ func _on_game_new_game_data_packet(packet):
 	elif packet["enemies_spawned"] - packet["enemies_defeated"] != 0:
 		objective_label.text = str(packet["enemies_spawned"] - packet["enemies_defeated"]) + " enemies remaining"
 	else:
-		objective_label.text = "Collect the Grubbite"
+		objective_label.text = "Collect the Grubbite Lure"

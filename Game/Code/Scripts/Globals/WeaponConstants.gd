@@ -59,7 +59,7 @@ const AI_GENERATED_LASER = {
 	"range": 700.0,
 	"velocity": 500.0,
 	"spread": 0.9,
-	"damage": 6,
+	"damage": 15,
 	"firing_mode": port_modes.BOTTOM,
 	"description": "A marvel of modern technology. Soon, all laser manufacturers will be out of business.",
 	"cost": 640

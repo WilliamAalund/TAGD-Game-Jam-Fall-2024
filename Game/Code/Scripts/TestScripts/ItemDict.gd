@@ -24,7 +24,7 @@ var Items = {
 		"image": "res://Resources/Textures/Laser.png",
 		"description": "Behold! A marvel of modern technology. Soon, all laser manufacturers will be out of business.",
 		"type": "Weapon",
-		"reqlvl": 5
+		"reqlvl": 3
 	},
 	"Sawed Off Laser Shot":
 	{
@@ -32,7 +32,7 @@ var Items = {
 		"image": "res://Resources/Textures/Laser.png",
 		"description": "A close range cannon that fires multiple pellets at once.",
 		"type": "Weapon",
-		"reqlvl": 5
+		"reqlvl": 3
 	},
 	"Accuro Ray":
 	{
@@ -40,7 +40,7 @@ var Items = {
 		"image": "res://Resources/Textures/Laser.png",
 		"description": "A highly advanced laser cannon developed by Dr. Accuro. It fires lasers that are completely accurate.",
 		"type": "Weapon",
-		"reqlvl": 10
+		"reqlvl": 7
 	},
 	"D.M.L.":
 	{
@@ -56,7 +56,7 @@ var Items = {
 		"image": "res://Resources/Textures/Laser.png",
 		"description": "A lethal, accurate, long range weapon.",
 		"type": "Weapon",
-		"reqlvl": 10
+		"reqlvl": 5
 	},
 	"Exacto-Beam":
 	{
@@ -64,12 +64,12 @@ var Items = {
 		"image": "res://Resources/Textures/Laser.png",
 		"description": "A beam of concentrated energy. Need I say more?",
 		"type": "Weapon",
-		"reqlvl": 18
+		"reqlvl": 9
 	},
 	"Speed Boost":
 	{
 		"weapID": 98,
-		"image": "res://Resources/Images/icon.svg",
+		"image": "res://Resources/Textures/speed.png",
 		"description": "A minor speed boost",
 		"type": "Boost",
 		"reqlvl": 0

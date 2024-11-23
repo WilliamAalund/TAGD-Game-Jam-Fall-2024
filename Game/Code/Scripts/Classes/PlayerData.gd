@@ -108,7 +108,7 @@ func enemy_destroyed():
 
 func award_scrap_for_level_completion(game_level):
 	
-	var scrap_to_add = LEVEL_COMPLETED_SCRAP_VALUE + game_level * 2
+	var scrap_to_add = LEVEL_COMPLETED_SCRAP_VALUE + game_level * 3
 	if not player_hit_during_current_level:
 		scrap_to_add += game_level + 4
 	scrap += scrap_to_add
